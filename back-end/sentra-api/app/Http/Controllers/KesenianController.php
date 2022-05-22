@@ -246,6 +246,25 @@ class KesenianController extends Controller
         }
     }
 
+    public function category(Request $request) {
+        $searchQuery = $request->categoryName;
+        $kesenians = Kesenian::where('category','like',"%".$searchQuery."%")
+                            ->get();
+
+        if($kesenians != null){
+            return response([
+                'status' => 'success',
+                'message' => 'Kesenian berdasarkan kategori Berhasil Ditampilkan',
+                'data' => $kesenians
+            ], 200);
+        } else {
+            return response ([
+                'status' => 'failed',
+                'message' => 'Kesenian berdasarkan kategori gagal tidak ditemukan!'
+            ], 404);
+        }
+    }
+
     public function getAllDocumentation($id) {
         $dokumentations = Images_Kesenian::where('id_kesenian_img', $id)->get();
 

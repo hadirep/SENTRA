@@ -21,7 +21,7 @@ use App\Http\Controllers\KesenianController;
 
 Route::resource('kesenians', App\Http\Controllers\KesenianController::class);
 Route::get('/search/kesenians', 'App\Http\Controllers\KesenianController@search');
-
+Route::get('/category/kesenians', 'App\Http\Controllers\KesenianController@category');
 Route::get('/dokumentation/{id}', 'App\Http\Controllers\KesenianController@getAllDocumentation');
 Route::get('/dokumentation/{id}/{detailId}', 'App\Http\Controllers\KesenianController@getDocumentationById');
 Route::post('/documentation/create/{id}', 'App\Http\Controllers\KesenianController@createDocumentation');
