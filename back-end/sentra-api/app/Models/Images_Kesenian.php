@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Images_Kesenian extends Model
 {
     protected $table = 'images_kesenians';
+    protected $fillable = ['id_kesenian_img', 'documentation'];
 }

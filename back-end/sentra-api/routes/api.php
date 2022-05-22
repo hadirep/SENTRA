@@ -20,8 +20,10 @@ use App\Http\Controllers\KesenianController;
 // });
 
 Route::resource('kesenians', App\Http\Controllers\KesenianController::class);
-// Route::get('/kesenians', 'KesenianController@index');
-// Route::get('/kesenians/{id}', 'KesenianController@detail');
-// Route::post('/kesenians/store', 'KesenianController@store');
-// Route::post('/kesenians/update/{id}', 'KesenianController@update');
-// Route::delete('/kesenians/delete/{id}', 'KesenianController@destroy');
+Route::get('/search/kesenians', 'App\Http\Controllers\KesenianController@search');
+
+Route::get('/dokumentation/{id}', 'App\Http\Controllers\KesenianController@getAllDocumentation');
+Route::get('/dokumentation/{id}/{detailId}', 'App\Http\Controllers\KesenianController@getDocumentationById');
+Route::post('/documentation/create/{id}', 'App\Http\Controllers\KesenianController@createDocumentation');
+Route::patch('/documentation/edit/{id}', 'App\Http\Controllers\KesenianController@editDocumentation');
+Route::delete('/documentation/delete/{id}', 'App\Http\Controllers\KesenianController@deleteDocumentation');
