@@ -18,7 +18,9 @@ class KesenianController extends Controller
      */
     public function index()
     {
-        $kesenians = Kesenian::all();
+        $kesenians = DB::table('kesenians')
+                        ->orderBy('created_at', 'desc')
+                        ->get();
 
         if($kesenians != null) {
             return response ([
@@ -160,6 +162,8 @@ class KesenianController extends Controller
             'description' => $request->description,
         ];
 
+        $id_kesenian = $getKesenian->id_kesenian;
+
         if($request->hasfile('image')) {
             $image_path = "/kesenians/" .$getKesenian->image;
             if ($getKesenian->image != '' && $getKesenian->image != null) {
@@ -171,7 +175,7 @@ class KesenianController extends Controller
             $requestKesenians['image'] = $name;
         }
 
-        $updateKesenian = DB::table('kesenians')->update($requestKesenians, $id);
+        $updateKesenian = DB::table('kesenians')->where('id_kesenian', $id_kesenian)->update($requestKesenians);
 
         if($updateKesenian != null){
             return response([
@@ -246,10 +250,12 @@ class KesenianController extends Controller
         }
     }
 
-    public function category(Request $request) {
-        $searchQuery = $request->categoryName;
-        $kesenians = Kesenian::where('category','like',"%".$searchQuery."%")
+    public function province(Request $request) {
+        $searchQuery = $request->q;
+        // return $searchQuery;
+        $kesenians = Kesenian::where('province','like',"%".$searchQuery."%")
                             ->get();
+        return $kesenians;
 
         if($kesenians != null){
             return response([
