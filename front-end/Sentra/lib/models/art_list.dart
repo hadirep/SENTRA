@@ -15,7 +15,7 @@ class ArtList {
 }
 
 var dataArtList = [
-  ArtList(
+  const ArtList(
     provience: "Bali",
     name: "Tari Kecak",
     price: 15000000,
@@ -24,7 +24,7 @@ var dataArtList = [
         "\n Tarian ini sering dipuji oleh wisatawan asing gara-gara keunikannya, walau cuma berbunyi “cak-cak-cak” tetapi beberapa group membunyikannya dengan ketukan berbeda-beda, saat kamu mendengarkan sekelompok laki-laki yang membunyikan kata “cak” kamu seolah mendengarkan ribuan orang yang membunyikan kata “cak”. Inilah keunikan tari kecak. Tari ini disajikan sangat sederhana, tetapi suasana mistisnya masih selamanya ada.",
     image: "assets/seni/1_bali_tari_kecak.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Papua",
     name: "Tari Musyoh",
     price: 11000000,
@@ -32,7 +32,7 @@ var dataArtList = [
         "\n Jika tari Musyoh dilakukan untuk pengusiran arwah atau yang bertujuan sakral, maka yang menarikan adalah penari pria. Tarian Musyroh yang ditujukan untuk menyambut tamu atau memberikan penghormatan kepada pendatang, maka yang menarikan adalah penari wanita.",
     image: "assets/seni/2_papua_tari_musyoh.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Aceh",
     name: "Tari Saman",
     price: 10000000,
@@ -41,7 +41,7 @@ var dataArtList = [
         "\n Pada 24 November 2011, Tari Saman ditetapkan UNESCO sebagai Daftar Representatif Budaya Takbenda Warisan Manusia dalam sidang ke-6 Komite Antar-Pemerintah untuk Perlindungan Warisan Budaya Tak Benda UNESCO di Bali.",
     image: "assets/seni/3_aceh_tari_saman.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Jawa Timur",
     name: "Tari Reog Ponorogo",
     price: 17000000,
@@ -49,7 +49,7 @@ var dataArtList = [
         "\nSeni Reog Ponorogo merupakan cipta kreasi Indonesia, yang kaya akan budaya. Seni ini terbentuk karena adanya aliran kepercayaan secara turun temurun. Upacaranya pun menggunakan syarat-syarat yang tidak mudah bagi orang awam untuk memenuhinya, tanpa adanya garis keturunan yang jelas.",
     image: "assets/seni/4_jawa_timur_tari_reog_ponorogo.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Jawa Barat",
     name: "Tari Jaipong",
     price: 15000000,
@@ -57,7 +57,7 @@ var dataArtList = [
         "\nTari ini dahulu dijadikan sebagai hiburan rakyat, tari jaipong merupakan sebuah inovasi yang dilakukan oleh seorang seniman asal Karawang, tari ini merupakan gabungan dari pencak silat, wayang golek, topeng banjet, ketuk tilu, tarling, dan tepak topeng.",
     image: "assets/seni/5_jawa_barat_tari_jaipong.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Lampung",
     name: "Tari Bendana",
     price: 8000000,
@@ -67,7 +67,7 @@ var dataArtList = [
         "\nTari ini diyakini identik dengan agama Islam karena mencerminkan masyarakat Lampung yang ramah dan terbuka sebagai simbol persahabatan dan pergaulan.",
     image: "assets/6_lampung_tari_bandana.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Jawa Barat",
     name: "Tari Gambyong",
     price: 7000000,
@@ -76,7 +76,7 @@ var dataArtList = [
         "\nMeskipun banyak macamnya, tarian ini memiliki dasar gerakan yang sama, yaitu gerakan tarian tayub. Pada dasarnya, gambyong dicipta untuk penari tunggal, namun sekarang lebih sering dibawakan oleh beberapa penari dengan menambahkan unsur blocking panggung sehingga melibatkan garis dan gerak yang serba besar.",
     image: "assets/seni/7_jawa_tengah_tari_gambyong.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Banten",
     name: "Tari Topeng",
     price: 10000000,
@@ -84,7 +84,7 @@ var dataArtList = [
         "\nSiapa empu pencipta tarian ini tak diketahui. Kemunculannya pun ada banyak versi. Salah satunya menyebut tari topeng sudah dikenal pada masa Majapahit. Jacob Sumardjo dalam Arkeologi Budaya Indonesia menyebut Raja Hayam Wuruk menari dengan topeng terbuat dari emas. Setelah jatuhnya Majapahit.",
     image: "assets/seni/8_banten_tari_topeng.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Yogyakarta",
     name: "Tari Serimpi",
     price: 9000000,
@@ -94,7 +94,7 @@ var dataArtList = [
         "\nTari ini ditampilkan dengan gerakan lemah gemulai dan diiringi alunan gamelan. Tema tari serimpi adalah pertentangan antara nafsu dan akal serta benar dan salah. Dalam perkembangannya, tari serimpi banyak ditampilkan untuk menyambut tamu agung.",
     image: "assets/seni/9_diy_tari_serimpi.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Riau",
     name: "Tari Zipin",
     price: 5600000,
@@ -104,7 +104,7 @@ var dataArtList = [
         "\nKarena masuk di lingkungan istana dengan cepat tari Zapin berakulturasi dengan budaya lokal. Dalam setiap gerakannya disisipkan nilai-nilai dan norma Melayu. Akhirnya tari ini kerap ditampilkan dalam acara seremonial kerajaan.",
     image: "assets/seni/10_riau_tari_zipin.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "NTT",
     name: "Tari Cerana",
     price: 15000000,
@@ -112,7 +112,7 @@ var dataArtList = [
         "\nKemudian Tamu yang datang akan mengunyah sirih dan pinang yang telah diberikan sebagai simbol bahwa tamu tersebut juga menyambut baik apa yang diberikan oleh masyarakat, sehingga akan terjalin suatu hubungan yang baik diantara mereka.",
     image: "assets/seni/11_ntt_tari_cerana.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Sumatera Utara",
     name: "Tari Tor Tor",
     price: 9900000,
@@ -121,7 +121,7 @@ var dataArtList = [
         "\nDi mana mempunyai tempat dan kedudukan yang penting dalam kehidupan masyarakat adat. Dalam setiap pelaksanaan adat, Tortor selalu digelar. Dalam pelaksanaan adat, baik yang berhubungan dengan kematian maupun peristiwa sukacita, tortor selalu diadakan. Tari Tortor merupakan bagian penting dalam masyarakat adat Batak, yang memiliki nilai budaya dan nilai spiritual.",
     image: "assets/seni/12_sumatera_utara_tari_tor_tor.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Sulawesi Selatan",
     name: "Tari Kipas Pakarena",
     price: 6700000,
@@ -131,7 +131,7 @@ var dataArtList = [
         "\nTarian daerah ini dulunya, dimainkan di dalam istana Kerajaan Gowa oleh seorang putri-putri bangsawan. Tari Kipas Pakarena tersebut juga digunakan sebagai bentuk pelengkap maupun suatu hal wajib dipertunjukkan ketika ada upacara adat, pesta kerajaan, dan lain sebagainya.",
     image: "assets/seni/13_sulawesi_selatan_tari_kipas_pakarena.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Sumatera Barat",
     name: "Tari Piring",
     price: 9000000,
@@ -141,7 +141,7 @@ var dataArtList = [
         "\nGerakan-gerakan tersebut merupakan gambaran peristiwa kegiatan masyarakat dalam bekerja. Tari piring diiringi oleh musik tradisional yang disebut talempong. Musik talempong terdiri atas enam buah talempong, satu buah gong kecil, satu buah tambua, satu buah botol dan sejenis kerincing.",
     image: "assets/seni/14_sumatera_barat_tari_piring.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Kalimantan Timur",
     name: "Tari Gantar",
     price: 8000000,
@@ -150,7 +150,7 @@ var dataArtList = [
         "\nMenurut kepercayaan masyarakat, jika darah kerbau yang disembelih menyembur dengan sangat deras, berarti hasil panen akan berlimpah. Mengutip Kementerian Pendidikan dan Kebudayaan, Tari Gantar melambangkan kegembiraan dan juga keramahan Suku Dayak dalam menyambut tamu yang datang berkunjung, baik sebagai wisatawan, investor, atau para tamu yang dihormati. Bahkan, mereka diajak menari bersama para penari.",
     image: "assets/seni/15_kalimatan_timur_tari_gantar.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "DKI Jakarta",
     name: "Tari Ondel-Ondel",
     price: 5000000,
@@ -158,7 +158,7 @@ var dataArtList = [
         "\nBoneka laki-laki mengenakan topeng berwarna merah, sedangkan yang perempuan berwarna putih. Ondel-ondel biasanya ditampilkan untuk menyambut tamu dan memeriahkan pesta-pesta rakyat. Konon ondel-ondel dipercaya sebagai penolak bala. Tari Ondel-ondel tidak mengusung boneka khas Betawi ini sebagai properti, tetapi menggantinya dengan tampah kecil berhiaskan wajah khas ondel-ondel yang dibawa oleh masing-masing penari. Terkadang menggunakan media lain seperti karton, dan ada juga yang tidak mengenakannya sama sekali.",
     image: "assets/seni/16_dki_jakarta_tari_ondel_ondel.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Sumatera Selatan",
     name: "Tari Gending Sriwijaya",
     price: 12000000,
@@ -168,7 +168,7 @@ var dataArtList = [
         "\nTarian ini digagas dari tahun 1942 hingga 1943 dan sempat terkendala akibat kondisi politik di tanah air. Baru pada bulan Oktober 1943 ditindaklanjuti ketika O.M. Shida menunjuk Nungtjik A.R. yang merupakan Wakil Kepala Hodohan pengganti M.J. Su’ud.",
     image: "assets/seni/17_sumatera_selatan_tari_gending_sriwijaya.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Kalimantan Barat",
     name: "Tari Pedang Mualang",
     price: 8000000,
@@ -179,7 +179,7 @@ var dataArtList = [
         "\nMembicarakan kesenian tari di Suku Dayak, ada satu tarian yang begitu menarik dan akan dibahas disini, namanya adalah Tari Pedang Mualang.",
     image: "assets/seni/18_kalimantan_barat_tari_pedang_mualang.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Bangka Belitung",
     name: "Tari Campak",
     price: 6000000,
@@ -188,7 +188,7 @@ var dataArtList = [
         "\nTarian ini berkembang pada masa pendudukan bangsa Portugis di Bangka Belitung. Hal ini bisa dilihat dari beberapa ragam pada tari Campak antara lain akordion dan pakaian pada penari perempuan yang sangat kental dengan gaya Eropa nya.",
     image: "assets/seni/19_bangka_belitung_tari_campak.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Maluku",
     name: "Tari Yerik",
     price: 11500000,
@@ -197,7 +197,7 @@ var dataArtList = [
         "\nSalah satunya di negara Turki saat ada festival budaya yang dihadiri oleh 7 negara yaitu Indonesia, Turki, India, Sri Langka, Belgia, Korea Utara dan Ukraina.",
     image: "assets/seni/20_maluku_tari_yerik.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Kalimantan Selatan",
     name: "Tari Topeng Banjar",
     price: 7500000,
@@ -205,7 +205,7 @@ var dataArtList = [
         "\nTari topeng ini diketahui sudah tumbuh dan berkembang sejak Kerajaan Negara Dipa. Bentuk topeng Banjar terdiri dari beberapa jenis seperti Gunung Sari, Patih, Panji, Batarakala (Sangkala/Gajah Barung), Pantul, Tambam, Pamambi, Pamimdu, Kalana, Ranggajiwa, dan lain - lain. Perhelatan tari topeng banjar masih dilakukan sebagai ungkapan rasa syukur, mengharap keselamatan dari gangguan roh jahat.",
     image: "assets/seni/21_kalimantan_selatan_tari_topeng_banjar.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Kalimantan Tengah",
     name: "Tari Giring-Giring",
     price: 7000000,
@@ -216,7 +216,7 @@ var dataArtList = [
         "\nBiasanya tari Giring-Giring ditampilkan untuk menyambut kedatangan tamu-tamu istimewa. Bahkan terkadang dijadikan tarian pergaulan para muda-muda di Kalimantan.",
     image: "assets/seni/22_kalimantan_tengah_tari_giring_giring.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "NTB",
     name: "Tari Gandrung",
     price: 11000000,
@@ -224,7 +224,7 @@ var dataArtList = [
         "\nTarian ini adalah salah satu bentuk kebudayaan dari Suku Osing yang merupakan penduduk asli Banyuwangi. Tarian ini dipentaskan dalam bentuk berpasangan antara perempuan (penari gandrung) dan laki-laki (pemaju) yang dikenal dengan paju.",
     image: "assets/seni/23_ntb_tari_gandrung.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Sulawesi Utara",
     name: "Tari Maengket",
     price: 8500000,
@@ -233,7 +233,7 @@ var dataArtList = [
         "\nDilansir dari situs Kementerian Pendidikan dan Kebudayaan Republik Indonesia, kata maengket berasal dari tradisi budaya gotong royong di Minahasa dalam kegiatan sehari-hari, terutama saat bercocok tanam. Seiring berkembangnya zaman, maengket diartikan sebagai seni bernyanyi sambil menari dengan mengungkapkan sastra daerah yang dilakukan oleh sekelompok orang.",
     image: "assets/seni/24_sulawesi_utara_tari_maengket.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Kalimantan Utara",
     name: "Tari Mance",
     price: 9000000,
@@ -242,7 +242,7 @@ var dataArtList = [
         "\nTari Mance merupakan tarian Kalimantan Utara yang sangat digemari sebagaian besar pemuda di daerah Bulungan.",
     image: "assets/seni/25_kalimantan_utara_tari_mance.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Banten",
     name: "Debus",
     price: 2500000,
@@ -251,7 +251,7 @@ var dataArtList = [
         "\nSeni debus perlahan kemudian berkembang sebagai media untuk memompa semangat rakyat Banten dalam menghadapi penjajahan Belanda pada masa pemerintahan Sultan Ageng Tirtayasa.",
     image: "assets/seni/26_banten_debus.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Jawa Barat",
     name: "Wayang Golek",
     price: 5500000,
@@ -261,7 +261,7 @@ var dataArtList = [
         "\nPertunjukkan wayang golek dilakukan secara tatap langsung, artinya ada tatap langsung antara dalang dengan penonton. Dalang bertindak sebagai pencerita maupun sebagai pemain wayang.",
     image: "assets/seni/27_jawa_barat_wayang_golek.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Jawa Timur",
     name: "Wayang Kulit",
     price: 6000000,
@@ -270,7 +270,7 @@ var dataArtList = [
         "\nDimainkan oleh seorang dalang, wayang kulit membawa cerita-cerita dengan pesan yang berasal dari kepercayaan dan budaya setempat mengenai budi pekerti luhur, atau bahkan berupa kritik sosial.",
     image: "assets/seni/28_jawa_timur_wayang_kulit.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Sumatra Barat",
     name: "Pencak Silat",
     price: 3500000,
@@ -280,7 +280,7 @@ var dataArtList = [
         "\nBanyaknya tokoh Islam yang mengembangkan pencak silat karena catatan sejarah pencak silat banyak diwarnai di kaum penyebar agama Islam pada abad ke-14 di Nusantara. Kala itu pencak silat diajarkan bersama-sama dengan pelajaran agama di surau atau pesantren. Silat menjadi bagian dari latihan spiritual.",
     image: "assets/seni/29_jawa_barat_pencak_silat.jpg",
   ),
-  ArtList(
+  const ArtList(
     provience: "Jawa Barat",
     name: "Pertunjukan Angklung",
     price: 50000000,

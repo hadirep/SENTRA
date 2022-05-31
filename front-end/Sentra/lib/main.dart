@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sentra/pages/admin/business_management.dart';
 import 'package:sentra/pages/home_page.dart';
+import 'package:sentra/pages/login_page.dart';
+import 'package:sentra/pages/register_page.dart';
 import 'package:sentra/pages/search_page.dart';
 
 void main() {
@@ -16,8 +19,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: HomePage.routeName,
+      initialRoute: LoginPage.routeName,
       routes: {
+        LoginPage.routeName: (context) => const LoginPage(),
+        RegisterPage.routeName: (context) => const RegisterPage(),
+        BusinessManagement.routeName: (context) => const BusinessManagement(),
         HomePage.routeName: (context) => const HomePage(),
         SearchPage.routeName: (context) => const SearchPage(),
       },

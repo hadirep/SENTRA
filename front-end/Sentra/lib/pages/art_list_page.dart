@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/models/art_list.dart';
 
-import '../models/art_detail.dart';
+// import '../models/art_detail.dart';
 
 class ArtListPage extends StatefulWidget {
   final ArtList art;
