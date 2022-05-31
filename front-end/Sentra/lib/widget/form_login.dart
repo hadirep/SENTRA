@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/pages/admin/business_management.dart';
-import 'package:sentra/pages/home_page.dart';
 import 'package:sentra/pages/register_page.dart';
 
 class FormLogin extends StatefulWidget{
   const FormLogin({Key? key}) : super(key: key);
 
   @override
-  State<FormLogin> createState() => _buildFormLogin();
+  State<FormLogin> createState() => _BuildFormLogin();
 }
 
-class _buildFormLogin extends State<FormLogin> {
+class _BuildFormLogin extends State<FormLogin> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 

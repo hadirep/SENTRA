@@ -20,11 +20,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::table('images_kesenians', function($table)
-        {
-            $table->foreign('id_kesenian_img')->references('id_kesenian')->on('kesenians')->onDelete('cascade');
-        });
-
     }
 
     /**

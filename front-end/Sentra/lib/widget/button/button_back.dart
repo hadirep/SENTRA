@@ -6,10 +6,10 @@ class ButtonBack extends StatefulWidget{
   const ButtonBack({Key? key}) : super(key: key);
 
  @override
- State<ButtonBack> createState() => _stateButtonBack();
+ State<ButtonBack> createState() => _StateButtonBack();
 }
 
-class _stateButtonBack extends State<ButtonBack>{
+class _StateButtonBack extends State<ButtonBack>{
   @override
   Widget build(BuildContext context) {
     return Container(

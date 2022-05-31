@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
-import 'package:sentra/pages/login_page.dart';
 import 'package:sentra/widget/button/button_back.dart';
 import 'package:sentra/widget/form_register.dart';
 import 'package:sentra/widget/logo_center.dart';
