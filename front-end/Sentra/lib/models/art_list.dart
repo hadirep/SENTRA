@@ -1,11 +1,13 @@
 class ArtList {
   final String provience;
   final String name;
+  final String id;
   final int price;
   final String description;
   final String image;
 
   const ArtList({
+    required this.id,
     required this.provience,
     required this.name,
     required this.price,
@@ -16,6 +18,7 @@ class ArtList {
 
 var dataArtList = [
   const ArtList(
+    id: "1",
     provience: "Bali",
     name: "Tari Kecak",
     price: 15000000,
@@ -25,6 +28,7 @@ var dataArtList = [
     image: "assets/seni/1_bali_tari_kecak.jpg",
   ),
   const ArtList(
+    id: "2",
     provience: "Papua",
     name: "Tari Musyoh",
     price: 11000000,
@@ -33,6 +37,7 @@ var dataArtList = [
     image: "assets/seni/2_papua_tari_musyoh.jpg",
   ),
   const ArtList(
+    id: "3",
     provience: "Aceh",
     name: "Tari Saman",
     price: 10000000,
@@ -42,6 +47,7 @@ var dataArtList = [
     image: "assets/seni/3_aceh_tari_saman.jpg",
   ),
   const ArtList(
+    id: "4",
     provience: "Jawa Timur",
     name: "Tari Reog Ponorogo",
     price: 17000000,
@@ -50,6 +56,7 @@ var dataArtList = [
     image: "assets/seni/4_jawa_timur_tari_reog_ponorogo.jpg",
   ),
   const ArtList(
+    id: "5",
     provience: "Jawa Barat",
     name: "Tari Jaipong",
     price: 15000000,
@@ -58,6 +65,7 @@ var dataArtList = [
     image: "assets/seni/5_jawa_barat_tari_jaipong.jpg",
   ),
   const ArtList(
+    id: "6",
     provience: "Lampung",
     name: "Tari Bendana",
     price: 8000000,
@@ -68,6 +76,7 @@ var dataArtList = [
     image: "assets/6_lampung_tari_bandana.jpg",
   ),
   const ArtList(
+    id: "7",
     provience: "Jawa Barat",
     name: "Tari Gambyong",
     price: 7000000,
@@ -77,6 +86,7 @@ var dataArtList = [
     image: "assets/seni/7_jawa_tengah_tari_gambyong.jpg",
   ),
   const ArtList(
+    id: "8",
     provience: "Banten",
     name: "Tari Topeng",
     price: 10000000,
@@ -85,6 +95,7 @@ var dataArtList = [
     image: "assets/seni/8_banten_tari_topeng.jpg",
   ),
   const ArtList(
+    id: "9",
     provience: "Yogyakarta",
     name: "Tari Serimpi",
     price: 9000000,
@@ -95,6 +106,7 @@ var dataArtList = [
     image: "assets/seni/9_diy_tari_serimpi.jpg",
   ),
   const ArtList(
+    id: "10",
     provience: "Riau",
     name: "Tari Zipin",
     price: 5600000,
@@ -105,6 +117,7 @@ var dataArtList = [
     image: "assets/seni/10_riau_tari_zipin.jpg",
   ),
   const ArtList(
+    id: "11",
     provience: "NTT",
     name: "Tari Cerana",
     price: 15000000,
@@ -113,6 +126,7 @@ var dataArtList = [
     image: "assets/seni/11_ntt_tari_cerana.jpg",
   ),
   const ArtList(
+    id: "12",
     provience: "Sumatera Utara",
     name: "Tari Tor Tor",
     price: 9900000,
@@ -122,6 +136,7 @@ var dataArtList = [
     image: "assets/seni/12_sumatera_utara_tari_tor_tor.jpg",
   ),
   const ArtList(
+    id: "13",
     provience: "Sulawesi Selatan",
     name: "Tari Kipas Pakarena",
     price: 6700000,
@@ -132,6 +147,7 @@ var dataArtList = [
     image: "assets/seni/13_sulawesi_selatan_tari_kipas_pakarena.jpg",
   ),
   const ArtList(
+    id: "14",
     provience: "Sumatera Barat",
     name: "Tari Piring",
     price: 9000000,
@@ -142,6 +158,7 @@ var dataArtList = [
     image: "assets/seni/14_sumatera_barat_tari_piring.jpg",
   ),
   const ArtList(
+    id: "15",
     provience: "Kalimantan Timur",
     name: "Tari Gantar",
     price: 8000000,
@@ -151,6 +168,7 @@ var dataArtList = [
     image: "assets/seni/15_kalimatan_timur_tari_gantar.jpg",
   ),
   const ArtList(
+    id: "16",
     provience: "DKI Jakarta",
     name: "Tari Ondel-Ondel",
     price: 5000000,
@@ -159,6 +177,7 @@ var dataArtList = [
     image: "assets/seni/16_dki_jakarta_tari_ondel_ondel.jpg",
   ),
   const ArtList(
+    id: "17",
     provience: "Sumatera Selatan",
     name: "Tari Gending Sriwijaya",
     price: 12000000,
@@ -169,6 +188,7 @@ var dataArtList = [
     image: "assets/seni/17_sumatera_selatan_tari_gending_sriwijaya.jpg",
   ),
   const ArtList(
+    id: "18",
     provience: "Kalimantan Barat",
     name: "Tari Pedang Mualang",
     price: 8000000,
@@ -180,6 +200,7 @@ var dataArtList = [
     image: "assets/seni/18_kalimantan_barat_tari_pedang_mualang.jpg",
   ),
   const ArtList(
+    id: "19",
     provience: "Bangka Belitung",
     name: "Tari Campak",
     price: 6000000,
@@ -189,6 +210,7 @@ var dataArtList = [
     image: "assets/seni/19_bangka_belitung_tari_campak.jpg",
   ),
   const ArtList(
+    id: "20",
     provience: "Maluku",
     name: "Tari Yerik",
     price: 11500000,
@@ -198,6 +220,7 @@ var dataArtList = [
     image: "assets/seni/20_maluku_tari_yerik.jpg",
   ),
   const ArtList(
+    id: "21",
     provience: "Kalimantan Selatan",
     name: "Tari Topeng Banjar",
     price: 7500000,
@@ -206,6 +229,7 @@ var dataArtList = [
     image: "assets/seni/21_kalimantan_selatan_tari_topeng_banjar.jpg",
   ),
   const ArtList(
+    id: "22",
     provience: "Kalimantan Tengah",
     name: "Tari Giring-Giring",
     price: 7000000,
@@ -217,6 +241,7 @@ var dataArtList = [
     image: "assets/seni/22_kalimantan_tengah_tari_giring_giring.jpg",
   ),
   const ArtList(
+    id: "23",
     provience: "NTB",
     name: "Tari Gandrung",
     price: 11000000,
@@ -225,6 +250,7 @@ var dataArtList = [
     image: "assets/seni/23_ntb_tari_gandrung.jpg",
   ),
   const ArtList(
+    id: "24",
     provience: "Sulawesi Utara",
     name: "Tari Maengket",
     price: 8500000,
@@ -234,6 +260,7 @@ var dataArtList = [
     image: "assets/seni/24_sulawesi_utara_tari_maengket.jpg",
   ),
   const ArtList(
+    id: "25",
     provience: "Kalimantan Utara",
     name: "Tari Mance",
     price: 9000000,
@@ -243,6 +270,7 @@ var dataArtList = [
     image: "assets/seni/25_kalimantan_utara_tari_mance.jpg",
   ),
   const ArtList(
+    id: "26",
     provience: "Banten",
     name: "Debus",
     price: 2500000,
@@ -252,6 +280,7 @@ var dataArtList = [
     image: "assets/seni/26_banten_debus.jpg",
   ),
   const ArtList(
+    id: "27",
     provience: "Jawa Barat",
     name: "Wayang Golek",
     price: 5500000,
@@ -262,6 +291,7 @@ var dataArtList = [
     image: "assets/seni/27_jawa_barat_wayang_golek.jpg",
   ),
   const ArtList(
+    id: "28",
     provience: "Jawa Timur",
     name: "Wayang Kulit",
     price: 6000000,
@@ -271,6 +301,7 @@ var dataArtList = [
     image: "assets/seni/28_jawa_timur_wayang_kulit.jpg",
   ),
   const ArtList(
+    id: "29",
     provience: "Sumatra Barat",
     name: "Pencak Silat",
     price: 3500000,
@@ -281,6 +312,7 @@ var dataArtList = [
     image: "assets/seni/29_jawa_barat_pencak_silat.jpg",
   ),
   const ArtList(
+    id: "30",
     provience: "Jawa Barat",
     name: "Pertunjukan Angklung",
     price: 50000000,

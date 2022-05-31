@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sentra/details_seller_product.dart';
-import 'models/art_list.dart';
+import 'package:sentra/models/art_list.dart';
+import 'package:sentra/pages/details_seller_product.dart';
 
 //HOMEPAGE
 class MainScreen extends StatelessWidget {
-    // static const routeName = '/list';
   @override
-  // String name;
-  // MainScreen(this.name);
   Widget build(BuildContext context) {
     return Scaffold(
       
@@ -35,92 +32,6 @@ class MainScreen extends StatelessWidget {
       body: Card(
         child: Stack(
           children: <Widget>[
-            //IMAGE ARTIST
-            // Padding(
-            //   padding: EdgeInsets.symmetric(vertical: 2, horizontal: 2),
-            //   child: Container(
-            //     width: MediaQuery.of(context).size.width,
-            //     height: 220,
-            //     decoration: BoxDecoration(
-            //       border: Border.all(
-            //         width: 10,
-            //         color: Color.fromARGB(255, 255, 255, 255),
-            //       ),
-            //       borderRadius: BorderRadius.circular(20),
-            //       color: Color.fromARGB(255, 255, 255, 255),
-            //       image: DecorationImage(
-            //         image: AssetImage('images/homepage1.jpg'),
-            //         fit: BoxFit.fill,
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // Column(
-            //   children: <Widget>[
-            //     Container(
-            //       child: SizedBox(
-            //         height: 230,
-            //       ),
-            //     ),
-            //     //TITLE AND BUTTON TO PICK ARTIST PAGE OR PRODUCT PAGE
-            //     // Padding(
-            //     //   padding: const EdgeInsets.only(left: 19),
-            //     //   child: Text(
-            //     //     'Every purchase' '\n' 'will be made with pleasure',
-            //     //     style: TextStyle(
-            //     //       color: Color.fromARGB(255, 145, 35, 35),
-            //     //       fontSize: 20,
-            //     //       fontWeight: FontWeight.bold,
-            //     //       fontStyle: FontStyle.italic,
-            //     //     ),
-            //     //   ),
-            //     // ),
-            //   ],
-            // ),
-            // Column(
-            //   children: <Widget>[
-            //     Container(
-            //         child: SizedBox(
-            //       height: 230,
-            //     )),
-            //     Padding(
-            //       padding: const EdgeInsets.only(right: 19),
-            //       child: Align(
-            //         alignment: Alignment.centerRight,
-            //         child: CircleAvatar(
-            //           radius: 24,
-            //           backgroundColor: Color.fromARGB(255, 233, 216, 207),
-            //           child: Icon(
-            //             Icons.card_travel_rounded,
-            //             color: Color.fromARGB(255, 64, 42, 37),
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-            // Column(
-            //   children: <Widget>[
-            //     Container(
-            //         child: SizedBox(
-            //       height: 230,
-            //     )),
-            //     Padding(
-            //       padding: const EdgeInsets.only(right: 80),
-            //       child: Align(
-            //         alignment: Alignment.centerRight,
-            //         child: CircleAvatar(
-            //           radius: 24,
-            //           backgroundColor: Color.fromARGB(255, 233, 216, 207),
-            //           child: Icon(
-            //             Icons.verified_outlined,
-            //             color: Color.fromARGB(255, 64, 42, 37),
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Container(

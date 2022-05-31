@@ -312,28 +312,6 @@ try {
                   ),
                 )),
           ),
-                //    Container(
-                // alignment: Alignment.topRight,
-                // child: Container( 
-                //   padding: EdgeInsets.all(5),
-                //   decoration: BoxDecoration(
-                    
-                //       borderRadius: BorderRadius.circular(10),
-                //       border: Border.all(width: 3, color: Colors.grey)),
-                      
-                //   child: IconButton(
-                //     icon: Icon(Icons.add, size: 15,),
-                //     onPressed: (){
-                //       openImages();
-                //     },
-                //   )
-                // )),
-                  
-                // ElevatedButton(
-                //   onPressed: (){
-                //         openImages();
-                //     }, 
-                //  child: Icon(Icons.add)),
                 SizedBox(height: 20,),
                          Container(
                           padding: EdgeInsets.symmetric(vertical: 16),
@@ -363,76 +341,8 @@ try {
                 
               ],
             ),
-          )
-                      //  Container(
-                      //   alignment: Alignment.topLeft,
-                      //   child: Text(
-                      //     "Dokumentasi", 
-                      //   textAlign: TextAlign.left,),
-                      // ),
-                      // imageDocummentation != null? Container(
-                      //   height:  MediaQuery.of(context).size.height * 0.10,
-                      //   width: MediaQuery.of(context).size.height * 0.11,
-                      //   padding: EdgeInsets.all(5),
-                      //   decoration: BoxDecoration(color: Colors.grey, borderRadius: borderRadius,),
-                      //   child: ClipRRect(
-                      //     borderRadius: borderRadius,
-                      //      child: Image.file(
-                      //       imageDocummentation!, 
-                      //       fit: BoxFit.cover,
-                      //       ),
-                      //   )) : 
-                      //     Container(
-                      //   height:  MediaQuery.of(context).size.height * 0.10,
-                      //   width: MediaQuery.of(context).size.height * 0.11,
-                      //   child: Center(child: Text('+')),
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(10),
-                      //     shape: BoxShape.rectangle,
-                      //     border: Border.all(width: 4, color: Colors.grey),
-                      //   ),
-                      // ),SizedBox(height: 5,),
-          //             GestureDetector(
-          //   onTap: () {
-          //     //  selectImages();
-          //   },
-          //   child: new Align(
-          //       alignment: Alignment.topRight,
-          //       child: Container(
-          //         padding: EdgeInsets.all(5),
-          //         decoration: BoxDecoration(
-          //             borderRadius: BorderRadius.circular(10),
-          //             border: Border.all(width: 3, color: Colors.grey)),
-          //         child: Icon(
-          //           Icons.add_a_photo,
-          //           color: Colors.grey, size: 15,
-          //         ),
-          //       )),
-          // ),
-
+          ),
                     ],
-                    // child: Container(
-                    //   alignment: Alignment.topLeft,
-                    //   height: 28,
-                    //   decoration: BoxDecoration(
-                    //     color: Colors.white,
-                    //     border: Border.all(
-                    //       color: Colors.black,
-                    //       width: 2.0,
-                    //     ),
-                    //     borderRadius: BorderRadius.all(Radius.circular(10)),
-                    //   ),  
-                    // ),
-
-
-                  //   child: TextField(
-                  //    decoration: InputDecoration(
-                  //   labelText: 'Nama Seni',
-                  //    border: OutlineInputBorder(
-                  //      borderRadius: BorderRadius.circular(12)
-                  //    ),
-                  //    ),
-                  //  ),
                   ),
                   )
                 ],)
