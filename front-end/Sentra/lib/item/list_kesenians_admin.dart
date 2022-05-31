@@ -32,11 +32,11 @@ class ItemKeseniansAdmin extends StatelessWidget{
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Expanded(
+                          const Expanded(
                             flex: 1,
-                            child: Container(
+                            child: SizedBox(
                               width: 20,
-                              child: const VerticalDivider(
+                              child: VerticalDivider(
                                 color: secondaryColor,
                                 thickness: 3,
                                 width: 10,

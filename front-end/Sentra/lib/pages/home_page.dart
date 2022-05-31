@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               onTap: () {
-                //Navigator.pushNamed(context, routes Settings page);
+                /// Navigator.pushNamed(context, routes Settings page);
               },
               leading: const Icon(Icons.settings, color: Color(0xff969696)),
               title: const Text(
@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.asset(
-                  "assets/1_bali_tari_kecak.jpg", width: 390, height: 150, fit: BoxFit.cover,
+                  "assets/seni/1_bali_tari_kecak.jpg", width: 390, height: 150, fit: BoxFit.cover,
                 ),
               ),
               const SizedBox(height: 15),

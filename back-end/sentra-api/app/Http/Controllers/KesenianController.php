@@ -19,7 +19,7 @@ class KesenianController extends Controller
     public function index()
     {
         $kesenians = DB::table('kesenians')
-                        ->orderBy('created_at', 'desc')
+                        ->orderBy('id_kesenian', 'desc')
                         ->get();
 
         if($kesenians != null) {
@@ -89,6 +89,8 @@ class KesenianController extends Controller
             'province' => $request->province,
             'description' => $request->description,
             'image'=> $imageurl,
+            'is_facebook' => $request->is_facebook,
+            'is_instagram' => $request->is_instagram,
         ];
 
         $createKesenian = DB::table('kesenians')->insert($requestKesenians);
@@ -116,6 +118,7 @@ class KesenianController extends Controller
     public function show($id)
     {
         $kesenians = Kesenian::where('id_kesenian', $id)->first();
+        $kesenians['documKesenians'] = Images_Kesenian::where('id_kesenian_img', $id)->get();
 
         if($kesenians != null) {
             return response ([
@@ -160,6 +163,8 @@ class KesenianController extends Controller
             'email' => $request->email,
             'province' => $request->province,
             'description' => $request->description,
+            'is_facebook' => $request->is_facebook,
+            'is_instagram' => $request->is_instagram,
         ];
 
         $id_kesenian = $getKesenian->id_kesenian;

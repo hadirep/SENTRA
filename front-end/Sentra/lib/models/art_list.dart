@@ -73,7 +73,7 @@ var dataArtList = [
         "\nTari Bedana adalah jenis tari berpasangan yang biasanya dibawakan oleh para pemuda dan pemudi Lampung, pada saat acara adat atau acara-acara lainnya. Tarian ini merupakan wujud ungkapan akan rasa suka cita."
         "\nEkspresi sukacita ini ditampilkan dalam wujud gerakan anggota tubuh dengan batasan tertentu dengan penuh kegembiraan. Ekstetika tarinya membuat kita merasa selalu muda dan antusias."
         "\nTari ini diyakini identik dengan agama Islam karena mencerminkan masyarakat Lampung yang ramah dan terbuka sebagai simbol persahabatan dan pergaulan.",
-    image: "assets/6_lampung_tari_bandana.jpg",
+    image: "assets/seni/6_lampung_tari_bandana.jpg",
   ),
   const ArtList(
     id: "7",

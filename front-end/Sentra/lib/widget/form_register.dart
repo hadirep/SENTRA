@@ -6,10 +6,10 @@ class FormRegister extends StatefulWidget{
   const FormRegister({Key? key}) : super(key: key);
 
   @override
-  State<FormRegister> createState() => _buildFormRegister();
+  State<FormRegister> createState() => _BuildFormRegister();
 }
 
-class _buildFormRegister extends State<FormRegister> {
+class _BuildFormRegister extends State<FormRegister> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();

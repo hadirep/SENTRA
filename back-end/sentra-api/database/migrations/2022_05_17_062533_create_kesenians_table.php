@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('price')->nullable();
             $table->string('category')->nullable();
             $table->string('community')->nullable();
-            $table->integer('phone_number')->nullable();
+            $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
             $table->string('province')->nullable();
             $table->text('description')->nullable();
