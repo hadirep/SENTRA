@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/models/art_list.dart';
 import 'package:sentra/pages/details_seller_product.dart';
+import 'package:sentra/pages/favorite_list.dart';
 
 //HOMEPAGE
 class MainScreen extends StatelessWidget {
+  static const routeName = '/list';
+  final String list;
+  const MainScreen({Key? key, required this.list}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +29,7 @@ class MainScreen extends StatelessWidget {
                 color: Color.fromARGB(255, 184, 120, 17),
               ),
               onPressed: () {
-                // Navigator.pushNamed(context, FavoritePage.routeName);
+                Navigator.pushNamed(context, FavoriteList.routeName);
               },
             ),
           ),
@@ -50,6 +55,7 @@ class MainScreen extends StatelessWidget {
                             final ArtList place = dataArtList[index];
                             return InkWell(
                               onTap: () {
+                                // Navigator.pushNamed(context, DetailSellerProduct.routeName);
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
                                   return DetailSellerProduct(place: place);

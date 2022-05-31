@@ -1,11 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:sentra/models/art_list.dart';
-
+import 'package:sentra/pages/product_management.dart';
 import 'details_seller_product.dart';
 import 'list.dart';
 
+
 class FavoriteList extends StatelessWidget {
+  static const routeName = '/favorite_page';
   const FavoriteList({ Key? key }) : super(key: key);
 
   @override
@@ -19,8 +20,13 @@ class FavoriteList extends StatelessWidget {
         ),
         centerTitle: true,
         leading: 
-        Padding(padding: const EdgeInsets.all(12.0),
-        child: Container(child: Image.asset("images/logos.jpeg")
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+        child: IconButton(
+        icon: Image.asset("images/logos.jpeg"),
+        onPressed: () {
+        // Navigator.pushNamed(context, ProductManagement.routeName);
+        }
         ),  
         ), 
       ),

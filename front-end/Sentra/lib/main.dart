@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:sentra/models/art_list.dart';
 import 'package:sentra/pages/admin/business_management.dart';
+import 'package:sentra/pages/details_seller_product.dart';
+import 'package:sentra/pages/favorite_list.dart';
 import 'package:sentra/pages/home_page.dart';
+import 'package:sentra/pages/list.dart';
 import 'package:sentra/pages/login_page.dart';
+import 'package:sentra/pages/product_management.dart';
 import 'package:sentra/pages/register_page.dart';
 import 'package:sentra/pages/search_page.dart';
 
@@ -26,6 +31,14 @@ class MyApp extends StatelessWidget {
         BusinessManagement.routeName: (context) => const BusinessManagement(),
         HomePage.routeName: (context) => const HomePage(),
         SearchPage.routeName: (context) => const SearchPage(),
+        //list. akan dihapus
+        MainScreen.routeName: (context) => MainScreen(list: '',),
+        // 
+        DetailSellerProduct.routeName: (context) =>  DetailSellerProduct(place:
+                  ModalRoute.of(context)?.settings.arguments as ArtList ),
+        FavoriteList.routeName: (context) => const FavoriteList(),
+        ProductManagement.routeName: (context) => const ProductManagement(),
+
       },
     );
   }

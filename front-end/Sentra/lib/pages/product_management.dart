@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProductManagement extends StatefulWidget {
+  static const routeName = '/product_management';
   const ProductManagement({ Key? key }) : super(key: key);
 
   @override
