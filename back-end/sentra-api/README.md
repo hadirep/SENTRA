@@ -30,6 +30,6 @@ LIST URL API :
 
 - URL View Gambar :
     - Menampilkan gambar kesenian 
-    > http://sentra.dokternak.id/kesenians/{namaimage}
+    > http://sentra.dokternak.id/public/kesenians/{namaimage}
     - Menampilkan gambar documentation kesenian 
-    > http://sentra.dokternak.id/dokumentasiKesenians/{namaimagedokumetation}
+    > http://sentra.dokternak.id/public//dokumentasiKesenians/{namaimagedokumetation}
