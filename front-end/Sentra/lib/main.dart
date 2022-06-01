@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: LoginPage.routeName,
+      initialRoute: HomePage.routeName,
       routes: {
         LoginPage.routeName: (context) => const LoginPage(),
         RegisterPage.routeName: (context) => const RegisterPage(),
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         HomePage.routeName: (context) => const HomePage(),
         SearchPage.routeName: (context) => const SearchPage(),
         //list. akan dihapus
-        MainScreen.routeName: (context) => MainScreen(list: '',),
+        MainScreen.routeName: (context) => const MainScreen(list: '',),
         // 
         DetailSellerProduct.routeName: (context) =>  DetailSellerProduct(place:
                   ModalRoute.of(context)?.settings.arguments as ArtList ),

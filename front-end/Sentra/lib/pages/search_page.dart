@@ -92,7 +92,7 @@ class _SearchPageState extends State<SearchPage> {
           alignment: Alignment.center,
           child: Text(
             'Search',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            style: TextStyle(color: Color(0xff2d4b94), fontWeight: FontWeight.bold),
           ),
         ),
         backgroundColor: Colors.white,
@@ -193,7 +193,7 @@ class _SearchPageState extends State<SearchPage> {
       title: Text(
         artList.name,
         style: const TextStyle(
-          fontSize: 15, fontWeight: FontWeight.bold,
+          color: Color(0xff2d4b94), fontSize: 15, fontWeight: FontWeight.bold,
         ),
       ),
       subtitle: Column(
@@ -204,7 +204,7 @@ class _SearchPageState extends State<SearchPage> {
               const SizedBox(width: 5),
               Text(artList.provience,
                 style: const TextStyle(
-                  fontSize: 12, fontWeight: FontWeight.bold,
+                  color: Color(0xff2d4b94), fontSize: 12, fontWeight: FontWeight.bold,
                 ),
               ),
             ],

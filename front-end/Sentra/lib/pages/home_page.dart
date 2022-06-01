@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/models/art_provience.dart';
 import 'package:sentra/models/art_update.dart';
+import 'package:sentra/models/art_list.dart';
 import 'package:sentra/pages/search_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -135,11 +136,11 @@ class _HomePageState extends State<HomePage> {
                 onTap: () => Navigator.pushNamed(context, "/searchPage"),
               ),
               SizedBox(
-                height: 236,
+                height: 240,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return _listItem(index);
+                    return _listProvienceItem(index);
                   },
                   itemCount: dataArtProvience.length,
                 ),
@@ -154,12 +155,27 @@ class _HomePageState extends State<HomePage> {
                 shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height / 1.4),
+                  childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height / 1.3),
                 ),
                 itemCount: dataArtUpdate.length,
                 itemBuilder: (context, index) {
-                  return _gridItem(index);
+                  return _gridNewUpdateItem(index);
                 },
+              ),
+              const SizedBox(height: 15),
+              _moreAction(
+                title: 'All Arts',
+                onTap: () => Navigator.pushNamed(context, "/allArts"),
+              ),
+              SizedBox(
+                height: 240,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return _listAllArtsItem(index);
+                  },
+                  itemCount: dataArtList.length,
+                ),
               ),
             ],
           ),
@@ -181,8 +197,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _listItem(index) {
-    final ArtProvience artList = dataArtProvience[index];
+  _listProvienceItem(index) {
+    final ArtProvience artProvience = dataArtProvience[index];
     return InkWell(
       onTap: () {
         // Menuju detail page filter
@@ -195,13 +211,13 @@ class _HomePageState extends State<HomePage> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.asset(
-                  artList.image, width: 150, height: 200, fit: BoxFit.cover,
+                  artProvience.image, width: 150, height: 200, fit: BoxFit.cover,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(5),
                 child: Text(
-                  artList.provience,
+                  artProvience.provience,
                   style: const TextStyle(
                     fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xff2d4b94),
                   ),
@@ -214,7 +230,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _gridItem(index){
+  _gridNewUpdateItem(index){
     ArtUpdate artUpdate = dataArtUpdate[index];
     return InkWell(
       onTap: () {
@@ -235,6 +251,39 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(top: 5),
                 child: Text(
                   artUpdate.name, textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xff2d4b94),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  _listAllArtsItem(index) {
+    final ArtList artList = dataArtList[index];
+    return InkWell(
+      onTap: () {
+        // Menuju detail page filter
+      },
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30),
+        child: Card(
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  artList.image, width: 150, height: 200, fit: BoxFit.cover,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5),
+                child: Text(
+                  artList.provience,
                   style: const TextStyle(
                     fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xff2d4b94),
                   ),

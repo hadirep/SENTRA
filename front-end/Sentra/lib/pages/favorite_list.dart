@@ -4,7 +4,6 @@ import 'package:sentra/pages/product_management.dart';
 import 'details_seller_product.dart';
 import 'list.dart';
 
-
 class FavoriteList extends StatelessWidget {
   static const routeName = '/favorite_page';
   const FavoriteList({ Key? key }) : super(key: key);
