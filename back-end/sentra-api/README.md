@@ -32,4 +32,4 @@ LIST URL API :
     - Menampilkan gambar kesenian 
     > http://sentra.dokternak.id/public/kesenians/{namaimage}
     - Menampilkan gambar documentation kesenian 
-    > http://sentra.dokternak.id/public//dokumentasiKesenians/{namaimagedokumetation}
+    > http://sentra.dokternak.id/public/dokumentasiKesenians/{namaimagedokumetation}
