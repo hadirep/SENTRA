@@ -1,6 +1,7 @@
 class ArtUpdate {
   String provience;
   String name;
+  String id;
   int price;
   String description;
   String image;
@@ -8,6 +9,7 @@ class ArtUpdate {
   ArtUpdate({
     required this.provience,
     required this.name,
+    required this.id,
     required this.price,
     required this.description,
     required this.image,
@@ -16,6 +18,7 @@ class ArtUpdate {
 
 List<ArtUpdate> dataArtUpdate = [
   ArtUpdate(
+    id: "1",
     provience: "Banten",
     name: "Tari Topeng",
     price: 10000000,
@@ -24,6 +27,7 @@ List<ArtUpdate> dataArtUpdate = [
     image: "assets/seni/8_banten_tari_topeng.jpg",
   ),
   ArtUpdate(
+    id: "2",
     provience: "Jawa Barat",
     name: "Tari Jaipong",
     price: 15000000,
@@ -32,6 +36,7 @@ List<ArtUpdate> dataArtUpdate = [
     image: "assets/seni/5_jawa_barat_tari_jaipong.jpg",
   ),
   ArtUpdate(
+    id: "3",
     provience: "Jawa Barat",
     name: "Tari Gambyong",
     price: 7000000,
@@ -41,6 +46,7 @@ List<ArtUpdate> dataArtUpdate = [
     image: "assets/seni/7_jawa_tengah_tari_gambyong.jpg",
   ),
   ArtUpdate(
+    id: "4",
     provience: "Jawa Timur",
     name: "Tari Reog Ponorogo",
     price: 17000000,
@@ -49,6 +55,7 @@ List<ArtUpdate> dataArtUpdate = [
     image: "assets/seni/4_jawa_timur_tari_reog_ponorogo.jpg",
   ),
   ArtUpdate(
+    id: "5",
     provience: "Sumatera Barat",
     name: "Tari Piring",
     price: 9000000,
