@@ -29,7 +29,7 @@ LIST URL API :
     > http://sentra.dokternak.id/api/documentation/delete/{id}
 
 - URL View Gambar :
--> Menampilkan gambar kesenian 
+    - Menampilkan gambar kesenian 
     > http://sentra.dokternak.id/kesenians/{namaimage}
--> Menampilkan gambar documentation kesenian 
+    - Menampilkan gambar documentation kesenian 
     > http://sentra.dokternak.id/dokumentasiKesenians/{namaimagedokumetation}
