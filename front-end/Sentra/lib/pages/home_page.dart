@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sentra/models/art_provience.dart';
 import 'package:sentra/models/art_update.dart';
 import 'package:sentra/models/art_list.dart';
+import 'package:sentra/pages/provience_page.dart';
 import 'package:sentra/pages/search_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -133,7 +134,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 15),
               _moreAction(
                 title: 'Filter By Province',
-                onTap: () => Navigator.pushNamed(context, "/searchPage"),
+                onTap: () => Navigator.pushNamed(context, ProviencePage.routeName),
               ),
               SizedBox(
                 height: 240,

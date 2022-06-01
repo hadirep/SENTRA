@@ -7,6 +7,7 @@ import 'package:sentra/pages/home_page.dart';
 import 'package:sentra/pages/list.dart';
 import 'package:sentra/pages/login_page.dart';
 import 'package:sentra/pages/product_management.dart';
+import 'package:sentra/pages/provience_page.dart';
 import 'package:sentra/pages/register_page.dart';
 import 'package:sentra/pages/search_page.dart';
 
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Home",
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
                   ModalRoute.of(context)?.settings.arguments as ArtList ),
         FavoriteList.routeName: (context) => const FavoriteList(),
         ProductManagement.routeName: (context) => const ProductManagement(),
-
+        ProviencePage.routeName: (context) => const ProviencePage(),
       },
     );
   }
