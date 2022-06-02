@@ -2,17 +2,24 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:sentra/common/exception.dart';
 import 'package:sentra/common/failure.dart';
+import 'package:sentra/data/datasources/art_local_data_source.dart';
 import 'package:sentra/data/datasources/art_remote_data_source.dart';
+import 'package:sentra/data/models/art_table.dart';
 import 'package:sentra/domain/entities/art.dart';
 import 'package:sentra/domain/repositories/art_repository.dart';
+import 'package:sentra/domain/usecases/get_favorite_arts.dart';
+import 'package:sentra/domain/usecases/get_favorite_status.dart';
+import 'package:sentra/domain/usecases/remove_favorite.dart';
 
 import '../../domain/entities/art_detail.dart';
 
 class  ArtRepositoryImpl implements ArtRepository{
   final ArtRemoteDataSource remoteDataSource;
+  final ArtLocalDataSource localDataSource;
 
   ArtRepositoryImpl({
     required this.remoteDataSource,
+    required this.localDataSource,
   });
 
   @override
@@ -76,4 +83,41 @@ class  ArtRepositoryImpl implements ArtRepository{
       return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
+
+    @override
+  Future<Either<Failure, String>> saveFavoriteArts(DetailArt art) async {
+    try {
+      final result =
+          await localDataSource.insertFavorite(ArtTable.fromEntity(art));
+      return Right(result);
+    } on DatabaseException catch (e) {
+      return Left(DatabaseFailure(e.message));
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> removeFavoriteArts(DetailArt art) async {
+    try {
+      final result =
+          await localDataSource.removeFavoriteArts(ArtTable.fromEntity(art));
+      return Right(result);
+    } on DatabaseException catch (e) {
+      return Left(DatabaseFailure(e.message));
+    }
+  }
+
+  @override
+  Future<bool> getFavoriteStatus(String id) async {
+    final result = await localDataSource.getArtById(id);
+    return result != null;
+  }
+
+  @override
+  Future<Either<Failure, List<Art>>> getFavoriteArts() async {
+    final result = await localDataSource.getFavoriteArts();
+    return Right(result.map((data) => data.toEntity()).toList());
+  }
+
 }
