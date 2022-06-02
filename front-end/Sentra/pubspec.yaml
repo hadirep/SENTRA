@@ -39,4 +39,5 @@ flutter:
     - assets/seni/
     - assets/logo_prov/
     - assets/logo/
+    - assets/dummy_data/
     - images/

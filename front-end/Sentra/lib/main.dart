@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sentra/models/art_list.dart';
+import 'package:sentra/pages/about_page.dart';
 import 'package:sentra/pages/admin/business_management.dart';
 import 'package:sentra/pages/details_seller_product.dart';
 import 'package:sentra/pages/favorite_list.dart';
@@ -8,6 +9,7 @@ import 'package:sentra/pages/home_page.dart';
 import 'package:sentra/pages/list.dart';
 import 'package:sentra/pages/login_page.dart';
 import 'package:sentra/pages/product_management.dart';
+import 'package:sentra/pages/user_setting_page.dart';
 import 'package:sentra/presentation/bloc/arts/arts_bloc.dart';
 import 'package:sentra/presentation/bloc/province/province_bloc.dart';
 import 'package:sentra/presentation/bloc/update/update_bloc.dart';
@@ -66,6 +68,8 @@ class MyApp extends StatelessWidget {
           FavoriteList.routeName: (context) => const FavoriteList(),
           ProductManagement.routeName: (context) => const ProductManagement(),
           ProvienceDetailPage.routeName: (context) => const ProvienceDetailPage(),
+          AboutPage.routeName: (context) => AboutPage(),
+          UserSetting.routeName: (context) => UserSetting(),
         },
       ),
     );

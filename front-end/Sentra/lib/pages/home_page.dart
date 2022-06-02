@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sentra/pages/about_page.dart';
 import 'package:sentra/pages/favorite_list.dart';
+import 'package:sentra/pages/user_setting_page.dart';
 import 'package:sentra/presentation/bloc/arts/arts_bloc.dart';
 import 'package:sentra/presentation/bloc/arts/arts_event.dart';
 import 'package:sentra/presentation/bloc/arts/arts_state.dart';
@@ -78,7 +80,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               onTap: () {
-                //Navigator.pushNamed(context, routes about page);
+                Navigator.pushNamed(context, AboutPage.routeName);
               },
               leading: const Icon(Icons.info, color: Color(0xff2d4b94)),
               title: const Text(
@@ -91,7 +93,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               onTap: () {
-                /// Navigator.pushNamed(context, routes Settings page);
+                Navigator.pushNamed(context, UserSetting.routeName);
               },
               leading: const Icon(Icons.settings, color: Color(0xff969696)),
               title: const Text(
