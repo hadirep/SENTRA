@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sentra/pages/favorite_list.dart';
 import 'package:sentra/presentation/bloc/arts/arts_bloc.dart';
 import 'package:sentra/presentation/bloc/arts/arts_event.dart';
 import 'package:sentra/presentation/bloc/arts/arts_state.dart';
@@ -72,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               onTap: () {
-                //Navigator.pushNamed(context, routes favorite page);
+                Navigator.pushNamed(context, FavoriteList.routeName);
               },
             ),
             ListTile(
