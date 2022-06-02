@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
+<<<<<<< Updated upstream
 import 'package:sentra/models/art_provience.dart';
 import 'package:sentra/models/art_update.dart';
 import 'package:sentra/models/art_list.dart';
 import 'package:sentra/pages/about_page.dart';
 import 'package:sentra/pages/provience_page.dart';
+=======
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sentra/pages/favorite_list.dart';
+import 'package:sentra/presentation/bloc/arts/arts_bloc.dart';
+import 'package:sentra/presentation/bloc/arts/arts_event.dart';
+import 'package:sentra/presentation/bloc/arts/arts_state.dart';
+import 'package:sentra/presentation/bloc/province/province_event.dart';
+import 'package:sentra/presentation/bloc/update/update_bloc.dart';
+import 'package:sentra/presentation/bloc/update/update_event.dart';
+import 'package:sentra/presentation/bloc/update/update_state.dart';
+import 'package:sentra/presentation/pages/arts_list_page.dart';
+import 'package:sentra/presentation/pages/provience_detail_page.dart';
+>>>>>>> Stashed changes
 import 'package:sentra/pages/search_page.dart';
 import 'package:sentra/pages/user_setting_page.dart';
 
@@ -54,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               onTap: () {
-                //Navigator.pushNamed(context, routes favorite page);
+                Navigator.pushNamed(context, FavoriteList.routeName);
               },
             ),
             ListTile(
