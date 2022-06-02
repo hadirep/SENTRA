@@ -6,6 +6,8 @@ import 'package:sentra/data/datasources/art_remote_data_source.dart';
 import 'package:sentra/domain/entities/art.dart';
 import 'package:sentra/domain/repositories/art_repository.dart';
 
+import '../../domain/entities/art_detail.dart';
+
 class  ArtRepositoryImpl implements ArtRepository{
   final ArtRemoteDataSource remoteDataSource;
 
@@ -56,6 +58,18 @@ class  ArtRepositoryImpl implements ArtRepository{
     try {
       final result = await remoteDataSource.getArtsList();
       return Right(result.map((model) => model.toEntity()).toList());
+    } on SocketException {
+      return const Left(ServerFailure(''));
+    } catch (e) {
+      return const Left(ConnectionFailure('Failed to connect to the network'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, DetailArt>> getDetailArt(String id) async {
+    try {
+      final result = await remoteDataSource.getDetailArt(id);
+      return Right(result.toEntity());
     } on SocketException {
       return const Left(ServerFailure(''));
     } catch (e) {
