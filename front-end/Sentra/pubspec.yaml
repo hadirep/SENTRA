@@ -16,6 +16,16 @@ dependencies:
   google_fonts: ^2.3.1
   splash_screen_view: ^3.0.0
   image_picker: ^0.8.5+3
+  equatable: ^2.0.3
+  dartz: ^0.10.1
+  flutter_bloc: ^8.0.1
+  bloc_test: ^9.0.3
+  rxdart: ^0.27.3
+  get_it: ^7.2.0
+  path_provider: ^2.0.9
+  http: ^0.13.4
+  provider: ^6.0.2
+  cached_network_image: ^3.2.0
 
 dev_dependencies:
   flutter_test:
