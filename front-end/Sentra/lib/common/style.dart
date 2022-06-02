@@ -8,6 +8,7 @@ const Color bgSecondColor = Color.fromRGBO(252, 241, 215, 1);
 const Color backgroundColor = Color.fromRGBO(255, 219, 128, 1);
 const Color darkPrimaryColor = Color(0xFF000000);
 const Color darkSecondaryColor = Color(0xff64ffda);
+const Color titleColor = Color(0x002d4b94);
 
 ThemeData lightTheme = ThemeData(
   primaryColor: primaryColor,

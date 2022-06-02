@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sentra/models/art_provience.dart';
 import 'package:sentra/models/art_update.dart';
 import 'package:sentra/models/art_list.dart';
+import 'package:sentra/pages/about_page.dart';
 import 'package:sentra/pages/provience_page.dart';
 import 'package:sentra/pages/search_page.dart';
 
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               onTap: () {
-                //Navigator.pushNamed(context, routes about page);
+                Navigator.pushNamed(context, AboutPage.routeName);
               },
               leading: const Icon(Icons.info, color: Color(0xff2d4b94)),
               title: const Text(
@@ -67,6 +68,7 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+
             ),
             ListTile(
               onTap: () {

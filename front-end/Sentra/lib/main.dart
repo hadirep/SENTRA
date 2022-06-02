@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/models/art_list.dart';
+import 'package:sentra/pages/about_page.dart';
 import 'package:sentra/pages/admin/business_management.dart';
 import 'package:sentra/pages/details_seller_product.dart';
 import 'package:sentra/pages/favorite_list.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: LoginPage.routeName,
+      initialRoute: HomePage.routeName,
       routes: {
         LoginPage.routeName: (context) => const LoginPage(),
         RegisterPage.routeName: (context) => const RegisterPage(),
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         FavoriteList.routeName: (context) => const FavoriteList(),
         ProductManagement.routeName: (context) => const ProductManagement(),
         ProviencePage.routeName: (context) => const ProviencePage(),
+        AboutPage.routeName: (context) => AboutPage(),
       },
     );
   }
