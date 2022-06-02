@@ -8,16 +8,14 @@ class ProvinceBloc extends Bloc<ProvinceEvent, ProvinceState> {
 
  ProvinceBloc(this._getProvince) : super(ProvinceEmpty()) {
     on<OnProvinceChanged>((event, emit) async {
-      final query = event.query;
-
       emit(ProvinceLoading());
-      final result = await _getProvince.execute(query);
+      final result = await _getProvince.execute();
 
       result.fold(
-            (failure) {
+        (failure) {
           emit(ProvinceError(failure.message));
         },
-            (data) {
+        (data) {
           emit(ProvinceHasData(data));
         },
       );

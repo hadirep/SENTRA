@@ -28,9 +28,9 @@ class  ArtRepositoryImpl implements ArtRepository{
   }
 
   @override
-  Future<Either<Failure, List<Art>>> getProvinceList(String query) async {
+  Future<Either<Failure, List<Art>>> getProvinceList() async {
     try {
-      final result = await remoteDataSource.getProvinceList(query);
+      final result = await remoteDataSource.getProvinceList();
       return Right(result.map((model) => model.toEntity()).toList());
     } on SocketException {
       return const Left(ServerFailure(''));

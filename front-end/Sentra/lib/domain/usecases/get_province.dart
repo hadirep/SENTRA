@@ -8,7 +8,7 @@ class GetProvince {
 
   GetProvince(this.repository);
 
-  Future<Either<Failure, List<Art>>> execute(String query) {
-    return repository.getProvinceList(query);
+  Future<Either<Failure, List<Art>>> execute() {
+    return repository.getProvinceList();
   }
 }

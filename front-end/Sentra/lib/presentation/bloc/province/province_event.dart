@@ -8,10 +8,7 @@ abstract class ProvinceEvent extends Equatable {
 }
 
 class OnProvinceChanged extends ProvinceEvent {
-  final String query;
-
-  const OnProvinceChanged(this.query);
 
   @override
-  List<Object> get props => [query];
+  List<Object> get props => [];
 }
