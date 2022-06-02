@@ -5,6 +5,7 @@ import 'package:sentra/models/art_list.dart';
 import 'package:sentra/pages/about_page.dart';
 import 'package:sentra/pages/provience_page.dart';
 import 'package:sentra/pages/search_page.dart';
+import 'package:sentra/pages/user_setting_page.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/home_page';
@@ -72,7 +73,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               onTap: () {
-                /// Navigator.pushNamed(context, routes Settings page);
+                Navigator.pushNamed(context, UserSetting.routeName);
               },
               leading: const Icon(Icons.settings, color: Color(0xff969696)),
               title: const Text(

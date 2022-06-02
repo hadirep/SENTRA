@@ -11,6 +11,7 @@ import 'package:sentra/pages/product_management.dart';
 import 'package:sentra/pages/provience_page.dart';
 import 'package:sentra/pages/register_page.dart';
 import 'package:sentra/pages/search_page.dart';
+import 'package:sentra/pages/user_setting_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         ProductManagement.routeName: (context) => const ProductManagement(),
         ProviencePage.routeName: (context) => const ProviencePage(),
         AboutPage.routeName: (context) => AboutPage(),
+        UserSetting.routeName: (context) => UserSetting(),
       },
     );
   }

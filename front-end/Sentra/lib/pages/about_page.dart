@@ -16,11 +16,11 @@ class AboutPage extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  const ButtonBack(),
+                children: const <Widget>[
+                  ButtonBack(),
                   Padding(
-                    padding: const EdgeInsets.only(top: 33),
-                    child: const Text(
+                    padding: EdgeInsets.only(top: 33),
+                    child: Text(
                       'About Us',
                       style: TextStyle(
                         fontSize: 28,
@@ -29,7 +29,7 @@ class AboutPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 70,)
+                  SizedBox(width: 70,)
                 ],
               ),
               Padding(
@@ -53,7 +53,7 @@ class AboutPage extends StatelessWidget {
                                 color: secondaryColor
                               ),
                             ),
-                            Padding(
+                            const Padding(
                               padding: EdgeInsets.only(top: 10, left: 57, right: 57),
                               child: Text(
                                 'we’re a mobile-based traditional art service provider to make it easier for you to hire traditional Indonesian performing arts services.',
@@ -63,7 +63,7 @@ class AboutPage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Padding(
+                            const Padding(
                                 padding: EdgeInsets.only(top: 50, left: 50, right: 50),
                               child: Center(
                                 child: Text(
@@ -76,7 +76,7 @@ class AboutPage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Padding(
+                            const Padding(
                               padding: EdgeInsets.only(top: 10, left: 50, right: 50, bottom: 30),
                               child: Text(
                                 'Are you willing to help people find traditional performing arts easily?',
@@ -88,22 +88,66 @@ class AboutPage extends StatelessWidget {
                             ),
                             OutlinedButton(
                                 onPressed: () {Navigator.pushNamed(context, LoginPage.routeName);},
-                                child: Text(
+                              style: OutlinedButton.styleFrom(
+                                elevation: 6,
+                                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                                backgroundColor: buttonPrimaryColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(13)
+                                )
+                              ),
+                                child: const Text(
                                   'Login',
                                   style: TextStyle(
                                     color: primaryColor,
                                     fontSize: 20
                                   ),
                                 ),
-                              style: OutlinedButton.styleFrom(
-                                elevation: 6,
-                                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-                                backgroundColor: buttonPrimaryColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(13)
-                                )
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+                              child: Text(
+                                  'Contact Us At',
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  color: secondaryColor,
+                                  fontWeight: FontWeight.bold
+                                ),
                               ),
-                            )
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 50),
+                              child: Card(
+                                child: ListTile(
+                                  leading: Icon(Icons.alternate_email, color: secondaryColor),
+                                  title: Text(
+                                    'alamat email',
+                                    style: TextStyle(
+                                      color: buttonPrimaryColor,
+                                      fontSize: 18
+                                    )),
+                                  trailing: Icon(Icons.navigate_next, color: secondaryColor),
+                                  onTap: (){},
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 50),
+                              child: Card(
+                                child: ListTile(
+                                  leading: Icon(Icons.whatsapp, color: secondaryColor),
+                                  title: Text(
+                                      'nomer wa',
+                                      style: TextStyle(
+                                          color: buttonPrimaryColor,
+                                          fontSize: 18
+                                      )),
+                                  trailing: Icon(Icons.navigate_next, color: secondaryColor),
+                                  onTap: (){},
+                                ),
+                              ),
+                            ),
+
                           ],
                         ),
                       ),
