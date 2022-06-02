@@ -35,13 +35,13 @@ class ArtCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      art.name ?? '-',
+                      art.name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      art.province ?? '-',
+                      art.province!,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
