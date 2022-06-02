@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../models/art_provience.dart';
+import '../../models/art_provience.dart';
 
-class ProviencePage extends StatefulWidget {
+class ProvienceDetailPage extends StatefulWidget {
   static const routeName = '/provience_page';
-  const ProviencePage({Key? key}) : super(key: key);
+  const ProvienceDetailPage({Key? key}) : super(key: key);
 
   @override
-  State<ProviencePage> createState() => _ProviencePageState();
+  State<ProvienceDetailPage> createState() => _ProvienceDetailPageState();
 }
 
-class _ProviencePageState extends State<ProviencePage> {
+class _ProvienceDetailPageState extends State<ProvienceDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

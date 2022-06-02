@@ -5,7 +5,6 @@ import 'package:sentra/pages/home_page.dart';
 import 'package:sentra/presentation/bloc/search_bloc.dart';
 import 'package:sentra/presentation/widgets/art_card_list.dart';
 
-
 class SearchArtPage extends StatelessWidget {
   static const routeName = '/search-art-page';
 

@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:sentra/models/art_provience.dart';
-import 'package:sentra/models/art_update.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sentra/models/art_list.dart';
-import 'package:sentra/pages/provience_page.dart';
+import 'package:sentra/presentation/bloc/province/province_event.dart';
+import 'package:sentra/presentation/bloc/update/update_bloc.dart';
+import 'package:sentra/presentation/bloc/update/update_event.dart';
+import 'package:sentra/presentation/bloc/update/update_state.dart';
+import 'package:sentra/presentation/pages/provience_detail_page.dart';
 import 'package:sentra/pages/search_page.dart';
+import 'package:sentra/presentation/bloc/province/province_bloc.dart';
+import 'package:sentra/presentation/bloc/province/province_state.dart';
+import 'package:sentra/presentation/pages/province_list_page.dart';
+import 'package:sentra/presentation/pages/update_list_page.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/home_page';
@@ -14,6 +21,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<ProvinceBloc>().add(OnProvinceChanged());
+    context.read<UpdateBloc>().add(OnUpdateChanged());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,39 +148,55 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 15),
               _moreAction(
                 title: 'Filter By Province',
-                onTap: () => Navigator.pushNamed(context, ProviencePage.routeName),
+                onTap: () => Navigator.pushNamed(context, ProvienceDetailPage.routeName),
               ),
-              SizedBox(
-                height: 240,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return _listProvienceItem(index);
-                  },
-                  itemCount: dataArtProvience.length,
-                ),
+              BlocBuilder<ProvinceBloc, ProvinceState>(
+                builder: (context, state) {
+                  if(state is ProvinceLoading){
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if(state is ProvinceHasData){
+                    final result = state.result;
+                    return ProvinceListPage(result);
+                  } else if (state is ProvinceError) {
+                    final result = state.message;
+                    return Text(result);
+                  } else if (state is ProvinceEmpty) {
+                    return const Text('Filter By Province Not Found');
+                  } else {
+                    return const Text('Failed');
+                  }
+                },
               ),
               const SizedBox(height: 15),
               _moreAction(
                 title: 'New Update',
-                onTap: () => Navigator.pushNamed(context, "/searchPage"),
+                onTap: () => Navigator.pushNamed(context, ""),
               ),
-              GridView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height / 1.3),
-                ),
-                itemCount: dataArtUpdate.length,
-                itemBuilder: (context, index) {
-                  return _gridNewUpdateItem(index);
+              BlocBuilder<UpdateBloc, UpdateState>(
+                builder: (context, state) {
+                  if(state is UpdateLoading){
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if(state is UpdateHasData){
+                    final result = state.result;
+                    return UpdateListPage(result);
+                  } else if (state is UpdateError) {
+                    final result = state.message;
+                    return Text(result);
+                  } else if (state is UpdateEmpty) {
+                    return const Text('New Update Not Found');
+                  } else {
+                    return const Text('Failed');
+                  }
                 },
               ),
               const SizedBox(height: 15),
               _moreAction(
                 title: 'All Arts',
-                onTap: () => Navigator.pushNamed(context, "/allArts"),
+                onTap: () => Navigator.pushNamed(context, ""),
               ),
               SizedBox(
                 height: 240,
@@ -193,72 +223,6 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color(0xff2d4b94),
         child: const Icon(
           Icons.search, color: Color(0xfff0be41),
-        ),
-      ),
-    );
-  }
-
-  _listProvienceItem(index) {
-    final ArtProvience artProvience = dataArtProvience[index];
-    return InkWell(
-      onTap: () {
-        // Menuju detail page filter
-      },
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: Card(
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  artProvience.image, width: 150, height: 200, fit: BoxFit.cover,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(5),
-                child: Text(
-                  artProvience.provience,
-                  style: const TextStyle(
-                    fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xff2d4b94),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  _gridNewUpdateItem(index){
-    ArtUpdate artUpdate = dataArtUpdate[index];
-    return InkWell(
-      onTap: () {
-        // Menuju detail page new update
-      },
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: Card(
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  artUpdate.image, height: 200, fit: BoxFit.cover,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 5),
-                child: Text(
-                  artUpdate.name, textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xff2d4b94),
-                  ),
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );

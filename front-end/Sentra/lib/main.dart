@@ -8,7 +8,9 @@ import 'package:sentra/pages/home_page.dart';
 import 'package:sentra/pages/list.dart';
 import 'package:sentra/pages/login_page.dart';
 import 'package:sentra/pages/product_management.dart';
-import 'package:sentra/pages/provience_page.dart';
+import 'package:sentra/presentation/bloc/province/province_bloc.dart';
+import 'package:sentra/presentation/bloc/update/update_bloc.dart';
+import 'package:sentra/presentation/pages/provience_detail_page.dart';
 import 'package:sentra/pages/register_page.dart';
 import 'package:sentra/pages/search_page.dart';
 import 'package:sentra/presentation/bloc/search_bloc.dart';
@@ -31,6 +33,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<SearchBloc>(),
         ),
+        BlocProvider(
+          create: (_) => di.locator<ProvinceBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<UpdateBloc>(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -38,7 +46,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: SearchArtPage.routeName,
+        initialRoute: HomePage.routeName,
         routes: {
           SearchArtPage.routeName: (context) => const SearchArtPage(),
           LoginPage.routeName: (context) => const LoginPage(),
@@ -53,7 +61,7 @@ class MyApp extends StatelessWidget {
           ModalRoute.of(context)?.settings.arguments as ArtList ),
           FavoriteList.routeName: (context) => const FavoriteList(),
           ProductManagement.routeName: (context) => const ProductManagement(),
-          ProviencePage.routeName: (context) => const ProviencePage(),
+          ProvienceDetailPage.routeName: (context) => const ProvienceDetailPage(),
         },
       ),
     );

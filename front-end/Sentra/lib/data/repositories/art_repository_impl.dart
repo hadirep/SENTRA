@@ -1,10 +1,8 @@
 import 'dart:io';
-
 import 'package:dartz/dartz.dart';
 import 'package:sentra/common/exception.dart';
 import 'package:sentra/common/failure.dart';
 import 'package:sentra/data/datasources/art_remote_data_source.dart';
-import 'package:sentra/data/repositories/art_repository_impl.dart';
 import 'package:sentra/domain/entities/art.dart';
 import 'package:sentra/domain/repositories/art_repository.dart';
 
@@ -29,4 +27,27 @@ class  ArtRepositoryImpl implements ArtRepository{
     }
   }
 
+  @override
+  Future<Either<Failure, List<Art>>> getProvinceList() async {
+    try {
+      final result = await remoteDataSource.getProvinceList();
+      return Right(result.map((model) => model.toEntity()).toList());
+    } on SocketException {
+      return Left(ServerFailure(''));
+    } catch (e) {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Art>>> getUpdateList() async {
+    try {
+      final result = await remoteDataSource.getUpdateList();
+      return Right(result.map((model) => model.toEntity()).toList());
+    } on SocketException {
+      return Left(ServerFailure(''));
+    } catch (e) {
+      return Left(ConnectionFailure('Failed to connect to the network'));
+    }
+  }
 }
