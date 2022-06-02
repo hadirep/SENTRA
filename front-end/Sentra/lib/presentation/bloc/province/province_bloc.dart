@@ -6,16 +6,18 @@ import 'package:sentra/presentation/bloc/province/province_state.dart';
 class ProvinceBloc extends Bloc<ProvinceEvent, ProvinceState> {
   final GetProvince _getProvince;
 
-  ProvinceBloc(this._getProvince) : super(ProvinceEmpty()) {
+ ProvinceBloc(this._getProvince) : super(ProvinceEmpty()) {
     on<OnProvinceChanged>((event, emit) async {
-      emit(ProvinceLoading(),);
-      final result = await _getProvince.execute();
+      final query = event.query;
+
+      emit(ProvinceLoading());
+      final result = await _getProvince.execute(query);
 
       result.fold(
-        (failure) {
+            (failure) {
           emit(ProvinceError(failure.message));
         },
-        (data) {
+            (data) {
           emit(ProvinceHasData(data));
         },
       );

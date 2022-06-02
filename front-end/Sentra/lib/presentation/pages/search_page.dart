@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/pages/home_page.dart';
-import 'package:sentra/presentation/bloc/search_bloc.dart';
+import 'package:sentra/presentation/bloc/search/search_bloc.dart';
 import 'package:sentra/presentation/widgets/art_card_list.dart';
 
 class SearchArtPage extends StatelessWidget {

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:sentra/domain/entities/art.dart';
 import 'package:sentra/common/constants.dart';
 
-class ProvinceListPage extends StatelessWidget {
-  final List<Art> listProvince;
+class ArtsListPage extends StatelessWidget {
+  final List<Art> listArts;
 
-  const ProvinceListPage(this.listProvince, {Key? key}) : super(key: key);
+  const ArtsListPage(this.listArts, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class ProvinceListPage extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          var province = listProvince[index];
+          var arts = listArts[index];
           return InkWell(
             onTap: () {
               // Menuju detail page filter
@@ -27,12 +27,12 @@ class ProvinceListPage extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: Image.network(
-                        '$BASE_IMAGE_KESENIAN_URL${province.image}', width: 150, height: 200, fit: BoxFit.cover,
+                        '$BASE_IMAGE_KESENIAN_URL${arts.image}', width: 150, height: 200, fit: BoxFit.cover,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(5),
-                      child: Text(province.name,
+                      child: Text(arts.name,
                         style: const TextStyle(
                           fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xff2d4b94),
                         ),
@@ -44,7 +44,7 @@ class ProvinceListPage extends StatelessWidget {
             ),
           );
         },
-        itemCount: listProvince.length,
+        itemCount: listArts.length,
       ),
     );
   }

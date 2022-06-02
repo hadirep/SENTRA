@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sentra/models/art_list.dart';
+import 'package:sentra/presentation/bloc/arts/arts_bloc.dart';
+import 'package:sentra/presentation/bloc/arts/arts_event.dart';
+import 'package:sentra/presentation/bloc/arts/arts_state.dart';
 import 'package:sentra/presentation/bloc/province/province_event.dart';
 import 'package:sentra/presentation/bloc/update/update_bloc.dart';
 import 'package:sentra/presentation/bloc/update/update_event.dart';
 import 'package:sentra/presentation/bloc/update/update_state.dart';
+import 'package:sentra/presentation/pages/arts_list_page.dart';
 import 'package:sentra/presentation/pages/provience_detail_page.dart';
 import 'package:sentra/pages/search_page.dart';
 import 'package:sentra/presentation/bloc/province/province_bloc.dart';
@@ -21,11 +24,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
   @override
   void initState() {
     super.initState();
     context.read<ProvinceBloc>().add(OnProvinceChanged());
     context.read<UpdateBloc>().add(OnUpdateChanged());
+    context.read<ArtsBloc>().add(OnArtsChanged());
   }
 
   @override
@@ -198,15 +204,24 @@ class _HomePageState extends State<HomePage> {
                 title: 'All Arts',
                 onTap: () => Navigator.pushNamed(context, ""),
               ),
-              SizedBox(
-                height: 240,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return _listAllArtsItem(index);
-                  },
-                  itemCount: dataArtList.length,
-                ),
+              BlocBuilder<ArtsBloc, ArtsState>(
+                builder: (context, state) {
+                  if(state is ArtsLoading){
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if(state is ArtsHasData){
+                    final result = state.result;
+                    return ArtsListPage(result);
+                  } else if (state is ArtsError) {
+                    final result = state.message;
+                    return Text(result);
+                  } else if (state is ArtsEmpty) {
+                    return const Text('All Arts Not Found');
+                  } else {
+                    return const Text('Failed');
+                  }
+                },
               ),
             ],
           ),
@@ -223,39 +238,6 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color(0xff2d4b94),
         child: const Icon(
           Icons.search, color: Color(0xfff0be41),
-        ),
-      ),
-    );
-  }
-
-  _listAllArtsItem(index) {
-    final ArtList artList = dataArtList[index];
-    return InkWell(
-      onTap: () {
-        // Menuju detail page filter
-      },
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: Card(
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  artList.image, width: 150, height: 200, fit: BoxFit.cover,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(5),
-                child: Text(
-                  artList.provience,
-                  style: const TextStyle(
-                    fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xff2d4b94),
-                  ),
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );

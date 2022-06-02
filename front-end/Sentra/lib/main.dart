@@ -8,12 +8,13 @@ import 'package:sentra/pages/home_page.dart';
 import 'package:sentra/pages/list.dart';
 import 'package:sentra/pages/login_page.dart';
 import 'package:sentra/pages/product_management.dart';
+import 'package:sentra/presentation/bloc/arts/arts_bloc.dart';
 import 'package:sentra/presentation/bloc/province/province_bloc.dart';
 import 'package:sentra/presentation/bloc/update/update_bloc.dart';
 import 'package:sentra/presentation/pages/provience_detail_page.dart';
 import 'package:sentra/pages/register_page.dart';
 import 'package:sentra/pages/search_page.dart';
-import 'package:sentra/presentation/bloc/search_bloc.dart';
+import 'package:sentra/presentation/bloc/search/search_bloc.dart';
 import 'package:sentra/presentation/pages/search_page.dart';
 import 'package:sentra/injection.dart' as di;
 import 'package:provider/provider.dart';
@@ -31,13 +32,16 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         BlocProvider(
-          create: (_) => di.locator<SearchBloc>(),
-        ),
-        BlocProvider(
           create: (_) => di.locator<ProvinceBloc>(),
         ),
         BlocProvider(
           create: (_) => di.locator<UpdateBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<ArtsBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<SearchBloc>(),
         ),
       ],
       child: MaterialApp(

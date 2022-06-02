@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sentra/common/constants.dart';
 import 'package:sentra/domain/entities/art.dart';
+import 'package:sentra/common/constants.dart';
 
 class UpdateListPage extends StatelessWidget {
   final List<Art> listUpdate;
@@ -11,19 +11,13 @@ class UpdateListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 240,
-      child: GridView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height / 1.3),
-        ),
-        itemCount: listUpdate.length,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          var newUpdate = listUpdate[index];
+          var update = listUpdate[index];
           return InkWell(
             onTap: () {
-              // Menuju detail page new update
+              // Menuju detail page filter
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
@@ -32,14 +26,13 @@ class UpdateListPage extends StatelessWidget {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        '$BASE_IMAGE_KESENIAN_URL${newUpdate.image}', height: 200, fit: BoxFit.cover,
+                      child: Image.network(
+                        '$BASE_IMAGE_KESENIAN_URL${update.image}', width: 150, height: 200, fit: BoxFit.cover,
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Text(
-                        newUpdate.name, textAlign: TextAlign.center,
+                      padding: const EdgeInsets.all(5),
+                      child: Text(update.name,
                         style: const TextStyle(
                           fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xff2d4b94),
                         ),
@@ -51,6 +44,7 @@ class UpdateListPage extends StatelessWidget {
             ),
           );
         },
+        itemCount: listUpdate.length,
       ),
     );
   }

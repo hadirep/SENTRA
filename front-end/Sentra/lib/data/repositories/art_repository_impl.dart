@@ -28,14 +28,14 @@ class  ArtRepositoryImpl implements ArtRepository{
   }
 
   @override
-  Future<Either<Failure, List<Art>>> getProvinceList() async {
+  Future<Either<Failure, List<Art>>> getProvinceList(String query) async {
     try {
-      final result = await remoteDataSource.getProvinceList();
+      final result = await remoteDataSource.getProvinceList(query);
       return Right(result.map((model) => model.toEntity()).toList());
     } on SocketException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } catch (e) {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -45,9 +45,21 @@ class  ArtRepositoryImpl implements ArtRepository{
       final result = await remoteDataSource.getUpdateList();
       return Right(result.map((model) => model.toEntity()).toList());
     } on SocketException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } catch (e) {
-      return Left(ConnectionFailure('Failed to connect to the network'));
+      return const Left(ConnectionFailure('Failed to connect to the network'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Art>>> getArtsList() async {
+    try {
+      final result = await remoteDataSource.getArtsList();
+      return Right(result.map((model) => model.toEntity()).toList());
+    } on SocketException {
+      return const Left(ServerFailure(''));
+    } catch (e) {
+      return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 }
