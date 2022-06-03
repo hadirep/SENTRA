@@ -17,12 +17,16 @@ class ArtsListPage extends StatelessWidget {
         itemBuilder: (context, index) {
           var arts = listArts[index];
           return InkWell(
-            onTap: () {
-                Navigator.pushNamed(context, DetailSellerProduct.routeName,
-                arguments: arts.id,
-                );
-              // Menuju detail page filter
-            },
+          //   onTap: () {
+          //       Navigator.pushNamed(context, DetailSellerProduct.routeName,
+          //       arguments: arts.id,
+          //       );
+          //     // Menuju detail page filter
+          //   },
+          onTap: () {
+          Navigator.pushNamed(context, DetailSellerProduct.routeName,
+          arguments: arts.id);
+           },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
               child: Card(

@@ -15,11 +15,15 @@ class ArtCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4),
       child: InkWell(
-        onTap: () {
-                Navigator.pushNamed(context, DetailSellerProduct.routeName,
-                );
-              // Menuju detail page filter
-            },
+       onTap: () {
+          Navigator.pushNamed(context, DetailSellerProduct.routeName,
+          arguments: art.id);
+       },
+        // onTap: () {
+        //         Navigator.pushNamed(context, DetailSellerProduct.routeName,
+        //         );
+        //       // Menuju detail page filter
+        //     },
         // onTap: () {
           
         //   // Navigator.pushNamed(

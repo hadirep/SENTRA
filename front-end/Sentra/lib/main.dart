@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sentra/data/models/detail_art.dart';
@@ -65,30 +66,67 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         initialRoute: HomePage.routeName,
-        routes: {
-          SearchArtPage.routeName: (context) => const SearchArtPage(),
-          LoginPage.routeName: (context) => const LoginPage(),
-          RegisterPage.routeName: (context) => const RegisterPage(),
-          BusinessManagement.routeName: (context) => const BusinessManagement(),
-          HomePage.routeName: (context) => const HomePage(),
-          SearchPage.routeName: (context) => const SearchPage(),
-          //list. akan dihapus
-          // MainScreen.routeName: (context) => const MainScreen(list: '',),
-          // DetailSellerProduct.routeName: (context) =>  DetailSellerProduct(
-          // id:
-          // ModalRoute.of(context)?.settings.arguments as ArtList )
-          // DetailSellerProduct.routeName: (context) =>  DetailSellerProduct(
-          // id:
-          // MaterialPageRoute.(builder)?.settings.arguments as ArtList),
-          DetailSellerProduct.routeName :(context) => DetailSellerProduct(
-          id: 
-          ModalRoute.of(context)?.settings.arguments as String),
-          // FavoriteList.routeName: (context) => const FavoriteList(),
-          ProductManagement.routeName: (context) => const ProductManagement(),
-          ProvienceMorePage.routeName: (context) => const ProvienceMorePage(),
-          AboutPage.routeName: (context) => AboutPage(),
-          UserSetting.routeName: (context) => UserSetting(),
+        onGenerateRoute: (RouteSettings settings) {
+          switch (settings.name) {
+            case SearchArtPage.routeName:
+              return CupertinoPageRoute(builder: (_) => SearchArtPage());
+            case RegisterPage.routeName:
+              return CupertinoPageRoute(builder: (_) => RegisterPage());
+            case BusinessManagement.routeName:
+              return CupertinoPageRoute(builder: (_) => BusinessManagement());
+            case HomePage.routeName:
+              return CupertinoPageRoute(builder: (_) => HomePage());
+            case LoginPage.routeName:
+              return CupertinoPageRoute(builder: (_) => LoginPage());
+            case FavoriteList.routeName:
+              return CupertinoPageRoute(builder: (_) => FavoriteList());
+            case ProductManagement.routeName:
+              return CupertinoPageRoute(builder: (_) => ProductManagement());
+            case ProvienceMorePage.routeName:
+              return CupertinoPageRoute(builder: (_) => ProvienceMorePage());
+            case AboutPage.routeName:
+              return CupertinoPageRoute(builder: (_) => AboutPage());
+            case UserSetting.routeName:
+              return CupertinoPageRoute(builder: (_) => UserSetting());
+            case DetailSellerProduct.routeName:
+              final id = settings.arguments as String;
+              return MaterialPageRoute(
+                builder: (_) => DetailSellerProduct(id: id),
+                settings: settings,
+              );
+          }
         },
+        // routes: {
+        //   SearchArtPage.routeName: (context) => const SearchArtPage(),
+        //   LoginPage.routeName: (context) => const LoginPage(),
+        //   RegisterPage.routeName: (context) => const RegisterPage(),
+        //   BusinessManagement.routeName: (context) => const BusinessManagement(),
+        //   HomePage.routeName: (context) => const HomePage(),
+        //   SearchPage.routeName: (context) => const SearchPage(),
+        //   //list. akan dihapus
+        //   // MainScreen.routeName: (context) => const MainScreen(list: '',),
+        //   // DetailSellerProduct.routeName: (context) =>  DetailSellerProduct(
+        //   // id:
+        //   // ModalRoute.of(context)?.settings.arguments as ArtList )
+        //   // DetailSellerProduct.routeName: (context) =>  DetailSellerProduct(
+        //   // id:
+        //   // MaterialPageRoute.(builder)?.settings.arguments as ArtList),
+        //   // DetailSellerProduct.routeName :(context) => DetailSellerProduct(
+        //   // id: 
+        //   // ModalRoute.of(context)?.settings.arguments as String),
+        //   DetailSellerProduct.routeName:
+        //        id = name.arguments as int;
+        //       return MaterialPageRoute(
+        //         builder: (_) => DetailSellerProduct(id: id),
+        //         // settings: settings,
+        //       );
+
+        //   FavoriteList.routeName: (context) => const FavoriteList(),
+        //   ProductManagement.routeName: (context) => const ProductManagement(),
+        //   ProvienceMorePage.routeName: (context) => const ProvienceMorePage(),
+        //   AboutPage.routeName: (context) => AboutPage(),
+        //   UserSetting.routeName: (context) => UserSetting(),
+        // },
       ),
     );
   }

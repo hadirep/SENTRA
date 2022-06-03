@@ -490,7 +490,24 @@ class DetailContent extends StatelessWidget {
                     child: Padding(
                     padding: const EdgeInsets.only(
                     top: 17, right: 10),
-                    child: StarButton(),
+                    // child: StarButton(),
+                    child: ElevatedButton(
+                      onPressed: ()  async {
+                        if(!getFavoriteStatus) {
+                          BlocProvider.of<DetailBloc>(context,
+                          listen: false).add(OnAddFavorite(art));
+                        } else {
+                          BlocProvider.of<DetailBloc>(context, listen: false).add(OnRemoveFavorite(art));
+                        }
+                      },
+                      child : Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          getFavoriteStatus ? Icon (Icons.star_border, color: Color.fromARGB(255, 240, 190, 65),)
+                          : Icon(Icons.star_border_outlined,  color: Color.fromARGB(255, 240, 190, 65))
+                        ],
+                      )
+                    ),
                   ),
                   ),
                   const SizedBox(height: 140,),
@@ -796,25 +813,32 @@ class DetailContent extends StatelessWidget {
   }
 
 
-class StarButton extends StatefulWidget {
-  @override
-  _StarButtonState createState() => _StarButtonState();
-}
+// class StarButton extends StatefulWidget {
+//   late DetailArt art;
+//   // final List<Art>
+//   late  bool getFavoriteStatus;
+//   @override
+//   _StarButtonState createState() => _StarButtonState();
+// }
 
-class _StarButtonState extends State<StarButton> {
-  bool isStar = false;
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(
-        isStar ? Icons.star : Icons.star_border,
-        color: Color.fromARGB(255, 240, 190, 65),
-      ),
-      onPressed: () {
-        setState(() {
-          isStar = !isStar;
-        });
-      },
-    );
-  }
-}
+// class _StarButtonState extends State<StarButton> {
+//   bool isStar = false;
+  
+//   @override
+//   Widget build(BuildContext context) {
+//     return IconButton(
+//       icon: Icon(
+//         isStar ? Icons.star : Icons.star_border,
+//         color: Color.fromARGB(255, 240, 190, 65),
+//       ),
+//       onPressed: () {
+//         setState(() async {
+//           isStar = !isStar;
+//           if (!getFavoriteStatus){
+//             BlocProvider.of(context, listen: false).add(OnAddFavorite(art));
+//           }
+//         });
+//       },
+//     );
+//   }
+// }
