@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/constants.dart';
 import 'package:sentra/domain/entities/art.dart';
+import 'package:sentra/pages/details_seller_product.dart';
 
 class ArtCard extends StatelessWidget {
   final Art art;
@@ -15,12 +16,18 @@ class ArtCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 4),
       child: InkWell(
         onTap: () {
-          // Navigator.pushNamed(
-          //   context,
-          //   MovieDetailPage.ROUTE_NAME,
-          //   arguments: MovieDetailArgs(id: movie.id!, isMovie: true),
-          // );
-        },
+                Navigator.pushNamed(context, DetailSellerProduct.routeName,
+                );
+              // Menuju detail page filter
+            },
+        // onTap: () {
+          
+        //   // Navigator.pushNamed(
+        //   //   context,
+        //   //   MovieDetailPage.ROUTE_NAME,
+        //   //   arguments: MovieDetailArgs(id: movie.id!, isMovie: true),
+        //   // );
+        // },
         child: Stack(
           alignment: Alignment.bottomLeft,
           children: [

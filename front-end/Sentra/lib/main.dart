@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sentra/data/models/detail_art.dart';
+import 'package:sentra/domain/entities/art_detail.dart';
 import 'package:sentra/models/art_list.dart';
 import 'package:sentra/pages/about_page.dart';
 import 'package:sentra/pages/admin/business_management.dart';
@@ -14,6 +16,7 @@ import 'package:sentra/presentation/bloc/arts/arts_bloc.dart';
 import 'package:sentra/presentation/bloc/detail/detail_bloc.dart';
 import 'package:sentra/presentation/bloc/province/province_bloc.dart';
 import 'package:sentra/presentation/bloc/update/update_bloc.dart';
+import 'package:sentra/presentation/pages/arts_list_page.dart';
 import 'package:sentra/presentation/pages/provience_detail_page.dart';
 import 'package:sentra/pages/register_page.dart';
 import 'package:sentra/pages/search_page.dart';
@@ -65,11 +68,17 @@ class MyApp extends StatelessWidget {
           HomePage.routeName: (context) => const HomePage(),
           SearchPage.routeName: (context) => const SearchPage(),
           //list. akan dihapus
-          MainScreen.routeName: (context) => const MainScreen(list: '',),
-          //
-          DetailSellerProduct.routeName: (context) =>  DetailSellerProduct(place:
-          ModalRoute.of(context)?.settings.arguments as ArtList ),
-          FavoriteList.routeName: (context) => const FavoriteList(),
+          // MainScreen.routeName: (context) => const MainScreen(list: '',),
+          // DetailSellerProduct.routeName: (context) =>  DetailSellerProduct(
+          // id:
+          // ModalRoute.of(context)?.settings.arguments as ArtList )
+          // DetailSellerProduct.routeName: (context) =>  DetailSellerProduct(
+          // id:
+          // MaterialPageRoute.(builder)?.settings.arguments as ArtList),
+          DetailSellerProduct.routeName :(context) => DetailSellerProduct(
+          id: 
+          ModalRoute.of(context)?.settings.arguments as String),
+          // FavoriteList.routeName: (context) => const FavoriteList(),
           ProductManagement.routeName: (context) => const ProductManagement(),
           ProvienceDetailPage.routeName: (context) => const ProvienceDetailPage(),
           AboutPage.routeName: (context) => AboutPage(),

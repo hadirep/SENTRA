@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/domain/entities/art.dart';
 import 'package:sentra/common/constants.dart';
+import 'package:sentra/pages/details_seller_product.dart';
 
 class ArtsListPage extends StatelessWidget {
   final List<Art> listArts;
@@ -17,6 +18,9 @@ class ArtsListPage extends StatelessWidget {
           var arts = listArts[index];
           return InkWell(
             onTap: () {
+                Navigator.pushNamed(context, DetailSellerProduct.routeName,
+                arguments: arts.id,
+                );
               // Menuju detail page filter
             },
             child: ClipRRect(
