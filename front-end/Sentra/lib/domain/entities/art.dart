@@ -18,7 +18,7 @@ class Art extends Equatable {
     required this.isInstagram,
   });
 
-  Art.watchlist({
+  Art.favorite({
     required this.id,
     required this.name,
     required this.province,
