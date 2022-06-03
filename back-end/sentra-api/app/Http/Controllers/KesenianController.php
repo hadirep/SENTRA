@@ -257,21 +257,37 @@ class KesenianController extends Controller
 
     public function province(Request $request) {
         $searchQuery = $request->q;
-        // return $searchQuery;
         $kesenians = Kesenian::where('province','like',"%".$searchQuery."%")
                             ->get();
-        return $kesenians;
 
         if($kesenians != null){
             return response([
                 'status' => 'success',
-                'message' => 'Kesenian berdasarkan kategori Berhasil Ditampilkan',
+                'message' => 'Kesenian berdasarkan province Berhasil Ditampilkan',
                 'data' => $kesenians
             ], 200);
         } else {
             return response ([
                 'status' => 'failed',
-                'message' => 'Kesenian berdasarkan kategori gagal tidak ditemukan!'
+                'message' => 'Kesenian berdasarkan province gagal tidak ditemukan!'
+            ], 404);
+        }
+    }
+
+    public function getRecommended() {
+        $kesenians = Kesenian::where('recommended', true)
+                            ->get();
+
+        if($kesenians != null){
+            return response([
+                'status' => 'success',
+                'message' => 'Recommendasi Kesenian Berhasil Ditampilkan',
+                'data' => $kesenians
+            ], 200);
+        } else {
+            return response ([
+                'status' => 'failed',
+                'message' => 'Recommendasi Kesenian gagal tidak ditemukan!'
             ], 404);
         }
     }
