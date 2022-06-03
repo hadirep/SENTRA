@@ -69,7 +69,7 @@ class ArtRemoteDataSourceImpl implements ArtRemoteDataSource {
   @override
   Future<DetailArtResponse> getDetailArt(String id) async {
     final response = await client
-        .get(Uri.parse('$baseUrl/kesenians/$id?'));
+        .get(Uri.parse('$baseUrl/kesenians/$id'));
 
     if (response.statusCode == 200) {
       return DetailArtResponse.fromJson(json.decode(response.body));

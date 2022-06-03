@@ -15,6 +15,7 @@ import 'package:sentra/pages/product_management.dart';
 import 'package:sentra/pages/user_setting_page.dart';
 import 'package:sentra/presentation/bloc/arts/arts_bloc.dart';
 import 'package:sentra/presentation/bloc/detail/detail_bloc.dart';
+import 'package:sentra/presentation/bloc/favorite/favorite_bloc.dart';
 import 'package:sentra/presentation/bloc/province/province_bloc.dart';
 import 'package:sentra/presentation/bloc/update/update_bloc.dart';
 import 'package:sentra/presentation/pages/provience_more_page.dart';
@@ -57,6 +58,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => di.locator<DetailBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<FavoriteBloc>(),
         ),
       ],
       child: MaterialApp(

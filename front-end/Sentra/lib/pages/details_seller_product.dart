@@ -466,10 +466,6 @@ class DetailContent extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15),
                       image: DecorationImage(
                         image: NetworkImage('$BASE_IMAGE_KESENIAN_URL${art.image}',),
-                      //     Image.network(
-                      //   '$BASE_IMAGE_KESENIAN_URL${arts.image}', width: 150, height: 200, fit: BoxFit.cover,
-                      // ),
-                        // image: AssetImage('images/tariseblang.jpg'),
                       fit: BoxFit.fill,
                       ),
                       boxShadow: [
@@ -690,7 +686,7 @@ class DetailContent extends StatelessWidget {
                         child: const Image(image: const AssetImage('images/whatsapp.png',),),
                         ),
                             ),
-                            Container(child: const Text('089312345678',
+                            Container(child: Text(art.phoneNumber,
                             style: const TextStyle(
                               color: const Color.fromARGB(255, 234, 132, 0),
                               fontWeight: FontWeight.w800,
@@ -732,7 +728,7 @@ class DetailContent extends StatelessWidget {
                         child: const Image(image: const AssetImage('images/instagram.png'),),
                         ),
                             ),
-                            Container(child: const Text('@rental.ind',
+                            Container(child: Text(art.isInstagram,
                             style: TextStyle(
                               color: const Color.fromARGB(255, 234, 132, 0),
                               fontWeight: FontWeight.w800,
@@ -774,7 +770,7 @@ class DetailContent extends StatelessWidget {
                         child: const Image(image: const AssetImage('images/facebook.jpg'),),
                         ),
                             ),
-                            Container(child: const Text('rentalindonesia',
+                            Container(child: Text(art.phoneNumber,
                             style: const TextStyle(
                               color: const Color.fromARGB(255, 234, 132, 0),
                               fontWeight: FontWeight.w800,
