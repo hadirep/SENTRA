@@ -1,7 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'dart:convert';
-
-import '../../domain/entities/art_detail.dart';
+import 'package:sentra/domain/entities/art_detail.dart';
 
 //idKesenian ganti jadi id
 class DetailArtResponse extends Equatable {

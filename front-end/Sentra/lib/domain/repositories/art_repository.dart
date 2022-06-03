@@ -14,6 +14,4 @@ abstract class ArtRepository {
   Future<Either<Failure, String>> saveFavoriteArts(DetailArt art);
   Future<Either<Failure, String>> removeFavoriteArts(DetailArt art);
   Future<bool> getFavoriteStatus(String id);
-
-
 }

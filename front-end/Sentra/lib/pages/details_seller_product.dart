@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sentra/models/art_list.dart';
-import 'package:sentra/presentation/bloc/detail/detail_bloc.dart';
-
-import 'list.dart';
+import 'package:sentra/pages/list.dart';
 
 class DetailSellerProduct extends StatefulWidget {
   static const routeName = '/detail_product';

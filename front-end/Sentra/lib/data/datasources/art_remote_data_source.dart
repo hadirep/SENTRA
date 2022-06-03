@@ -3,9 +3,7 @@ import 'package:sentra/common/exception.dart';
 import 'package:sentra/data/models/art_model.dart';
 import 'package:sentra/data/models/art_response.dart';
 import 'package:http/http.dart' as http;
-import 'package:sentra/domain/usecases/get_detail.dart';
-
-import '../models/detail_art.dart';
+import 'package:sentra/data/models/detail_art.dart';
 
 abstract class ArtRemoteDataSource {
   Future<List<ArtModel>> getProvinceList();
@@ -13,7 +11,6 @@ abstract class ArtRemoteDataSource {
   Future<List<ArtModel>> getArtsList();
   Future<List<ArtModel>> searchArt(String query);
   Future<DetailArtResponse> getDetailArt(String id);
-
 }
 
 class ArtRemoteDataSourceImpl implements ArtRemoteDataSource {

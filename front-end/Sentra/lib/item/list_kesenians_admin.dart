@@ -95,7 +95,7 @@ class ItemKeseniansAdmin extends StatelessWidget{
                   height: 8,
                 ),
                 Container(
-                  margin: EdgeInsets.only(right: 4.0),
+                  margin: const EdgeInsets.only(right: 4.0),
                   alignment: Alignment.centerRight,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -148,5 +148,4 @@ class ItemKeseniansAdmin extends StatelessWidget{
       itemCount: dataArtList.length,
     );
   }
-
 }

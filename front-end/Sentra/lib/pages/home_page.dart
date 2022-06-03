@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sentra/common/style.dart';
+import 'package:sentra/models/art_provience.dart';
 import 'package:sentra/pages/about_page.dart';
 import 'package:sentra/pages/favorite_list.dart';
 import 'package:sentra/pages/user_setting_page.dart';
 import 'package:sentra/presentation/bloc/arts/arts_bloc.dart';
 import 'package:sentra/presentation/bloc/arts/arts_event.dart';
 import 'package:sentra/presentation/bloc/arts/arts_state.dart';
-import 'package:sentra/presentation/bloc/province/province_event.dart';
 import 'package:sentra/presentation/bloc/update/update_bloc.dart';
 import 'package:sentra/presentation/bloc/update/update_event.dart';
 import 'package:sentra/presentation/bloc/update/update_state.dart';
 import 'package:sentra/presentation/pages/arts_list_page.dart';
-import 'package:sentra/presentation/pages/provience_detail_page.dart';
+import 'package:sentra/presentation/pages/provience_more_page.dart';
 import 'package:sentra/presentation/pages/search_page.dart';
-import 'package:sentra/presentation/bloc/province/province_bloc.dart';
-import 'package:sentra/presentation/bloc/province/province_state.dart';
-import 'package:sentra/presentation/pages/province_list_page.dart';
 import 'package:sentra/presentation/pages/update_list_page.dart';
+import 'package:sentra/presentation/widgets/more_action.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/home_page';
@@ -30,7 +29,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    context.read<ProvinceBloc>().add(OnProvinceChanged());
     context.read<UpdateBloc>().add(OnUpdateChanged());
     context.read<ArtsBloc>().add(OnArtsChanged());
   }
@@ -55,7 +53,7 @@ class _HomePageState extends State<HomePage> {
               title: const Text(
                 "Home",
                 style: TextStyle(
-                  color: Color(0xff2d4b94),
+                  color: textPrimaryColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -68,7 +66,7 @@ class _HomePageState extends State<HomePage> {
               title: const Text(
                 'Favorite List',
                 style: TextStyle(
-                  color: Color(0xff2d4b94),
+                  color: textPrimaryColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -84,7 +82,7 @@ class _HomePageState extends State<HomePage> {
               title: const Text(
                 'About Us',
                 style: TextStyle(
-                  color: Color(0xff2d4b94),
+                  color: textPrimaryColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -97,7 +95,7 @@ class _HomePageState extends State<HomePage> {
               title: const Text(
                 'Settings',
                 style: TextStyle(
-                  color: Color(0xff2d4b94),
+                  color: textPrimaryColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -111,7 +109,7 @@ class _HomePageState extends State<HomePage> {
           alignment: Alignment.center,
           child: Text(
             'Home',
-            style: TextStyle(color: Color(0xff2d4b94), fontWeight: FontWeight.bold),
+            style: TextStyle(color: textPrimaryColor, fontWeight: FontWeight.bold),
           ),
         ),
         backgroundColor: Colors.white,
@@ -143,41 +141,32 @@ class _HomePageState extends State<HomePage> {
               const Text(
                 "Welcome,",
                 style: TextStyle(
-                  fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xff2d4b94),
+                  fontSize: 18, fontWeight: FontWeight.bold, color: textPrimaryColor,
                 ),
               ),
               const Text(
                 "what kind of art do you want to see?",
                 style: TextStyle(
-                  fontSize: 15, color: Color(0xff2d4b94),
+                  fontSize: 15, color: textPrimaryColor,
                 ),
               ),
               const SizedBox(height: 15),
-              _moreAction(
+              moreAction(
                 title: 'Filter By Province',
-                onTap: () => Navigator.pushNamed(context, ProvienceDetailPage.routeName),
+                onTap: () => Navigator.pushNamed(context, ProvienceMorePage.routeName),
               ),
-              BlocBuilder<ProvinceBloc, ProvinceState>(
-                builder: (context, state) {
-                  if(state is ProvinceLoading){
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if(state is ProvinceHasData){
-                    final result = state.result;
-                    return ProvinceListPage(result);
-                  } else if (state is ProvinceError) {
-                    final result = state.message;
-                    return Text(result);
-                  } else if (state is ProvinceEmpty) {
-                    return const Text('Filter By Province Not Found');
-                  } else {
-                    return const Text('Failed');
-                  }
-                },
+              SizedBox(
+                height: 240,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return listItem(index);
+                  },
+                  itemCount: dataArtProvience.length,
+                ),
               ),
               const SizedBox(height: 15),
-              _moreAction(
+              moreAction(
                 title: 'New Update',
                 onTap: () => Navigator.pushNamed(context, ""),
               ),
@@ -201,7 +190,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               const SizedBox(height: 15),
-              _moreAction(
+              moreAction(
                 title: 'All Arts',
                 onTap: () => Navigator.pushNamed(context, ""),
               ),
@@ -236,44 +225,46 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         },
-        backgroundColor: const Color(0xff2d4b94),
+        backgroundColor: textPrimaryColor,
         child: const Icon(
           Icons.search, color: Color(0xfff0be41),
         ),
       ),
     );
   }
+}
 
-  Row _moreAction({required String title, required Function() onTap}){
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: const TextStyle(
-            fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xff2d4b94),
-          ),
-        ),
-        InkWell(
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: const [
-                Text(
-                  'More',
-                  style: TextStyle(
-                    fontSize: 15, color: Color(0xff2d4b94),
-                  ),
-                ),
-                Icon(
-                  Icons.arrow_forward_ios, size: 15,
-                )
-              ],
+listItem(index) {
+  final ArtProvince artList = dataArtProvience[index];
+  return InkWell(
+    onTap: () {
+      // Menuju detail page filter
+    },
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(30),
+      child: Card(
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                artList.image, width: 150, height: 200, fit: BoxFit.cover,
+              ),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.all(5),
+              child: Text(
+                artList.province,
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xff2d4b94),
+                ),
+              ),
+            ),
+          ],
         ),
-      ],
-    );
-  }
+      ),
+    ),
+  );
 }

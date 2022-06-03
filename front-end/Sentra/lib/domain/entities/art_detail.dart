@@ -1,6 +1,3 @@
-import 'dart:convert';
-// import 'package:equatable/equatable.dart';
-
 import 'package:equatable/equatable.dart';
 
 class DetailArt extends Equatable {
@@ -40,7 +37,7 @@ class DetailArt extends Equatable {
 
 
     @override
-  List<Object?> get props => [
+    List<Object?> get props => [
         id,
         name,
         price,
@@ -53,7 +50,7 @@ class DetailArt extends Equatable {
         updatedAt,
         isFacebook,
         isInstagram,
-      ];
+    ];
 }
 
 class DocumKesenian {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/models/art_list.dart';
-import 'package:sentra/pages/product_management.dart';
 import 'details_seller_product.dart';
 import 'list.dart';
 
