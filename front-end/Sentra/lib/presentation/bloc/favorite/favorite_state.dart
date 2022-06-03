@@ -22,7 +22,7 @@ class FavoriteArtError extends FavoriteState {
 class FavoriteArtHasData extends FavoriteState {
   final List<Art> result;
  
-  FavoriteArtHasData(this.result);
+  const FavoriteArtHasData(this.result);
  
   @override
   List<Object?> get props => [result];

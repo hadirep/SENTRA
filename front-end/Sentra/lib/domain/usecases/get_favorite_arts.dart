@@ -4,11 +4,11 @@ import 'package:sentra/common/failure.dart';
 import 'package:sentra/domain/repositories/art_repository.dart';
 
 class GetFavoriteArts {
-  final ArtRepository repository;
+  final ArtRepository _repository;
 
-  GetFavoriteArts(this.repository);
+  GetFavoriteArts(this._repository);
 
   Future<Either<Failure, List<Art>>> execute() {
-    return repository.getFavoriteArts();
+    return _repository.getFavoriteArts();
   }
 }

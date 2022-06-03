@@ -60,7 +60,7 @@ class _FavoriteListState extends State<FavoriteList> with RouteAware {
         child: IconButton(
         icon: Image.asset("images/logos.jpeg"),
         onPressed: () {
-        // Navigator.pushNamed(context, ProductManagement.routeName);
+        Navigator.pushNamed(context, ProductManagement.routeName);
         }
         ),  
         ), 

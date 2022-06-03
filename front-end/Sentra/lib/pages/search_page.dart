@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/models/art_list.dart';
+import 'package:sentra/pages/favorite_list.dart';
 import 'package:sentra/pages/home_page.dart';
 
 class SearchPage extends StatefulWidget {
@@ -55,7 +56,7 @@ class _SearchPageState extends State<SearchPage> {
                 ),
               ),
               onTap: () {
-                //Navigator.pushNamed(context);
+                Navigator.pushNamed(context, FavoriteList.routeName);
               },
             ),
             ListTile(

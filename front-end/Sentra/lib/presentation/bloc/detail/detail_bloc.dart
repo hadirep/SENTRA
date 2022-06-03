@@ -39,7 +39,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
         emit(state.copyWith(
           detailArtState : RequestState.Loaded,
           detailArt : detailData,
-          // message: '',
+          message: '',
         ));
       }
       );
@@ -60,7 +60,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
       add(OnLoadFavoriteStatus(event.art.id));
     });
 
-        on<OnRemoveFavorite>((event, emit) async {
+      on<OnRemoveFavorite>((event, emit) async {
       final result = await removeFavoriteArts.execute(event.art);
 
       result.fold(

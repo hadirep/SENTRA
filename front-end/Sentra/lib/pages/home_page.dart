@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               onTap: () {
-                // Navigator.pushNamed(context, FavoriteList.routeName);
+                Navigator.pushNamed(context, FavoriteList.routeName);
               },
             ),
             ListTile(

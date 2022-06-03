@@ -28,7 +28,7 @@ class ArtLocalDataSourceImpl implements ArtLocalDataSource {
   @override 
   Future<String> removeFavoriteArts(ArtTable art) async {
     try {
-      await databaseHelper.RemoveFavoriteArts(art);
+      await databaseHelper.removeFavoriteArts(art);
       return 'Removed from favorite art';
     } catch (e) {
       throw DatabaseException(e.toString());

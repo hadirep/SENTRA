@@ -46,7 +46,7 @@ class DatabaseHelper {
     return await db!.insert(_tblFavorite, art.toJson());
   }
 
-  Future<int> RemoveFavoriteArts(ArtTable art) async {
+  Future<int> removeFavoriteArts(ArtTable art) async {
     final db = await database;
     return await db!.delete(
       _tblFavorite,
