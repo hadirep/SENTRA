@@ -10,8 +10,6 @@ class DatabaseHelper {
     _databaseHelper = this;
   }
 
-
-  
   factory DatabaseHelper() => _databaseHelper ?? DatabaseHelper._instance();
 
   static Database? _database;
@@ -57,7 +55,7 @@ class DatabaseHelper {
     );
   }
   
-    Future<Map<String, dynamic>?> getArtById(String id) async {
+  Future<Map<String, dynamic>?> getArtById(String id) async {
     final db = await database;
     final results = await db!.query(
       _tblFavorite,
@@ -72,12 +70,10 @@ class DatabaseHelper {
     }
   }
 
-    Future<List<Map<String, dynamic>>> getFavoriteArts() async {
+  Future<List<Map<String, dynamic>>> getFavoriteArts() async {
     final db = await database;
     final List<Map<String, dynamic>> results = await db!.query(_tblFavorite);
 
     return results;
   }
-
-
 }

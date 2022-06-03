@@ -6,6 +6,8 @@ import 'package:sentra/widget/button/button_back.dart';
 class AboutPage extends StatelessWidget {
   static const routeName = '/about_page';
 
+  const AboutPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -104,7 +106,7 @@ class AboutPage extends StatelessWidget {
                                   ),
                                 ),
                             ),
-                            Padding(
+                            const Padding(
                               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
                               child: Text(
                                   'Contact Us At',
@@ -119,14 +121,14 @@ class AboutPage extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(horizontal: 50),
                               child: Card(
                                 child: ListTile(
-                                  leading: Icon(Icons.alternate_email, color: secondaryColor),
-                                  title: Text(
+                                  leading: const Icon(Icons.alternate_email, color: secondaryColor),
+                                  title: const Text(
                                     'alamat email',
                                     style: TextStyle(
                                       color: buttonPrimaryColor,
                                       fontSize: 18
                                     )),
-                                  trailing: Icon(Icons.navigate_next, color: secondaryColor),
+                                  trailing: const Icon(Icons.navigate_next, color: secondaryColor),
                                   onTap: (){},
                                 ),
                               ),
@@ -135,14 +137,14 @@ class AboutPage extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(horizontal: 50),
                               child: Card(
                                 child: ListTile(
-                                  leading: Icon(Icons.whatsapp, color: secondaryColor),
-                                  title: Text(
+                                  leading: const Icon(Icons.whatsapp, color: secondaryColor),
+                                  title: const Text(
                                       'nomer wa',
                                       style: TextStyle(
                                           color: buttonPrimaryColor,
                                           fontSize: 18
                                       )),
-                                  trailing: Icon(Icons.navigate_next, color: secondaryColor),
+                                  trailing: const Icon(Icons.navigate_next, color: secondaryColor),
                                   onTap: (){},
                                 ),
                               ),

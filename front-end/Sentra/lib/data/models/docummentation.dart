@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-
-import '../../domain/entities/art_detail.dart';
+import 'package:sentra/domain/entities/art_detail.dart';
 
 class DocumKesenianResponse extends Equatable {
     DocumKesenianResponse({

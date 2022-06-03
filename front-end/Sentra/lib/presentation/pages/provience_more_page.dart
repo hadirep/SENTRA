@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:sentra/common/style.dart';
+import 'package:sentra/models/art_provience.dart';
 
-import '../../models/art_provience.dart';
-
-class ProvienceDetailPage extends StatefulWidget {
+class ProvienceMorePage extends StatefulWidget {
   static const routeName = '/provience_page';
-  const ProvienceDetailPage({Key? key}) : super(key: key);
+  const ProvienceMorePage({Key? key}) : super(key: key);
 
   @override
-  State<ProvienceDetailPage> createState() => _ProvienceDetailPageState();
+  State<ProvienceMorePage> createState() => _ProvienceMorePageState();
 }
 
-class _ProvienceDetailPageState extends State<ProvienceDetailPage> {
+class _ProvienceMorePageState extends State<ProvienceMorePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +20,7 @@ class _ProvienceDetailPageState extends State<ProvienceDetailPage> {
           alignment: Alignment.center,
           child: Text(
             'Filter By Provience',
-            style: TextStyle(color: Color(0xff2d4b94), fontWeight: FontWeight.bold),
+            style: TextStyle(color: textPrimaryColor, fontWeight: FontWeight.bold),
           ),
         ),
         backgroundColor: Colors.white,
@@ -52,7 +52,7 @@ class _ProvienceDetailPageState extends State<ProvienceDetailPage> {
   }
 
   _gridProvienceItem(index){
-    ArtProvience artProvience = dataArtProvience[index];
+    ArtProvince artProvience = dataArtProvience[index];
     return InkWell(
       onTap: () {
         // Menuju detail page new update
@@ -71,7 +71,7 @@ class _ProvienceDetailPageState extends State<ProvienceDetailPage> {
               Padding(
                 padding: const EdgeInsets.only(top: 5),
                 child: Text(
-                  artProvience.name, textAlign: TextAlign.center,
+                  artProvience.province, textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xff2d4b94),
                   ),

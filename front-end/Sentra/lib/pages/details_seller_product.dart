@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+// <<<<<<< HEAD
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sentra/common/constants.dart';
 import 'package:sentra/common/state_enum.dart';
 import 'package:sentra/domain/entities/art_detail.dart';
+// =======
+// >>>>>>> bd643b5e2a509e40f94a7ebfe237bab79b3852b4
 import 'package:sentra/models/art_list.dart';
+import 'package:sentra/pages/list.dart';
 import 'package:sentra/presentation/bloc/detail/detail_bloc.dart';
-
-import 'list.dart';
 
 class DetailSellerProduct extends StatefulWidget {
   static const routeName = '/detail_product';

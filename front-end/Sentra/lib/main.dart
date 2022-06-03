@@ -16,8 +16,13 @@ import 'package:sentra/presentation/bloc/arts/arts_bloc.dart';
 import 'package:sentra/presentation/bloc/detail/detail_bloc.dart';
 import 'package:sentra/presentation/bloc/province/province_bloc.dart';
 import 'package:sentra/presentation/bloc/update/update_bloc.dart';
+import 'package:sentra/presentation/pages/provience_more_page.dart';
+// <<<<<<< HEAD
 import 'package:sentra/presentation/pages/arts_list_page.dart';
-import 'package:sentra/presentation/pages/provience_detail_page.dart';
+// import 'package:sentra/presentation/pages/provience_detail_page.dart';
+// =======
+import 'package:sentra/presentation/pages/provience_more_page.dart';
+// >>>>>>> bd643b5e2a509e40f94a7ebfe237bab79b3852b4
 import 'package:sentra/pages/register_page.dart';
 import 'package:sentra/pages/search_page.dart';
 import 'package:sentra/presentation/bloc/search/search_bloc.dart';
@@ -80,7 +85,7 @@ class MyApp extends StatelessWidget {
           ModalRoute.of(context)?.settings.arguments as String),
           // FavoriteList.routeName: (context) => const FavoriteList(),
           ProductManagement.routeName: (context) => const ProductManagement(),
-          ProvienceDetailPage.routeName: (context) => const ProvienceDetailPage(),
+          ProvienceMorePage.routeName: (context) => const ProvienceMorePage(),
           AboutPage.routeName: (context) => AboutPage(),
           UserSetting.routeName: (context) => UserSetting(),
         },

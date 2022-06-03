@@ -1,8 +1,15 @@
+// <<<<<<< HEAD
 // import 'package:flutter/material.dart';
 // import 'package:sentra/models/art_list.dart';
 // import 'package:sentra/pages/product_management.dart';
 // import 'details_seller_product.dart';
 // import 'list.dart';
+// =======
+// import 'package:flutter/material.dart';
+// import 'package:sentra/models/art_list.dart';
+// import 'details_seller_product.dart';
+// import 'list.dart';
+// >>>>>>> bd643b5e2a509e40f94a7ebfe237bab79b3852b4
 
 // class FavoriteList extends StatelessWidget {
 //   static const routeName = '/favorite_page';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sentra/common/style.dart';
 import 'package:sentra/models/art_list.dart';
 import 'package:sentra/pages/home_page.dart';
 
@@ -191,7 +192,7 @@ class _SearchPageState extends State<SearchPage> {
       title: Text(
         artList.name,
         style: const TextStyle(
-          color: Color(0xff2d4b94), fontSize: 15, fontWeight: FontWeight.bold,
+          color: textPrimaryColor, fontSize: 15, fontWeight: FontWeight.bold,
         ),
       ),
       subtitle: Column(
@@ -202,7 +203,7 @@ class _SearchPageState extends State<SearchPage> {
               const SizedBox(width: 5),
               Text(artList.provience,
                 style: const TextStyle(
-                  color: Color(0xff2d4b94), fontSize: 12, fontWeight: FontWeight.bold,
+                  color: textPrimaryColor, fontSize: 12, fontWeight: FontWeight.bold,
                 ),
               ),
             ],
