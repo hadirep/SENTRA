@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sentra/models/art_list.dart';
 import 'package:sentra/pages/home_page.dart';
 
-import 'art_list_page.dart';
-
 class SearchPage extends StatefulWidget {
   static const routeName = '/search_page';
   const SearchPage({Key? key}) : super(key: key);
@@ -177,12 +175,12 @@ class _SearchPageState extends State<SearchPage> {
     final artList = list[index];
     return ListTile(
       onTap: () {
-        Navigator.push(
+        /*Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => ArtListPage(art: artList),
           ),
-        );
+        );*/
       },
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(10),

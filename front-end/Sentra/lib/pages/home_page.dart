@@ -12,7 +12,7 @@ import 'package:sentra/presentation/bloc/update/update_event.dart';
 import 'package:sentra/presentation/bloc/update/update_state.dart';
 import 'package:sentra/presentation/pages/arts_list_page.dart';
 import 'package:sentra/presentation/pages/provience_detail_page.dart';
-import 'package:sentra/pages/search_page.dart';
+import 'package:sentra/presentation/pages/search_page.dart';
 import 'package:sentra/presentation/bloc/province/province_bloc.dart';
 import 'package:sentra/presentation/bloc/province/province_state.dart';
 import 'package:sentra/presentation/pages/province_list_page.dart';
@@ -27,8 +27,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-
   @override
   void initState() {
     super.initState();
@@ -234,7 +232,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           Navigator.push(context,
             MaterialPageRoute(
-                builder: (context) => const SearchPage(),
+                builder: (context) => const SearchArtPage(),
             ),
           );
         },
