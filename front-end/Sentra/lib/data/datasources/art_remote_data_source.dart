@@ -45,7 +45,7 @@ class ArtRemoteDataSourceImpl implements ArtRemoteDataSource {
   @override
   Future<List<ArtModel>> getUpdateList() async {
     final response = await client
-        .get(Uri.parse('$baseUrl/kesenians'));
+        .get(Uri.parse('$baseUrl/recommended/kesenians'));
 
     if (response.statusCode == 200) {
       return ArtResponse.fromJson(json.decode(response.body)).artList;
