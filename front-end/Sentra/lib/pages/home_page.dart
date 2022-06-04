@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sentra/common/style.dart';
-import 'package:sentra/models/art_provience.dart';
 import 'package:sentra/pages/about_page.dart';
 import 'package:sentra/pages/favorite_list.dart';
 import 'package:sentra/pages/user_setting_page.dart';
@@ -12,7 +11,8 @@ import 'package:sentra/presentation/bloc/update/update_bloc.dart';
 import 'package:sentra/presentation/bloc/update/update_event.dart';
 import 'package:sentra/presentation/bloc/update/update_state.dart';
 import 'package:sentra/presentation/pages/arts_list_page.dart';
-import 'package:sentra/presentation/pages/provience_more_page.dart';
+import 'package:sentra/presentation/pages/province_list_page.dart';
+import 'package:sentra/presentation/pages/province_more_page.dart';
 import 'package:sentra/presentation/pages/search_page.dart';
 import 'package:sentra/presentation/pages/update_list_page.dart';
 import 'package:sentra/presentation/widgets/more_action.dart';
@@ -153,17 +153,11 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 15),
               moreAction(
                 title: 'Filter By Province',
-                onTap: () => Navigator.pushNamed(context, ProvienceMorePage.routeName),
+                onTap: () => Navigator.pushNamed(context, ProvinceMorePage.routeName),
               ),
               SizedBox(
-                height: 240,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return listItem(index);
-                  },
-                  itemCount: dataArtProvience.length,
-                ),
+                height: 190,
+                child: ProvinceListPage(),
               ),
               const SizedBox(height: 15),
               moreAction(
@@ -221,7 +215,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           Navigator.push(context,
             MaterialPageRoute(
-                builder: (context) => const SearchArtPage(),
+              builder: (context) => const SearchArtPage(),
             ),
           );
         },
@@ -232,39 +226,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-}
-
-listItem(index) {
-  final ArtProvince artList = dataArtProvience[index];
-  return InkWell(
-    onTap: () {
-      // Menuju detail page filter
-    },
-    child: ClipRRect(
-      borderRadius: BorderRadius.circular(30),
-      child: Card(
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                artList.image, width: 150, height: 200, fit: BoxFit.cover,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(5),
-              child: Text(
-                artList.province,
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xff2d4b94),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    ),
-  );
 }

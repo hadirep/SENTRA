@@ -8,7 +8,6 @@ import 'package:sentra/domain/usecases/get_arts.dart';
 import 'package:sentra/domain/usecases/get_detail.dart';
 import 'package:sentra/domain/usecases/get_favorite_arts.dart';
 import 'package:sentra/domain/usecases/get_favorite_status.dart';
-import 'package:sentra/domain/usecases/get_province.dart';
 import 'package:sentra/domain/usecases/get_update.dart';
 import 'package:sentra/domain/usecases/remove_favorite.dart';
 import 'package:sentra/domain/usecases/save_favorite.dart';
@@ -16,7 +15,6 @@ import 'package:sentra/domain/usecases/search_arts.dart';
 import 'package:sentra/presentation/bloc/arts/arts_bloc.dart';
 import 'package:sentra/presentation/bloc/detail/detail_bloc.dart';
 import 'package:sentra/presentation/bloc/favorite/favorite_bloc.dart';
-import 'package:sentra/presentation/bloc/province/province_bloc.dart';
 import 'package:sentra/presentation/bloc/search/search_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:sentra/presentation/bloc/update/update_bloc.dart';
@@ -25,11 +23,6 @@ final locator = GetIt.instance;
 
 void init()  {
   /// bloc
-  locator.registerFactory(
-    () => ProvinceBloc(
-      locator(),
-    ),
-  );
   locator.registerFactory(
     () => UpdateBloc(
       locator(),
@@ -61,7 +54,6 @@ void init()  {
   
   
   /// use case
-  locator.registerLazySingleton(() => GetProvince(locator()));
   locator.registerLazySingleton(() => GetUpdate(locator()));
   locator.registerLazySingleton(() => GetArts(locator()));
   locator.registerLazySingleton(() => SearchArt(locator()));

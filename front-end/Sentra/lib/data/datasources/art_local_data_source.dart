@@ -50,4 +50,4 @@ class ArtLocalDataSourceImpl implements ArtLocalDataSource {
     final result = await databaseHelper.getFavoriteArts();
     return result.map((data) => ArtTable.fromMap(data)).toList();
   }
-  }
+}

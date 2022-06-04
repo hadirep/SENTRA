@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/models/art_provience.dart';
 
-class ProvienceMorePage extends StatefulWidget {
-  static const routeName = '/provience_page';
-  const ProvienceMorePage({Key? key}) : super(key: key);
+class ProvinceMorePage extends StatefulWidget {
+  static const routeName = '/province_more_page';
+  const ProvinceMorePage({Key? key}) : super(key: key);
 
   @override
-  State<ProvienceMorePage> createState() => _ProvienceMorePageState();
+  State<ProvinceMorePage> createState() => _ProvinceMorePageState();
 }
 
-class _ProvienceMorePageState extends State<ProvienceMorePage> {
+class _ProvinceMorePageState extends State<ProvinceMorePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,9 +39,9 @@ class _ProvienceMorePageState extends State<ProvienceMorePage> {
             shrinkWrap: true,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height / 1.3),
+              childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height / 1.4),
             ),
-            itemCount: dataArtProvience.length,
+            itemCount: dataArtProvince.length,
             itemBuilder: (context, index) {
               return _gridProvienceItem(index);
             },
@@ -52,7 +52,7 @@ class _ProvienceMorePageState extends State<ProvienceMorePage> {
   }
 
   _gridProvienceItem(index){
-    ArtProvince artProvience = dataArtProvience[index];
+    ArtProvince artProvience = dataArtProvince[index];
     return InkWell(
       onTap: () {
         // Menuju detail page new update

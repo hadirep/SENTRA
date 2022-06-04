@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import 'package:sentra/data/models/detail_art.dart';
 
 abstract class ArtRemoteDataSource {
-  Future<List<ArtModel>> getProvinceList();
   Future<List<ArtModel>> getUpdateList();
   Future<List<ArtModel>> getArtsList();
   Future<List<ArtModel>> searchArt(String query);
@@ -23,17 +22,6 @@ class ArtRemoteDataSourceImpl implements ArtRemoteDataSource {
   Future<List<ArtModel>> searchArt(String query) async {
     final response = await client
         .get(Uri.parse('$baseUrl/search/kesenians?q=$query'));
-
-    if (response.statusCode == 200) {
-      return ArtResponse.fromJson(json.decode(response.body)).artList;
-    } else {
-      throw ServerException();
-    }
-  }
-
-  @override
-  Future<List<ArtModel>> getProvinceList() async {
-    final response = await client.get(Uri.parse('$baseUrl/kesenians'));
 
     if (response.statusCode == 200) {
       return ArtResponse.fromJson(json.decode(response.body)).artList;
@@ -77,5 +65,4 @@ class ArtRemoteDataSourceImpl implements ArtRemoteDataSource {
       throw ServerException();
     }
   }
-
 }

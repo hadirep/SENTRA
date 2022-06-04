@@ -10,8 +10,7 @@ import 'package:sentra/domain/repositories/art_repository.dart';
 import 'package:sentra/domain/usecases/get_favorite_arts.dart';
 import 'package:sentra/domain/usecases/get_favorite_status.dart';
 import 'package:sentra/domain/usecases/remove_favorite.dart';
-
-import '../../domain/entities/art_detail.dart';
+import 'package:sentra/domain/entities/art_detail.dart';
 
 class  ArtRepositoryImpl implements ArtRepository{
   final ArtRemoteDataSource remoteDataSource;
@@ -32,18 +31,6 @@ class  ArtRepositoryImpl implements ArtRepository{
     } on TlsException {
       return const Left(CommonFailure('Certificate not valid'));
     } on SocketException {
-      return const Left(ConnectionFailure('Failed to connect to the network'));
-    }
-  }
-
-  @override
-  Future<Either<Failure, List<Art>>> getProvinceList() async {
-    try {
-      final result = await remoteDataSource.getProvinceList();
-      return Right(result.map((model) => model.toEntity()).toList());
-    } on SocketException {
-      return const Left(ServerFailure(''));
-    } catch (e) {
       return const Left(ConnectionFailure('Failed to connect to the network'));
     }
   }

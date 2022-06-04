@@ -5,7 +5,6 @@ import 'package:sentra/domain/entities/art_detail.dart';
 import 'package:sentra/domain/usecases/get_detail.dart';
 
 abstract class ArtRepository {
-  Future<Either<Failure, List<Art>>> getProvinceList();
   Future<Either<Failure, List<Art>>> getUpdateList();
   Future<Either<Failure, List<Art>>> getArtsList();
   Future<Either<Failure, List<Art>>> searchArt(String query);

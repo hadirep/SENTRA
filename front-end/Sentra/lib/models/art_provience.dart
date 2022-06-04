@@ -14,7 +14,7 @@ class ArtProvince {
   });
 }
 
-const dataArtProvience = [
+const dataArtProvince = [
   ArtProvince(
     province: "Aceh",
     name: "Tari Saman",
