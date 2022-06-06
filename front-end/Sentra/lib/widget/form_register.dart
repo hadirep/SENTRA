@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/pages/home_page.dart';
@@ -10,6 +11,7 @@ class FormRegister extends StatefulWidget{
 }
 
 class _BuildFormRegister extends State<FormRegister> {
+  final _auth = FirebaseAuth.instance;
   TextEditingController usernameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -17,17 +19,11 @@ class _BuildFormRegister extends State<FormRegister> {
 
   bool _obscureText = true;
   bool _obsecureConfirmPassword = true;
+  bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
 
-  @override
-  void dispose() {
-    usernameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    confirmPasswordController.dispose();
-    super.dispose();
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,30 +40,30 @@ class _BuildFormRegister extends State<FormRegister> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                margin: const EdgeInsets.only(top: 16.0),
-                height: 50,
-                child: TextFormField(
-                  controller: usernameController,
-                  obscureText: false,
-                  keyboardType: TextInputType.text,
-                  validator: (value) {
-                    return value!.isEmpty
-                        ? "Username harus diisi!"
-                        : null;
-                  },
-                  decoration: const InputDecoration(
-                    suffix: Icon(
-                      Icons.person,
-                      color: buttonPrimaryColor,
-                    ),
-                    labelText: 'Username ',
-                    border: OutlineInputBorder(
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(8.0))),
-                  ),
-                ),
-              ),
+              // Container(
+              //   margin: const EdgeInsets.only(top: 16.0),
+              //   height: 50,
+              //   child: TextFormField(
+              //     controller: usernameController,
+              //     obscureText: false,
+              //     keyboardType: TextInputType.text,
+              //     validator: (value) {
+              //       return value!.isEmpty
+              //           ? "Username harus diisi!"
+              //           : null;
+              //     },
+              //     decoration: const InputDecoration(
+              //       suffix: Icon(
+              //         Icons.person,
+              //         color: buttonPrimaryColor,
+              //       ),
+              //       labelText: 'Username ',
+              //       border: OutlineInputBorder(
+              //           borderRadius:
+              //           BorderRadius.all(Radius.circular(8.0))),
+              //     ),
+              //   ),
+              // ),
               Container(
                 margin: const EdgeInsets.only(top: 16.0),
                 height: 50,
@@ -134,7 +130,7 @@ class _BuildFormRegister extends State<FormRegister> {
                 validator: (confirmPassword) {
                   if (confirmPassword == null || confirmPassword.isEmpty) {
                     return "Confirm password must not be empty";
-                  } else if (confirmPassword != passwordController.text) {
+                  } else if (confirmPassword != passwordController.text) { 
                     return "Confirm password must match with password";
                   }
                   return null;
@@ -167,9 +163,29 @@ class _BuildFormRegister extends State<FormRegister> {
                 margin: const EdgeInsets.all(16.0),
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(
-                        context, HomePage.routeName);
+                  onPressed: () async {
+                    setState(() {
+                      _isLoading = true;
+                    });
+                    try {
+                      final email = emailController.text;
+                      final password = passwordController.text;
+
+                      await _auth.createUserWithEmailAndPassword(
+                          email: email, password: password);
+                      Navigator.pop(context);
+                    } catch (e) {
+                      final snackbar = SnackBar(content: Text(e.toString()));
+                      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                    } finally {
+                      setState(() {
+                        _isLoading = false;
+                      });
+                    }
+                  },
+                  // onPressed: () {
+                    // Navigator.pushNamed(
+                    //     context, HomePage.routeName);
                     // if (_formKey.currentState!.validate() &&
                     //     emailController.text.toString() == email &&
                     //     passwordController.text.toString() ==
@@ -190,7 +206,7 @@ class _BuildFormRegister extends State<FormRegister> {
                     //         Text('Email dan Password Salah!')),
                     //   );
                     // }
-                  },
+                  // },
                   style: ButtonStyle(
                     backgroundColor:  MaterialStateProperty.all(buttonPrimaryColor),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -208,6 +224,13 @@ class _BuildFormRegister extends State<FormRegister> {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
+              TextButton(
+                child: const Text('Already have an account? Login'),
+                onPressed: () => Navigator.pop(context),
+              ),
             ],
           ),
         ),
@@ -215,4 +238,12 @@ class _BuildFormRegister extends State<FormRegister> {
     );
   }
 
+  @override
+  void dispose() {
+    // usernameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
 }

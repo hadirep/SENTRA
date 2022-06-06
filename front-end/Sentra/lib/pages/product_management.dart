@@ -68,9 +68,8 @@ try {
       appBar: AppBar(
         elevation: 0,
         toolbarHeight: 70,
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        title: Container (child: Text('Edit', style: TextStyle(color: Color.fromARGB(255, 45, 74, 148),fontWeight: FontWeight.bold, fontSize: 20), ), 
-        ),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        title: const Text('Edit', style: TextStyle(color: Color.fromARGB(255, 45, 74, 148),fontWeight: FontWeight.bold, fontSize: 20), ),
         centerTitle: true,
         leading: 
         Padding(padding: const EdgeInsets.all(12.0),
@@ -83,7 +82,7 @@ try {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Column(
                 children: [
                   Container(
@@ -95,11 +94,11 @@ try {
                         // borderRadius: BorderRadius.circular(90),
                         shape: BoxShape.circle,
                         border: Border.all(width: 4, color: Colors.white),
-                        image: DecorationImage(image: AssetImage('images/pencaksilat_pm_p.jpg'),
+                        image: const DecorationImage(image: AssetImage('images/pencaksilat_pm_p.jpg'),
                         fit: BoxFit.fill,
                         ),
                         boxShadow: [
-                          BoxShadow(
+                          const BoxShadow(
                             color: Colors.grey,
                             offset: Offset(1.0, 5.0),
                             blurRadius: 6.0
@@ -108,20 +107,20 @@ try {
                     ),
                   ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(alignment: Alignment.topCenter,
-                  child: Text("rentral", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: Color.fromARGB(255, 204, 203, 203),), ),),
-                  SizedBox(
+                  child: const Text("rentral", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: Color.fromARGB(255, 204, 203, 203),), ),),
+                  const SizedBox(
                     height: 10,
                   ),
-                  Padding(padding: EdgeInsets.all(22),
+                  Padding(padding: const EdgeInsets.all(22),
                   child: Column(
                     children: [
                       Container(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: const Text(
                           "Nama Seni", 
                         textAlign: TextAlign.left, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500,  color: Color.fromARGB(255, 234, 132, 0),),),
                       ),
@@ -130,44 +129,44 @@ try {
                       child: TextField(
                      decoration: InputDecoration(
                        focusedBorder: OutlineInputBorder(
-                         borderSide: BorderSide(color: Color.fromARGB(255, 234, 132, 0), width: 2.0),
+                         borderSide: const BorderSide(color: Color.fromARGB(255, 234, 132, 0), width: 2.0),
                          borderRadius: BorderRadius.circular(10),
                        ),
                      enabledBorder: OutlineInputBorder(
-                       borderSide: BorderSide(color: Color.fromARGB(255, 221, 221, 221), width: 2.0),
+                       borderSide: const BorderSide(color: Color.fromARGB(255, 221, 221, 221), width: 2.0),
                        borderRadius: BorderRadius.circular(10),
                      ),
-                      labelStyle: TextStyle(color: Colors.red)
+                      labelStyle: const TextStyle(color: Colors.red)
                      ),
                    ),
                       ),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       Container(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: const Text(
                           "Deskripsi", 
                         textAlign: TextAlign.left, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500,  color: Color.fromARGB(255, 234, 132, 0),),),
                       ),
-                      Container(
+                      SizedBox(
                         height:  MediaQuery.of(context).size.height * 0.04,
                       child: TextField(
                      decoration: InputDecoration(
                        focusedBorder: OutlineInputBorder(
-                         borderSide: BorderSide(color: Color.fromARGB(255, 234, 132, 0), width: 2.0),
+                         borderSide: const BorderSide(color: Color.fromARGB(255, 234, 132, 0), width: 2.0),
                          borderRadius: BorderRadius.circular(10),
                        ),
                      enabledBorder: OutlineInputBorder(
-                       borderSide: BorderSide(color: Color.fromARGB(255, 221, 221, 221), width: 2.0),
+                       borderSide: const BorderSide(color: Color.fromARGB(255, 221, 221, 221), width: 2.0),
                        borderRadius: BorderRadius.circular(10),
                      ),
-                      labelStyle: TextStyle(color: Colors.red)
+                      labelStyle: const TextStyle(color: Colors.red)
                      ),
                    ),
                       ),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       Container(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: const Text(
                           "Nomor Telepon", 
                         textAlign: TextAlign.left, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500,  color: Color.fromARGB(255, 234, 132, 0),),),
                       ),
@@ -176,21 +175,21 @@ try {
                       child: TextField(
                      decoration: InputDecoration(
                        focusedBorder: OutlineInputBorder(
-                         borderSide: BorderSide(color: Color.fromARGB(255, 234, 132, 0), width: 2.0),
+                         borderSide: const BorderSide(color: Color.fromARGB(255, 234, 132, 0), width: 2.0),
                          borderRadius: BorderRadius.circular(10),
                        ),
                      enabledBorder: OutlineInputBorder(
-                       borderSide: BorderSide(color: Color.fromARGB(255, 221, 221, 221), width: 2.0),
+                       borderSide: const BorderSide(color: Color.fromARGB(255, 221, 221, 221), width: 2.0),
                        borderRadius: BorderRadius.circular(10),
                      ),
-                      labelStyle: TextStyle(color: Colors.red)
+                      labelStyle: const TextStyle(color: Colors.red)
                      ),
                    ),
                       ),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                        Container(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: const Text(
                           "Provinsi", 
                         textAlign: TextAlign.left, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500,  color: Color.fromARGB(255, 234, 132, 0),),),
                       ),
@@ -199,29 +198,29 @@ try {
                       child: TextField(
                      decoration: InputDecoration(
                        focusedBorder: OutlineInputBorder(
-                         borderSide: BorderSide(color: Color.fromARGB(255, 234, 132, 0), width: 2.0),
+                         borderSide: const BorderSide(color: Color.fromARGB(255, 234, 132, 0), width: 2.0),
                          borderRadius: BorderRadius.circular(10),
                        ),
                      enabledBorder: OutlineInputBorder(
-                       borderSide: BorderSide(color: Color.fromARGB(255, 221, 221, 221), width: 2.0),
+                       borderSide: const BorderSide(color: Color.fromARGB(255, 221, 221, 221), width: 2.0),
                        borderRadius: BorderRadius.circular(10),
                      ),
-                      labelStyle: TextStyle(color: Colors.red)
+                      labelStyle: const TextStyle(color: Colors.red)
                      ),
                    ),
                       ),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                        Container(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: const Text(
                           "Foto Seni", 
                         textAlign: TextAlign.left, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500,  color: Color.fromARGB(255, 234, 132, 0),),),
                       ),
                       image != null? Container(
                         height:  MediaQuery.of(context).size.height * 0.18,
                         width: MediaQuery.of(context).size.height * 0.45,
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(color: Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,),
+                        padding: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,),
                         child: ClipRRect(
                           borderRadius: borderRadius,
                            child: Image.file(
@@ -240,7 +239,7 @@ try {
                       //     border: Border.all(width: 4, color: Colors.grey),
                       //   ),
                       // ),
-                      SizedBox(height: 5,),
+                      const SizedBox(height: 5,),
                       GestureDetector(
             onTap: () async{
               await getImage();
@@ -248,21 +247,21 @@ try {
             child: new Align(
                 alignment: Alignment.topRight,
                 child: Container(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   // margin: const EdgeInsets.only(left: 50.0),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(width: 3, color: Color.fromARGB(255, 221, 221, 221))),
-                  child: Icon(
+                      border: Border.all(width: 3, color: const Color.fromARGB(255, 221, 221, 221))),
+                  child: const Icon(
                     Icons.add_a_photo,
                     color: Color.fromARGB(255, 221, 221, 221), size: 15,
                   ),
                 )),
           ),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
                        Container(
                         alignment: Alignment.topLeft,
-                        child: Text(
+                        child: const Text(
                           "Dokumentasi", 
                         textAlign: TextAlign.left, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500,  color: Color.fromARGB(255, 234, 132, 0),),),
                       ),
@@ -283,8 +282,8 @@ try {
                               child: Container(
                                 height:  MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.height * 0.138,
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(color: Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,),
+                        padding: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,),
                         child: ClipRRect(
                           borderRadius: borderRadius,
                             child: Image.file(File(imageone.path), 
@@ -303,34 +302,34 @@ try {
             child: new Align(
                 alignment: Alignment.topRight,
                 child: Container(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(width: 3, color: Color.fromARGB(255, 221, 221, 221))),
-                  child: Icon(
+                      border: Border.all(width: 3, color: const Color.fromARGB(255, 221, 221, 221))),
+                  child: const Icon(
                     Icons.add,
                     color: Color.fromARGB(255, 221, 221, 221), size: 15,
                   ),
                 )),
           ),
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                          Container(
-                          padding: EdgeInsets.symmetric(vertical: 16),
+                          padding: const EdgeInsets.symmetric(vertical: 16),
                           width: MediaQuery.of(context).size.width,
                           height: 70,
                           child: RaisedButton(
                             onPressed: () {},
-                            color: Color.fromARGB(255, 234, 132, 0),
+                            color: const Color.fromARGB(255, 234, 132, 0),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 
-                                Icon(Icons.download_rounded, color: Colors.white,),
-                                SizedBox(width: 5,),
+                                const Icon(Icons.download_rounded, color: Colors.white,),
+                                const SizedBox(width: 5,),
 
-                                Text(
+                                const Text(
                                   'Upload',
                                   style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 17),
                                 ),

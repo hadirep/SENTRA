@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +23,9 @@ import 'package:sentra/presentation/pages/search_page.dart';
 import 'package:sentra/injection.dart' as di;
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   di.init();
   runApp(const MyApp());
 }
@@ -43,9 +46,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<SearchBloc>(),
         ),
-        BlocProvider(
-          create: (_) => di.locator<DetailBloc>(),
-        ),
+        // BlocProvider(
+        //   create: (_) => di.locator<DetailBloc>(),
+        // ),
         BlocProvider(
           create: (_) => di.locator<FavoriteBloc>(),
         ),
@@ -81,12 +84,12 @@ class MyApp extends StatelessWidget {
               return CupertinoPageRoute(builder: (_) => AboutPage());
             case UserSetting.routeName:
               return CupertinoPageRoute(builder: (_) => UserSetting());
-            case DetailSellerProduct.routeName:
-              final id = settings.arguments as String;
-              return MaterialPageRoute(
-                builder: (_) => DetailSellerProduct(id: id),
-                settings: settings,
-              );
+            // case DetailSellerProduct.routeName:
+            //   final id = settings.arguments as String;
+            //   return MaterialPageRoute(
+            //     builder: (_) => DetailSellerProduct(id: id),
+            //     settings: settings,
+            //   );
           }
         },
         // routes: {

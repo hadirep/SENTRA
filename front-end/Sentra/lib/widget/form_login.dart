@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/pages/admin/business_management.dart';
@@ -11,10 +12,12 @@ class FormLogin extends StatefulWidget{
 }
 
 class _BuildFormLogin extends State<FormLogin> {
+  final _auth = FirebaseAuth.instance;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   bool _obscureText = true;
+  bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -125,9 +128,28 @@ class _BuildFormLogin extends State<FormLogin> {
                 margin: const EdgeInsets.all(16.0),
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(
-                        context, BusinessManagement.routeName);
+                  onPressed: () async {
+                    setState(() {
+                      _isLoading = true;
+                    });
+                    try {
+                      final email = emailController.text;
+                      final password = passwordController.text;
+
+                      await _auth.signInWithEmailAndPassword(
+                          email: email, password: password);
+                          Navigator.pushReplacementNamed(
+                                context, BusinessManagement.routeName);
+                    } catch (e) {
+                      final snackbar = SnackBar(content: Text(e.toString()));
+                      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                    } finally {
+                      setState(() {
+                        _isLoading = false;
+                      });
+                    }
+                    // Navigator.pushNamed(
+                    //     context, BusinessManagement.routeName);
                     // if (_formKey.currentState!.validate() &&
                     //     emailController.text.toString() == email &&
                     //     passwordController.text.toString() ==
