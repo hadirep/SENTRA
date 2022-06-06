@@ -130,7 +130,7 @@ class _BuildFormRegister extends State<FormRegister> {
                 validator: (confirmPassword) {
                   if (confirmPassword == null || confirmPassword.isEmpty) {
                     return "Confirm password must not be empty";
-                  } else if (confirmPassword != passwordController.text) { 
+                  } else if (confirmPassword != passwordController.text) {
                     return "Confirm password must match with password";
                   }
                   return null;
@@ -139,7 +139,7 @@ class _BuildFormRegister extends State<FormRegister> {
                   border: const OutlineInputBorder(
                       borderRadius:
                       BorderRadius.all(Radius.circular(8.0))),
-                  labelText: 'Password',
+                  labelText: 'Konfirmasi Password',
                   suffixIcon: IconButton(
                     onPressed: () {
                       setState(() {
