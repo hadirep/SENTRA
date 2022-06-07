@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "120600887805",
+    "project_id": "sentra-8a7e6",
+    "storage_bucket": "sentra-8a7e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120600887805:android:7a0512c2ed2382186e1994",
+        "android_client_info": {
+          "package_name": "com.example.sentra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "120600887805-nrfo1645b17unvb9necjs02neb8bua2o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjDL2Lw2_xRMJaMv4POYvz4UXlX9Sh97A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "120600887805-nrfo1645b17unvb9necjs02neb8bua2o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

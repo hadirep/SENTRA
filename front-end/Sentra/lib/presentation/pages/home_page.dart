@@ -175,10 +175,10 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               const SizedBox(height: 15),
-              moreAction(
+             /* moreAction(
                 title: 'New Update',
-                onTap: () => Navigator.pushNamed(context, ""),
-              ),
+                onTap: () => Navigator.pushNamed(context, NewUpdateList.routeName),
+              ),*/
               Consumer<UpdateListProvider>(
                 builder: (context, state, _) {
                   if (state.listState == ResultState.loading) {
@@ -208,10 +208,10 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               const SizedBox(height: 15),
-              moreAction(
+              /*moreAction(
                 title: 'All Arts',
-                onTap: () => Navigator.pushNamed(context, ""),
-              ),
+                onTap: () => Navigator.pushNamed(context, AllArtsList.routeName),
+              ),*/
               Consumer<ArtListProvider>(
                 builder: (context, state, _) {
                   if (state.listState == ResultState.loading) {

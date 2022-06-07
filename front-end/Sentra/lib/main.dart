@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
           ProductManagement.routeName: (context) => const ProductManagement(),
           ProvinceMorePage.routeName: (context) => const ProvinceMorePage(),
           AboutPage.routeName: (context) => const AboutPage(),
-          UserSetting.routeName: (context) => const UserSetting(),
+          UserSetting.routeName: (context) => UserSetting(),
         },
       ),
     );

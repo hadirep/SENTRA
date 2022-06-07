@@ -1,12 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/item/list_kesenians_admin.dart';
+import 'package:sentra/presentation/pages/login_page.dart';
 
 class BusinessManagement extends StatelessWidget {
   static const routeName  = '/business-management';
   const BusinessManagement({Key? key}) : super(key: key);
 
   Widget customBannerImage(context) {
+    final auth = FirebaseAuth.instance;
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.only(left: 18, right: 18),
@@ -35,8 +38,11 @@ class BusinessManagement extends StatelessWidget {
                     iconSize: 20,
                     icon: const Icon(Icons.add, color: Color(0xfff0be41)),
                     tooltip: 'Add data',
-                    onPressed: () {
-                      Navigator.pop(context);
+                    onPressed: () async {
+                      await auth.signOut();
+                      Navigator.pushReplacementNamed(
+                          context, LoginPage.routeName);
+                      // Navigator.pop(context);
                     },
                   ),
                 ),
