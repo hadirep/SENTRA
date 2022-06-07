@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/pages/about_page.dart';
+import 'package:sentra/pages/all_arts_list.dart';
 import 'package:sentra/pages/favorite_list.dart';
+import 'package:sentra/pages/new_update_list.dart';
 import 'package:sentra/pages/user_setting_page.dart';
 import 'package:sentra/presentation/bloc/arts/arts_bloc.dart';
 import 'package:sentra/presentation/bloc/arts/arts_event.dart';
@@ -162,7 +164,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 15),
               moreAction(
                 title: 'New Update',
-                onTap: () => Navigator.pushNamed(context, ""),
+                onTap: () => Navigator.pushNamed(context, NewUpdateList.routeName),
               ),
               BlocBuilder<UpdateBloc, UpdateState>(
                 builder: (context, state) {
@@ -186,7 +188,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 15),
               moreAction(
                 title: 'All Arts',
-                onTap: () => Navigator.pushNamed(context, ""),
+                onTap: () => Navigator.pushNamed(context, AllArtsList.routeName),
               ),
               BlocBuilder<ArtsBloc, ArtsState>(
                 builder: (context, state) {
