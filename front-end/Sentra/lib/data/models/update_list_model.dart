@@ -42,20 +42,20 @@ class UpdateList {
     required this.recommended,
   });
 
-  String id;
-  String name;
-  String price;
-  String community;
-  String phoneNumber;
-  String email;
-  String province;
-  String description;
-  String image;
-  DateTime createdAt;
-  dynamic updatedAt;
-  String isFacebook;
-  String isInstagram;
-  String recommended;
+  final String id;
+  final String name;
+  final String price;
+  final String community;
+  final String phoneNumber;
+  final String email;
+  final String province;
+  final String description;
+  final String image;
+  final DateTime createdAt;
+  final dynamic updatedAt;
+  final String isFacebook;
+  final String isInstagram;
+  final String recommended;
 
   factory UpdateList.fromJson(Map<String, dynamic> json) => UpdateList(
     id: json["id_kesenian"],

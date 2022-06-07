@@ -13,6 +13,7 @@ import 'package:sentra/presentation/pages/province_more_page.dart';
 import 'package:sentra/presentation/provider/province_list_provider.dart';
 import 'package:sentra/presentation/widgets/more_action.dart';
 import 'package:sentra/presentation/widgets/widget_update_list.dart';
+
 class HomePage extends StatefulWidget {
   static const routeName = '/home-page';
   const HomePage({Key? key}) : super(key: key);
@@ -180,8 +181,7 @@ class _HomePageState extends State<HomePage> {
               Consumer<UpdateListProvider>(
                 builder: (context, state, _) {
                   if (state.listState == ResultState.loading) {
-                    return const Center(
-                        child: CircularProgressIndicator(color: Colors.red));
+                    return const Center(child: CircularProgressIndicator(color: Colors.red));
                   } else if (state.listState == ResultState.hasData) {
                     return SizedBox(
                       height: 190,
@@ -197,6 +197,12 @@ class _HomePageState extends State<HomePage> {
                         },
                       ),
                     );
+                  } else if (state.listState == ResultState.noData) {
+                    return Center(child: Text(state.message));
+                  } else if (state.listState == ResultState.error) {
+                    return Center(child: Text(state.message));
+                  } else {
+                    return const Center(child: Text(''));
                   }
                 },
               ),
@@ -208,8 +214,7 @@ class _HomePageState extends State<HomePage> {
               Consumer<ArtListProvider>(
                 builder: (context, state, _) {
                   if (state.listState == ResultState.loading) {
-                    return const Center(
-                        child: CircularProgressIndicator(color: Colors.red));
+                    return const Center(child: CircularProgressIndicator(color: Colors.red));
                   } else if (state.listState == ResultState.hasData) {
                     return SizedBox(
                       height: 190,
@@ -225,6 +230,12 @@ class _HomePageState extends State<HomePage> {
                         },
                       ),
                     );
+                  } else if (state.listState == ResultState.noData) {
+                    return Center(child: Text(state.message));
+                  } else if (state.listState == ResultState.error) {
+                    return Center(child: Text(state.message));
+                  } else {
+                    return const Center(child: Text(''));
                   }
                 },
               ),

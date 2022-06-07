@@ -9,7 +9,7 @@ class ApiService {
   static const String baseUrl = 'https://sentra.dokternak.id/api/';
 
   Future<ProvinceListModel> getProvinceList() async {
-    final response = await http.get(Uri.parse(baseUrl));
+    final response = await http.get(Uri.parse('${baseUrl}province/kesenians'));
 
     if(response.statusCode == 200) {
       return ProvinceListModel.fromJson(json.decode(response.body));
