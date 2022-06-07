@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
-import 'package:sentra/models/art_provience.dart';
+import 'package:sentra/data/models/dummy/art_provience.dart';
 
 class ProvinceMorePage extends StatefulWidget {
   static const routeName = '/province_more_page';

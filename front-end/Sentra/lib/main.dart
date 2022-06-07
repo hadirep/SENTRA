@@ -1,29 +1,27 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sentra/models/art_provience.dart';
-import 'package:sentra/pages/about_page.dart';
-import 'package:sentra/pages/admin/business_management.dart';
-import 'package:sentra/pages/details_seller_product.dart';
-import 'package:sentra/pages/favorite_list.dart';
-import 'package:sentra/pages/home_page.dart';
-import 'package:sentra/pages/login_page.dart';
-import 'package:sentra/pages/product_management.dart';
-import 'package:sentra/pages/user_setting_page.dart';
-import 'package:sentra/presentation/bloc/arts/arts_bloc.dart';
-import 'package:sentra/presentation/bloc/detail/detail_bloc.dart';
-import 'package:sentra/presentation/bloc/favorite/favorite_bloc.dart';
-import 'package:sentra/presentation/bloc/update/update_bloc.dart';
-import 'package:sentra/pages/register_page.dart';
-import 'package:sentra/presentation/bloc/search/search_bloc.dart';
+import 'package:sentra/common/navigation.dart';
+import 'package:sentra/data/api/api_service.dart';
+import 'package:sentra/data/models/province_list_model.dart';
+import 'package:sentra/data/models/province_query_model.dart';
+import 'package:sentra/presentation/pages/about_page.dart';
+import 'package:sentra/presentation/pages/admin/business_management.dart';
+import 'package:sentra/presentation/pages/favorite_list.dart';
+import 'package:sentra/presentation/pages/home_page.dart';
+import 'package:sentra/presentation/pages/login_page.dart';
+import 'package:sentra/presentation/pages/product_management.dart';
+import 'package:sentra/presentation/pages/user_setting_page.dart';
+import 'package:sentra/presentation/pages/register_page.dart';
+import 'package:sentra/presentation/pages/province_detail_page.dart';
 import 'package:sentra/presentation/pages/province_more_page.dart';
-import 'package:sentra/presentation/pages/province_page.dart';
-import 'package:sentra/presentation/pages/search_page.dart';
-import 'package:sentra/injection.dart' as di;
+import 'package:sentra/presentation/pages/province_query_page.dart';
 import 'package:provider/provider.dart';
+import 'package:sentra/presentation/provider/province_detail_provider.dart';
+import 'package:sentra/presentation/provider/province_list_provider.dart';
+import 'package:sentra/presentation/provider/province_query_provider.dart';
+import 'package:sentra/presentation/provider/art_list_provider.dart';
+import 'package:sentra/presentation/provider/update_list_provider.dart';
 
 void main() {
-  di.init();
   runApp(const MyApp());
 }
 
@@ -34,20 +32,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        BlocProvider(
-          create: (_) => di.locator<UpdateBloc>(),
+        ChangeNotifierProvider<ProvinceListProvider>(
+          create: (_) => ProvinceListProvider(listApiService: ApiService()),
         ),
-        BlocProvider(
-          create: (_) => di.locator<ArtsBloc>(),
+        ChangeNotifierProvider<ProvinceDetailProvider>(
+          create: (_) => ProvinceDetailProvider(detailApiService: ApiService(), id: ''),
         ),
-        BlocProvider(
-          create: (_) => di.locator<SearchBloc>(),
+        ChangeNotifierProvider<ProvinceQueryProvider>(
+          create: (_) => ProvinceQueryProvider(queryApiService: ApiService(), query: ''),
         ),
-        BlocProvider(
-          create: (_) => di.locator<DetailBloc>(),
+        ChangeNotifierProvider<UpdateListProvider>(
+          create: (_) => UpdateListProvider(listApiService: ApiService()),
         ),
-        BlocProvider(
-          create: (_) => di.locator<FavoriteBloc>(),
+        ChangeNotifierProvider<ArtListProvider>(
+          create: (_) => ArtListProvider(listApiService: ApiService()),
         ),
       ],
       child: MaterialApp(
@@ -56,70 +54,25 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
+        navigatorKey: navigatorKey,
         initialRoute: HomePage.routeName,
-        onGenerateRoute: (RouteSettings settings) {
-          switch (settings.name) {
-            case SearchArtPage.routeName:
-              return CupertinoPageRoute(builder: (_) => SearchArtPage());
-            case RegisterPage.routeName:
-              return CupertinoPageRoute(builder: (_) => RegisterPage());
-            case BusinessManagement.routeName:
-              return CupertinoPageRoute(builder: (_) => BusinessManagement());
-            case HomePage.routeName:
-              return CupertinoPageRoute(builder: (_) => HomePage());
-            case LoginPage.routeName:
-              return CupertinoPageRoute(builder: (_) => LoginPage());
-            case FavoriteList.routeName:
-              return CupertinoPageRoute(builder: (_) => FavoriteList());
-            case ProductManagement.routeName:
-              return CupertinoPageRoute(builder: (_) => ProductManagement());
-            case ProvinceMorePage.routeName:
-              return CupertinoPageRoute(builder: (_) => ProvinceMorePage());
-            case ProvincePage.routeName:
-              return CupertinoPageRoute(builder: (_) => ProvincePage(artProvince: ModalRoute.of(context)?.settings.arguments as ArtProvince));
-            case AboutPage.routeName:
-              return CupertinoPageRoute(builder: (_) => AboutPage());
-            case UserSetting.routeName:
-              return CupertinoPageRoute(builder: (_) => UserSetting());
-            case DetailSellerProduct.routeName:
-              final id = settings.arguments as String;
-              return MaterialPageRoute(
-                builder: (_) => DetailSellerProduct(id: id),
-                settings: settings,
-              );
-          }
+        routes: {
+          ProvinceDetailPage.routeName: (context) => ProvinceDetailPage(
+            provinceQuery: ModalRoute.of(context)?.settings.arguments as ProvinceQuery,
+          ),
+          ProvinceQueryPage.routeName: (context) => ProvinceQueryPage(
+            queryList: ModalRoute.of(context)?.settings.arguments as ProvinceList,
+          ),
+          LoginPage.routeName: (context) => const LoginPage(),
+          RegisterPage.routeName: (context) => const RegisterPage(),
+          BusinessManagement.routeName: (context) => const BusinessManagement(),
+          HomePage.routeName: (context) => const HomePage(),
+          FavoriteList.routeName: (context) => const FavoriteList(),
+          ProductManagement.routeName: (context) => const ProductManagement(),
+          ProvinceMorePage.routeName: (context) => const ProvinceMorePage(),
+          AboutPage.routeName: (context) => const AboutPage(),
+          UserSetting.routeName: (context) => const UserSetting(),
         },
-        // routes: {
-        //   SearchArtPage.routeName: (context) => const SearchArtPage(),
-        //   LoginPage.routeName: (context) => const LoginPage(),
-        //   RegisterPage.routeName: (context) => const RegisterPage(),
-        //   BusinessManagement.routeName: (context) => const BusinessManagement(),
-        //   HomePage.routeName: (context) => const HomePage(),
-        //   SearchPage.routeName: (context) => const SearchPage(),
-        //   //list. akan dihapus
-        //   // MainScreen.routeName: (context) => const MainScreen(list: '',),
-        //   // DetailSellerProduct.routeName: (context) =>  DetailSellerProduct(
-        //   // id:
-        //   // ModalRoute.of(context)?.settings.arguments as ArtList )
-        //   // DetailSellerProduct.routeName: (context) =>  DetailSellerProduct(
-        //   // id:
-        //   // MaterialPageRoute.(builder)?.settings.arguments as ArtList),
-        //   // DetailSellerProduct.routeName :(context) => DetailSellerProduct(
-        //   // id: 
-        //   // ModalRoute.of(context)?.settings.arguments as String),
-        //   DetailSellerProduct.routeName:
-        //        id = name.arguments as int;
-        //       return MaterialPageRoute(
-        //         builder: (_) => DetailSellerProduct(id: id),
-        //         // settings: settings,
-        //       );
-
-        //   FavoriteList.routeName: (context) => const FavoriteList(),
-        //   ProductManagement.routeName: (context) => const ProductManagement(),
-        //   ProvienceMorePage.routeName: (context) => const ProvienceMorePage(),
-        //   AboutPage.routeName: (context) => AboutPage(),
-        //   UserSetting.routeName: (context) => UserSetting(),
-        // },
       ),
     );
   }
