@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:sentra/data/models/province_query_model.dart';
 import 'package:sentra/common/result_state.dart';
 import 'package:sentra/data/api/api_service.dart';
-import 'package:sentra/presentation/provider/province_detail_provider.dart';
+import 'package:sentra/presentation/provider/detail_provider.dart';
 import 'package:sentra/presentation/widgets/widget_province_detail.dart';
 
 class ProvinceDetailPage extends StatefulWidget {
@@ -37,10 +37,10 @@ class _ProvinceDetailPageState extends State<ProvinceDetailPage> {
         ),      ),
       body: Padding(
         padding: const EdgeInsets.all(15),
-        child: ChangeNotifierProvider<ProvinceDetailProvider>(
-          create: (_) => ProvinceDetailProvider(
+        child: ChangeNotifierProvider<DetailProvider>(
+          create: (_) => DetailProvider(
               detailApiService: ApiService(), id: widget.provinceQuery.id),
-          child: Consumer<ProvinceDetailProvider>(
+          child: Consumer<DetailProvider>(
             builder: (context, state, _) {
               if (state.detailState == ResultState.loading) {
                 return const Center(

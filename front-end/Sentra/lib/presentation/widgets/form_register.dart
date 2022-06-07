@@ -23,8 +23,6 @@ class _BuildFormRegister extends State<FormRegister> {
 
   final _formKey = GlobalKey<FormState>();
 
-
-
   @override
   Widget build(BuildContext context) {
     return  Card(

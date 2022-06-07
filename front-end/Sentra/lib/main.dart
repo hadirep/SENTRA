@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/navigation.dart';
 import 'package:sentra/data/api/api_service.dart';
@@ -15,13 +16,15 @@ import 'package:sentra/presentation/pages/province_detail_page.dart';
 import 'package:sentra/presentation/pages/province_more_page.dart';
 import 'package:sentra/presentation/pages/province_query_page.dart';
 import 'package:provider/provider.dart';
-import 'package:sentra/presentation/provider/province_detail_provider.dart';
+import 'package:sentra/presentation/provider/detail_provider.dart';
 import 'package:sentra/presentation/provider/province_list_provider.dart';
 import 'package:sentra/presentation/provider/province_query_provider.dart';
 import 'package:sentra/presentation/provider/art_list_provider.dart';
 import 'package:sentra/presentation/provider/update_list_provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -34,8 +37,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<ProvinceListProvider>(
           create: (_) => ProvinceListProvider(listApiService: ApiService()),
         ),
-        ChangeNotifierProvider<ProvinceDetailProvider>(
-          create: (_) => ProvinceDetailProvider(detailApiService: ApiService(), id: ''),
+        ChangeNotifierProvider<DetailProvider>(
+          create: (_) => DetailProvider(detailApiService: ApiService(), id: ''),
         ),
         ChangeNotifierProvider<ProvinceQueryProvider>(
           create: (_) => ProvinceQueryProvider(queryApiService: ApiService(), query: ''),

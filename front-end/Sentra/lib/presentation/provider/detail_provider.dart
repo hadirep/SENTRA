@@ -3,11 +3,11 @@ import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/data/models/detail_model.dart';
 import 'package:sentra/common/result_state.dart';
 
-class ProvinceDetailProvider extends ChangeNotifier {
+class DetailProvider extends ChangeNotifier {
   final ApiService? detailApiService;
   final String id;
 
-  ProvinceDetailProvider({required this.detailApiService, required this.id}){
+  DetailProvider({required this.detailApiService, required this.id}){
     _fecthProvinceDetail(id);
   }
 
