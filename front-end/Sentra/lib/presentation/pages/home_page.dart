@@ -95,20 +95,19 @@ class _HomePageState extends State<HomePage> {
       ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Align(
-          alignment: Alignment.center,
-          child: Text(
-            'Home',
-            style: TextStyle(color: textPrimaryColor, fontWeight: FontWeight.bold),
-          ),
+        elevation: 0,
+        title: const Text(
+          'Home',
+          style: TextStyle(color: textPrimaryColor, fontWeight: FontWeight.bold),
         ),
+        centerTitle: true,
         backgroundColor: Colors.white,
         leading : Padding(
           padding: const EdgeInsets.symmetric(),
           child: Builder(
             builder: (context) => IconButton(
               icon: Image.asset(
-                "assets/logo/sentra.png", height: 40, width: 40,
+                "assets/logo/sentra.png", height: 30, width: 30,
               ),
               onPressed: () => Scaffold.of(context).openDrawer(),
             ),

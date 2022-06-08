@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "SENTRA",
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          cardColor: const Color.fromARGB(255, 255, 255, 255)
         ),
         navigatorKey: navigatorKey,
         initialRoute: HomePage.routeName,
@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
           ProductManagement.routeName: (context) => const ProductManagement(),
           ProvinceMorePage.routeName: (context) => const ProvinceMorePage(),
           AboutPage.routeName: (context) => const AboutPage(),
-          UserSetting.routeName: (context) => UserSetting(),
+          UserSetting.routeName: (context) => const UserSetting(),
         },
       ),
     );

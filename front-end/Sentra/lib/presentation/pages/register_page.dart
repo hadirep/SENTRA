@@ -23,9 +23,7 @@ class _RegisterPageState extends State<RegisterPage> {
           children: [
             const ButtonBack(),
             const LogoCenter(),
-            const SizedBox(
-              height: 40,
-            ),
+            const SizedBox(height: 40),
             Container(
               margin: const EdgeInsets.only(left: 24.0, bottom: 12.0),
               alignment: Alignment.bottomLeft,

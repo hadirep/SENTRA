@@ -16,20 +16,24 @@ class _FavoriteListState extends State<FavoriteList> with RouteAware {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        toolbarHeight: 70,
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        title: const Text('Favorite List', style: TextStyle(color: Color.fromARGB(255, 45, 74, 148),), ),
+        backgroundColor: Colors.white,
+        title: const Text(
+          'Favorite List',
+          style: TextStyle(
+              color: Color.fromARGB(255, 45, 74, 148),
+              fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
-        leading: 
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-        child: IconButton(
-        icon: Image.asset("images/logos.jpeg"),
-        onPressed: () {
-        Navigator.pushNamed(context, ProductManagement.routeName);
-        }
-        ),  
-        ), 
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(),
+          child: IconButton(
+            icon: Image.asset("assets/logo/sentra.png", height: 30, width: 30),
+            onPressed: () {
+              Navigator.pushNamed(context, ProductManagement.routeName);
+            },
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -56,8 +60,8 @@ class _FavoriteListState extends State<FavoriteList> with RouteAware {
                       ),
                     ),
                     enabledBorder:OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: Color.fromARGB(255, 240, 190, 65), width: 2.5),
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Color.fromARGB(255, 240, 190, 65), width: 2.5),
                     ),
                   ),
                 ),
@@ -70,91 +74,96 @@ class _FavoriteListState extends State<FavoriteList> with RouteAware {
                   child: ListView(
                     scrollDirection: Axis.vertical,
                     children: <Widget>[
-                  Padding(
-                  padding: const EdgeInsets.only(left: 15, right: 15,),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                  child:  ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: dataArtList.length,
-                    itemBuilder: (context, index) {
-                      final ArtList place = dataArtList[index];
-                      return InkWell(
-                        onTap: () {
-                          /*Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                                return DetailSellerProduct(place: place);
-                              },
-                            ),
-                          );*/
-                        },
-                        child: Card(
-                            color: const Color.fromARGB(255, 252, 241, 215),
-                            shape: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Color.fromARGB(255, 240, 190, 65), width: 2.0),
-                              borderRadius: BorderRadius.circular(15),),
-                            child:
-                            Column(
-                              children: [
-                                const SizedBox(height: 15,),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    const SizedBox(width: 15,),
-                                    Container(
-                                      height: MediaQuery.of(context).size.height * 0.1,
-                                      width:  MediaQuery.of(context).size.width * 0.3,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
-                                        image: DecorationImage(
-                                          image: AssetImage(place.image),
-                                          fit: BoxFit.fill,
-                                        ),
-                                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15, right: 15,),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height,
+                          child:  ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: dataArtList.length,
+                            itemBuilder: (context, index) {
+                              final ArtList place = dataArtList[index];
+                              return InkWell(
+                                onTap: () {
+                                  /*Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                      return DetailSellerProduct(place: place);
+                                    },
                                     ),
-                                    const SizedBox(width: 10),
-                                    Container(
-                                      padding: const EdgeInsets.only(right: 1.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        mainAxisSize: MainAxisSize.min,
+                                  );*/
+                                },
+                                child: Card(
+                                  color: const Color.fromARGB(255, 252, 241, 215),
+                                  shape: OutlineInputBorder(
+                                    borderSide: const BorderSide(color: Color.fromARGB(255, 240, 190, 65), width: 2.0),
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child:
+                                  Column(
+                                    children: [
+                                      const SizedBox(height: 15,),
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: <Widget>[
-                                          Text(
-                                            place.name,
-                                            style: const TextStyle(
-                                              fontSize: 16.0,
-                                              color: Color.fromARGB(255, 209, 139, 25),
-                                              fontWeight: FontWeight.bold,
+                                          const SizedBox(width: 15,),
+                                          Container(
+                                            height: MediaQuery.of(context).size.height * 0.1,
+                                            width:  MediaQuery.of(context).size.width * 0.3,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(15),
+                                              image: DecorationImage(
+                                                image: AssetImage(place.image),
+                                                fit: BoxFit.fill,
+                                              ),
                                             ),
                                           ),
-                                          const SizedBox(height: 5),
-                                          Text(
-                                            place.provience,
-                                            style: const TextStyle(
-                                              fontSize: 13.0,
-                                              fontWeight: FontWeight.bold,
-                                              color: Color.fromARGB(255, 191, 183, 28),
+                                          const SizedBox(width: 10),
+                                          Container(
+                                            padding: const EdgeInsets.only(right: 1.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: <Widget>[
+                                                Text(
+                                                  place.name,
+                                                  style: const TextStyle(
+                                                    fontSize: 16.0,
+                                                    color: Color.fromARGB(255, 209, 139, 25),
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                const SizedBox(height: 5),
+                                                Text(
+                                                  place.provience,
+                                                  style: const TextStyle(
+                                                    fontSize: 13.0,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Color.fromARGB(255, 191, 183, 28),
+                                                  ),
+                                                ),
+                                                /*Align(
+                                                  alignment: Alignment.topLeft,
+                                                  child: Container(
+                                                    child: StarButton(),
+                                                  ),
+                                                ),*/
+                                                const SizedBox(height: 15),
+                                              ],
                                             ),
                                           ),
-                                          /*Align(
-                                            alignment: Alignment.topLeft,
-                                            child: Container(
-                                              child: StarButton(),
-                                            ),
-                                          ),*/
-                                          const SizedBox(height: 15),
                                         ],
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ],
-                            )
+                              );
+                            },
+                          ),
                         ),
-                      );
-                    },
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -162,10 +171,6 @@ class _FavoriteListState extends State<FavoriteList> with RouteAware {
           ),
         ),
       ),
-      ],
-    ),
-    ),
-    ),
     );
   }
 }

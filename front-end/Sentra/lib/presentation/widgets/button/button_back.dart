@@ -13,8 +13,8 @@ class _StateButtonBack extends State<ButtonBack>{
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.topLeft,
-      margin: const EdgeInsets.only(left: 16.0, top: 32.0),
+      alignment: Alignment.centerLeft,
+      padding: const EdgeInsets.only(left: 12),
       child: SizedBox(
         child: ElevatedButton(
           style: ButtonStyle(

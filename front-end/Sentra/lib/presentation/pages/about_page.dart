@@ -19,28 +19,28 @@ class AboutPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const <Widget>[
+                  SizedBox(height: 100),
                   ButtonBack(),
                   Padding(
-                    padding: EdgeInsets.only(top: 33),
+                    padding: EdgeInsets.symmetric(),
                     child: Text(
                       'About Us',
                       style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 45, 74, 148)
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 45, 74, 148),
                       ),
                     ),
                   ),
-                  SizedBox(width: 70,)
+                  SizedBox(width: 70),
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 100, bottom: 50),
+                padding: const EdgeInsets.only(top: 50, bottom: 50),
                 child: Column(
                   children: [
                     Center(
-                      child: Image.asset("assets/logo/sentra.png",
-                        width: 215,),
+                      child: Image.asset("assets/logo/sentra.png", width: 215),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 50),
@@ -50,9 +50,9 @@ class AboutPage extends StatelessWidget {
                             const Text(
                               'Hello, Sentra`s!',
                               style: TextStyle(
-                                  fontSize: 31,
-                                  fontWeight: FontWeight.bold,
-                                  color: secondaryColor
+                                fontSize: 31,
+                                fontWeight: FontWeight.bold,
+                                color: secondaryColor,
                               ),
                             ),
                             const Padding(
@@ -60,8 +60,8 @@ class AboutPage extends StatelessWidget {
                               child: Text(
                                 'we’re a mobile-based traditional art service provider to make it easier for you to hire traditional Indonesian performing arts services.',
                                 style: TextStyle(
-                                    fontSize: 11,
-                                    color: backgroundColor
+                                  fontSize: 11,
+                                  color: backgroundColor,
                                 ),
                               ),
                             ),
@@ -71,9 +71,9 @@ class AboutPage extends StatelessWidget {
                                 child: Text(
                                   'We’d love to hear about more traditional art',
                                   style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold,
-                                      color: secondaryColor
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold,
+                                    color: secondaryColor,
                                   ),
                                 ),
                               ),
@@ -83,26 +83,26 @@ class AboutPage extends StatelessWidget {
                               child: Text(
                                 'Are you willing to help people find traditional performing arts easily?',
                                 style: TextStyle(
-                                    fontSize: 11,
-                                    color: backgroundColor
+                                  fontSize: 11,
+                                  color: backgroundColor,
                                 ),
                               ),
                             ),
                             OutlinedButton(
                               onPressed: () {Navigator.pushNamed(context, LoginPage.routeName);},
                               style: OutlinedButton.styleFrom(
-                                  elevation: 6,
-                                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-                                  backgroundColor: buttonPrimaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(13)
-                                  )
+                                elevation: 6,
+                                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                                backgroundColor: buttonPrimaryColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(13),
+                                ),
                               ),
                               child: const Text(
                                 'Login',
                                 style: TextStyle(
-                                    color: primaryColor,
-                                    fontSize: 20
+                                  color: primaryColor,
+                                  fontSize: 20,
                                 ),
                               ),
                             ),
@@ -111,9 +111,9 @@ class AboutPage extends StatelessWidget {
                               child: Text(
                                 'Contact Us At',
                                 style: TextStyle(
-                                    fontSize: 22,
-                                    color: secondaryColor,
-                                    fontWeight: FontWeight.bold
+                                  fontSize: 22,
+                                  color: secondaryColor,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
@@ -123,11 +123,12 @@ class AboutPage extends StatelessWidget {
                                 child: ListTile(
                                   leading: const Icon(Icons.alternate_email, color: secondaryColor),
                                   title: const Text(
-                                      'alamat email',
-                                      style: TextStyle(
-                                          color: buttonPrimaryColor,
-                                          fontSize: 18
-                                      )),
+                                    'alamat email',
+                                    style: TextStyle(
+                                        color: buttonPrimaryColor,
+                                        fontSize: 18
+                                    ),
+                                  ),
                                   trailing: const Icon(Icons.navigate_next, color: secondaryColor),
                                   onTap: (){},
                                 ),
@@ -139,30 +140,28 @@ class AboutPage extends StatelessWidget {
                                 child: ListTile(
                                   leading: const Icon(Icons.whatsapp, color: secondaryColor),
                                   title: const Text(
-                                      'nomer wa',
-                                      style: TextStyle(
-                                          color: buttonPrimaryColor,
-                                          fontSize: 18
-                                      )),
+                                    'nomer wa',
+                                    style: TextStyle(
+                                        color: buttonPrimaryColor,
+                                        fontSize: 18
+                                    ),
+                                  ),
                                   trailing: const Icon(Icons.navigate_next, color: secondaryColor),
                                   onTap: (){},
                                 ),
                               ),
                             ),
-
                           ],
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
       ),
     );
-
   }
-
 }

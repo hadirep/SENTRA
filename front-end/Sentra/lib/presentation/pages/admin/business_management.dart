@@ -9,7 +9,7 @@ class BusinessManagement extends StatelessWidget {
   const BusinessManagement({Key? key}) : super(key: key);
 
   Widget customBannerImage(context) {
-    final _auth = FirebaseAuth.instance;
+    final auth = FirebaseAuth.instance;
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.only(left: 18, right: 18),
@@ -39,7 +39,7 @@ class BusinessManagement extends StatelessWidget {
                     icon: const Icon(Icons.add, color: Color(0xfff0be41)),
                     tooltip: 'Add data',
                     onPressed: () async {
-                      await _auth.signOut();
+                      await auth.signOut();
                       Navigator.pushReplacementNamed(
                           context, LoginPage.routeName);
                       // Navigator.pop(context);

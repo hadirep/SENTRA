@@ -8,10 +8,13 @@ class ItemKeseniansAdmin extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      itemCount: dataArtList.length,
       itemBuilder: (context, index) {
         final ArtList artList = dataArtList[index];
         return InkWell(
-          onTap: () {},
+          onTap: () {
+
+          },
           child: Column(
             children: [
               Card(
@@ -91,61 +94,58 @@ class ItemKeseniansAdmin extends StatelessWidget{
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 8,
-              ),
+              const SizedBox(height: 8),
               Container(
-                  margin: const EdgeInsets.only(right: 4.0),
-                  alignment: Alignment.centerRight,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Container(
-                        width: 30,
-                        height: 30,
-                        alignment: Alignment.center,
-                        decoration: const BoxDecoration(
-                            color: buttonPrimaryColor,
-                            borderRadius: BorderRadius.all(Radius.circular(8))
-                        ),
-                        child: IconButton(
-                          iconSize: 16,
-                          icon: const Icon(Icons.edit, color: Colors.white),
-                          tooltip: 'Edit data',
-                          onPressed: () {
-                          },
+                margin: const EdgeInsets.only(right: 4.0),
+                alignment: Alignment.centerRight,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      width: 30,
+                      height: 30,
+                      alignment: Alignment.center,
+                      decoration: const BoxDecoration(
+                        color: buttonPrimaryColor,
+                        borderRadius: BorderRadius.all(Radius.circular(8),
                         ),
                       ),
-                      const SizedBox(
-                        width: 8,
+                      child: IconButton(
+                        iconSize: 16,
+                        icon: const Icon(Icons.edit, color: Colors.white),
+                        tooltip: 'Edit data',
+                        onPressed: () {
+                        },
                       ),
-                      Container(
-                        width: 30,
-                        height: 30,
-                        alignment: Alignment.center,
-                        decoration: const BoxDecoration(
-                            color: buttonPrimaryColor,
-                            borderRadius: BorderRadius.all(Radius.circular(8))
-                        ),
-                        child: IconButton(
-                          iconSize: 16,
-                          icon: const Icon(Icons.delete, color: Colors.white),
-                          tooltip: 'Delete data',
-                          onPressed: () {
-                          },
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      alignment: Alignment.center,
+                      decoration: const BoxDecoration(
+                        color: buttonPrimaryColor,
+                        borderRadius: BorderRadius.all(Radius.circular(8),
                         ),
                       ),
-                    ],
-                  )
+                      child: IconButton(
+                        iconSize: 16,
+                        icon: const Icon(Icons.delete, color: Colors.white),
+                        tooltip: 'Delete data',
+                        onPressed: () {
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
             ],
           ),
         );
       },
-      itemCount: dataArtList.length,
     );
   }
 }

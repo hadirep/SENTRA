@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sentra/presentation/widgets/button/button_back.dart';
 
 class ProductManagement extends StatefulWidget {
   static const routeName = '/product-management';
@@ -21,14 +22,16 @@ class _ProductManagementState extends State<ProductManagement> {
     final XFile? imagePicked = await picker.pickImage(source: ImageSource.gallery);
     image = File(imagePicked!.path);
     setState(() {
+
     });
   }
 
-    Future getImageDocummentation() async{
+  Future getImageDocummentation() async{
     final ImagePicker picker =ImagePicker();
     final XFile? imagePicked = await picker.pickImage(source: ImageSource.gallery);
     imageDocummentation = File(imagePicked!.path);
     setState(() {
+
     });
   }
 
@@ -65,8 +68,11 @@ class _ProductManagementState extends State<ProductManagement> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         elevation: 0,
-        toolbarHeight: 70,
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: Colors.white,
+        leading: const Align(
+          alignment: Alignment.centerLeft,
+          child: ButtonBack(),
+        ),
         title: const Text(
           'Edit',
           style: TextStyle(
@@ -76,10 +82,6 @@ class _ProductManagementState extends State<ProductManagement> {
           ),
         ),
         centerTitle: true,
-        leading: 
-        Padding(padding: const EdgeInsets.all(12.0),
-        child: Image.asset("images/logos.jpeg"),
-        ), 
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -112,7 +114,13 @@ class _ProductManagementState extends State<ProductManagement> {
                   ),
                   const SizedBox(height: 10),
                   Container(alignment: Alignment.topCenter,
-                    child: const Text("rentral", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: Color.fromARGB(255, 204, 203, 203),), ),),
+                    child: const Text("rentral",
+                      style: TextStyle(
+                        fontSize: 22, fontWeight: FontWeight.w800,
+                        color: Color.fromARGB(255, 204, 203, 203),
+                      ),
+                    ),
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -136,11 +144,15 @@ class _ProductManagementState extends State<ProductManagement> {
                           child: TextField(
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Color.fromARGB(255, 234, 132, 0), width: 2.0),
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Color.fromARGB(255, 221, 221, 221), width: 2.0),
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
@@ -164,11 +176,15 @@ class _ProductManagementState extends State<ProductManagement> {
                           child: TextField(
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Color.fromARGB(255, 234, 132, 0), width: 2.0),
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Color.fromARGB(255, 221, 221, 221), width: 2.0),
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
@@ -192,11 +208,15 @@ class _ProductManagementState extends State<ProductManagement> {
                           child: TextField(
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Color.fromARGB(255, 234, 132, 0), width: 2.0),
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Color.fromARGB(255, 221, 221, 221), width: 2.0),
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
@@ -220,11 +240,15 @@ class _ProductManagementState extends State<ProductManagement> {
                           child: TextField(
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Color.fromARGB(255, 234, 132, 0), width: 2.0),
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Color.fromARGB(255, 221, 221, 221), width: 2.0),
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
@@ -247,7 +271,9 @@ class _ProductManagementState extends State<ProductManagement> {
                             height:  MediaQuery.of(context).size.height * 0.18,
                             width: MediaQuery.of(context).size.height * 0.45,
                             padding: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,),
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,
+                            ),
                             child: ClipRRect(
                               borderRadius: borderRadius,
                               child: Image.file(
@@ -267,8 +293,11 @@ class _ProductManagementState extends State<ProductManagement> {
                               padding: const EdgeInsets.all(5),
                               // margin: const EdgeInsets.only(left: 50.0),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(width: 3, color: const Color.fromARGB(255, 221, 221, 221))),
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
+                                    width: 3, color: const Color.fromARGB(255, 221, 221, 221)
+                                ),
+                              ),
                               child: const Icon(
                                 Icons.add_a_photo,
                                 color: Color.fromARGB(255, 221, 221, 221), size: 15,

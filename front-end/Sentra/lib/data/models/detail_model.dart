@@ -25,13 +25,13 @@ class Data {
     required this.price,
     required this.category,
     required this.community,
-    required this.phone_number,
+    required this.phoneNumber,
     required this.email,
     required this.province,
     required this.description,
     required this.image,
-    required this.is_facebook,
-    required this.is_instagram,
+    required this.isFacebook,
+    required this.isInstagram,
   });
 
   final String id;
@@ -39,13 +39,13 @@ class Data {
   final String price;
   final String category;
   final String community;
-  final String phone_number;
+  final String phoneNumber;
   final String email;
   final String province;
   final String description;
   final String image;
-  final String is_facebook;
-  final String is_instagram;
+  final String isFacebook;
+  final String isInstagram;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
     id: json["id_kesenian"],
@@ -53,13 +53,13 @@ class Data {
     price: json["price"],
     category: json["category"],
     community: json["community"],
-    phone_number: json["phone_number"],
+    phoneNumber: json["phone_number"],
     email: json["email"],
     province: json["province"],
     description: json["description"],
     image: json["image"],
-    is_facebook: json["is_facebook"],
-    is_instagram: json["is_instagram"],
+    isFacebook: json["is_facebook"],
+    isInstagram: json["is_instagram"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -68,12 +68,12 @@ class Data {
     "price": price,
     "category": category,
     "community": community,
-    "phone_number": phone_number,
+    "phone_number": phoneNumber,
     "email": email,
     "province": province,
     "description": description,
     "image": image,
-    "is_facebook": is_facebook,
-    "is_instagram": is_instagram,
+    "is_facebook": isFacebook,
+    "is_instagram": isInstagram,
   };
 }

@@ -20,9 +20,7 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             const ButtonBack(),
             const LogoCenter(),
-            const SizedBox(
-              height: 80,
-            ),
+            const SizedBox(height: 80),
             Container(
               margin: const EdgeInsets.only(left: 24.0, bottom: 12.0),
               alignment: Alignment.bottomLeft,
