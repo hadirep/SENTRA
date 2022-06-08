@@ -2,10 +2,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/navigation.dart';
 import 'package:sentra/data/api/api_service.dart';
+import 'package:sentra/data/db/database_favorite.dart';
 import 'package:sentra/data/models/province_list_model.dart';
 import 'package:sentra/data/models/province_query_model.dart';
 import 'package:sentra/presentation/pages/about_page.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
+import 'package:sentra/presentation/pages/details_seller_product.dart';
 import 'package:sentra/presentation/pages/favorite_list.dart';
 import 'package:sentra/presentation/pages/home_page.dart';
 import 'package:sentra/presentation/pages/login_page.dart';
@@ -16,6 +18,7 @@ import 'package:sentra/presentation/pages/province_detail_page.dart';
 import 'package:sentra/presentation/pages/province_more_page.dart';
 import 'package:sentra/presentation/pages/province_query_page.dart';
 import 'package:provider/provider.dart';
+import 'package:sentra/presentation/provider/database_provider.dart';
 import 'package:sentra/presentation/provider/detail_provider.dart';
 import 'package:sentra/presentation/provider/province_list_provider.dart';
 import 'package:sentra/presentation/provider/province_query_provider.dart';
@@ -49,6 +52,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<ArtListProvider>(
           create: (_) => ArtListProvider(listApiService: ApiService()),
         ),
+        ChangeNotifierProvider(
+            create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper()),
+          ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -74,6 +80,8 @@ class MyApp extends StatelessWidget {
           ProvinceMorePage.routeName: (context) => const ProvinceMorePage(),
           AboutPage.routeName: (context) => const AboutPage(),
           UserSetting.routeName: (context) => const UserSetting(),
+          DetailSellerProduct.routeName: (context) => DetailSellerProduct(
+            id: ModalRoute.of(context)?.settings.arguments as String),
         },
       ),
     );

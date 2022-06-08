@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/data/models/art_list_model.dart';
+import 'package:sentra/presentation/pages/details_seller_product.dart';
 
 class WidgetArtList extends StatefulWidget {
   final ArtList artList;
@@ -16,6 +17,9 @@ class _WidgetArtListState extends State<WidgetArtList> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+      Navigator.pushNamed(context, DetailSellerProduct.routeName,
+       arguments: widget.artList.id
+         );
         /*Navigator.pushNamed(
             context, UpdatePage.routeName, arguments: widget.provinceList
         );*/

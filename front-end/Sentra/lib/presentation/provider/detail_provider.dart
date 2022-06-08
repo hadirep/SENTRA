@@ -4,7 +4,7 @@ import 'package:sentra/data/models/detail_model.dart';
 import 'package:sentra/common/result_state.dart';
 
 class DetailProvider extends ChangeNotifier {
-  final ApiService? detailApiService;
+  final ApiService detailApiService;
   final String id;
 
   DetailProvider({required this.detailApiService, required this.id}){
@@ -23,7 +23,7 @@ class DetailProvider extends ChangeNotifier {
     try {
       _detailState = ResultState.loading;
       notifyListeners();
-      final detail = await detailApiService!.getProvinceDetail(id);
+      final detail = await detailApiService.getProvinceDetail(id);
       if(detail == false){
         _detailState = ResultState.noData;
         notifyListeners();

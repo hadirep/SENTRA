@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sentra/data/models/update_list_model.dart';
+import 'package:sentra/presentation/pages/details_seller_product.dart';
+import 'package:sentra/presentation/provider/database_provider.dart';
 
 class WidgetUpdateList extends StatefulWidget {
   final UpdateList updateList;
@@ -14,13 +17,17 @@ class _WidgetUpdateListState extends State<WidgetUpdateList> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        /*Navigator.pushNamed(
-            context, UpdatePage.routeName, arguments: widget.provinceList
-        );*/
-      },
-      child: ClipRRect(
+    return Consumer<DatabaseProvider>(
+        builder: (context, provider, child) {
+          return FutureBuilder<bool>(
+            future: provider.isFavorited(widget.updateList.id),
+            builder: (context, snapshot) {
+              var isFavorited = snapshot.data ?? false;
+              return InkWell(
+                onTap: () {
+              Navigator.pushNamed(context, DetailSellerProduct.routeName, arguments: widget.updateList.id);
+            },
+                   child: ClipRRect(
         borderRadius: BorderRadius.circular(30),
         child: Card(
           child: Column(
@@ -46,6 +53,9 @@ class _WidgetUpdateListState extends State<WidgetUpdateList> {
           ),
         ),
       ),
+              );
+            });
+        },
     );
   }
 }
