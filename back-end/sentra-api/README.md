@@ -17,6 +17,8 @@ LIST URL API :
     > http://sentra.dokternak.id/api/province/kesenians?q={query province}
     - Get Recommendation Kesenians {Method GET} 
     > http://sentra.dokternak.id/api/recommended/kesenians
+    - Get Province List {Method GET} 
+    > http://sentra.dokternak.id/api/province
 
 - Documentation Kesenians Image :
     - Cretae Data Documentation Kesenian {Method POST}
