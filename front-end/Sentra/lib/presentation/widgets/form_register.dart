@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
-import 'package:sentra/presentation/pages/home_page.dart';
 
 class FormRegister extends StatefulWidget{
   const FormRegister({Key? key}) : super(key: key);
@@ -38,30 +37,6 @@ class _BuildFormRegister extends State<FormRegister> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Container(
-              //   margin: const EdgeInsets.only(top: 16.0),
-              //   height: 50,
-              //   child: TextFormField(
-              //     controller: usernameController,
-              //     obscureText: false,
-              //     keyboardType: TextInputType.text,
-              //     validator: (value) {
-              //       return value!.isEmpty
-              //           ? "Username harus diisi!"
-              //           : null;
-              //     },
-              //     decoration: const InputDecoration(
-              //       suffix: Icon(
-              //         Icons.person,
-              //         color: buttonPrimaryColor,
-              //       ),
-              //       labelText: 'Username ',
-              //       border: OutlineInputBorder(
-              //           borderRadius:
-              //           BorderRadius.all(Radius.circular(8.0))),
-              //     ),
-              //   ),
-              // ),
               Container(
                 margin: const EdgeInsets.only(top: 16.0),
                 height: 50,
@@ -181,30 +156,6 @@ class _BuildFormRegister extends State<FormRegister> {
                       });
                     }
                   },
-                  // onPressed: () {
-                  // Navigator.pushNamed(
-                  //     context, HomePage.routeName);
-                  // if (_formKey.currentState!.validate() &&
-                  //     emailController.text.toString() == email &&
-                  //     passwordController.text.toString() ==
-                  //         password) {
-                  //   ScaffoldMessenger.of(context).showSnackBar(
-                  //     const SnackBar(
-                  //         content: Text('Login Berhasil')),
-                  //   );
-                  //   Navigator.pushReplacementNamed(
-                  //       context, HomePage.routeName);
-                  // } else if (emailController.text.toString() !=
-                  //     email ||
-                  //     passwordController.text.toString() !=
-                  //         password) {
-                  //   ScaffoldMessenger.of(context).showSnackBar(
-                  //     const SnackBar(
-                  //         content:
-                  //         Text('Email dan Password Salah!')),
-                  //   );
-                  // }
-                  // },
                   style: ButtonStyle(
                     backgroundColor:  MaterialStateProperty.all(buttonPrimaryColor),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -225,9 +176,28 @@ class _BuildFormRegister extends State<FormRegister> {
               const SizedBox(
                 height: 20,
               ),
-              TextButton(
-                child: const Text('Already have an account? Login'),
-                onPressed: () => Navigator.pop(context),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Sudah memiliki akun?',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: textPrimaryColor,
+                      ),
+                    ),
+                    TextButton(
+                      child: const Text(
+                        'Ayo Login!',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: textPrimaryColor,
+                        ),
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                  ]
               ),
             ],
           ),

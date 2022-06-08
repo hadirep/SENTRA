@@ -193,14 +193,14 @@ class _WidgetProvinceDetailState extends State<WidgetProvinceDetail> {
                             const Padding(
                             padding: EdgeInsets.only(left:0),
                             child: Text(
-                              "Docummentations", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15, color: const Color.fromARGB(255, 234, 132, 0),),
+                              "Docummentations", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15, color: Color.fromARGB(255, 234, 132, 0),),
                             ),
                           ),
                           Container(
                             padding: const EdgeInsets.only(left: 1),
                             child: const Icon(
                         Icons.arrow_drop_down_rounded, size: 30,
-                        color: const Color.fromARGB(255, 240, 190, 65),
+                        color: Color.fromARGB(255, 240, 190, 65),
                       ),
                           )
                           ],
@@ -221,7 +221,7 @@ class _WidgetProvinceDetailState extends State<WidgetProvinceDetail> {
                     width:  MediaQuery.of(context).size.height * 0.14,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        image: const DecorationImage(image: const AssetImage('images/tariseblang_d.jpg'),
+                        image: const DecorationImage(image: AssetImage('images/tariseblang_d.jpg'),
                         fit: BoxFit.fill,
                         ),
                         boxShadow: const [
@@ -241,7 +241,7 @@ class _WidgetProvinceDetailState extends State<WidgetProvinceDetail> {
                     width:  MediaQuery.of(context).size.height * 0.14,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        image: const DecorationImage(image: const AssetImage('images/tariseblang_dd.jpeg'),
+                        image: const DecorationImage(image: AssetImage('images/tariseblang_dd.jpeg'),
                         fit: BoxFit.fill,
                         ),
                         boxShadow: const [
@@ -261,13 +261,13 @@ class _WidgetProvinceDetailState extends State<WidgetProvinceDetail> {
                     width:  MediaQuery.of(context).size.height * 0.14,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        image: const DecorationImage(image: const AssetImage('images/tariseblang_ddd.jpg'),
+                        image: const DecorationImage(image: AssetImage('images/tariseblang_ddd.jpg'),
                         fit: BoxFit.fill,
                         ),
-                        boxShadow: [
-                          const BoxShadow(
+                        boxShadow: const [
+                          BoxShadow(
                             color: Colors.grey,
-                            offset: const Offset(1.0, 5.0),
+                            offset: Offset(1.0, 5.0),
                             blurRadius: 6.0
                           )
                         ]
@@ -299,29 +299,24 @@ class _WidgetProvinceDetailState extends State<WidgetProvinceDetail> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                        child: ClipRRect(borderRadius: BorderRadius.circular(50),
-                        child:  const Image(image:  AssetImage('images/whatsapp.png',),),
-                        ),
+                            ClipRRect(borderRadius: BorderRadius.circular(50),
+                            child:  const Image(image:  AssetImage('images/whatsapp.png',),),
                             ),
                             // REVISI
-                            Container(child: Text(widget.provinceDetail.phoneNumber,
+                            Text(widget.provinceDetail.phoneNumber,
                             style: const TextStyle(
                               color: Color.fromARGB(255, 234, 132, 0),
                               fontWeight: FontWeight.w800,
                               fontSize: 15
                             ),),
-                            ),
-                            Container(
-                              child: const CircleAvatar(
+                            const CircleAvatar(
                       radius: 24,
                       backgroundColor: Color.fromARGB(255, 234, 132, 0),
                       child: Icon(
                         Icons.send, size: 20,
                         color: Color.fromARGB(255, 255, 255, 255),
                       ),
-                    ),
-                            )
+                    )
                           ],
                         ),
                       ),
@@ -342,10 +337,8 @@ class _WidgetProvinceDetailState extends State<WidgetProvinceDetail> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                        child: ClipRRect(borderRadius: BorderRadius.circular(50),
-                        child: const Image(image: const AssetImage('images/instagram.png'),),
-                        ),
+                            ClipRRect(borderRadius: BorderRadius.circular(50),
+                            child: const Image(image: AssetImage('images/instagram.png'),),
                             ),
                             // revisi
                             Container(child: Text(widget.provinceDetail.isInstagram,
@@ -387,13 +380,13 @@ class _WidgetProvinceDetailState extends State<WidgetProvinceDetail> {
                           children: [
                             Container(
                         child: ClipRRect(borderRadius: BorderRadius.circular(50),
-                        child: const Image(image: const AssetImage('images/facebook.jpg'),),
+                        child: const Image(image: AssetImage('images/facebook.jpg'),),
                         ),
                             ),
                             // revisi
                             Container(child: Text(widget.provinceDetail.isFacebook,
                             style: const TextStyle(
-                              color: const Color.fromARGB(255, 234, 132, 0),
+                              color: Color.fromARGB(255, 234, 132, 0),
                               fontWeight: FontWeight.w800,
                               fontSize: 15
                             ),

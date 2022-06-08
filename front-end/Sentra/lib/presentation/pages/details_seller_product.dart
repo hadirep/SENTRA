@@ -1,11 +1,8 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'package:sentra/common/constants.dart';
-import 'package:provider/provider.dart';
 import 'package:sentra/common/result_state.dart';
 import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/presentation/provider/detail_provider.dart';
@@ -19,6 +16,7 @@ class DetailSellerProduct extends StatefulWidget {
 
   // final DetailArt art;
   // final bool getFavoriteStatus;
+  // ignore: use_key_in_widget_constructors
   const DetailSellerProduct({required
     this.id});
 
@@ -45,13 +43,11 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                     elevation: 0,
                     toolbarHeight: 70,
                     backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-                    title: Container (child: const Text('Art Details', style: TextStyle(color: Color.fromARGB(255, 45, 74, 148),fontWeight: FontWeight.bold, fontSize: 20), ),
-                    ),
+                    title: const Text('Art Details', style: TextStyle(color: Color.fromARGB(255, 45, 74, 148),fontWeight: FontWeight.bold, fontSize: 20), ),
                     centerTitle: true,
                     leading: 
                     Padding(padding: const EdgeInsets.all(12.0),
-                    child: Container(child: Image.asset("images/logos.jpeg")
-                    ),  
+                    child: Image.asset("images/logos.jpeg"),
                     ), 
                   ),
       body: 
@@ -82,11 +78,9 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Container(
-                    child: Padding(
-                    padding: const EdgeInsets.only(
-                    top: 17, right: 10),
-                  ),
+                  Padding(
+                  padding: const EdgeInsets.only(
+                  top: 17, right: 10),
                   ),
                   const SizedBox(height: 140,),
                   Container(

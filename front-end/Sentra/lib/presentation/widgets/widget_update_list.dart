@@ -22,7 +22,6 @@ class _WidgetUpdateListState extends State<WidgetUpdateList> {
           return FutureBuilder<bool>(
             future: provider.isFavorited(widget.updateList.id),
             builder: (context, snapshot) {
-              var isFavorited = snapshot.data ?? false;
               return InkWell(
                 onTap: () {
               Navigator.pushNamed(context, DetailSellerProduct.routeName, arguments: widget.updateList.id);

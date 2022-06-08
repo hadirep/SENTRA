@@ -138,6 +138,7 @@ class _BuildFormLogin extends State<FormLogin> {
 
                       await _auth.signInWithEmailAndPassword(
                           email: email, password: password);
+                      // ignore: use_build_context_synchronously
                       Navigator.pushReplacementNamed(
                           context, BusinessManagement.routeName);
                     } catch (e) {
@@ -148,28 +149,6 @@ class _BuildFormLogin extends State<FormLogin> {
                         _isLoading = false;
                       });
                     }
-                    // Navigator.pushNamed(
-                    //     context, BusinessManagement.routeName);
-                    // if (_formKey.currentState!.validate() &&
-                    //     emailController.text.toString() == email &&
-                    //     passwordController.text.toString() ==
-                    //         password) {
-                    //   ScaffoldMessenger.of(context).showSnackBar(
-                    //     const SnackBar(
-                    //         content: Text('Login Berhasil')),
-                    //   );
-                    //   Navigator.pushReplacementNamed(
-                    //       context, HomePage.routeName);
-                    // } else if (emailController.text.toString() !=
-                    //     email ||
-                    //     passwordController.text.toString() !=
-                    //         password) {
-                    //   ScaffoldMessenger.of(context).showSnackBar(
-                    //     const SnackBar(
-                    //         content:
-                    //         Text('Email dan Password Salah!')),
-                    //   );
-                    // }
                   },
                   style: ButtonStyle(
                     backgroundColor:  MaterialStateProperty.all(buttonPrimaryColor),

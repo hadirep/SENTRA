@@ -5,6 +5,7 @@ const Color primaryColor = Color(0xFFFFFFFF);
 const Color secondaryColor = Color.fromRGBO(220, 126, 0, 1);
 const Color buttonPrimaryColor = Color.fromRGBO(85, 110, 172, 1);
 const Color textPrimaryColor = Color(0xff2d4b94);
+const Color textSecondColor = Color(0xff626262);
 const Color bgSecondColor = Color.fromRGBO(252, 241, 215, 1);
 const Color backgroundColor = Color.fromRGBO(255, 219, 128, 1);
 const Color darkPrimaryColor = Color(0xFF000000);
