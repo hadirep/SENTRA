@@ -274,6 +274,23 @@ class KesenianController extends Controller
         }
     }
 
+    public function provinceList() {
+        $kesenians = Kesenian::select('province')->distinct()->orderBy('province', 'ASC')->get();
+
+        if($kesenians != null){
+            return response([
+                'status' => 'success',
+                'message' => 'Province Berhasil Ditampilkan',
+                'data' => $kesenians
+            ], 200);
+        } else {
+            return response ([
+                'status' => 'failed',
+                'message' => 'Province gagal tidak ditemukan!'
+            ], 404);
+        }
+    }
+
     public function getRecommended() {
         $kesenians = Kesenian::where('recommended', true)
                             ->get();

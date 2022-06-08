@@ -22,6 +22,7 @@ use App\Http\Controllers\KesenianController;
 Route::resource('kesenians', App\Http\Controllers\KesenianController::class);
 Route::get('/recommended/kesenians', 'App\Http\Controllers\KesenianController@getRecommended');
 Route::get('/search/kesenians', 'App\Http\Controllers\KesenianController@search');
+Route::get('/province', 'App\Http\Controllers\KesenianController@provinceList');
 Route::get('/province/kesenians', 'App\Http\Controllers\KesenianController@province');
 Route::get('/dokumentation/{id}', 'App\Http\Controllers\KesenianController@getAllDocumentation');
 Route::get('/dokumentation/{id}/{detailId}', 'App\Http\Controllers\KesenianController@getDocumentationById');
