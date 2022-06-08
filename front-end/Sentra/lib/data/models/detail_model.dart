@@ -1,3 +1,5 @@
+import 'package:sentra/data/models/detail_docummentation_model.dart';
+
 class DetailModel {
   DetailModel({
     required this.status,
@@ -32,6 +34,7 @@ class Data {
     required this.image,
     required this.isFacebook,
     required this.isInstagram,
+    required this.documKesenians,
   });
 
   final String id;
@@ -45,7 +48,8 @@ class Data {
   final String description;
   final String image;
   final String isFacebook;
-  final String isInstagram;
+  final String isInstagram;    
+  List<DocumKesenian> documKesenians;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
     id: json["id_kesenian"],
@@ -60,6 +64,7 @@ class Data {
     image: json["image"],
     isFacebook: json["is_facebook"],
     isInstagram: json["is_instagram"],
+    documKesenians: List<DocumKesenian>.from(json["documKesenians"].map((x) => DocumKesenian.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -75,5 +80,6 @@ class Data {
     "image": image,
     "is_facebook": isFacebook,
     "is_instagram": isInstagram,
+    "documKesenians": List<dynamic>.from(documKesenians.map((x) => x.toJson())),
   };
 }

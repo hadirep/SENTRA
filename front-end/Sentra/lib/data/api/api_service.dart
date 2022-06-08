@@ -8,8 +8,9 @@ import 'package:sentra/data/models/update_list_model.dart';
 class ApiService {
   static const String baseUrl = 'https://sentra.dokternak.id/api/';
   static const String baseImageArt = 'https://sentra.dokternak.id/public/kesenians/';
+  static const String baseImageDocArt = 'https://sentra.dokternak.id/public/dokumentasiKesenians/';
 
-  
+
   Future<ProvinceListModel> getProvinceList() async {
     final response = await http.get(Uri.parse('${baseUrl}province/kesenians'));
 

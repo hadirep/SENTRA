@@ -19,22 +19,22 @@ class _ProvinceDetailPageState extends State<ProvinceDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Align(
-          alignment: Alignment.center,
-          child: Text(
-            'Filter By Provience',
-            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
-          ),
-        ),
-        backgroundColor: Colors.white,
-        leading : IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),      ),
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: false,
+      //   title: const Align(
+      //     alignment: Alignment.center,
+      //     child: Text(
+      //       'Filter By Provience',
+      //       style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+      //     ),
+      //   ),
+      //   backgroundColor: Colors.white,
+      //   leading : IconButton(
+      //     icon: const Icon(Icons.arrow_back, color: Colors.black),
+      //     onPressed: () {
+      //       Navigator.pop(context);
+      //     },
+      //   ),      ),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: ChangeNotifierProvider<DetailProvider>(
