@@ -11,7 +11,7 @@ class ApiService {
 
   
   Future<ProvinceListModel> getProvinceList() async {
-    final response = await http.get(Uri.parse('${baseUrl}province/kesenians'));
+    final response = await http.get(Uri.parse('${baseUrl}province'));
 
     if(response.statusCode == 200) {
       return ProvinceListModel.fromJson(json.decode(response.body));
