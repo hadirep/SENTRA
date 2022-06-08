@@ -4,6 +4,7 @@ import 'package:sentra/common/result_state.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/pages/about_page.dart';
 import 'package:sentra/presentation/pages/favorite_list.dart';
+import 'package:sentra/presentation/pages/search_art_page.dart';
 import 'package:sentra/presentation/pages/user_setting_page.dart';
 import 'package:sentra/presentation/provider/art_list_provider.dart';
 import 'package:sentra/presentation/provider/update_list_provider.dart';
@@ -244,11 +245,11 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          /*Navigator.push(context,
+          Navigator.push(context,
             MaterialPageRoute(
-              builder: (context) => const SearchArtPage(),
+              builder: (context) => const SearchPage(),
             ),
-          );*/
+          );
         },
         backgroundColor: textPrimaryColor,
         child: const Icon(

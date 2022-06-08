@@ -1,4 +1,5 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart';
@@ -221,19 +222,27 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                     return Row(
                     children: state.detail.data.documKesenians.map((doc) => Padding(
                       padding: const EdgeInsets.all(4.0),
-                      child: ClipRRect( borderRadius: BorderRadius.circular(10), child: 
-                      FittedBox(child: Text(doc.documentation), 
+                      child: ClipRRect( borderRadius: BorderRadius.circular(10), child:
+                      FittedBox(
+                        child: CachedNetworkImage(
+                          imageUrl: '$baseImageDocArt${doc.documentation}',
+                          width: 80,
+                          placeholder: (context, url) => const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                          errorWidget: (context, url, error) => const Icon(Icons.error),
+                        ),
+                        // child: Text(doc.documentation),
                       fit:
                        BoxFit.fill,),),
                     )).toList(),
-                      
                     );
-                    
+
                   },
                   ),
               ),
 
-              //IMAGE DOCUMENTATION DENGAN IMAGE NETWORK
+              // IMAGE DOCUMENTATION DENGAN IMAGE NETWORK
               //   Container(
               //   height: MediaQuery.of(context).size.height * 0.11,
               //   width:  MediaQuery.of(context).size.height * 0.14,
@@ -244,9 +253,9 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
               //     itemBuilder: (context, index) {
               //       return Row(
               //       children: state.detail.data.documKesenians.map((doc) => ClipRRect( borderRadius: BorderRadius.circular(10), child: Image.network(doc.documentation),)).toList(),
-                      
+              //
               //       );
-                    
+              //
               //     },
               //     ),
               // ),

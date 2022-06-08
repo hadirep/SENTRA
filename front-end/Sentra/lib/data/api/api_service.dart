@@ -4,6 +4,7 @@ import 'package:sentra/data/models/art_list_model.dart';
 import 'package:sentra/data/models/province_list_model.dart';
 import 'package:sentra/data/models/province_query_model.dart';
 import 'package:sentra/data/models/detail_model.dart';
+import 'package:sentra/data/models/search_art.dart';
 import 'package:sentra/data/models/update_list_model.dart';
 class ApiService {
   static const String baseUrl = 'https://sentra.dokternak.id/api/';
@@ -83,6 +84,16 @@ class ApiService {
       return DetailModel.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to Load Art Detail');
+    }
+  }
+
+  Future<ResultArtSearch> getSearchArt(String query) async {
+    final response = await http
+        .get(Uri.parse('${baseUrl}search/kesenians?q=$query'));
+    if (response.statusCode == 200) {
+      return ResultArtSearch.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to Search');
     }
   }
 }

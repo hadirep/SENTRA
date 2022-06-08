@@ -24,6 +24,7 @@ class ArtList {
     required this.id,
     required this.name,
     required this.price,
+    required this.category,
     required this.province,
     required this.image,
   });
@@ -31,6 +32,7 @@ class ArtList {
   final String id;
   final String name;
   final String price;
+  final String category;
   final String province;
   final String image;
 
@@ -38,6 +40,7 @@ class ArtList {
     id: json["id_kesenian"],
     name: json["name"],
     price: json["price"],
+    category: json["category"],
     province: json["province"],
     image: json["image"],
   );
@@ -46,6 +49,7 @@ class ArtList {
     "id_kesenian": id,
     "name": name,
     "price": price,
+    "category": category,
     "province": province,
     "image": image,
   };
