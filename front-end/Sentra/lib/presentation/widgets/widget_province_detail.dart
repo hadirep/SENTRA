@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
+import 'package:sentra/common/style.dart';
 import 'package:sentra/data/models/detail_model.dart';
+import 'package:sentra/presentation/widgets/button/button_back.dart';
 
 class WidgetProvinceDetail extends StatefulWidget {
   final Data provinceDetail;
@@ -25,16 +27,12 @@ class _WidgetProvinceDetailState extends State<WidgetProvinceDetail> {
            title: const Text(
              'Art Details',
              style: TextStyle(
-               color: Color.fromARGB(255, 45, 74, 148),
+               color: textPrimaryColor,
                fontWeight: FontWeight.bold,
-               fontSize: 20,
              ),
            ),
            centerTitle: true,
-           leading: Padding(
-             padding: const EdgeInsets.all(12.0),
-             child: Image.asset("images/logos.jpeg"),
-           ),
+           leading: const ButtonBack(),
          ),
          body: SingleChildScrollView(
          child: Column(
@@ -207,7 +205,7 @@ class _WidgetProvinceDetailState extends State<WidgetProvinceDetail> {
                              Center(
                                child: Column(
                                  children: [
-                                   const SizedBox(height: 7,),
+                                   const SizedBox(height: 7),
                                    Row(
                                      children: [
                                        Container(

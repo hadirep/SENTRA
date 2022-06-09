@@ -4,15 +4,15 @@ import 'package:sentra/data/models/update_list_model.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
 import 'package:sentra/presentation/provider/database_provider.dart';
 
-class WidgetUpdateList extends StatefulWidget {
+class UpdateListPage extends StatefulWidget {
   final UpdateList updateList;
-  const WidgetUpdateList({Key? key, required this.updateList}) : super(key: key);
+  const UpdateListPage({Key? key, required this.updateList}) : super(key: key);
 
   @override
-  State<WidgetUpdateList> createState() => _WidgetUpdateListState();
+  State<UpdateListPage> createState() => _UpdateListPageState();
 }
 
-class _WidgetUpdateListState extends State<WidgetUpdateList> {
+class _UpdateListPageState extends State<UpdateListPage> {
   dynamic image = 'https://sentra.dokternak.id/public/kesenians/';
 
   @override

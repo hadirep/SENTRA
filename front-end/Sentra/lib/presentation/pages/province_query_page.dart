@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sentra/common/result_state.dart';
+import 'package:sentra/common/style.dart';
 import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/data/models/province_list_model.dart';
 import 'package:sentra/presentation/provider/province_query_provider.dart';
+import 'package:sentra/presentation/widgets/button/button_back.dart';
 import 'package:sentra/presentation/widgets/widget_province_query.dart';
 
 class ProvinceQueryPage extends StatefulWidget {
@@ -25,16 +27,16 @@ class _ProvinceQueryPageState extends State<ProvinceQueryPage> {
           alignment: Alignment.center,
           child: Text(
             'Filter By Provience',
-            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: textPrimaryColor,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
+        elevation: 0,
+        centerTitle: true,
         backgroundColor: Colors.white,
-        leading : IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        leading : const ButtonBack(),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),

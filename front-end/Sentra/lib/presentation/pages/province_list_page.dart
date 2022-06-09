@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:sentra/data/models/province_list_model.dart';
 import 'package:sentra/presentation/pages/province_query_page.dart';
 
-class WidgetProvinceList extends StatefulWidget {
+class ProvinceListPage extends StatefulWidget {
   final ProvinceList provinceList;
-  const WidgetProvinceList({Key? key, required this.provinceList}) : super(key: key);
+  const ProvinceListPage({Key? key, required this.provinceList}) : super(key: key);
 
   @override
-  State<WidgetProvinceList> createState() => _WidgetProvinceListState();
+  State<ProvinceListPage> createState() => _ProvinceListPageState();
 }
 
-class _WidgetProvinceListState extends State<WidgetProvinceList> {
+class _ProvinceListPageState extends State<ProvinceListPage> {
   dynamic image = 'https://sentra.dokternak.id/public/kesenians/';
 
   @override

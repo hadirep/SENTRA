@@ -8,12 +8,12 @@ import 'package:sentra/presentation/pages/search_art_page.dart';
 import 'package:sentra/presentation/pages/user_setting_page.dart';
 import 'package:sentra/presentation/provider/art_list_provider.dart';
 import 'package:sentra/presentation/provider/update_list_provider.dart';
-import 'package:sentra/presentation/widgets/widget_art_list.dart';
-import 'package:sentra/presentation/widgets/widget_province_list.dart';
+import 'package:sentra/presentation/pages/art_list_page.dart';
+import 'package:sentra/presentation/pages/province_list_page.dart';
 import 'package:sentra/presentation/pages/province_more_page.dart';
 import 'package:sentra/presentation/provider/province_list_provider.dart';
 import 'package:sentra/presentation/widgets/more_action.dart';
-import 'package:sentra/presentation/widgets/widget_update_list.dart';
+import 'package:sentra/presentation/pages/update_list_page.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/home-page';
@@ -158,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                         itemCount: state.list.data.length,
                         itemBuilder: (context, index) {
                           var listData = state.list.data[index];
-                          return WidgetProvinceList(
+                          return ProvinceListPage(
                             provinceList: listData,
                           );
                         },
@@ -191,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                         itemCount: state.list.data.length,
                         itemBuilder: (context, index) {
                           var listData = state.list.data[index];
-                          return WidgetUpdateList(
+                          return UpdateListPage(
                             updateList: listData,
                           );
                         },
@@ -224,7 +224,7 @@ class _HomePageState extends State<HomePage> {
                         itemCount: state.list.data.length,
                         itemBuilder: (context, index) {
                           var listData = state.list.data[index];
-                          return WidgetArtList(
+                          return ArtListPage(
                             artList: listData,
                           );
                         },

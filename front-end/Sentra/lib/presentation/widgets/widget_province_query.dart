@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:sentra/data/models/province_query_model.dart';
+import 'package:flutter/material.dart';
 import 'package:sentra/presentation/pages/province_detail_page.dart';
 
 class WidgetProvinceQuery extends StatefulWidget {
@@ -50,3 +50,4 @@ class _WidgetProvinceQueryState extends State<WidgetProvinceQuery> {
     );
   }
 }
+

@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:sentra/data/models/art_list_model.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
 
-class WidgetArtList extends StatefulWidget {
+class ArtListPage extends StatefulWidget {
   final ArtList artList;
-  const WidgetArtList({Key? key, required this.artList}) : super(key: key);
+  const ArtListPage({Key? key, required this.artList}) : super(key: key);
 
   @override
-  State<WidgetArtList> createState() => _WidgetArtListState();
+  State<ArtListPage> createState() => _ArtListPageState();
 }
 
-class _WidgetArtListState extends State<WidgetArtList> {
+class _ArtListPageState extends State<ArtListPage> {
   dynamic image = 'https://sentra.dokternak.id/public/kesenians/';
 
   @override
