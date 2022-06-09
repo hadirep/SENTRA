@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sentra/common/result_state.dart';
 import 'package:sentra/common/style.dart';
-import 'package:sentra/data/models/dummy/art_province.dart';
+import 'package:sentra/presentation/provider/province_list_provider.dart';
+import 'package:sentra/presentation/widgets/button/button_back.dart';
+import 'package:sentra/presentation/widgets/widget_province_more.dart';
 
 class ProvinceMorePage extends StatefulWidget {
   static const routeName = '/province_more_page';
@@ -14,6 +18,7 @@ class _ProvinceMorePageState extends State<ProvinceMorePage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        elevation: 0,
         title: const Align(
           alignment: Alignment.center,
           child: Text(
@@ -21,62 +26,40 @@ class _ProvinceMorePageState extends State<ProvinceMorePage> {
             style: TextStyle(color: textPrimaryColor, fontWeight: FontWeight.bold),
           ),
         ),
+        centerTitle: true,
         backgroundColor: Colors.white,
-        leading : IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        leading : const ButtonBack(),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: SingleChildScrollView(
-          child: GridView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height / 1.4),
-            ),
-            itemCount: dataArtProvince.length,
-            itemBuilder: (context, index) {
-              return _gridProvienceItem(index);
-            },
-          ),
-        ),
-      ),
-    );
-  }
-  _gridProvienceItem(index){
-    ArtProvince artProvience = dataArtProvince[index];
-    return InkWell(
-      onTap: () {
-        // Menuju detail page new update
-      },
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: Card(
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  artProvience.image, height: 200, fit: BoxFit.cover,
-                ),
+      body: Consumer<ProvinceListProvider>(
+        builder: (context, state, _) {
+          if (state.listState == ResultState.loading) {
+            return const Center(child: CircularProgressIndicator(color: Colors.red));
+          } else if (state.listState == ResultState.hasData) {
+            return GridView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: state.list.data.length,
+              itemBuilder: (context, index) {
+                var listData = state.list.data[index];
+                return WidgetProvinceMore(
+                  provinceList: listData,
+                );
+              },
+              gridDelegate:
+              SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio:
+                MediaQuery.of(context).size.width/(MediaQuery.of(context).size.height/1.9),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 5),
-                child: Text(
-                  artProvience.province, textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xff2d4b94),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+            );
+          } else if (state.listState == ResultState.noData) {
+            return Center(child: Text(state.message));
+          } else if (state.listState == ResultState.error) {
+            return Center(child: Text(state.message));
+          } else {
+            return const Center(child: Text(''));
+          }
+        },
       ),
     );
   }
