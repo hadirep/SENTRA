@@ -26,32 +26,80 @@ class _UpdateListPageState extends State<UpdateListPage> {
                 onTap: () {
               Navigator.pushNamed(context, DetailSellerProduct.routeName, arguments: widget.updateList.id);
             },
-                   child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: Card(
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  image+widget.updateList.image, width: 150, height: 150, fit: BoxFit.cover,
+        //            child: ClipRRect(   
+        // borderRadius: BorderRadius.circular(25),
+        child: Card( 
+          elevation: 4.0,
+          shadowColor:  Color.fromARGB(255, 234, 132, 0),
+          child: 
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            
+          children: [
+            Container(
+              height: 120, width: MediaQuery.of(context).size.width/2.5,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8, left: 8, right: 8
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(5),
-                child: Text(
-                  widget.updateList.province,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xff2d4b94),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10), 
+                    border: Border.all(width: 2.8, color:  Color.fromARGB(196, 249, 216, 117)),
+                                    image: DecorationImage(
+                                      image: NetworkImage(
+                    image+widget.updateList.image,),fit: BoxFit.cover
+                                    )
                   ),
+  
                 ),
-              ),
-            ],
-          ),
+              ),),
+                SizedBox(height: 5,),
+                Padding(padding: EdgeInsets.only(left: 5, top: 2),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(Icons.add_location_rounded, size: 15, color:   Color.fromARGB(255, 234, 132, 0),),
+                          Text(" ${widget.updateList.province}", style: const TextStyle(color: Color.fromARGB(255, 45, 74, 148), fontSize: 11, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 2,),
+                      Text(widget.updateList.name,  style: const TextStyle(color: Color.fromARGB(255, 45, 74, 148), fontSize: 15, fontWeight: FontWeight.bold)),
+                      
+                    ],
+                  ),
+                )
+                ,)
+          ],)
+          // Column(
+          //   children: [
+          //     ClipRRect(
+          //       borderRadius: BorderRadius.circular(20),
+          //       child: Image.network(
+          //         image+widget.updateList.image, width: 150, height: 150, fit: BoxFit.cover,
+          //       ),
+          //     ),
+          //     Padding(
+          //       padding: const EdgeInsets.all(5),
+          //       child: Text(
+          //         widget.updateList.name,
+          //         style: const TextStyle(
+          //           fontSize: 15,
+          //           fontWeight: FontWeight.bold,
+          //           color: Color(0xff2d4b94),
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ),
-      ),
+      // ),
               );
             });
         },

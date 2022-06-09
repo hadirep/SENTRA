@@ -174,10 +174,14 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               const SizedBox(height: 15),
-              /* moreAction(
+              // /* moreAction(
+              //   title: 'New Update',
+              //   onTap: () => Navigator.pushNamed(context, NewUpdateList.routeName),
+              // ),*/
+              moreAction(
                 title: 'New Update',
-                onTap: () => Navigator.pushNamed(context, NewUpdateList.routeName),
-              ),*/
+                onTap: () => Navigator.pushNamed(context, ""),
+              ),
               Consumer<UpdateListProvider>(
                 builder: (context, state, _) {
                   if (state.listState == ResultState.loading) {
@@ -211,6 +215,10 @@ class _HomePageState extends State<HomePage> {
                 title: 'All Arts',
                 onTap: () => Navigator.pushNamed(context, AllArtsList.routeName),
               ),*/
+                            moreAction(
+                title: 'All Arts',
+                onTap: () => Navigator.pushNamed(context, ""),
+              ),
               Consumer<ArtListProvider>(
                 builder: (context, state, _) {
                   if (state.listState == ResultState.loading) {
