@@ -275,7 +275,10 @@ class KesenianController extends Controller
     }
 
     public function provinceList() {
-        $kesenians = Kesenian::select('kesenians.*')->distinct()->orderBy('province', 'ASC')->get();
+        // $kesenians = Kesenian::select('province')->distinct()->orderBy('province', 'ASC')->get();
+        $kesenians = DB::table('kesenians')
+                        ->select('kesenians.*')
+                        ->groupBy('province')->orderBy('province', 'ASC')->get();
 
         if($kesenians != null){
             return response([
