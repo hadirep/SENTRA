@@ -12,7 +12,7 @@ import 'package:sentra/presentation/pages/art_list_page.dart';
 import 'package:sentra/presentation/pages/province_list_page.dart';
 import 'package:sentra/presentation/pages/province_more_page.dart';
 import 'package:sentra/presentation/provider/province_list_provider.dart';
-import 'package:sentra/presentation/widgets/more_action.dart';
+import 'package:sentra/presentation/widgets/button/more_action.dart';
 import 'package:sentra/presentation/pages/update_list_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -253,7 +253,7 @@ class _HomePageState extends State<HomePage> {
         },
         backgroundColor: textPrimaryColor,
         child: const Icon(
-          Icons.search, color: Color(0xfff0be41),
+          Icons.search, color: Colors.white,
         ),
       ),
     );

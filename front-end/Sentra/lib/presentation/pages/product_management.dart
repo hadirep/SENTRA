@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 
 class ProductManagement extends StatefulWidget {
@@ -75,11 +76,7 @@ class _ProductManagementState extends State<ProductManagement> {
         ),
         title: const Text(
           'Edit',
-          style: TextStyle(
-            color: Color.fromARGB(255, 45, 74, 148),
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
+          style: TextStyle(color: textPrimaryColor, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
