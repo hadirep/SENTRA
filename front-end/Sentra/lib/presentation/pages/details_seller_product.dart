@@ -49,17 +49,18 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                     title: const Text('Art Details', style: TextStyle(color: Color.fromARGB(255, 45, 74, 148),fontWeight: FontWeight.bold, fontSize: 20), ),
                     centerTitle: true,
                     leading:
-                    ButtonBack(  ),
+                    const ButtonBack(  ),
                   ),
                   
                   body:
                   SingleChildScrollView(
                     child: Column(
                       children: [
+                        const SizedBox(height: 6,),
                         Stack(
                           children: [
                             Container(
-                              height: MediaQuery.of(context).size.height * 0.31,
+                              height: MediaQuery.of(context).size.height * 0.33,
                               width:  MediaQuery.of(context).size.height * 0.45,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
@@ -81,7 +82,7 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                               children: <Widget>[
                                 const Padding(
                                   padding: EdgeInsets.only(
-                                      top: 17, right: 10),
+                                      top: 29, right: 10),
                                 ),
                                 const SizedBox(height: 140,),
                                 Container(
@@ -103,7 +104,7 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                             ),
                           ],
                         ),
-                        const SizedBox(height:5),
+                        const SizedBox(height:10),
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
@@ -132,6 +133,7 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
+
                                       //   SingleChildScrollView(
                                       //     scrollDirection: Axis.vertical,
                                       // child:
@@ -150,7 +152,7 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                         ),
                                       ),
                                       // ),
-                                      SizedBox(height: 10,
+                                      const SizedBox(height: 10,
                                 ),
                                       Container(
                                         alignment: Alignment.bottomLeft,
@@ -181,24 +183,103 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                                   padding: const EdgeInsets.only(left: 3),
                                                 ),
 
-                                                //IMAGE DOCUMMENTATION DENGAN TEXT
-                                                // Container(
-                                                //   height: MediaQuery.of(context).size.height * 0.11,
-                                                //   width:  MediaQuery.of(context).size.height * 0.14,
-                                                //   child: ListView.builder(
-                                                //     itemCount: state.detail.data.documKesenians.length,
-                                                //     padding: EdgeInsets.zero,
-                                                //     itemBuilder: (context, index) {
-                                                //       return Container(
-                                                //       height: MediaQuery.of(context).size.height * 0.11,
-                                                //       width:  MediaQuery.of(context).size.height * 0.14,
-                                                //       child: Column(children: state.detail.data.documKesenians.map((doc) => Text('$baseImageDocArt${doc.documentation}')).toList(),),
-                                                //       );
+                                                // SizedBox(
+                                                //   height: MediaQuery.of(context).size.height * 0.1,
+                                                //   width:  MediaQuery.of(context).size.width,
+                                                //   child: ListView(
+                                                //     children: [
+                                                //       Padding(
+                                                //         padding: EdgeInsets.all(6),
+                                                //         child: Row(children: [ state.detail.data.documKesenians.map((doc) => Container(child: ImageNe,))
+                                                        
+                                                //         ],)
 
-                                                //     },
-                                                //     ),
-                                                // ),
-                                                
+
+                                                //       ),
+                                                //     ],
+                                                //     // itemCount: state.detail.data.documKesenians.length,
+                                                //     // padding: EdgeInsets.zero,
+                                                //     // scrollDirection: Axis.horizontal,
+                                                //     // itemBuilder: (context, index) {
+                                                //     //   return Row(
+                                                //     //     children: state.detail.data.documKesenians.map((doc) => Padding(
+                                                //     //       padding: const EdgeInsets.all(4.0),
+                                                //     //       child: ClipRRect( borderRadius: BorderRadius.circular(10), child:
+                                                //     //       FittedBox(
+                                                //     //         fit:
+                                                //     //         BoxFit.fill,
+                                                //     //         child: CachedNetworkImage(
+                                                //     //           imageUrl: '$baseImageDocArt${doc.documentation}',
+                                                //     //           width: 140,
+                                                //     //           placeholder: (context, url) => const Center(
+                                                //     //             child: CircularProgressIndicator(),
+                                                //     //           ),
+                                                //     //           errorWidget: (context, url, error) => const Icon(Icons.error),
+                                                //     //         ),
+                                                //     //       ),
+                                                //     //       ),
+                                                //     //     ),).toList(),
+                                                //     //   );
+                                                //     // },
+                                                //   ),
+                                                // ),  
+                                                  SizedBox(
+                                                  height: MediaQuery.of(context).size.height * 0.1,
+                                                  width:  MediaQuery.of(context).size.width ,
+                                                  child: ListView.builder(
+                                                    itemCount: state.detail.data.documKesenians.length,
+                                                    padding: EdgeInsets.zero,
+                                                    scrollDirection: Axis.horizontal,
+                                                    itemBuilder: (context, index) {
+                                                      return Row(
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: state.detail.data.documKesenians.map((doc) => Padding(
+                                                          padding: const EdgeInsets.all(4.0),
+                                                          child: InkWell(
+                                                              onTap: () {
+                                                          showDialog(builder: (BuildContext context) => AlertDialog(backgroundColor: const Color.fromARGB(0, 93, 93, 93),
+                                                          insetPadding: const EdgeInsets.all(2),
+                                                          
+                                                          title: SizedBox(
+                                                            width: MediaQuery.of(context).size.width,
+                                                            child: Hero(tag: state.detail.data.documKesenians, child: CachedNetworkImage(imageUrl: '$baseImageDocArt${doc.documentation}',)),
+                                                          )), context: context); 
+                                                        },
+                                                            child: Container(
+                                                              decoration: BoxDecoration( boxShadow: const [
+                                                              BoxShadow(
+                                                                color: Color.fromARGB(185, 158, 158, 158),
+                                                                offset: Offset(2.0, 2.0),
+                                                                blurRadius: 2.0
+                                                              )
+                                                            ], 
+                                                            border: Border.all(width: 3, color: Colors.white), borderRadius: BorderRadius.circular(12) ), 
+                                                              child: ClipRRect( 
+                                                                borderRadius: BorderRadius.circular(10), 
+                                                              child:
+                                                              FittedBox( 
+                                                                fit:
+                                                                BoxFit.fill,
+                                                                
+                                                                child: CachedNetworkImage(
+                                                                  imageUrl: '$baseImageDocArt${doc.documentation}', 
+                                                                  width: 140,
+                                                                  placeholder: (context, url) => const Center(
+                                                                    child: CircularProgressIndicator(),
+                                                                  ),
+                                                                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                                                                ),
+                                                              ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),).toList(),
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+
+
                                                 // SizedBox(
                                                 //   height: MediaQuery.of(context).size.height * 0.1,
                                                 //   width:  MediaQuery.of(context).size.width,
@@ -210,84 +291,17 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                                 //       return Row(
                                                 //         children: state.detail.data.documKesenians.map((doc) => Padding(
                                                 //           padding: const EdgeInsets.all(4.0),
-                                                //           child: ClipRRect( borderRadius: BorderRadius.circular(10), child:
-                                                //           FittedBox(
-                                                //             fit:
-                                                //             BoxFit.fill,
-                                                //             child: CachedNetworkImage(
-                                                //               imageUrl: '$baseImageDocArt${doc.documentation}',
-                                                //               width: 140,
-                                                //               placeholder: (context, url) => const Center(
-                                                //                 child: CircularProgressIndicator(),
-                                                //               ),
-                                                //               errorWidget: (context, url, error) => const Icon(Icons.error),
-                                                //             ),
-                                                //           ),
-                                                //           ),
-                                                //         ),).toList(),
-                                                //       );
-                                                //     },
-                                                //   ),
-                                                // ),
-                                                SizedBox(
-                                                  height: MediaQuery.of(context).size.height * 0.1,
-                                                  width:  MediaQuery.of(context).size.width,
-                                                  child: ListView.builder(
-                                                    itemCount: state.detail.data.documKesenians.length,
-                                                    padding: EdgeInsets.zero,
-                                                    scrollDirection: Axis.horizontal,
-                                                    itemBuilder: (context, index) {
-                                                      return Row(
-                                                        children: state.detail.data.documKesenians.map((doc) => Padding(
-                                                          padding: const EdgeInsets.all(4.0),
-                                                          child: InkWell(
-                                                              onTap: () {
-                                                          showDialog(builder: (BuildContext context) => AlertDialog(backgroundColor: Colors.transparent,
-                                                          insetPadding: EdgeInsets.all(2),
+                                                //           child: InkWell(
+                                                //               onTap: () {
+                                                //           showDialog(builder: (BuildContext context) => AlertDialog(backgroundColor: Colors.transparent,
+                                                //           insetPadding: EdgeInsets.all(2),
                                                           
-                                                          title: Container(
-                                                            width: MediaQuery.of(context).size.width,
-                                                            child: Hero(tag: state.detail.data.documKesenians, child: CachedNetworkImage(imageUrl: '$baseImageDocArt${doc.documentation}',)),
-                                                          )), context: context); 
-                                                        },
-                                                            child: ClipRRect( borderRadius: BorderRadius.circular(10), child:
-                                                            FittedBox(
-                                                              fit:
-                                                              BoxFit.fill,
-                                                              child: CachedNetworkImage(
-                                                                imageUrl: '$baseImageDocArt${doc.documentation}',
-                                                                width: 140,
-                                                                placeholder: (context, url) => const Center(
-                                                                  child: CircularProgressIndicator(),
-                                                                ),
-                                                                errorWidget: (context, url, error) => const Icon(Icons.error),
-                                                              ),
-                                                            ),
-                                                            ),
-                                                          ),
-                                                        ),).toList(),
-                                                      );
-                                                    },
-                                                  ),
-                                                ),
-
-
-
-                                                // SizedBox(
-                                                //   height: MediaQuery.of(context).size.height * 0.1,
-                                                //   width:  MediaQuery.of(context).size.width ,
-                                                //   child: ListView.builder(
-                                                //     itemCount: state.detail.data.documKesenians.length,
-                                                //     padding: EdgeInsets.zero,
-                                                //     scrollDirection: Axis.horizontal,
-                                                //     itemBuilder: (context, index) {
-                                                //       return InkWell(
-                                                //         child: Row( 
-                                                //           children: state.detail.data.documKesenians.map((doc) => Padding(
-                                                //             padding: const EdgeInsets.all(3.0),
-                                                //             child:  ClipRRect( 
-                                                //               borderRadius: BorderRadius.circular(10), 
-                                                //             child:
+                                                //           title: Container(
+                                                //             width: MediaQuery.of(context).size.width,
+                                                //             child: Hero(tag: state.detail.data.documKesenians, child: CachedNetworkImage(imageUrl: '$baseImageDocArt${doc.documentation}',)),
+                                                //           )), context: context); 
+                                                //         },
+                                                //             child: ClipRRect( borderRadius: BorderRadius.circular(10), child:
                                                 //             FittedBox(
                                                 //               fit:
                                                 //               BoxFit.fill,
@@ -299,23 +313,15 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                                 //                 ),
                                                 //                 errorWidget: (context, url, error) => const Icon(Icons.error),
                                                 //               ),
-                                                //             ), 
                                                 //             ),
-                                                //           ),).toList(),
-                                                //         ),
-                                                        
-                                                //         onTap: () {
-                                                //           showDialog(builder: (BuildContext context) => AlertDialog(backgroundColor: Colors.transparent,
-                                                //           insetPadding: EdgeInsets.all(2),
-                                                //           title: Container(
-                                                //             width: MediaQuery.of(context).size.width,
-                                                //             child: Expanded(child: CachedNetworkImage(imageUrl: '$baseImageDocArt${documentation}',)),
-                                                //           )), context: context);
-                                                //         },
+                                                //             ),
+                                                //           ),
+                                                //         ),).toList(),
                                                 //       );
                                                 //     },
                                                 //   ),
                                                 // ),
+
                                                 // IMAGE DOCUMENTATION DENGAN IMAGE NETWORK
                                                 //   Container(
                                                 //   height: MediaQuery.of(context).size.height * 0.11,
@@ -440,7 +446,8 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                         child: Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
-                                            ClipRRect(borderRadius: BorderRadius.circular(50),
+                                            ClipRRect(
+                                              borderRadius: BorderRadius.circular(50),
                                               child: const Image(image: AssetImage('images/facebook.jpg'),),
                                             ),
                                             // revisi
