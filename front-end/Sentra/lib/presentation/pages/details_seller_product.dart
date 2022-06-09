@@ -6,6 +6,7 @@ import 'package:sentra/common/result_state.dart';
 import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/presentation/provider/detail_provider.dart';
 import 'package:readmore/readmore.dart';
+import 'package:sentra/presentation/widgets/button/button_back.dart';
 
 class DetailSellerProduct extends StatefulWidget {
   static const routeName = '/detail_product';
@@ -32,6 +33,8 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
           id: widget.id, detailApiService: ApiService(),
       ),
       child: Scaffold(
+
+        
         body: Consumer<DetailProvider>(
           builder: (context, state, _) {
             if(state.detailState == ResultState.hasData) {
@@ -39,16 +42,16 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                 length: 2,
                 child: Scaffold(
                   appBar: AppBar(
+                    
                     elevation: 0,
                     toolbarHeight: 70,
                     backgroundColor: const Color.fromARGB(255, 255, 255, 255),
                     title: const Text('Art Details', style: TextStyle(color: Color.fromARGB(255, 45, 74, 148),fontWeight: FontWeight.bold, fontSize: 20), ),
                     centerTitle: true,
                     leading:
-                    Padding(padding: const EdgeInsets.all(12.0),
-                      child: Image.asset("images/logos.jpeg"),
-                    ),
+                    ButtonBack(  ),
                   ),
+                  
                   body:
                   SingleChildScrollView(
                     child: Column(
@@ -147,6 +150,8 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                         ),
                                       ),
                                       // ),
+                                      SizedBox(height: 10,
+                                ),
                                       Container(
                                         alignment: Alignment.bottomLeft,
                                         child: Row(
@@ -170,13 +175,11 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                       Center(
                                         child: Column(
                                           children: [
-                                            const SizedBox(height: 7,),
                                             Column(
                                               children: [
                                                 Container(
                                                   padding: const EdgeInsets.only(left: 3),
                                                 ),
-                                                const SizedBox(width: 12,),
 
                                                 //IMAGE DOCUMMENTATION DENGAN TEXT
                                                 // Container(
@@ -189,14 +192,45 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                                 //       return Container(
                                                 //       height: MediaQuery.of(context).size.height * 0.11,
                                                 //       width:  MediaQuery.of(context).size.height * 0.14,
-                                                //       child: Column(children: state.detail.data.documKesenians.map((doc) => Text(doc.documentation)).toList(),),
+                                                //       child: Column(children: state.detail.data.documKesenians.map((doc) => Text('$baseImageDocArt${doc.documentation}')).toList(),),
                                                 //       );
 
                                                 //     },
                                                 //     ),
                                                 // ),
+                                                
+                                                // SizedBox(
+                                                //   height: MediaQuery.of(context).size.height * 0.1,
+                                                //   width:  MediaQuery.of(context).size.width,
+                                                //   child: ListView.builder(
+                                                //     itemCount: state.detail.data.documKesenians.length,
+                                                //     padding: EdgeInsets.zero,
+                                                //     scrollDirection: Axis.horizontal,
+                                                //     itemBuilder: (context, index) {
+                                                //       return Row(
+                                                //         children: state.detail.data.documKesenians.map((doc) => Padding(
+                                                //           padding: const EdgeInsets.all(4.0),
+                                                //           child: ClipRRect( borderRadius: BorderRadius.circular(10), child:
+                                                //           FittedBox(
+                                                //             fit:
+                                                //             BoxFit.fill,
+                                                //             child: CachedNetworkImage(
+                                                //               imageUrl: '$baseImageDocArt${doc.documentation}',
+                                                //               width: 140,
+                                                //               placeholder: (context, url) => const Center(
+                                                //                 child: CircularProgressIndicator(),
+                                                //               ),
+                                                //               errorWidget: (context, url, error) => const Icon(Icons.error),
+                                                //             ),
+                                                //           ),
+                                                //           ),
+                                                //         ),).toList(),
+                                                //       );
+                                                //     },
+                                                //   ),
+                                                // ),
                                                 SizedBox(
-                                                  height: MediaQuery.of(context).size.height * 0.11,
+                                                  height: MediaQuery.of(context).size.height * 0.1,
                                                   width:  MediaQuery.of(context).size.width,
                                                   child: ListView.builder(
                                                     itemCount: state.detail.data.documKesenians.length,
@@ -206,25 +240,82 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                                       return Row(
                                                         children: state.detail.data.documKesenians.map((doc) => Padding(
                                                           padding: const EdgeInsets.all(4.0),
-                                                          child: ClipRRect( borderRadius: BorderRadius.circular(10), child:
-                                                          FittedBox(
-                                                            fit:
-                                                            BoxFit.fill,
-                                                            child: CachedNetworkImage(
-                                                              imageUrl: '$baseImageDocArt${doc.documentation}',
-                                                              width: 80,
-                                                              placeholder: (context, url) => const Center(
-                                                                child: CircularProgressIndicator(),
+                                                          child: InkWell(
+                                                              onTap: () {
+                                                          showDialog(builder: (BuildContext context) => AlertDialog(backgroundColor: Colors.transparent,
+                                                          insetPadding: EdgeInsets.all(2),
+                                                          
+                                                          title: Container(
+                                                            width: MediaQuery.of(context).size.width,
+                                                            child: Hero(tag: state.detail.data.documKesenians, child: CachedNetworkImage(imageUrl: '$baseImageDocArt${doc.documentation}',)),
+                                                          )), context: context); 
+                                                        },
+                                                            child: ClipRRect( borderRadius: BorderRadius.circular(10), child:
+                                                            FittedBox(
+                                                              fit:
+                                                              BoxFit.fill,
+                                                              child: CachedNetworkImage(
+                                                                imageUrl: '$baseImageDocArt${doc.documentation}',
+                                                                width: 140,
+                                                                placeholder: (context, url) => const Center(
+                                                                  child: CircularProgressIndicator(),
+                                                                ),
+                                                                errorWidget: (context, url, error) => const Icon(Icons.error),
                                                               ),
-                                                              errorWidget: (context, url, error) => const Icon(Icons.error),
                                                             ),
-                                                          ),
+                                                            ),
                                                           ),
                                                         ),).toList(),
                                                       );
                                                     },
                                                   ),
                                                 ),
+
+
+
+                                                // SizedBox(
+                                                //   height: MediaQuery.of(context).size.height * 0.1,
+                                                //   width:  MediaQuery.of(context).size.width ,
+                                                //   child: ListView.builder(
+                                                //     itemCount: state.detail.data.documKesenians.length,
+                                                //     padding: EdgeInsets.zero,
+                                                //     scrollDirection: Axis.horizontal,
+                                                //     itemBuilder: (context, index) {
+                                                //       return InkWell(
+                                                //         child: Row( 
+                                                //           children: state.detail.data.documKesenians.map((doc) => Padding(
+                                                //             padding: const EdgeInsets.all(3.0),
+                                                //             child:  ClipRRect( 
+                                                //               borderRadius: BorderRadius.circular(10), 
+                                                //             child:
+                                                //             FittedBox(
+                                                //               fit:
+                                                //               BoxFit.fill,
+                                                //               child: CachedNetworkImage(
+                                                //                 imageUrl: '$baseImageDocArt${doc.documentation}',
+                                                //                 width: 140,
+                                                //                 placeholder: (context, url) => const Center(
+                                                //                   child: CircularProgressIndicator(),
+                                                //                 ),
+                                                //                 errorWidget: (context, url, error) => const Icon(Icons.error),
+                                                //               ),
+                                                //             ), 
+                                                //             ),
+                                                //           ),).toList(),
+                                                //         ),
+                                                        
+                                                //         onTap: () {
+                                                //           showDialog(builder: (BuildContext context) => AlertDialog(backgroundColor: Colors.transparent,
+                                                //           insetPadding: EdgeInsets.all(2),
+                                                //           title: Container(
+                                                //             width: MediaQuery.of(context).size.width,
+                                                //             child: Expanded(child: CachedNetworkImage(imageUrl: '$baseImageDocArt${documentation}',)),
+                                                //           )), context: context);
+                                                //         },
+                                                //       );
+                                                //     },
+                                                //   ),
+                                                // ),
                                                 // IMAGE DOCUMENTATION DENGAN IMAGE NETWORK
                                                 //   Container(
                                                 //   height: MediaQuery.of(context).size.height * 0.11,
