@@ -23,7 +23,7 @@ class _SearchWidgetState extends State<SearchWidget> {
             child: Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(8),
                   child: TextField(
                     onChanged: (String query) {
                       debugPrint('data: $query');
