@@ -43,27 +43,26 @@ class _BuildFormLogin extends State<FormLogin> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                margin: const EdgeInsets.only(top: 16.0),
-                height: 50,
-                child: TextFormField(
-                  controller: emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
-                    return value!.isEmpty
-                        ? "Email harus diisi!"
-                        : null;
-                  },
-                  decoration: const InputDecoration(
-                    suffix: Icon(
-                      Icons.email,
-                      color: buttonPrimaryColor,
-                    ),
-                    labelText: 'Email ',
-                    border: OutlineInputBorder(
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(8.0))),
+              const SizedBox(
+                height: 16,
+              ),
+              TextFormField(
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                validator: (value) {
+                  return value!.isEmpty
+                      ? "Email harus diisi!"
+                      : null;
+                },
+                decoration: const InputDecoration(
+                  suffix: Icon(
+                    Icons.email,
+                    color: buttonPrimaryColor,
                   ),
+                  labelText: 'Email ',
+                  border: OutlineInputBorder(
+                      borderRadius:
+                      BorderRadius.all(Radius.circular(8.0))),
                 ),
               ),
               const SizedBox(
@@ -129,18 +128,20 @@ class _BuildFormLogin extends State<FormLogin> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () async {
-                    setState(() {
-                      _isLoading = true;
-                    });
                     try {
                       final email = emailController.text;
                       final password = passwordController.text;
 
-                      await _auth.signInWithEmailAndPassword(
-                          email: email, password: password);
-                      // ignore: use_build_context_synchronously
-                      Navigator.pushReplacementNamed(
-                          context, BusinessManagement.routeName);
+                      if(_formKey.currentState!.validate()) {
+                        setState(() {
+                          _isLoading = true;
+                        });
+                        await _auth.signInWithEmailAndPassword(
+                            email: email, password: password);
+                        // ignore: use_build_context_synchronously
+                        Navigator.pushReplacementNamed(
+                            context, BusinessManagement.routeName);
+                      }
                     } catch (e) {
                       final snackbar = SnackBar(content: Text(e.toString()));
                       ScaffoldMessenger.of(context).showSnackBar(snackbar);

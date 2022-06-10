@@ -1,9 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/data/models/dummy/art_list.dart';
+import 'package:sentra/presentation/widgets/widget_pop_up.dart';
 
 class ItemKeseniansAdmin extends StatelessWidget{
   const ItemKeseniansAdmin({Key? key}) : super(key: key);
+
+  _showDialog(BuildContext context)
+  {
+      // ignore: prefer_function_declarations_over_variables
+      VoidCallback continueCallBack = () => {
+        Navigator.of(context).pop(),
+        // code on continue comes here
+
+      };
+      BlurryDialog  alert = BlurryDialog("Peringatan!","Apakah kamu yakin mau menghapus data ini?",continueCallBack);
+
+
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        },
+      );
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -115,6 +135,7 @@ class ItemKeseniansAdmin extends StatelessWidget{
                         icon: const Icon(Icons.edit, color: Colors.white),
                         tooltip: 'Edit data',
                         onPressed: () {
+                          // Navigator.pushNamed(context, PopUpPage.routeName);
                         },
                       ),
                     ),
@@ -135,6 +156,7 @@ class ItemKeseniansAdmin extends StatelessWidget{
                         icon: const Icon(Icons.delete, color: Colors.white),
                         tooltip: 'Delete data',
                         onPressed: () {
+                          _showDialog(context);
                         },
                       ),
                     ),

@@ -27,6 +27,7 @@ import 'package:sentra/presentation/provider/province_query_provider.dart';
 import 'package:sentra/presentation/provider/art_list_provider.dart';
 import 'package:sentra/presentation/provider/search_art_provider.dart';
 import 'package:sentra/presentation/provider/update_list_provider.dart';
+import 'package:sentra/presentation/widgets/widget_pop_up.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -87,6 +88,7 @@ class MyApp extends StatelessWidget {
           ProvinceMorePage.routeName: (context) => const ProvinceMorePage(),
           AboutPage.routeName: (context) => const AboutPage(),
           UserSetting.routeName: (context) => const UserSetting(),
+          // PopUpPage.routeName: (context) => const PopUpPage(),
           DetailSellerProduct.routeName: (context) => DetailSellerProduct(
             id: ModalRoute.of(context)?.settings.arguments as String),
           CreateArt.routeName: (context) => const CreateArt(),

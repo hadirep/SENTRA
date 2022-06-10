@@ -70,7 +70,7 @@ class BusinessManagement extends StatelessWidget {
               height: 20,
             ),
             Container(
-              height: 60,
+              height: 40,
               alignment: Alignment.bottomCenter,
               child: const Center(
                 child: Text(
