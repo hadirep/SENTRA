@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               leading: const Icon(Icons.home_rounded, color: Color(0xffdc7e00)),
               title: const Text(
-                "Home",
+                "Beranda",
                 style: TextStyle(
                   color: textPrimaryColor,
                   fontWeight: FontWeight.bold,
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               leading: const Icon(Icons.stars, color: Color(0xffF0BE41)),
               title: const Text(
-                'Favorite List',
+                'Favorite',
                 style: TextStyle(
                   color: textPrimaryColor,
                   fontWeight: FontWeight.bold,
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
               },
               leading: const Icon(Icons.info, color: Color(0xff2d4b94)),
               title: const Text(
-                'About Us',
+                'Tentang Kami',
                 style: TextStyle(
                   color: textPrimaryColor,
                   fontWeight: FontWeight.bold,
@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
               },
               leading: const Icon(Icons.settings, color: Color(0xff969696)),
               title: const Text(
-                'Settings',
+                'Pengaturan',
                 style: TextStyle(
                   color: textPrimaryColor,
                   fontWeight: FontWeight.bold,
@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
         automaticallyImplyLeading: false,
         elevation: 0,
         title: const Text(
-          'Home',
+          'Beranda',
           style: TextStyle(color: textPrimaryColor, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -129,20 +129,20 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 15),
               const Text(
-                "Welcome,",
+                "Selamat datang,",
                 style: TextStyle(
                   fontSize: 18, fontWeight: FontWeight.bold, color: textPrimaryColor,
                 ),
               ),
               const Text(
-                "what kind of art do you want to see?",
+                "seni apa yang ingin kamu lihat?",
                 style: TextStyle(
                   fontSize: 15, color: textPrimaryColor,
                 ),
               ),
               const SizedBox(height: 15),
               moreAction(
-                title: 'Filter By Province',
+                title: 'Provinsi',
                 onTap: () => Navigator.pushNamed(context, ProvinceMorePage.routeName),
               ),
               Consumer<ProvinceListProvider>(
@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage> {
               //   onTap: () => Navigator.pushNamed(context, NewUpdateList.routeName),
               // ),*/
               moreAction(
-                title: 'New Update',
+                title: 'Rekomendasi',
                 onTap: () => Navigator.pushNamed(context, ""),
               ),
               Consumer<UpdateListProvider>(
@@ -215,8 +215,8 @@ class _HomePageState extends State<HomePage> {
                 title: 'All Arts',
                 onTap: () => Navigator.pushNamed(context, AllArtsList.routeName),
               ),*/
-                            moreAction(
-                title: 'All Arts',
+              moreAction(
+                title: 'Daftar semua seni',
                 onTap: () => Navigator.pushNamed(context, ""),
               ),
               Consumer<ArtListProvider>(

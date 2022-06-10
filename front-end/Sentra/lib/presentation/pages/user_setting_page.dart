@@ -17,7 +17,7 @@ class UserSetting extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         title: const Text(
-          'Settings',
+          'Pengaturan',
           style: TextStyle(
             color: Color.fromARGB(255, 45, 74, 148),
             fontWeight: FontWeight.bold,
@@ -34,64 +34,22 @@ class UserSetting extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Image.asset("assets/dummy_data/profile_pict.png"),
-                ],
-              ),
-              const Text(
-                'Nama User',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Color.fromARGB(255, 45, 74, 148),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24
-                ),
-              ),
-              TextButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, ProductManagement.routeName);
-                },
-                child: const Text(
-                  'edit profile',
-                  style: TextStyle(
-                    color: secondaryColor,
-                    fontSize: 13,
-                  ),
-                ),
-              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'My Account',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: buttonPrimaryColor,
-                          ),
-                        ),
-                      ],
-                    ),
                     Card(
                       child: ListTile(
-                        leading: const Icon(Icons.add_box, color: Color(0xffdc7e00)),
+                        leading: const Icon(Icons.circle_notifications, color: Color(0xffdc7e00)),
                         title: const Text(
-                          'Management',
+                          'Notifikasi',
                           style: TextStyle(
                             color: buttonPrimaryColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         trailing: const Icon(
-                            Icons.navigate_next, color: Color(0xffdc7e00),
+                            Icons.radio_button_off, color: Color(0xffdc7e00),
                         ),
                         onTap: () {
                           Navigator.pushNamed(context, ProductManagement.routeName);
@@ -101,17 +59,17 @@ class UserSetting extends StatelessWidget {
                     Card(
                       child: ListTile(
                         leading: const Icon(
-                          Icons.login_outlined, color: Color(0xffF0BE41),
+                          Icons.dark_mode, color: Color(0xffF0BE41),
                         ),
                         title: const Text(
-                          'Logout',
+                          'Mode Gelap',
                           style: TextStyle(
                             color: buttonPrimaryColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         trailing: const Icon(
-                          Icons.navigate_next, color: Color(0xffdc7e00),
+                          Icons.radio_button_off, color: Color(0xffdc7e00),
                         ),
                         onTap: () {
                           Navigator.pushNamed(context, HomePage.routeName);

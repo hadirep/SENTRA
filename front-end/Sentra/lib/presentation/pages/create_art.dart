@@ -7,15 +7,15 @@ import 'package:sentra/presentation/widgets/button/button_back.dart';
 
 import '../../common/style.dart';
 
-class ProductManagement extends StatefulWidget {
-  static const routeName = '/product-management';
-  const ProductManagement({ Key? key }) : super(key: key);
+class CreateArt extends StatefulWidget {
+  static const routeName = '/create-art';
+  const CreateArt({ Key? key }) : super(key: key);
 
   @override
-  State<ProductManagement> createState() => _ProductManagementState();
+  State<CreateArt> createState() => _CreateArtState();
 }
 
-class _ProductManagementState extends State<ProductManagement> {
+class _CreateArtState extends State<CreateArt> {
   final borderRadius = BorderRadius.circular(10);
   File? image;
   File? imageDocummentation;
@@ -77,7 +77,7 @@ class _ProductManagementState extends State<ProductManagement> {
           child: ButtonBack(),
         ),
         title: const Text(
-          'Edit',
+          'Tambah Data',
           style: TextStyle(color: textPrimaryColor, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,

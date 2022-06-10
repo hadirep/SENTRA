@@ -102,9 +102,9 @@ class _BuildFormRegister extends State<FormRegister> {
                 keyboardType: TextInputType.text,
                 validator: (confirmPassword) {
                   if (confirmPassword == null || confirmPassword.isEmpty) {
-                    return "Confirm password must not be empty";
+                    return "Konfirmasi kata sandi tidak boleh kosong";
                   } else if (confirmPassword != passwordController.text) {
-                    return "Confirm password must match with password";
+                    return "Konfirmasi kata sandi harus sesuai dengan kata sandi";
                   }
                   return null;
                 },
@@ -188,7 +188,7 @@ class _BuildFormRegister extends State<FormRegister> {
                     ),
                     TextButton(
                       child: const Text(
-                        'Ayo Login!',
+                        'Ayo Masuk!',
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,

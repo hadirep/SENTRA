@@ -25,7 +25,7 @@ class AboutPage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.symmetric(),
                       child: Text(
-                        'About Us',
+                        'Tentang Kami',
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
@@ -51,7 +51,7 @@ class AboutPage extends StatelessWidget {
                               const Padding(
                                 padding: EdgeInsets.only(top: 10, left: 57, right: 57),
                                 child: Text(
-                                  'Hello, Sentra`s!',
+                                  'Hallo, Sentra!',
                                   style: TextStyle(
                                     fontSize: 31,
                                     fontWeight: FontWeight.bold,
@@ -62,7 +62,7 @@ class AboutPage extends StatelessWidget {
                               const Padding(
                                 padding: EdgeInsets.only(top: 10, left: 57, right: 57),
                                 child: Text(
-                                  'we’re a mobile-based traditional art service provider to make it easier for you to hire traditional Indonesian performing arts services.',
+                                  'kami adalah penyedia layanan seni tradisional berbasis mobile untuk memudahkan Anda menyewa layanan seni pertunjukan tradisional Indonesia.',
                                   style: TextStyle(
                                     fontSize: 11,
                                     color: textSecondColor,
@@ -73,7 +73,7 @@ class AboutPage extends StatelessWidget {
                                 padding: EdgeInsets.only(top: 50, left: 50, right: 50),
                                 child: Center(
                                   child: Text(
-                                    'We’d love to hear about more traditional art',
+                                    'Kami ingin mendengar tentang lebih banyak seni tradisional',
                                     style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold,
@@ -85,7 +85,7 @@ class AboutPage extends StatelessWidget {
                               const Padding(
                                 padding: EdgeInsets.only(top: 10, left: 50, right: 50, bottom: 30),
                                 child: Text(
-                                  'Are you willing to help people find traditional performing arts easily?',
+                                  'Apakah Anda bersedia membantu orang menemukan seni pertunjukan tradisional dengan mudah?',
                                   style: TextStyle(
                                     fontSize: 11,
                                     color: textSecondColor,
@@ -103,7 +103,7 @@ class AboutPage extends StatelessWidget {
                                   ),
                                 ),
                                 child: const Text(
-                                  'Login',
+                                  'Masuk',
                                   style: TextStyle(
                                     color: primaryColor,
                                     fontSize: 20,
@@ -113,7 +113,7 @@ class AboutPage extends StatelessWidget {
                               const Padding(
                                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
                                 child: Text(
-                                  'Contact Us At',
+                                  'Hubungi Kami',
                                   style: TextStyle(
                                     fontSize: 22,
                                     color: secondaryColor,
@@ -127,7 +127,7 @@ class AboutPage extends StatelessWidget {
                                   child: ListTile(
                                     leading: const Icon(Icons.alternate_email, color: secondaryColor),
                                     title: const Text(
-                                      'alamat email',
+                                      'Alamat Email',
                                       style: TextStyle(
                                           color: buttonPrimaryColor,
                                           fontSize: 18
@@ -144,7 +144,7 @@ class AboutPage extends StatelessWidget {
                                   child: ListTile(
                                     leading: const Icon(Icons.whatsapp, color: secondaryColor),
                                     title: const Text(
-                                      'nomer wa',
+                                      'Nomor WhatsApp',
                                       style: TextStyle(
                                           color: buttonPrimaryColor,
                                           fontSize: 18

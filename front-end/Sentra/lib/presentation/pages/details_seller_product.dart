@@ -46,7 +46,7 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                     elevation: 0,
                     toolbarHeight: 70,
                     backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-                    title: const Text('Art Details', style: TextStyle(color: Color.fromARGB(255, 45, 74, 148),fontWeight: FontWeight.bold, fontSize: 20), ),
+                    title: const Text('Detail Seni', style: TextStyle(color: Color.fromARGB(255, 45, 74, 148),fontWeight: FontWeight.bold, fontSize: 20), ),
                     centerTitle: true,
                     leading:
                     const ButtonBack(  ),
@@ -117,8 +117,8 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             tabs: const [
-                              Tab(child:  Text('Description', style: TextStyle(color:  Color.fromARGB(255, 221, 221, 221), fontWeight: FontWeight.bold, fontSize: 17)),),
-                              Tab(child:  Text('Contacts', style: TextStyle(color: Color.fromARGB(255, 221, 221, 221), fontWeight: FontWeight.bold, fontSize: 17)),)
+                              Tab(child:  Text('Deskripsi', style: TextStyle(color:  Color.fromARGB(255, 221, 221, 221), fontWeight: FontWeight.bold, fontSize: 17)),),
+                              Tab(child:  Text('Kontak', style: TextStyle(color: Color.fromARGB(255, 221, 221, 221), fontWeight: FontWeight.bold, fontSize: 17)),)
                             ],
                           ),
                         ),
@@ -146,14 +146,13 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                             // trimLines: 2,
                                             trimLength: 500,
                                             colorClickableText: const Color.fromARGB(255, 45, 74, 148),
-                                            trimCollapsedText: '\nread more',
-                                            trimExpandedText: 'close',
+                                            trimCollapsedText: '\nlihat semua',
+                                            trimExpandedText: 'tutup',
                                           ),
                                         ),
                                       ),
                                       // ),
-                                      const SizedBox(height: 10,
-                                ),
+                                      const SizedBox(height: 10),
                                       Container(
                                         alignment: Alignment.bottomLeft,
                                         child: Row(
@@ -161,7 +160,11 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                             const Padding(
                                               padding: EdgeInsets.only(left:5.0),
                                               child: Text(
-                                                "Docummentations", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15, color: Color.fromARGB(255, 234, 132, 0),),
+                                                "Dokumentasi",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w600, fontSize: 15,
+                                                  color: Color.fromARGB(255, 234, 132, 0),
+                                                ),
                                               ),
                                             ),
                                             Container(
@@ -179,9 +182,7 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                           children: [
                                             Column(
                                               children: [
-                                                Container(
-                                                  padding: const EdgeInsets.only(left: 3),
-                                                ),
+                                                Container(padding: const EdgeInsets.only(left: 3)),
 
                                                 // SizedBox(
                                                 //   height: MediaQuery.of(context).size.height * 0.1,

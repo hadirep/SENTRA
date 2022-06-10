@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:provider/provider.dart';
@@ -15,46 +14,46 @@ class SearchPage extends StatelessWidget {
 
   Widget _blocArt() {
   return Consumer<SearchArtProvider>(
-      builder: (context, state, _) {
-        if (state.artState == ArtState.loading) {
-          return Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const LinearProgressIndicator(
-                  minHeight: 5,
-                  color: secondaryColor,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text('Memuat Data Kesenian...',
-                    style: Theme.of(context).textTheme.subtitle1)
-              ],
-            ),
-          );
-        } else if (state.artState == ArtState.hasData) {
-          return ListView.builder(
-            shrinkWrap: true,
-            itemCount: state.searchArt!.data.length,
-            itemBuilder: (context, index) {
-              var arts = state.searchArt!.data[index];
-              return ArtCard(art: arts);
-            },
-          );
-        } else if (state.artState == ArtState.error) {
-          return Expanded(
-            child: Center(
-              child: Text(state.message),
-            ),
-          );
-        } else {
-          return Expanded(
-            child: Container(),
-          );
-        }
-      });
+    builder: (context, state, _) {
+      if (state.artState == ArtState.loading) {
+        return Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const LinearProgressIndicator(
+                minHeight: 5,
+                color: secondaryColor,
+              ),
+              const SizedBox(height: 10),
+              Text('Memuat Data Kesenian...',
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
+            ],
+          ),
+        );
+      } else if (state.artState == ArtState.hasData) {
+        return ListView.builder(
+          shrinkWrap: true,
+          itemCount: state.searchArt!.data.length,
+          itemBuilder: (context, index) {
+            var arts = state.searchArt!.data[index];
+            return ArtCard(art: arts);
+          },
+        );
+      } else if (state.artState == ArtState.error) {
+        return Expanded(
+          child: Center(
+            child: Text(state.message),
+          ),
+        );
+      } else {
+        return Expanded(
+          child: Container(),
+        );
+      }
+    },
+  );
 }
 
   @override
@@ -92,7 +91,7 @@ class SearchPage extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.stars, color: Colors.yellow),
               title: const Text(
-                'Favorite List',
+                'Favorite',
                 style: TextStyle(
                   color: Color(0xff2d4b94), fontWeight: FontWeight.bold,
                 ),
@@ -107,7 +106,7 @@ class SearchPage extends StatelessWidget {
               },
               leading: const Icon(Icons.info, color: Colors.white),
               title: const Text(
-                'About Us',
+                'Tentang Kami',
                 style: TextStyle(
                   color: Color(0xff2d4b94), fontWeight: FontWeight.bold,
                 ),
@@ -119,7 +118,7 @@ class SearchPage extends StatelessWidget {
               },
               leading: const Icon(Icons.settings, color: Colors.grey),
               title: const Text(
-                'Settings',
+                'Pengaturan',
                 style: TextStyle(
                   color: Color(0xff2d4b94), fontWeight: FontWeight.bold,
                 ),
@@ -133,8 +132,11 @@ class SearchPage extends StatelessWidget {
         title: const Align(
           alignment: Alignment.center,
           child: Text(
-            'Search',
-            style: TextStyle(color: Color(0xff2d4b94), fontWeight: FontWeight.bold),
+            'Pencarian',
+            style: TextStyle(
+              color: Color(0xff2d4b94),
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         actions: <Widget>[
@@ -146,7 +148,7 @@ class SearchPage extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-          )
+          ),
         ],
         backgroundColor: Colors.white,
         leading : Padding(
@@ -165,8 +167,7 @@ class SearchPage extends StatelessWidget {
         connectivityBuilder: (
             BuildContext context,
             ConnectivityResult connectivity,
-            Widget child,
-            ) {
+            Widget child) {
           final bool connected = connectivity != ConnectivityResult.none;
           if (connected) {
             return Visibility(
@@ -211,7 +212,8 @@ class SearchPage extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .subtitle1!
-                    .copyWith(fontWeight: FontWeight.bold),
+                    .copyWith(fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           );

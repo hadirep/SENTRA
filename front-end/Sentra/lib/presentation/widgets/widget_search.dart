@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sentra/presentation/provider/search_art_provider.dart';
@@ -53,7 +52,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                         fontSize: 14,
                         color: Colors.grey.shade500,
                       ),
-                      hintText: "search here...",
+                      hintText: "cari disini...",
                     ),
                   ),
                 ),

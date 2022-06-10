@@ -18,7 +18,7 @@ Row moreAction({required String title, required Function() onTap}){
           child: Row(
             children: const [
               Text(
-                'More',
+                'Semua',
                 style: TextStyle(
                   fontSize: 15, color: textPrimaryColor,
                 ),

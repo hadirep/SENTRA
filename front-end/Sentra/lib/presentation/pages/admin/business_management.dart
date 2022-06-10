@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/item/list_kesenians_admin.dart';
+import 'package:sentra/presentation/pages/create_art.dart';
 import 'package:sentra/presentation/pages/login_page.dart';
 
 class BusinessManagement extends StatelessWidget {
@@ -15,15 +16,32 @@ class BusinessManagement extends StatelessWidget {
         padding: const EdgeInsets.only(left: 18, right: 18),
         child: Column(
           children: [
+            SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 InkWell(
                   onTap: () {
                   },
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(150),
-                    child: Image.asset("assets/logo/sentra.png", width: 40, height: 40,),
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(
+                        color: secondaryColor,
+                        borderRadius: BorderRadius.all(Radius.circular(8))
+                    ),
+                    child: IconButton(
+                      iconSize: 20,
+                      icon: const Icon(Icons.logout, color: Color(0xfff0be41)),
+                      tooltip: 'Keluar',
+                      onPressed: () async {
+                        await auth.signOut();
+                        Navigator.pushReplacementNamed(
+                            context, LoginPage.routeName);
+                        // Navigator.pop(context);
+                      },
+                    ),
                   ),
                 ),
                 Container(
@@ -37,11 +55,11 @@ class BusinessManagement extends StatelessWidget {
                   child: IconButton(
                     iconSize: 20,
                     icon: const Icon(Icons.add, color: Color(0xfff0be41)),
-                    tooltip: 'Add data',
+                    tooltip: 'Tambah data',
                     onPressed: () async {
                       await auth.signOut();
                       Navigator.pushReplacementNamed(
-                          context, LoginPage.routeName);
+                          context, CreateArt.routeName);
                       // Navigator.pop(context);
                     },
                   ),
@@ -56,7 +74,7 @@ class BusinessManagement extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: const Center(
                 child: Text(
-                  'List Kesenian Nusanatara',
+                  'List Kesenian Nusantara',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w800,

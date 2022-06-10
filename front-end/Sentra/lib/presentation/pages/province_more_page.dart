@@ -22,7 +22,7 @@ class _ProvinceMorePageState extends State<ProvinceMorePage> {
         title: const Align(
           alignment: Alignment.center,
           child: Text(
-            'Filter By Provience',
+            'Provinsi',
             style: TextStyle(color: textPrimaryColor, fontWeight: FontWeight.bold),
           ),
         ),

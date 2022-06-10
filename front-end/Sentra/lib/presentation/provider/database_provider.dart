@@ -23,7 +23,7 @@ class DatabaseProvider extends ChangeNotifier {
   ///get bookmarks data from database
   void _getFavorite() async {
     _favorites = await databaseHelper.getFavorite();
-    if (_favorites.length > 0) {
+    if (_favorites.isNotEmpty) {
       _state = ResultState.hasData;
     } else {
       _state = ResultState.noData;
