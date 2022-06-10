@@ -90,36 +90,36 @@ class _CreateArtState extends State<CreateArt> {
               const SizedBox(height: 20),
               Column(
                 children: [
-                  Container(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.14,
-                      width:  MediaQuery.of(context).size.height * 0.14,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(width: 4, color: Colors.white),
-                        image: const DecorationImage(image: AssetImage('images/pencaksilat_pm_p.jpg'),
-                          fit: BoxFit.fill,
-                        ),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.grey,
-                            offset: Offset(1.0, 5.0),
-                            blurRadius: 6.0,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Container(alignment: Alignment.topCenter,
-                    child: const Text("rentral",
-                      style: TextStyle(
-                        fontSize: 22, fontWeight: FontWeight.w800,
-                        color: Color.fromARGB(255, 204, 203, 203),
-                      ),
-                    ),
-                  ),
+                  // Container(
+                  //   alignment: Alignment.topCenter,
+                  //   child: Container(
+                  //     height: MediaQuery.of(context).size.height * 0.14,
+                  //     width:  MediaQuery.of(context).size.height * 0.14,
+                  //     decoration: BoxDecoration(
+                  //       shape: BoxShape.circle,
+                  //       border: Border.all(width: 4, color: Colors.white),
+                  //       image: const DecorationImage(image: AssetImage('images/pencaksilat_pm_p.jpg'),
+                  //         fit: BoxFit.fill,
+                  //       ),
+                  //       boxShadow: const [
+                  //         BoxShadow(
+                  //           color: Colors.grey,
+                  //           offset: Offset(1.0, 5.0),
+                  //           blurRadius: 6.0,
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                  // const SizedBox(height: 10),
+                  // Container(alignment: Alignment.topCenter,
+                  //   child: const Text("rentral",
+                  //     style: TextStyle(
+                  //       fontSize: 22, fontWeight: FontWeight.w800,
+                  //       color: Color.fromARGB(255, 204, 203, 203),
+                  //     ),
+                  //   ),
+                  // ),
                   const SizedBox(height: 10),
                   Padding(padding: const EdgeInsets.all(22),
                     child: Column(
@@ -161,6 +161,134 @@ class _CreateArtState extends State<CreateArt> {
                           alignment: Alignment.topLeft,
                           child: const Text(
                             "Deskripsi",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 234, 132, 0),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height:  MediaQuery.of(context).size.height * 0.04,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              labelStyle: const TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10,),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: const Text(
+                            "Kategori",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 234, 132, 0),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height:  MediaQuery.of(context).size.height * 0.04,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              labelStyle: const TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10,),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: const Text(
+                            "Nomor Telepon",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 234, 132, 0),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height:  MediaQuery.of(context).size.height * 0.04,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              labelStyle: const TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10,),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: const Text(
+                            "Username Instagram",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 234, 132, 0),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height:  MediaQuery.of(context).size.height * 0.04,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              labelStyle: const TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10,),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: const Text(
+                            "Akun Facebook",
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500,

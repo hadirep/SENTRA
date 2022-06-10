@@ -7,6 +7,7 @@ import 'package:sentra/data/models/province_list_model.dart';
 import 'package:sentra/data/models/province_query_model.dart';
 import 'package:sentra/presentation/pages/about_page.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
+import 'package:sentra/presentation/pages/art_list_more_page.dart';
 import 'package:sentra/presentation/pages/create_art.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
 import 'package:sentra/presentation/pages/favorite_list.dart';
@@ -14,6 +15,7 @@ import 'package:sentra/presentation/pages/home_page.dart';
 import 'package:sentra/presentation/pages/login_page.dart';
 import 'package:sentra/presentation/pages/product_management.dart';
 import 'package:sentra/presentation/pages/search_art_page.dart';
+import 'package:sentra/presentation/pages/update_more_page.dart';
 import 'package:sentra/presentation/pages/user_setting_page.dart';
 import 'package:sentra/presentation/pages/register_page.dart';
 import 'package:sentra/presentation/pages/province_detail_page.dart';
@@ -27,7 +29,6 @@ import 'package:sentra/presentation/provider/province_query_provider.dart';
 import 'package:sentra/presentation/provider/art_list_provider.dart';
 import 'package:sentra/presentation/provider/search_art_provider.dart';
 import 'package:sentra/presentation/provider/update_list_provider.dart';
-import 'package:sentra/presentation/widgets/widget_pop_up.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -92,6 +93,8 @@ class MyApp extends StatelessWidget {
           DetailSellerProduct.routeName: (context) => DetailSellerProduct(
             id: ModalRoute.of(context)?.settings.arguments as String),
           CreateArt.routeName: (context) => const CreateArt(),
+          ArtListMorePage.routeName: (context) => const ArtListMorePage(),
+          UpdateMorePage.routeName: (context) => const UpdateMorePage(),
         },
       ),
     );

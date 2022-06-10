@@ -3,8 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:sentra/common/result_state.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/pages/about_page.dart';
+import 'package:sentra/presentation/pages/art_list_more_page.dart';
 import 'package:sentra/presentation/pages/favorite_list.dart';
 import 'package:sentra/presentation/pages/search_art_page.dart';
+import 'package:sentra/presentation/pages/update_more_page.dart';
 import 'package:sentra/presentation/pages/user_setting_page.dart';
 import 'package:sentra/presentation/provider/art_list_provider.dart';
 import 'package:sentra/presentation/provider/update_list_provider.dart';
@@ -174,13 +176,9 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               const SizedBox(height: 15),
-              // /* moreAction(
-              //   title: 'New Update',
-              //   onTap: () => Navigator.pushNamed(context, NewUpdateList.routeName),
-              // ),*/
               moreAction(
                 title: 'Rekomendasi',
-                onTap: () => Navigator.pushNamed(context, ""),
+                onTap: () => Navigator.pushNamed(context, UpdateMorePage.routeName),
               ),
               Consumer<UpdateListProvider>(
                 builder: (context, state, _) {
@@ -211,13 +209,9 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               const SizedBox(height: 15),
-              /*moreAction(
-                title: 'All Arts',
-                onTap: () => Navigator.pushNamed(context, AllArtsList.routeName),
-              ),*/
               moreAction(
                 title: 'Daftar semua seni',
-                onTap: () => Navigator.pushNamed(context, ""),
+                onTap: () => Navigator.pushNamed(context, ArtListMorePage.routeName),
               ),
               Consumer<ArtListProvider>(
                 builder: (context, state, _) {
