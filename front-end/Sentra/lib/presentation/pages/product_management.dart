@@ -5,6 +5,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 
+import '../../common/style.dart';
+
 class ProductManagement extends StatefulWidget {
   static const routeName = '/product-management';
   const ProductManagement({ Key? key }) : super(key: key);

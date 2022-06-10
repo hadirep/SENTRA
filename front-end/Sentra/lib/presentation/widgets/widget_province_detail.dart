@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
+import 'package:sentra/common/constants.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/data/models/detail_model.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
@@ -63,56 +65,6 @@ class _WidgetProvinceDetailState extends State<WidgetProvinceDetail> {
                        const Padding(
                          padding: EdgeInsets.only(
                              top: 17, right: 10),
-                         // child: StarButton(),
-                         // child: ElevatedButton(
-                         //   onPressed: ()  async
-                         //   {
-                         //      if(!getFavoriteStatus) {
-                         //       Provider.of<DetailNotifier>(context,
-                         //       listen: false).addWatchlist(art);
-                         //     } else {
-                         //       Provider.of<DetailNotifier>(context, listen: false).removeFromWatchlist(art);
-                         //     }
-
-                         //     final message =
-                         //                 Provider.of<DetailNotifier>(context,
-                         //                         listen: false)
-                         //                     .favoritemessage;
-
-                         //             if (message ==
-                         //                     DetailNotifier
-                         //                         .addedFavorite ||
-                         //                 message ==
-                         //                     DetailNotifier
-                         //                         .removedFavorite) {
-                         //               ScaffoldMessenger.of(context).showSnackBar(
-                         //                   SnackBar(content: Text(message)));
-                         //             } else {
-                         //               showDialog(
-                         //                   context: context,
-                         //                   builder: (context) {
-                         //                     return AlertDialog(
-                         //                       content: Text(message),
-                         //                     );
-                         //                   });
-                         //             }
-                         //   },
-                         //   // {
-                         //   //   if(!getFavoriteStatus) {
-                         //   //     BlocProvider.of<DetailBloc>(context,
-                         //   //     listen: false).add(OnAddFavorite(art));
-                         //   //   } else {
-                         //   //     BlocProvider.of<DetailBloc>(context, listen: false).add(OnRemoveFavorite(art));
-                         //   //   }
-                         //   // },
-                         //   child : Row(
-                         //     mainAxisSize: MainAxisSize.min,
-                         //     children: [
-                         //       getFavoriteStatus ? const Icon (Icons.star_border, color: Color.fromARGB(255, 240, 190, 65),)
-                         //       : const Icon(Icons.star_border_outlined,  color: Color.fromARGB(255, 240, 190, 65))
-                         //     ],
-                         //   )
-                         // ),
                        ),
                        const SizedBox(height: 140,),
                        Container(
@@ -135,12 +87,6 @@ class _WidgetProvinceDetailState extends State<WidgetProvinceDetail> {
                  ],
                ),
                const SizedBox(height:15,),
-               // Container(
-               //   decoration: BoxDecoration(
-               //     borderRadius: BorderRadius.circular(15),
-               //   ),
-               // padding: const EdgeInsets.all(20),
-               // child:
                TabBar(
                  indicator: BoxDecoration(
                    color: const Color.fromARGB(255, 45, 74, 148),
@@ -160,23 +106,23 @@ class _WidgetProvinceDetailState extends State<WidgetProvinceDetail> {
                          padding: const EdgeInsets.only(left: 15, right: 15),
                          child: Column(
                            crossAxisAlignment: CrossAxisAlignment.start,
-                           children: [
-                             SingleChildScrollView(
-                               scrollDirection: Axis.vertical,
-                               child: SizedBox(
+                           children: [ SizedBox(
                                  // color: Colors.white,
                                  child: Padding(
                                    padding: const EdgeInsets.only(right: 9, top: 15),
                                    child: ReadMoreText(widget.provinceDetail.description,
-                                     style: const TextStyle(color:  Color.fromARGB(255, 190, 190, 190),fontWeight: FontWeight.w400 , fontSize: 13),
-                                     trimLines: 7,
-                                     colorClickableText: const Color.fromARGB(255, 209, 0, 0),
-                                     trimCollapsedText: 'read more',
-                                     trimExpandedText: 'close',
+                                            style: const TextStyle(color:  Color.fromARGB(255, 190, 190, 190),fontWeight: FontWeight.w400 , fontSize: 13),
+                                            // trimLines: 2,
+                                            trimLength: 500,
+                                            colorClickableText: const Color.fromARGB(255, 45, 74, 148),
+                                            trimCollapsedText: '\nread more',
+                                            trimExpandedText: 'close',
                                    ),
                                  ),
                                ),
-                             ),
+                               const SizedBox(height: 10,),
+
+                             
                              Container(
                                alignment: Alignment.bottomLeft,
                                child: Row(
@@ -202,75 +148,61 @@ class _WidgetProvinceDetailState extends State<WidgetProvinceDetail> {
                                  ],
                                ),
                              ),
-                             Center(
-                               child: Column(
-                                 children: [
-                                   const SizedBox(height: 7),
-                                   Row(
-                                     children: [
-                                       Container(
-                                         padding: const EdgeInsets.only(left: 0),
-                                         child: Container(
-                                           height: MediaQuery.of(context).size.height * 0.11,
-                                           width:  MediaQuery.of(context).size.height * 0.14,
-                                           decoration: BoxDecoration(
-                                             borderRadius: BorderRadius.circular(10),
-                                             image: const DecorationImage(
-                                               image: AssetImage('images/tariseblang_d.jpg'),
-                                               fit: BoxFit.fill,
-                                             ),
-                                             boxShadow: const [
-                                               BoxShadow(
-                                                 color: Colors.grey,
-                                                 offset: Offset(1.0, 5.0),
-                                                 blurRadius: 6.0,
-                                               ),
-                                             ],
-                                           ),
-                                         ),
-                                       ),
-                                       const SizedBox(width: 12,),
-                                       Container(
-                                         height: MediaQuery.of(context).size.height * 0.11,
-                                         width:  MediaQuery.of(context).size.height * 0.14,
-                                         decoration: BoxDecoration(
-                                           borderRadius: BorderRadius.circular(10),
-                                           image: const DecorationImage(image: AssetImage('images/tariseblang_dd.jpeg'),
-                                             fit: BoxFit.fill,
-                                           ),
-                                           boxShadow: const [
-                                             BoxShadow(
-                                               color: Colors.grey,
-                                               offset: Offset(1.0, 5.0),
-                                               blurRadius: 6.0,
-                                             ),
-                                           ],
-                                         ),
-                                       ),
-                                       const SizedBox(width: 12,),
-                                       Container(
-                                         height: MediaQuery.of(context).size.height * 0.11,
-                                         width:  MediaQuery.of(context).size.height * 0.14,
-                                         decoration: BoxDecoration(
-                                           borderRadius: BorderRadius.circular(10),
-                                           image: const DecorationImage(
-                                             image: AssetImage('images/tariseblang_ddd.jpg'),
-                                             fit: BoxFit.fill,
-                                           ),
-                                           boxShadow: const [
-                                             BoxShadow(
-                                               color: Colors.grey,
-                                               offset: Offset(1.0, 5.0),
-                                               blurRadius: 6.0,
-                                             ),
-                                           ],
-                                         ),
-                                       ),
-                                     ],
-                                   ),
-                                 ],
-                               ),
-                             ),
+                             
+                                      Center(
+                                        child: Column(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                Container(
+                                                  padding: const EdgeInsets.only(left: 3),
+                                                ),
+                                                SizedBox(
+                                                  height: MediaQuery.of(context).size.height * 0.1,
+                                                  width:  MediaQuery.of(context).size.width,
+                                                  child: ListView.builder(
+                                                    itemCount: widget.provinceDetail.documKesenians.length,
+                                                    padding: EdgeInsets.zero,
+                                                    scrollDirection: Axis.horizontal,
+                                                    itemBuilder: (context, index) {
+                                                      return Row(
+                                                        children: widget.provinceDetail.documKesenians.map((doc) => Padding(
+                                                          padding: const EdgeInsets.all(4.0),
+                                                          child: InkWell(
+                                                              onTap: () {
+                                                          showDialog(builder: (BuildContext context) => AlertDialog(backgroundColor: const Color.fromARGB(0, 93, 93, 93),
+                                                          insetPadding: const EdgeInsets.all(2),
+                                                          
+                                                          title: Container(
+                                                            width: MediaQuery.of(context).size.width,
+                                                            child: Hero(tag:widget.provinceDetail.documKesenians, child: CachedNetworkImage(imageUrl: '$baseImageDocArt${doc.documentation}',)),
+                                                          )), context: context); 
+                                                        },
+                                                            child: ClipRRect( borderRadius: BorderRadius.circular(10), child:
+                                                            FittedBox(
+                                                              fit:
+                                                              BoxFit.fill,
+                                                              child: CachedNetworkImage(
+                                                                imageUrl: '$baseImageDocArt${doc.documentation}',
+                                                                width: 140,
+                                                                placeholder: (context, url) => const Center(
+                                                                  child: CircularProgressIndicator(),
+                                                                ),
+                                                                errorWidget: (context, url, error) => const Icon(Icons.error),
+                                                              ),
+                                                            ),
+                                                            ),
+                                                          ),
+                                                        ),).toList(),
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                            ],
                          ),
                        ),
