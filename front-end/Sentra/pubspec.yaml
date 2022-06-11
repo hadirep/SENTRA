@@ -32,6 +32,7 @@ dependencies:
   readmore: ^2.1.0
   connectivity: ^3.0.6
   flutter_offline: ^2.1.0
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
