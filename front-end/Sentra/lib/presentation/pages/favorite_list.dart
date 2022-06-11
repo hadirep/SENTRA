@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/data/models/dummy/art_list.dart';
-import 'package:sentra/presentation/pages/product_management.dart';
+import 'package:sentra/presentation/pages/admin/edit-art.dart';
 
 class FavoriteList extends StatefulWidget {
   static const routeName = '/favorite-list-page';
@@ -30,7 +30,7 @@ class _FavoriteListState extends State<FavoriteList> with RouteAware {
           child: IconButton(
             icon: Image.asset("assets/logo/sentra.png", height: 30, width: 30),
             onPressed: () {
-              Navigator.pushNamed(context, ProductManagement.routeName);
+              Navigator.pushNamed(context, EditArt.routeName);
             },
           ),
         ),

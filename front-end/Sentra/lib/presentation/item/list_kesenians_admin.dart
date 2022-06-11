@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/data/models/dummy/art_list.dart';
-import 'package:sentra/presentation/pages/product_management.dart';
+import 'package:sentra/presentation/pages/admin/edit-art.dart';
 import 'package:sentra/presentation/widgets/widget_pop_up.dart';
 
 class ItemKeseniansAdmin extends StatelessWidget{
@@ -136,7 +136,7 @@ class ItemKeseniansAdmin extends StatelessWidget{
                         icon: const Icon(Icons.edit, color: Colors.white),
                         tooltip: 'Edit data',
                         onPressed: () {
-                          Navigator.pushNamed(context, ProductManagement.routeName);
+                          Navigator.pushNamed(context, EditArt.routeName);
                         },
                       ),
                     ),

@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/item/list_kesenians_admin.dart';
-import 'package:sentra/presentation/pages/create_art.dart';
+import 'package:sentra/presentation/pages/admin/create_art.dart';
 import 'package:sentra/presentation/pages/login_page.dart';
 
 class BusinessManagement extends StatelessWidget {
@@ -16,7 +16,7 @@ class BusinessManagement extends StatelessWidget {
         padding: const EdgeInsets.only(left: 18, right: 18),
         child: Column(
           children: [
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[

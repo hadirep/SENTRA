@@ -5,17 +5,17 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 
-import '../../common/style.dart';
+import '../../../common/style.dart';
 
-class ProductManagement extends StatefulWidget {
-  static const routeName = '/product-management';
-  const ProductManagement({ Key? key }) : super(key: key);
+class CreateArt extends StatefulWidget {
+  static const routeName = '/create-art';
+  const CreateArt({ Key? key }) : super(key: key);
 
   @override
-  State<ProductManagement> createState() => _ProductManagementState();
+  State<CreateArt> createState() => _CreateArtState();
 }
 
-class _ProductManagementState extends State<ProductManagement> {
+class _CreateArtState extends State<CreateArt> {
   final borderRadius = BorderRadius.circular(10);
   File? image;
   File? imageDocummentation;
@@ -77,7 +77,7 @@ class _ProductManagementState extends State<ProductManagement> {
           child: ButtonBack(),
         ),
         title: const Text(
-          'Ubah Data',
+          'Tambah Data',
           style: TextStyle(color: textPrimaryColor, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -90,27 +90,27 @@ class _ProductManagementState extends State<ProductManagement> {
               const SizedBox(height: 20),
               Column(
                 children: [
-                  Container(
-                    alignment: Alignment.topCenter,
-                    // child: Container(
-                    //   height: MediaQuery.of(context).size.height * 0.14,
-                    //   width:  MediaQuery.of(context).size.height * 0.14,
-                    //   decoration: BoxDecoration(
-                    //     shape: BoxShape.circle,
-                    //     border: Border.all(width: 4, color: Colors.white),
-                    //     image: const DecorationImage(image: AssetImage('images/pencaksilat_pm_p.jpg'),
-                    //       fit: BoxFit.fill,
-                    //     ),
-                    //     boxShadow: const [
-                    //       BoxShadow(
-                    //         color: Colors.grey,
-                    //         offset: Offset(1.0, 5.0),
-                    //         blurRadius: 6.0,
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                  ),
+                  // Container(
+                  //   alignment: Alignment.topCenter,
+                  //   child: Container(
+                  //     height: MediaQuery.of(context).size.height * 0.14,
+                  //     width:  MediaQuery.of(context).size.height * 0.14,
+                  //     decoration: BoxDecoration(
+                  //       shape: BoxShape.circle,
+                  //       border: Border.all(width: 4, color: Colors.white),
+                  //       image: const DecorationImage(image: AssetImage('images/pencaksilat_pm_p.jpg'),
+                  //         fit: BoxFit.fill,
+                  //       ),
+                  //       boxShadow: const [
+                  //         BoxShadow(
+                  //           color: Colors.grey,
+                  //           offset: Offset(1.0, 5.0),
+                  //           blurRadius: 6.0,
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                   // const SizedBox(height: 10),
                   // Container(alignment: Alignment.topCenter,
                   //   child: const Text("rentral",
@@ -320,6 +320,38 @@ class _ProductManagementState extends State<ProductManagement> {
                         Container(
                           alignment: Alignment.topLeft,
                           child: const Text(
+                            "Nomor Telepon",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 234, 132, 0),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height:  MediaQuery.of(context).size.height * 0.04,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              labelStyle: const TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10,),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: const Text(
                             "Provinsi",
                             textAlign: TextAlign.left,
                             style: TextStyle(
@@ -449,10 +481,12 @@ class _ProductManagementState extends State<ProductManagement> {
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               width: MediaQuery.of(context).size.width,
                               height: 70,
-                              child: RaisedButton(
+                              child: ElevatedButton(
                                 onPressed: () {},
-                                color: const Color.fromARGB(255, 234, 132, 0),
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                style: ElevatedButton.styleFrom(
+                                  primary: const Color.fromARGB(255, 234, 132, 0),
+                                  shape: RoundedRectangleBorder(borderRadius: borderRadius),
+                                ),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: const [

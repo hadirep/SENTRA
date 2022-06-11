@@ -43,7 +43,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/seni/
-    - assets/materials/
     - assets/logo_prov/
     - assets/logo/
     - assets/dummy_data/

@@ -7,7 +7,7 @@ import 'package:sentra/presentation/widgets/button/button_back.dart';
 import 'package:sentra/presentation/widgets/widget_art_list_more.dart';
 
 class ArtListMorePage extends StatefulWidget {
-  static const routeName = '/province_more_page';
+  static const routeName = '/art-list-more-page';
   const ArtListMorePage({Key? key}) : super(key: key);
   @override
   State<ArtListMorePage> createState() => _ArtListMorePageState();

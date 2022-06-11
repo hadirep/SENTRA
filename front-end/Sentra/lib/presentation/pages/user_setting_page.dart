@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/pages/home_page.dart';
-import 'package:sentra/presentation/pages/product_management.dart';
+import 'package:sentra/presentation/pages/admin/edit-art.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 
 class UserSetting extends StatelessWidget {
@@ -52,7 +52,7 @@ class UserSetting extends StatelessWidget {
                             Icons.radio_button_off, color: Color(0xffdc7e00),
                         ),
                         onTap: () {
-                          Navigator.pushNamed(context, ProductManagement.routeName);
+                          Navigator.pushNamed(context, EditArt.routeName);
                         },
                       ),
                     ),
