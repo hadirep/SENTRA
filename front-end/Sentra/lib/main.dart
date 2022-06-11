@@ -8,12 +8,12 @@ import 'package:sentra/data/models/province_query_model.dart';
 import 'package:sentra/presentation/pages/about_page.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
 import 'package:sentra/presentation/pages/art_list_more_page.dart';
-import 'package:sentra/presentation/pages/create_art.dart';
+import 'package:sentra/presentation/pages/admin/create_art.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
 import 'package:sentra/presentation/pages/favorite_list.dart';
 import 'package:sentra/presentation/pages/home_page.dart';
 import 'package:sentra/presentation/pages/login_page.dart';
-import 'package:sentra/presentation/pages/product_management.dart';
+import 'package:sentra/presentation/pages/admin/edit-art.dart';
 import 'package:sentra/presentation/pages/search_art_page.dart';
 import 'package:sentra/presentation/pages/update_more_page.dart';
 import 'package:sentra/presentation/pages/user_setting_page.dart';
@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
           BusinessManagement.routeName: (context) => const BusinessManagement(),
           HomePage.routeName: (context) => const HomePage(),
           FavoriteList.routeName: (context) => const FavoriteList(),
-          ProductManagement.routeName: (context) => const ProductManagement(),
+          EditArt.routeName: (context) => const EditArt(),
           ProvinceMorePage.routeName: (context) => const ProvinceMorePage(),
           AboutPage.routeName: (context) => const AboutPage(),
           UserSetting.routeName: (context) => const UserSetting(),
