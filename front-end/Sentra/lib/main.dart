@@ -5,6 +5,7 @@ import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/data/db/database_favorite.dart';
 import 'package:sentra/data/models/province_list_model.dart';
 import 'package:sentra/data/models/province_query_model.dart';
+import 'package:sentra/data/preferences/preference_helper.dart';
 import 'package:sentra/presentation/pages/about_page.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
 import 'package:sentra/presentation/pages/art_list_more_page.dart';
@@ -24,11 +25,13 @@ import 'package:sentra/presentation/pages/province_query_page.dart';
 import 'package:provider/provider.dart';
 import 'package:sentra/presentation/provider/database_provider.dart';
 import 'package:sentra/presentation/provider/detail_provider.dart';
+import 'package:sentra/presentation/provider/preference_provider.dart';
 import 'package:sentra/presentation/provider/province_list_provider.dart';
 import 'package:sentra/presentation/provider/province_query_provider.dart';
 import 'package:sentra/presentation/provider/art_list_provider.dart';
 import 'package:sentra/presentation/provider/search_art_provider.dart';
 import 'package:sentra/presentation/provider/update_list_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,7 +65,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
             create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper()),
-          ),
+        ),
+        ChangeNotifierProvider(
+            create: (_) => PreferenceProvider(preferencesHelper: PreferencesHelper(
+              shared: SharedPreferences.getInstance(),
+            ))
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
