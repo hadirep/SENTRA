@@ -96,4 +96,15 @@ class ApiService {
       throw Exception('Failed to Search');
     }
   }
+
+  Future<ArtListModel> putArtList(int id) async {
+    final response = await http
+        .put(Uri.parse('${baseUrl}kesenians/' + id.toString()));
+
+    if(response.statusCode == 200) {
+      return ArtListModel.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to Load Art List');
+    }
+  }
 }

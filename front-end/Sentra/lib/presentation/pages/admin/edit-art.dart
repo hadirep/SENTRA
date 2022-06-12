@@ -8,7 +8,7 @@ import 'package:sentra/presentation/widgets/button/button_back.dart';
 
 class EditArt extends StatefulWidget {
   static const routeName = '/edit-art';
-  const EditArt({ Key? key }) : super(key: key);
+  const EditArt({Key? key}) : super(key: key);
 
   @override
   State<EditArt> createState() => _EditArtState();
@@ -17,13 +17,17 @@ class EditArt extends StatefulWidget {
 class _EditArtState extends State<EditArt> {
   ApiService apiService = ApiService();
   final borderRadius = BorderRadius.circular(10);
+
   final _nameController = TextEditingController();
-  final _descriptionController = TextEditingController();
+  final _priceController = TextEditingController();
   final _categoryController = TextEditingController();
-  final _telpController = TextEditingController();
-  final _instagramController = TextEditingController();
-  final _facebookController = TextEditingController();
+  final _communityController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
+  final _emailController = TextEditingController();
   final _provinceController = TextEditingController();
+  final _descriptionController = TextEditingController();
+  final _isFacebookController = TextEditingController();
+  final _isInstagramController = TextEditingController();
 
   File? image;
   File? imageDocummentation;
@@ -75,6 +79,38 @@ class _EditArtState extends State<EditArt> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as
+    List<String>;
+    if (args[1].isNotEmpty) {
+      _nameController.text = args[1];
+    }
+    if (args[2].isNotEmpty) {
+      _priceController.text = args[2];
+    }
+    if (args[3].isNotEmpty) {
+      _categoryController.text = args[3];
+    }
+    if (args[4].isNotEmpty) {
+      _communityController.text = args[4];
+    }
+    if (args[5].isNotEmpty) {
+      _phoneNumberController.text = args[5];
+    }
+    if (args[6].isNotEmpty) {
+      _emailController.text = args[6];
+    }
+    if (args[7].isNotEmpty) {
+      _provinceController.text = args[7];
+    }
+    if (args[8].isNotEmpty) {
+      _descriptionController.text = args[8];
+    }
+    if (args[9].isNotEmpty) {
+      _isFacebookController.text = args[9];
+    }
+    if (args[10].isNotEmpty) {
+      _isInstagramController.text = args[10];
+    }
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -87,7 +123,10 @@ class _EditArtState extends State<EditArt> {
         ),
         title: const Text(
           'Ubah Data',
-          style: TextStyle(color: textPrimaryColor, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: textPrimaryColor,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
       ),
@@ -116,7 +155,7 @@ class _EditArtState extends State<EditArt> {
                           ),
                         ),
                         SizedBox(
-                          height:  MediaQuery.of(context).size.height * 0.04,
+                          height: MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _nameController,
                             decoration: InputDecoration(
@@ -124,13 +163,13 @@ class _EditArtState extends State<EditArt> {
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: borderRadius,
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: borderRadius,
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
                             ),
@@ -140,7 +179,7 @@ class _EditArtState extends State<EditArt> {
                         Container(
                           alignment: Alignment.topLeft,
                           child: const Text(
-                            "Deskripsi",
+                            "Harga",
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500,
@@ -151,19 +190,19 @@ class _EditArtState extends State<EditArt> {
                         SizedBox(
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
-                            controller: _descriptionController,
+                            controller: _priceController,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: borderRadius,
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: borderRadius,
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
                             ),
@@ -190,19 +229,51 @@ class _EditArtState extends State<EditArt> {
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: borderRadius,
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: borderRadius,
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10,),
+                        const SizedBox(height: 10),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: const Text(
+                            "Komunitas",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 234, 132, 0),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height:  MediaQuery.of(context).size.height * 0.04,
+                          child: TextField(
+                            controller: _communityController,
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
+                                borderRadius: borderRadius,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
+                                borderRadius: borderRadius,
+                              ),
+                              labelStyle: const TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ),
                         Container(
                           alignment: Alignment.topLeft,
                           child: const Text(
@@ -217,29 +288,28 @@ class _EditArtState extends State<EditArt> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
-                            controller: _telpController,
+                            controller: _phoneNumberController,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: borderRadius,
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: borderRadius,
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10),
                         Container(
                           alignment: Alignment.topLeft,
                           child: const Text(
-                            "Username Instagram",
+                            "Email",
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500,
@@ -248,60 +318,26 @@ class _EditArtState extends State<EditArt> {
                           ),
                         ),
                         SizedBox(
-                          height:  MediaQuery.of(context).size.height * 0.04,
+                          height: MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
-                            controller: _instagramController,
+                            controller: _emailController,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: borderRadius,
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: borderRadius,
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10,),
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: const Text(
-                            "Akun Facebook",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500,
-                              color: Color.fromARGB(255, 234, 132, 0),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height:  MediaQuery.of(context).size.height * 0.04,
-                          child: TextField(
-                            controller: _facebookController,
-                            decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              labelStyle: const TextStyle(color: Colors.red),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 10,),
                         Container(
                           alignment: Alignment.topLeft,
                           child: const Text(
@@ -322,19 +358,117 @@ class _EditArtState extends State<EditArt> {
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: borderRadius,
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: borderRadius,
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10,),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: const Text(
+                            "Deskripsi",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 234, 132, 0),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.04,
+                          child: TextField(
+                            controller: _descriptionController,
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
+                                borderRadius: borderRadius,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
+                                borderRadius: borderRadius,
+                              ),
+                              labelStyle: const TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: const Text(
+                            "Akun Facebook",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 234, 132, 0),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.04,
+                          child: TextField(
+                            controller: _isFacebookController,
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
+                                borderRadius: borderRadius,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
+                                borderRadius: borderRadius,
+                              ),
+                              labelStyle: const TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: const Text(
+                            "Akun Instagram",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 234, 132, 0),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.04,
+                          child: TextField(
+                            controller: _isInstagramController,
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
+                                borderRadius: borderRadius,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
+                                borderRadius: borderRadius,
+                              ),
+                              labelStyle: const TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
                         Container(
                           alignment: Alignment.topLeft,
                           child: const Text(
@@ -372,7 +506,7 @@ class _EditArtState extends State<EditArt> {
                               padding: const EdgeInsets.all(5),
                               // margin: const EdgeInsets.only(left: 50.0),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: borderRadius,
                                 border: Border.all(
                                   width: 3, color: const Color.fromARGB(255, 221, 221, 221),
                                 ),
@@ -428,7 +562,7 @@ class _EditArtState extends State<EditArt> {
                                 child: Container(
                                   padding: const EdgeInsets.all(5),
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: borderRadius,
                                     border: Border.all(
                                       width: 3, color: const Color.fromARGB(255, 221, 221, 221),
                                     ),
@@ -440,13 +574,25 @@ class _EditArtState extends State<EditArt> {
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 20,),
+                            const SizedBox(height: 20),
                             Container(
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               width: MediaQuery.of(context).size.width,
                               height: 70,
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () async {
+                                  /*bool response =
+                                  await apiService.putArtList(int.parse(args[0]),
+                                  _nameController.text, );
+
+                                  if (response){
+                                    Navigator.of(context).popAndPushNamed('/home');
+                                  } else {
+                                    if (kDebugMode) {
+                                      print('Gagal merubah data');
+                                    }
+                                  }*/
+                                },
                                 style: ElevatedButton.styleFrom(
                                   primary: const Color.fromARGB(255, 234, 132, 0),
                                   shape: RoundedRectangleBorder(borderRadius: borderRadius),

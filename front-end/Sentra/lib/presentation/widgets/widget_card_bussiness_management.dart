@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/constants.dart';
 import 'package:sentra/common/style.dart';
@@ -146,13 +145,26 @@ class ArtCardBusiness extends StatelessWidget {
                   icon: const Icon(Icons.edit, color: Colors.white),
                   tooltip: 'Edit data',
                   onPressed: () {
-                    Navigator.pushNamed(context, EditArt.routeName);
+                    Navigator.of(context).popAndPushNamed
+                      (EditArt.routeName,
+                        arguments: [
+                          artList.id,
+                          artList.name,
+                          artList.price,
+                          artList.category,
+                          artList.community,
+                          artList.phoneNumber,
+                          artList.email,
+                          artList.province,
+                          artList.description,
+                          artList.isFacebook,
+                          artList.isInstagram
+                        ]
+                    );
                   },
                 ),
               ),
-              const SizedBox(
-                width: 8,
-              ),
+              const SizedBox(width: 8),
               Container(
                 width: 30,
                 height: 30,
