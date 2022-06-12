@@ -56,11 +56,9 @@ class BusinessManagement extends StatelessWidget {
                     iconSize: 20,
                     icon: const Icon(Icons.add, color: Color(0xfff0be41)),
                     tooltip: 'Tambah data',
-                    onPressed: () async {
-                      await auth.signOut();
+                    onPressed: () {
                       Navigator.pushReplacementNamed(
                           context, CreateArt.routeName);
-                      // Navigator.pop(context);
                     },
                   ),
                 ),
