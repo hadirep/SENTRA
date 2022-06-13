@@ -2,13 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/constants.dart';
 import 'package:sentra/common/style.dart';
+import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/data/models/art_list_model.dart';
 import 'package:sentra/presentation/pages/admin/edit_art.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
 import 'package:sentra/presentation/widgets/widget_pop_up.dart';
 
 class ArtCardBusiness extends StatefulWidget {
-  final ArtList artList;
+    final ArtList artList;
 
   const ArtCardBusiness({Key? key, required this.artList}) : super(key: key);
 
@@ -17,22 +18,32 @@ class ArtCardBusiness extends StatefulWidget {
 }
 
 class _ArtCardBusinessState extends State<ArtCardBusiness> {
+  ApiService apiService = ApiService();
   String image = 'https://sentra.dokternak.id/public/kesenians/';
-  _showDialog(BuildContext context) {
-    // ignore: prefer_function_declarations_over_variables
-    VoidCallback continueCallBack = () => {
-      Navigator.of(context).pop(),
-    };
-    BlurryDialog alert =
-    BlurryDialog("Peringatan!","Apakah kamu yakin mau menghapus data ini?", continueCallBack);
+    
+  // _showDialog(BuildContext context) {
+  //   // ignore: prefer_function_declarations_over_variables
+  //   VoidCallback continueCallBack = () async => {
+  //     Navigator.of(context).pop(
+  //         bool response = await apiService.deleteArtList(widget.artList.id);
+  //         if(response) {
+  //           print('Data berhasiil dihapus');
 
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
-  }
+  //         } else {
+  //             print('Seni gagal dihapus');
+  //         }
+  //     ),
+  //   };
+  //   BlurryDialog alert =
+  //   BlurryDialog("Peringatan!","Apakah kamu yakin mau menghapus data ini?", continueCallBack);
+
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return alert;
+  //     },
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -180,9 +191,56 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                   iconSize: 16,
                   icon: const Icon(Icons.delete, color: Colors.white),
                   tooltip: 'Delete data',
-                  onPressed: () {
-                    _showDialog(context);
-                  },
+                  onPressed: () async{
+                  final dialog = AlertDialog(
+                  title: Text('Peringatan'),
+                      content: Text('Apakah kamu yakin akan menghapus seni ini?'),
+                      actions: [
+                        FlatButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text('Tidak'),
+                        ),
+                        FlatButton(
+                        onPressed: () async {
+                         bool response = await apiService.deleteArtList(widget.artList.id);
+                          if(response){
+                            if (response) {
+                              print("Seni berhasil di hapus");
+                            }
+                          } else{
+                            if (response) {
+                              print("Seni gagal di hapus");
+                            }
+                          }
+                            setState(() {
+                              widget.artList;
+                            });                          
+                            },
+                              child: Text('Hapus'),
+                                  ),
+                                ],
+                            );
+                             showDialog(
+                                    context: context,
+                                    builder: (context) => dialog,
+                                  );
+                                
+                            },
+                            // onPressed: ()  async {
+                            //  bool response =  await apiService.deleteArtList(widget.artList.id);
+                            //  if(response){
+                            //   print('data berhasil dihapus');
+                            //  } else {
+                            //   print('Data gagal dihapus');
+                            //  }
+                            //  setState(() {
+                            //    widget.artList;
+                            //  });
+                            
+                            //   // _showDialog(context);
+                            // },
                 ),
               ),
             ],

@@ -124,4 +124,20 @@ class ApiService {
       print(e.toString());
     }
   }
+
+  Future deleteArtList(String id) async {
+    try {
+    final response = await http.delete(
+      Uri.parse('${baseUrl}kesenians/$id'),
+    );      
+    if(response.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
 }
