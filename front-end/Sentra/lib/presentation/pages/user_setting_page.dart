@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/pages/home_page.dart';
-import 'package:sentra/presentation/pages/admin/edit-art.dart';
+import 'package:sentra/presentation/pages/admin/edit_art.dart';
 import 'package:sentra/presentation/provider/preference_provider.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 

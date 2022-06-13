@@ -3,25 +3,28 @@ import 'package:flutter/material.dart';
 import 'package:sentra/common/constants.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/data/models/art_list_model.dart';
-import 'package:sentra/presentation/pages/admin/edit-art.dart';
+import 'package:sentra/presentation/pages/admin/edit_art.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
 import 'package:sentra/presentation/widgets/widget_pop_up.dart';
 
-class ArtCardBusiness extends StatelessWidget {
+class ArtCardBusiness extends StatefulWidget {
   final ArtList artList;
 
   const ArtCardBusiness({Key? key, required this.artList}) : super(key: key);
 
-  _showDialog(BuildContext context)
-  {
+  @override
+  State<ArtCardBusiness> createState() => _ArtCardBusinessState();
+}
+
+class _ArtCardBusinessState extends State<ArtCardBusiness> {
+  String image = 'https://sentra.dokternak.id/public/kesenians/';
+  _showDialog(BuildContext context) {
     // ignore: prefer_function_declarations_over_variables
     VoidCallback continueCallBack = () => {
       Navigator.of(context).pop(),
-      // code on continue comes here
-
     };
-    BlurryDialog  alert = BlurryDialog("Peringatan!","Apakah kamu yakin mau menghapus data ini?",continueCallBack);
-
+    BlurryDialog alert =
+    BlurryDialog("Peringatan!","Apakah kamu yakin mau menghapus data ini?", continueCallBack);
 
     showDialog(
       context: context,
@@ -38,7 +41,7 @@ class ArtCardBusiness extends StatelessWidget {
         InkWell(
           onTap: () {
             Navigator.pushNamed(
-                context, DetailSellerProduct.routeName, arguments: artList.id
+                context, DetailSellerProduct.routeName, arguments: widget.artList.id
             );
           },
           child: Card(
@@ -80,7 +83,7 @@ class ArtCardBusiness extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12),
                           child: CachedNetworkImage(
-                            imageUrl: '$baseImageArt${artList.image}',
+                            imageUrl: '$baseImageArt${widget.artList.image}',
                             width: 80,
                             placeholder: (context, url) => const Center(
                               child: CircularProgressIndicator(),
@@ -98,7 +101,7 @@ class ArtCardBusiness extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              artList.name,
+                              widget.artList.name!,
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -107,7 +110,7 @@ class ArtCardBusiness extends StatelessWidget {
                             ),
                             Padding(padding: const EdgeInsets.only(top: 4),
                               child: Text(
-                                artList.province,
+                                widget.artList.province!,
                                 style: const TextStyle(
                                   fontSize: 12,
                                   color: Colors.grey,
@@ -145,20 +148,19 @@ class ArtCardBusiness extends StatelessWidget {
                   icon: const Icon(Icons.edit, color: Colors.white),
                   tooltip: 'Edit data',
                   onPressed: () {
-                    Navigator.of(context).popAndPushNamed
+                    Navigator.of(context).pushNamed
                       (EditArt.routeName,
                         arguments: [
-                          artList.id,
-                          artList.name,
-                          artList.price,
-                          artList.category,
-                          artList.community,
-                          artList.phoneNumber,
-                          artList.email,
-                          artList.province,
-                          artList.description,
-                          artList.isFacebook,
-                          artList.isInstagram
+                          widget.artList.id,
+                          widget.artList.name,
+                          widget.artList.price,
+                          widget.artList.category,
+                          widget.artList.community,
+                          widget.artList.phoneNumber,
+                          widget.artList.email,
+                          widget.artList.province,
+                          widget.artList.isFacebook.toString(),
+                          widget.artList.isInstagram.toString()
                         ]
                     );
                   },

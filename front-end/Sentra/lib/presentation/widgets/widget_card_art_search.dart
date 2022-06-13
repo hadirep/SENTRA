@@ -28,7 +28,7 @@ class ArtCard extends StatelessWidget {
         ),
       ),
       title: Text(
-        art.name,
+        art.name!,
         style: const TextStyle(
           color: Color(0xff2d4b94), fontSize: 15, fontWeight: FontWeight.bold,
         ),
@@ -39,7 +39,7 @@ class ArtCard extends StatelessWidget {
           Row(
             children: [
               const SizedBox(width: 5),
-              Text(art.province,
+              Text(art.province!,
                 style: const TextStyle(
                   color: Color(0xff2d4b94), fontSize: 12, fontWeight: FontWeight.bold,
                 ),

@@ -14,7 +14,7 @@ import 'package:sentra/presentation/pages/details_seller_product.dart';
 import 'package:sentra/presentation/pages/favorite_list.dart';
 import 'package:sentra/presentation/pages/home_page.dart';
 import 'package:sentra/presentation/pages/login_page.dart';
-import 'package:sentra/presentation/pages/admin/edit-art.dart';
+import 'package:sentra/presentation/pages/admin/edit_art.dart';
 import 'package:sentra/presentation/pages/search_art_page.dart';
 import 'package:sentra/presentation/pages/update_more_page.dart';
 import 'package:sentra/presentation/pages/user_setting_page.dart';

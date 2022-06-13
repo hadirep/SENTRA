@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/data/models/dummy/art_list.dart';
-import 'package:sentra/presentation/pages/admin/edit-art.dart';
+import 'package:sentra/presentation/pages/admin/edit_art.dart';
 
 class FavoriteList extends StatefulWidget {
   static const routeName = '/favorite-list-page';

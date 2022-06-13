@@ -97,14 +97,31 @@ class ApiService {
     }
   }
 
-  Future<ArtListModel> putArtList(int id) async {
-    final response = await http
-        .put(Uri.parse('${baseUrl}kesenians/' + id.toString()));
+  Future putArtList(String id, String name, String price, String category,
+      String community, String phoneNumber, String email, String province,
+      dynamic isFacebook, dynamic isInstagram) async {
+    try{
+      final response = await http.put(Uri.parse('${baseUrl}kesenians/$id'),
+        body: {
+          'name': name,
+          'price': price,
+          'category': category,
+          'community': community,
+          'phone_number': phoneNumber,
+          'email': email,
+          'province': province,
+          'is_facebook': isFacebook,
+          'is_instagram': isInstagram
+        },
+      );
 
-    if(response.statusCode == 200) {
-      return ArtListModel.fromJson(json.decode(response.body));
-    } else {
-      throw Exception('Failed to Load Art List');
+      if(response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      print(e.toString());
     }
   }
 }

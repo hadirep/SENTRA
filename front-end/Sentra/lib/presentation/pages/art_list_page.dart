@@ -58,12 +58,12 @@ class _ArtListPageState extends State<ArtListPage> {
                     Row(
                       children: [
                         const Icon(Icons.add_location_rounded, size: 15, color:   Color.fromARGB(255, 234, 132, 0),),
-                        Text(widget.artList.province, style: const TextStyle(color: Color.fromARGB(255, 45, 74, 148), fontSize: 11, fontWeight: FontWeight.bold),
+                        Text(widget.artList.province!, style: const TextStyle(color: Color.fromARGB(255, 45, 74, 148), fontSize: 11, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
                     const SizedBox(height: 2),
-                    Text(widget.artList.name,
+                    Text(widget.artList.name!,
                       style: const TextStyle(
                         color: Color.fromARGB(255, 45, 74, 148),
                         fontSize: 15,
