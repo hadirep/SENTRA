@@ -40,7 +40,9 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   ),
   textTheme: myTextTheme,
   appBarTheme: AppBarTheme(
-    elevation: 0, toolbarTextStyle: myTextTheme.apply(bodyColor: Colors.white).bodyText2, titleTextStyle: myTextTheme.apply(bodyColor: Colors.white).headline6,
+    elevation: 0,
+    toolbarTextStyle: myTextTheme.apply(bodyColor: Colors.white).bodyText2,
+    titleTextStyle: myTextTheme.apply(bodyColor: Colors.white).headline6,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
