@@ -15,7 +15,25 @@ class FavoriteList extends StatelessWidget{
   Widget _buildAndroid(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorite'),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: Text(
+          'Favorite List',
+          style: TextStyle(
+              color: Color.fromARGB(255, 45, 74, 148),
+              fontWeight: FontWeight.bold
+          ),
+        ),
+        centerTitle: true,
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(),
+          child: IconButton(
+            icon: Image.asset("assets/logo/sentra.png", height: 30, width: 30),
+            onPressed: () {
+              //Navigator.pushNamed(context, EditPage.routeName);
+            },
+          ),
+        ),
       ),
       body: _buildList(context),
     );
@@ -62,27 +80,7 @@ class FavoriteList extends StatelessWidget{
           future: provider.isFavorited(artList.id),
           builder: (context, snapshot) {
             return Scaffold(
-              appBar: AppBar(
-                elevation: 0,
-                backgroundColor: Colors.white,
-                title: Text(
-                  'Favorite List',
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 45, 74, 148),
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
-                centerTitle: true,
-                leading: Padding(
-                  padding: const EdgeInsets.symmetric(),
-                  child: IconButton(
-                    icon: Image.asset("assets/logo/sentra.png", height: 30, width: 30),
-                    onPressed: () {
-                      //Navigator.pushNamed(context, EditPage.routeName);
-                    },
-                  ),
-                ),
-              ),
+
               body: Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Card(
