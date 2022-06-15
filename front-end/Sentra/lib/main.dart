@@ -93,7 +93,7 @@ class MyApp extends StatelessWidget {
           BusinessManagement.routeName: (context) => const BusinessManagement(),
           HomePage.routeName: (context) => const HomePage(),
           FavoriteList.routeName: (context) => const FavoriteList(),
-          EditArt.routeName: (context) => const EditArt(),
+          EditArt.routeName: (context) => EditArt(),
           ProvinceMorePage.routeName: (context) => const ProvinceMorePage(),
           AboutPage.routeName: (context) => const AboutPage(),
           UserSetting.routeName: (context) => const UserSetting(),

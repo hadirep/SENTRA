@@ -30,7 +30,7 @@ class _FavoriteListState extends State<FavoriteList> with RouteAware {
           child: IconButton(
             icon: Image.asset("assets/logo/sentra.png", height: 30, width: 30),
             onPressed: () {
-              Navigator.pushNamed(context, EditArt.routeName);
+              //Navigator.pushNamed(context, EditPage.routeName);
             },
           ),
         ),

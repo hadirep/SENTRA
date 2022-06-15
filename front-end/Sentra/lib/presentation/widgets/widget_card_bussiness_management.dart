@@ -6,10 +6,9 @@ import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/data/models/art_list_model.dart';
 import 'package:sentra/presentation/pages/admin/edit_art.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
-import 'package:sentra/presentation/widgets/widget_pop_up.dart';
 
 class ArtCardBusiness extends StatefulWidget {
-    final ArtList artList;
+  final ArtList artList;
 
   const ArtCardBusiness({Key? key, required this.artList}) : super(key: key);
 
@@ -165,13 +164,12 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                           widget.artList.id,
                           widget.artList.name,
                           widget.artList.price,
-                          widget.artList.category,
                           widget.artList.community,
                           widget.artList.phoneNumber,
                           widget.artList.email,
                           widget.artList.province,
                           widget.artList.isFacebook.toString(),
-                          widget.artList.isInstagram.toString()
+                          widget.artList.isInstagram.toString(),
                         ]
                     );
                   },

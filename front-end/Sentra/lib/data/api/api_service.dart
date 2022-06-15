@@ -97,15 +97,14 @@ class ApiService {
     }
   }
 
-  Future putArtList(String id, String name, String price, String category,
-      String community, String phoneNumber, String email, String province,
+  Future putArtList(String id, String name, String price, String community,
+      String phoneNumber, String email, String province,
       dynamic isFacebook, dynamic isInstagram) async {
     try{
       final response = await http.put(Uri.parse('${baseUrl}kesenians/$id'),
         body: {
           'name': name,
           'price': price,
-          'category': category,
           'community': community,
           'phone_number': phoneNumber,
           'email': email,
@@ -139,5 +138,4 @@ class ApiService {
       print(e.toString());
     }
   }
-
 }

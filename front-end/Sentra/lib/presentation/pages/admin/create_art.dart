@@ -16,6 +16,7 @@ class CreateArt extends StatefulWidget {
 }
 
 class _CreateArtState extends State<CreateArt> {
+
   final borderRadius = BorderRadius.circular(10);
   File? image;
   File? imageDocummentation;
