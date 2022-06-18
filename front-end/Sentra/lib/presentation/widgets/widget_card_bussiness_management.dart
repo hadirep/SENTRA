@@ -38,7 +38,7 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
   //   BlurryDialog("Peringatan!","Apakah kamu yakin mau menghapus data ini?", continueCallBack);
 
   //   showDialog(
-  //     context: context,
+  //     context: context,re
   //     builder: (BuildContext context) {
   //       return alert;
   //     },
@@ -191,43 +191,42 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                   iconSize: 16,
                   icon: const Icon(Icons.delete, color: Colors.white),
                   tooltip: 'Delete data',
-                  onPressed: () async{
+                  onPressed: () async {
                   final dialog = AlertDialog(
-                  title: Text('Peringatan'),
-                      content: Text('Apakah kamu yakin akan menghapus seni ini?'),
-                      actions: [
-                        FlatButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Text('Tidak'),
-                        ),
-                        FlatButton(
+                    title: const Text('Peringatan'),
+                    content: const Text('Apakah kamu yakin akan menghapus seni ini?'),
+                    actions: [
+                      FlatButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('Tidak'),
+                      ),
+                      FlatButton(
                         onPressed: () async {
-                         bool response = await apiService.deleteArtList(widget.artList.id);
+                          bool response = await apiService.deleteArtList(widget.artList.id);
                           if(response){
                             if (response) {
-                              print("Seni berhasil di hapus");
+                              print("Seni berhasil dihapus");
                             }
                           } else{
                             if (response) {
-                              print("Seni gagal di hapus");
+                              print("Seni gagal dihapus");
                             }
                           }
-                            setState(() {
-                              widget.artList;
-                            });                          
-                            },
-                              child: Text('Hapus'),
-                                  ),
-                                ],
-                            );
-                             showDialog(
-                                    context: context,
-                                    builder: (context) => dialog,
-                                  );
-                                
-                            },
+                          setState(() {
+                            widget.artList;
+                          });                          
+                        },
+                        child: const Text('Hapus'),
+                      ),
+                    ],
+                    );
+                    showDialog(
+                      context: context,
+                      builder: (context) => dialog,
+                    );              
+                  },
                             // onPressed: ()  async {
                             //  bool response =  await apiService.deleteArtList(widget.artList.id);
                             //  if(response){
