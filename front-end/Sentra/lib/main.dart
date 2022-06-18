@@ -72,37 +72,39 @@ class MyApp extends StatelessWidget {
             ))
         ),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: "SENTRA",
-        theme: ThemeData(
-          cardColor: const Color.fromARGB(255, 255, 255, 255)
-        ),
-        navigatorKey: navigatorKey,
-        initialRoute: HomePage.routeName,
-        routes: {
-          ProvinceDetailPage.routeName: (context) => ProvinceDetailPage(
-            provinceQuery: ModalRoute.of(context)?.settings.arguments as ProvinceQuery,
-          ),
-          ProvinceQueryPage.routeName: (context) => ProvinceQueryPage(
-            queryList: ModalRoute.of(context)?.settings.arguments as ProvinceList,
-          ),
-          LoginPage.routeName: (context) => const LoginPage(),
-          RegisterPage.routeName: (context) => const RegisterPage(),
-          SearchPage.routeName: (context) => const SearchPage(),
-          BusinessManagement.routeName: (context) => const BusinessManagement(),
-          HomePage.routeName: (context) => const HomePage(),
-          FavoriteList.routeName: (context) => const FavoriteList(),
-          EditArt.routeName: (context) => const EditArt(),
-          ProvinceMorePage.routeName: (context) => const ProvinceMorePage(),
-          AboutPage.routeName: (context) => const AboutPage(),
-          UserSetting.routeName: (context) => const UserSetting(),
-          // PopUpPage.routeName: (context) => const PopUpPage(),
-          DetailSellerProduct.routeName: (context) => DetailSellerProduct(
-            id: ModalRoute.of(context)?.settings.arguments as String),
-          CreateArt.routeName: (context) => const CreateArt(),
-          ArtListMorePage.routeName: (context) => const ArtListMorePage(),
-          UpdateMorePage.routeName: (context) => const UpdateMorePage(),
+      child: Consumer<PreferenceProvider>(
+        builder: (context, provider, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: "SENTRA",
+            theme: provider.themeData,
+            navigatorKey: navigatorKey,
+            initialRoute: HomePage.routeName,
+            routes: {
+              ProvinceDetailPage.routeName: (context) => ProvinceDetailPage(
+                provinceQuery: ModalRoute.of(context)?.settings.arguments as ProvinceQuery,
+              ),
+              ProvinceQueryPage.routeName: (context) => ProvinceQueryPage(
+                queryList: ModalRoute.of(context)?.settings.arguments as ProvinceList,
+              ),
+              LoginPage.routeName: (context) => const LoginPage(),
+              RegisterPage.routeName: (context) => const RegisterPage(),
+              SearchPage.routeName: (context) => const SearchPage(),
+              BusinessManagement.routeName: (context) => const BusinessManagement(),
+              HomePage.routeName: (context) => const HomePage(),
+              FavoriteList.routeName: (context) => const FavoriteList(),
+              EditArt.routeName: (context) => EditArt(),
+              ProvinceMorePage.routeName: (context) => const ProvinceMorePage(),
+              AboutPage.routeName: (context) => const AboutPage(),
+              UserSetting.routeName: (context) => const UserSetting(),
+              // PopUpPage.routeName: (context) => const PopUpPage(),
+              DetailSellerProduct.routeName: (context) => DetailSellerProduct(
+                  id: ModalRoute.of(context)?.settings.arguments as String),
+              CreateArt.routeName: (context) => const CreateArt(),
+              ArtListMorePage.routeName: (context) => const ArtListMorePage(),
+              UpdateMorePage.routeName: (context) => const UpdateMorePage(),
+            },
+          );
         },
       ),
     );

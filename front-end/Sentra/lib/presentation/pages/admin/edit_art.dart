@@ -16,12 +16,12 @@ class EditArt extends StatefulWidget {
 }
 
 class _EditArtState extends State<EditArt> {
+  String image = 'https://sentra.dokternak.id/public/kesenians/';
   ApiService apiService = ApiService();
   final borderRadius = BorderRadius.circular(10);
 
   final _nameController = TextEditingController();
   final _priceController = TextEditingController();
-  final _categoryController = TextEditingController();
   final _communityController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _emailController = TextEditingController();
@@ -29,22 +29,23 @@ class _EditArtState extends State<EditArt> {
   final _isFacebookController = TextEditingController();
   final _isInstagramController = TextEditingController();
 
-  File? image;
-  File? imageDocummentation;
+  File? _oneImage;
+  final _picker = ImagePicker();
+  File? multiImage;
 
   Future getImage() async{
-    final ImagePicker picker = ImagePicker();
-    final XFile? imagePicked = await picker.pickImage(source: ImageSource.gallery);
-    image = File(imagePicked!.path);
+    var image = await _picker.pickImage(
+      source: ImageSource.gallery,
+    );
     setState(() {
-
+      _oneImage = image as File?;
     });
   }
 
   Future getImageDocumentation() async{
     final ImagePicker picker = ImagePicker();
     final XFile? imagePicked = await picker.pickImage(source: ImageSource.gallery);
-    imageDocummentation = File(imagePicked!.path);
+    multiImage = File(imagePicked!.path);
     setState(() {
 
     });
@@ -83,25 +84,22 @@ class _EditArtState extends State<EditArt> {
       _priceController.text = args[2]!;
     }
     if (args[3]!.isNotEmpty) {
-      _categoryController.text = args[3]!;
+      _communityController.text = args[3]!;
     }
     if (args[4]!.isNotEmpty) {
-      _communityController.text = args[4]!;
+      _phoneNumberController.text = args[4]!;
     }
     if (args[5]!.isNotEmpty) {
-      _phoneNumberController.text = args[5]!;
+      _emailController.text = args[5]!;
     }
     if (args[6]!.isNotEmpty) {
-      _emailController.text = args[6]!;
+      _provinceController.text = args[6]!;
     }
     if (args[7]!.isNotEmpty) {
-      _provinceController.text = args[7]!;
+      _isFacebookController.text = args[7]!;
     }
     if (args[8]!.isNotEmpty) {
-      _isFacebookController.text = args[8]!;
-    }
-    if (args[9]!.isNotEmpty) {
-      _isInstagramController.text = args[9]!;
+      _isInstagramController.text = args[8]!;
     }
 
     return Scaffold(
@@ -146,6 +144,7 @@ class _EditArtState extends State<EditArt> {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.04,
                         child: TextField(
+                          cursorColor: Colors.blue,
                           controller: _nameController,
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
@@ -180,39 +179,6 @@ class _EditArtState extends State<EditArt> {
                         height:  MediaQuery.of(context).size.height * 0.04,
                         child: TextField(
                           controller: _priceController,
-                          decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
-                              ),
-                              borderRadius: borderRadius,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
-                              ),
-                              borderRadius: borderRadius,
-                            ),
-                            labelStyle: const TextStyle(color: Colors.red),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 10,),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        child: const Text(
-                          "Kategori",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500,
-                            color: Color.fromARGB(255, 234, 132, 0),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height:  MediaQuery.of(context).size.height * 0.04,
-                        child: TextField(
-                          controller: _categoryController,
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
@@ -441,7 +407,7 @@ class _EditArtState extends State<EditArt> {
                           ),
                         ),
                       ),
-                      image != null? Container(
+                      _oneImage != null? Container(
                         height:  MediaQuery.of(context).size.height * 0.18,
                         width: MediaQuery.of(context).size.height * 0.45,
                         padding: const EdgeInsets.all(5),
@@ -451,7 +417,7 @@ class _EditArtState extends State<EditArt> {
                         child: ClipRRect(
                           borderRadius: borderRadius,
                           child: Image.file(
-                            image!,
+                            _oneImage!,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -544,8 +510,7 @@ class _EditArtState extends State<EditArt> {
                               onPressed: () async {
                                 bool response =
                                 await apiService.putArtList(args[0]!,
-                                  _nameController.text, _priceController.text,
-                                  _categoryController.text, _communityController.text,
+                                  _nameController.text, _priceController.text, _communityController.text,
                                   _phoneNumberController.text, _emailController.text,
                                   _provinceController.text, _isFacebookController.text.toString(),
                                   _isInstagramController.text.toString(),
