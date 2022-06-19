@@ -93,6 +93,7 @@ class KesenianController extends Controller
             'image'=> $imageurl,
             'is_facebook' => $request->is_facebook,
             'is_instagram' => $request->is_instagram,
+            'recommended' => true,
         ];
 
         $createKesenian = DB::table('kesenians')->insert($requestKesenians);
@@ -157,11 +158,13 @@ class KesenianController extends Controller
     {
         $getKesenian = Kesenian::where('id_kesenian', $id)->first();
 
+        $phone_number = $request->phone_number;
         $requestKesenians = [
             'name'=> $request->name,
             'price' => $request->price,
-            'category' => $request->community,
-            'phone_number' => $request->phone_number,
+            'category' => $request->category,
+            'community' => $request->community,
+            'phone_number' => $phone_number,
             'email' => $request->email,
             'province' => $request->province,
             'description' => $request->description,
