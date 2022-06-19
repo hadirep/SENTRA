@@ -79,7 +79,7 @@ class KesenianController extends Controller
             $imageurl = $name;
         }
 
-        $phone_number = (int)$request->phone_number;
+        $phone_number = $request->phone_number;
         $requestKesenians = [
             'id_kesenian' => $id_kesenian,
             'name'=> $request->name,
