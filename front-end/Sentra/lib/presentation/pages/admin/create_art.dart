@@ -2,7 +2,10 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 import 'package:sentra/common/style.dart';
+import 'package:sentra/presentation/pages/admin/business_management.dart';
+import 'package:sentra/presentation/provider/add_art_provider.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 
 import '../../../common/style.dart';
@@ -16,6 +19,18 @@ class CreateArt extends StatefulWidget {
 }
 
 class _CreateArtState extends State<CreateArt> {
+  bool isLoading = false;
+
+  final TextEditingController _nameController = TextEditingController(text: '');
+  final TextEditingController _descriptionController = TextEditingController(text: '');
+  final TextEditingController _categoryController = TextEditingController(text: '');
+  final TextEditingController _communityController = TextEditingController(text: '');
+  final TextEditingController _noHpController = TextEditingController(text: '');
+  final TextEditingController _emailController = TextEditingController(text: '');
+  final TextEditingController _priceController = TextEditingController(text: '');
+  final TextEditingController _isInstagramController = TextEditingController(text: '');
+  final TextEditingController _isFacebookController = TextEditingController(text: '');
+  final TextEditingController _provinceController = TextEditingController(text: '');
 
   final borderRadius = BorderRadius.circular(10);
   File? image;
@@ -61,13 +76,62 @@ class _CreateArtState extends State<CreateArt> {
     }
   }
 
+  void submit(BuildContext context) {
+    isLoading = true;
+    Provider.of<AddArtProvider>(context, listen: false).storeArt(
+        _nameController.text,
+        _priceController.text,
+        _communityController.text,
+        _noHpController.text,
+        _emailController.text,
+        _provinceController.text,
+        _descriptionController.text,
+        _isFacebookController.text,
+        _isInstagramController.text,
+    ).then((res) {
+      if (res) {
+        Navigator.pushReplacementNamed(context, BusinessManagement.routeName);
+      } else {
+        /// ALERT EROR
+      }
+    });
+  }
+
   @override
   void initState(){
     super.initState();
   }
 
+  Widget _customButton(BuildContext context, Function() handle) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 24),
+      height: 50,
+      width: MediaQuery.of(context).size.width,
+      child: ElevatedButton(
+        onPressed: handle,
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+          ),
+        ),
+        child: isLoading
+            ? const CircularProgressIndicator(
+          color: Colors.white,
+        )
+            : Center(
+          child: Text(
+            "Laporkan",
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -79,7 +143,9 @@ class _CreateArtState extends State<CreateArt> {
         ),
         title: const Text(
           'Tambah Data',
-          style: TextStyle(color: textPrimaryColor, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Color(0xff2d4b94),
+            fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
@@ -140,6 +206,7 @@ class _CreateArtState extends State<CreateArt> {
                         SizedBox(
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
+                            controller: _nameController,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -147,6 +214,7 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
+                              hintText: 'Input Nama Seni',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -172,6 +240,7 @@ class _CreateArtState extends State<CreateArt> {
                         SizedBox(
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
+                            controller: _descriptionController,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -179,6 +248,7 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
+                              hintText: 'Input Deskripsi',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -193,6 +263,72 @@ class _CreateArtState extends State<CreateArt> {
                         Container(
                           alignment: Alignment.topLeft,
                           child: const Text(
+                            "Organisasi",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 234, 132, 0),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height:  MediaQuery.of(context).size.height * 0.04,
+                          child: TextField(
+                            controller: _communityController,
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              hintText: 'Input Organisasi',
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              labelStyle: const TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: const Text(
+                            "Email",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 234, 132, 0),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height:  MediaQuery.of(context).size.height * 0.04,
+                          child: TextField(
+                            controller: _emailController,
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              hintText: 'Input Email',
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              labelStyle: const TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: const Text(
                             "Kategori",
                             textAlign: TextAlign.left,
                             style: TextStyle(
@@ -204,6 +340,7 @@ class _CreateArtState extends State<CreateArt> {
                         SizedBox(
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
+                            controller: _categoryController,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -211,6 +348,7 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
+                              hintText: 'Input Kategori Seni',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -236,6 +374,7 @@ class _CreateArtState extends State<CreateArt> {
                         SizedBox(
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
+                            controller: _noHpController,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -243,6 +382,7 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
+                              hintText: 'Input Nomor WA',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -268,6 +408,7 @@ class _CreateArtState extends State<CreateArt> {
                         SizedBox(
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
+                            controller: _isInstagramController,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -275,6 +416,7 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
+                              hintText: 'Input Username Instagram',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -300,6 +442,7 @@ class _CreateArtState extends State<CreateArt> {
                         SizedBox(
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
+                            controller: _isFacebookController,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -307,38 +450,7 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              labelStyle: const TextStyle(color: Colors.red),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 10,),
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: const Text(
-                            "Nomor Telepon",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500,
-                              color: Color.fromARGB(255, 234, 132, 0),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height:  MediaQuery.of(context).size.height * 0.04,
-                          child: TextField(
-                            decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
+                              hintText: 'Input Facebook',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -364,6 +476,7 @@ class _CreateArtState extends State<CreateArt> {
                         SizedBox(
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
+                            controller: _provinceController,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -371,6 +484,7 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
+                              hintText: 'Input Provinsi',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -483,18 +597,22 @@ class _CreateArtState extends State<CreateArt> {
                               width: MediaQuery.of(context).size.width,
                               height: 70,
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  submit(context);
+                                },
                                 style: ElevatedButton.styleFrom(
                                   primary: const Color.fromARGB(255, 234, 132, 0),
                                   shape: RoundedRectangleBorder(borderRadius: borderRadius),
                                 ),
-                                child: Row(
+                                child: isLoading
+                                    ? const CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.white),)
+                                    : Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: const [
-                                    Icon(Icons.download_rounded, color: Colors.white,),
+                                    Icon(Icons.save, color: Colors.white,),
                                     SizedBox(width: 5),
                                     Text(
-                                      'Upload',
+                                      'Save',
                                       style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 17),
                                     ),
                                   ],

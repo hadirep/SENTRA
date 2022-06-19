@@ -97,6 +97,36 @@ class ApiService {
     }
   }
 
+  Future addArtList(String name, String price, String community,
+      String phoneNumber, String email, String province, String description,
+      dynamic isFacebook, dynamic isInstagram) async {
+    try{
+      final response = await http.post(Uri.parse('${baseUrl}kesenians'),
+        body: {
+          'name': name,
+          'price': price,
+          'community': community,
+          'phone_number': phoneNumber,
+          'email': email,
+          'province': province,
+          'description': description,
+          'is_facebook': isFacebook,
+          'is_instagram': isInstagram
+        },
+      );
+
+      if(response.statusCode == 200) {
+        print("Add data success");
+        return true;
+      } else {
+        print("Add data failed");
+        return false;
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   Future putArtList(String id, String name, String price, String community,
       String phoneNumber, String email, String province,
       dynamic isFacebook, dynamic isInstagram) async {

@@ -23,6 +23,7 @@ import 'package:sentra/presentation/pages/province_detail_page.dart';
 import 'package:sentra/presentation/pages/province_more_page.dart';
 import 'package:sentra/presentation/pages/province_query_page.dart';
 import 'package:provider/provider.dart';
+import 'package:sentra/presentation/provider/add_art_provider.dart';
 import 'package:sentra/presentation/provider/database_provider.dart';
 import 'package:sentra/presentation/provider/detail_provider.dart';
 import 'package:sentra/presentation/provider/preference_provider.dart';
@@ -53,6 +54,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<ProvinceQueryProvider>(
           create: (_) => ProvinceQueryProvider(queryApiService: ApiService(), query: ''),
+        ),
+        ChangeNotifierProvider<AddArtProvider>(
+          create: (_) => AddArtProvider(),
         ),
         ChangeNotifierProvider<UpdateListProvider>(
           create: (_) => UpdateListProvider(listApiService: ApiService()),
