@@ -619,25 +619,6 @@ class KesenianTableSeeder extends Seeder
                 'created_at' => new \DateTime,
                 'updated_at' => null,
             ],
-            [
-                'id_kesenian' => 'STR220502x',
-                'name' => '',
-                'price' => 0,
-                'category' => '',
-                'community' => '',
-                'phone_number' => '',
-                'email' => '@gmail.com',
-                'province' => '',
-                'description' => '
-
-                ',
-                'image' => '',
-                'is_facebook' => '',
-                'is_instagram' => '',
-                'created_at' => new \DateTime,
-                'updated_at' => null,
-            ],
-
         ];
 
         DB::table('kesenians')->insert($posts);
