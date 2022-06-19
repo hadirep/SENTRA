@@ -116,10 +116,8 @@ class ApiService {
       );
 
       if(response.statusCode == 200) {
-        print("Add data success");
         return true;
       } else {
-        print("Add data failed");
         return false;
       }
     } catch (e) {

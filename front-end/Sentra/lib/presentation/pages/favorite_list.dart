@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:sentra/common/result_state.dart';
 import 'package:sentra/data/models/art_list_model.dart';
 import 'package:sentra/data/models/dummy/art_list.dart';
-import 'package:sentra/presentation/pages/admin/edit_art.dart';
 import 'package:sentra/presentation/provider/database_provider.dart';
 import 'package:sentra/presentation/widgets/platform_widget.dart';
 
@@ -17,10 +16,10 @@ class FavoriteList extends StatelessWidget{
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        title: Text(
+        title: const Text(
           'Favorite List',
           style: TextStyle(
-              color: Color.fromARGB(255, 45, 74, 148),
+        color: Color.fromARGB(255, 45, 74, 148),
               fontWeight: FontWeight.bold
           ),
         ),
@@ -41,7 +40,7 @@ class FavoriteList extends StatelessWidget{
 
   Widget _buildIos(BuildContext context){
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
+      navigationBar: const CupertinoNavigationBar(
         middle: Text('Favorite'),
       ),
       child: _buildList(context),
@@ -82,13 +81,13 @@ class FavoriteList extends StatelessWidget{
             return Scaffold(
 
               body: Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Card(
                   child: Stack(
                     children: <Widget>[
                       Container(
                         color: Colors.grey,
-                        margin: EdgeInsets.only(left: 20, right: 20, top: 15),
+                        margin: const EdgeInsets.only(left: 20, right: 20, top: 15),
                         height: 45,
                         child: TextField(
                           textAlign: TextAlign.center,
@@ -114,14 +113,14 @@ class FavoriteList extends StatelessWidget{
                       ),
                       const SizedBox(height: 10),
                       Padding(
-                        padding: EdgeInsets.only(top: 70),
+                        padding: const EdgeInsets.only(top: 70),
                         child: Container(
                           color: Colors.grey,
                           child: ListView(
                             scrollDirection: Axis.vertical,
                             children: <Widget>[
                               Padding(
-                                padding: EdgeInsets.only(left: 15, right: 15),
+                                padding: const EdgeInsets.only(left: 15, right: 15),
                                 child: SizedBox(
                                   width: MediaQuery.of(context).size.width,
                                   height: MediaQuery.of(context).size.height,
@@ -147,11 +146,11 @@ class FavoriteList extends StatelessWidget{
                                           ),
                                           child: Column(
                                             children: [
-                                              SizedBox(height: 15),
+                                              const SizedBox(height: 15),
                                               Row(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: <Widget>[
-                                                  SizedBox(width: 15),
+                                                  const SizedBox(width: 15),
                                                   Container(
                                                     height: MediaQuery.of(context).size.height * 0.1,
                                                     width: MediaQuery.of(context).size.width * 0.3,
@@ -163,7 +162,7 @@ class FavoriteList extends StatelessWidget{
                                                       )
                                                     ),
                                                   ),
-                                                  SizedBox(width: 10),
+                                                  const SizedBox(width: 10),
                                                   Container(
                                                     padding: const EdgeInsets.only(right: 1.0),
                                                     child: Column(

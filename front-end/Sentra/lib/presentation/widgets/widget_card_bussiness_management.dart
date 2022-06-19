@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/constants.dart';
 import 'package:sentra/common/style.dart';
@@ -194,22 +195,26 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                     title: const Text('Peringatan'),
                     content: const Text('Apakah kamu yakin akan menghapus seni ini?'),
                     actions: [
-                      FlatButton(
+                      ElevatedButton(
                         onPressed: () {
                           Navigator.pop(context);
                         },
                         child: const Text('Tidak'),
                       ),
-                      FlatButton(
+                      ElevatedButton(
                         onPressed: () async {
                           bool response = await apiService.deleteArtList(widget.artList.id);
                           if(response){
                             if (response) {
-                              print("Seni berhasil dihapus");
+                              if (kDebugMode) {
+                                print("Seni berhasil dihapus");
+                              }
                             }
                           } else{
                             if (response) {
-                              print("Seni gagal dihapus");
+                              if (kDebugMode) {
+                                print("Seni gagal dihapus");
+                              }
                             }
                           }
                           setState(() {
