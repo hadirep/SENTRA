@@ -71,7 +71,7 @@ class KesenianController extends Controller
         };
 
         $reqImage = $request->image;
-        $imageurl=null;
+        $imageurl="empty-image.jpg";
 
         if($request->hasfile('image')) {
             $name = time().rand(1,100).'.'.$reqImage->extension();
