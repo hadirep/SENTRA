@@ -211,7 +211,7 @@ class KesenianController extends Controller
     {
         $getKesenian = Kesenian::where('id_kesenian', $id)->first();
         $image_path = "/kesenians/" .$getKesenian->image;
-        if ($getKesenian->image != '' && $getKesenian->image != null) {
+        if ($getKesenian->image != '' && $getKesenian->image != null &&  $getKesenian->image != 'empty-image.jpg') {
             File::delete(public_path($image_path));
         }
         $dokumentations = Images_Kesenian::where('id_kesenian_img', $id)->get();
