@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:sentra/common/style.dart';
@@ -32,6 +33,14 @@ class _CreateArtState extends State<CreateArt> {
   final TextEditingController _isInstagramController = TextEditingController(text: '');
   final TextEditingController _isFacebookController = TextEditingController(text: '');
   final TextEditingController _provinceController = TextEditingController(text: '');
+
+  late bool _validateName = false;
+  late bool _validateDescription = false;
+  late bool _validateCommunity = false;
+  late bool _validateNoHp = false;
+  late bool _validateEmail = false;
+  late bool _validatePrice = false;
+  late bool _validateProvince = false;
 
   final borderRadius = BorderRadius.circular(10);
   File? image;
@@ -92,11 +101,16 @@ class _CreateArtState extends State<CreateArt> {
       _isInstagramController.text,
     ).then((res) {
       if (res) {
-        // Navigator.pushReplacementNamed(context, BusinessManagement.routeName);
-        Navigator.pushReplacement(
+        Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(
-              builder: (BuildContext context) => const BusinessManagement()),).then((value) => setState(() {}));
+          MaterialPageRoute(builder: (context) => const BusinessManagement()),
+              (Route<dynamic> route) => false,
+        );
+        // Navigator.pushReplacementNamed(context, BusinessManagement.routeName);
+        // Navigator.pushReplacement(
+        //   context,
+        //   MaterialPageRoute(
+        //       builder: (BuildContext context) => const BusinessManagement()),).then((value) => setState(() {}));
       } else {
         /// ALERT EROR
         var snackbar = const SnackBar(content: Text('Ops: Error. Hubungi Admin'));
@@ -145,6 +159,7 @@ class _CreateArtState extends State<CreateArt> {
     final formKey = GlobalKey<FormState>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      key: snackbarKey,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -218,6 +233,7 @@ class _CreateArtState extends State<CreateArt> {
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _nameController,
+                            keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -232,6 +248,7 @@ class _CreateArtState extends State<CreateArt> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
+                              errorText: _validateName ? 'Nama Harus Di Isi.' : null,
                             ),
                           ),
                         ),
@@ -251,6 +268,7 @@ class _CreateArtState extends State<CreateArt> {
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _descriptionController,
+                            keyboardType: TextInputType.multiline,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -265,6 +283,7 @@ class _CreateArtState extends State<CreateArt> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
+                              errorText: _validateDescription ? 'Deskripsi Harus Di Isi.' : null,
                             ),
                           ),
                         ),
@@ -283,6 +302,10 @@ class _CreateArtState extends State<CreateArt> {
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _priceController,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ], // Only
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -297,6 +320,7 @@ class _CreateArtState extends State<CreateArt> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
+                              errorText: _validatePrice ? 'Harga Sewa Harus Di Isi.' : null,
                             ),
                           ),
                         ),
@@ -316,6 +340,7 @@ class _CreateArtState extends State<CreateArt> {
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _communityController,
+                            keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -330,6 +355,7 @@ class _CreateArtState extends State<CreateArt> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
+                              errorText: _validateCommunity ? 'Organisasi Harus Di Isi.' : null,
                             ),
                           ),
                         ),
@@ -348,6 +374,7 @@ class _CreateArtState extends State<CreateArt> {
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _emailController,
+                            keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -362,6 +389,7 @@ class _CreateArtState extends State<CreateArt> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
+                              errorText: _validateEmail ? 'Email Harus Di Isi.' : null,
                             ),
                           ),
                         ),
@@ -380,6 +408,7 @@ class _CreateArtState extends State<CreateArt> {
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _categoryController,
+                            keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -413,6 +442,10 @@ class _CreateArtState extends State<CreateArt> {
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _noHpController,
+                            keyboardType: TextInputType.phone,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ], // Only
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -427,6 +460,7 @@ class _CreateArtState extends State<CreateArt> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
+                              errorText: _validateNoHp ? 'Nomer WA Harus Di Isi.' : null,
                             ),
                           ),
                         ),
@@ -446,6 +480,7 @@ class _CreateArtState extends State<CreateArt> {
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _isInstagramController,
+                            keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -479,6 +514,7 @@ class _CreateArtState extends State<CreateArt> {
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _isFacebookController,
+                            keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -512,6 +548,7 @@ class _CreateArtState extends State<CreateArt> {
                           height:  MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _provinceController,
+                            keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -526,6 +563,7 @@ class _CreateArtState extends State<CreateArt> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
+                              errorText: _validateProvince ? 'Provinsi Harus Di Isi.' : null,
                             ),
                           ),
                         ),
@@ -632,7 +670,27 @@ class _CreateArtState extends State<CreateArt> {
                               height: 70,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  submit(context);
+                                  setState(() {
+                                    _nameController.text.isEmpty ? _validateName = true : _validateName = false;
+                                    _descriptionController.text.isEmpty ? _validateDescription = true : _validateDescription = false;
+                                    _communityController.text.isEmpty ? _validateCommunity = true : _validateCommunity = false;
+                                    _noHpController.text.isEmpty ? _validateNoHp = true : _validateNoHp = false;
+                                    _emailController.text.isEmpty ? _validateEmail = true : _validateEmail = false;
+                                    _priceController.text.isEmpty ? _validatePrice = true : _validatePrice = false;
+                                    _provinceController.text.isEmpty ? _validateProvince = true : _validateProvince = false;
+                                  });
+                                  if(
+                                      _nameController.text.isNotEmpty &&
+                                      _descriptionController.text.isNotEmpty &&
+                                      _communityController.text.isNotEmpty &&
+                                      _noHpController.text.isNotEmpty &&
+                                      _emailController.text.isNotEmpty &&
+                                      _priceController.text.isNotEmpty &&
+                                      _provinceController.text.isNotEmpty
+                                  ) {
+                                    submit(context);
+                                  }
+
                                 },
                                 style: ElevatedButton.styleFrom(
                                   primary: const Color.fromARGB(255, 234, 132, 0),

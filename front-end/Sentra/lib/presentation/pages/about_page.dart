@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
+import 'package:sentra/presentation/pages/home_page.dart';
 import 'package:sentra/presentation/pages/login_page.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 
@@ -19,10 +20,26 @@ class AboutPage extends StatelessWidget {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const <Widget>[
+                  children: <Widget>[const
                     SizedBox(height: 100),
-                    ButtonBack(),
-                    Padding(
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      padding: const EdgeInsets.only(left: 12),
+                      child: SizedBox(
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor:  MaterialStateProperty.all(secondaryColor),
+                          ),
+                          onPressed: () {
+                            Navigator.pushNamed(context, HomePage.routeName);
+                          },
+                          child: const Icon(
+                            Icons.arrow_back_ios_rounded, color: Color(0xfff0be41),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Padding(
                       padding: EdgeInsets.symmetric(),
                       child: Text(
                         'Tentang Kami',
@@ -33,7 +50,7 @@ class AboutPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(width: 70),
+                    const SizedBox(width: 70),
                   ],
                 ),
                 Padding(
