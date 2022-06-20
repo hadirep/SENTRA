@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
@@ -20,6 +18,7 @@ class _BuildFormRegister extends State<FormRegister> {
 
   bool _obscureText = true;
   bool _obsecureConfirmPassword = true;
+  bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -139,10 +138,12 @@ class _BuildFormRegister extends State<FormRegister> {
                 child: ElevatedButton(
                   onPressed: () async {
                     setState(() {
+                      _isLoading = true;
                     });
                     try {
                       final email = emailController.text;
                       final password = passwordController.text;
+
                       await _auth.createUserWithEmailAndPassword(
                           email: email, password: password);
                       Navigator.pop(context);
@@ -151,6 +152,7 @@ class _BuildFormRegister extends State<FormRegister> {
                       ScaffoldMessenger.of(context).showSnackBar(snackbar);
                     } finally {
                       setState(() {
+                        _isLoading = false;
                       });
                     }
                   },

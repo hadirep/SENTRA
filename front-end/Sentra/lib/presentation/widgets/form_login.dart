@@ -17,6 +17,7 @@ class _BuildFormLogin extends State<FormLogin> {
   TextEditingController passwordController = TextEditingController();
 
   bool _obscureText = true;
+  bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -133,6 +134,7 @@ class _BuildFormLogin extends State<FormLogin> {
 
                       if(_formKey.currentState!.validate()) {
                         setState(() {
+                          _isLoading = true;
                         });
                         await _auth.signInWithEmailAndPassword(
                             email: email, password: password);
@@ -145,6 +147,7 @@ class _BuildFormLogin extends State<FormLogin> {
                       ScaffoldMessenger.of(context).showSnackBar(snackbar);
                     } finally {
                       setState(() {
+                        _isLoading = false;
                       });
                     }
                   },
