@@ -19,6 +19,7 @@ class CreateArt extends StatefulWidget {
 }
 
 class _CreateArtState extends State<CreateArt> {
+  final snackbarKey = GlobalKey<ScaffoldState>();
   bool isLoading = false;
 
   final TextEditingController _nameController = TextEditingController(text: '');
@@ -79,20 +80,30 @@ class _CreateArtState extends State<CreateArt> {
   void submit(BuildContext context) {
     isLoading = true;
     Provider.of<AddArtProvider>(context, listen: false).storeArt(
-        _nameController.text,
-        _priceController.text,
-        _communityController.text,
-        _noHpController.text,
-        _emailController.text,
-        _provinceController.text,
-        _descriptionController.text,
-        _isFacebookController.text,
-        _isInstagramController.text,
+      _nameController.text,
+      _priceController.text,
+      _categoryController.text,
+      _communityController.text,
+      _noHpController.text,
+      _emailController.text,
+      _provinceController.text,
+      _descriptionController.text,
+      _isFacebookController.text,
+      _isInstagramController.text,
     ).then((res) {
       if (res) {
-        Navigator.pushReplacementNamed(context, BusinessManagement.routeName);
+        // Navigator.pushReplacementNamed(context, BusinessManagement.routeName);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => const BusinessManagement()),).then((value) => setState(() {}));
       } else {
         /// ALERT EROR
+        var snackbar = const SnackBar(content: Text('Ops: Error. Hubungi Admin'));
+        snackbarKey.currentState?.showSnackBar(snackbar);
+        setState(() {
+          isLoading = false;
+        });
       }
     });
   }
@@ -144,8 +155,8 @@ class _CreateArtState extends State<CreateArt> {
         title: const Text(
           'Tambah Data',
           style: TextStyle(
-            color: Color(0xff2d4b94),
-            fontWeight: FontWeight.bold),
+              color: Color(0xff2d4b94),
+              fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
@@ -214,7 +225,6 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              hintText: 'Input Nama Seni',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -248,7 +258,38 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              hintText: 'Input Deskripsi',
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              labelStyle: const TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: const Text(
+                            "Harga Sewa Seni",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 234, 132, 0),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height:  MediaQuery.of(context).size.height * 0.04,
+                          child: TextField(
+                            controller: _priceController,
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -282,7 +323,6 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              hintText: 'Input Organisasi',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -315,7 +355,6 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              hintText: 'Input Email',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -348,7 +387,6 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              hintText: 'Input Kategori Seni',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -382,7 +420,6 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              hintText: 'Input Nomor WA',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -416,7 +453,6 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              hintText: 'Input Username Instagram',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -450,7 +486,6 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              hintText: 'Input Facebook',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -484,7 +519,6 @@ class _CreateArtState extends State<CreateArt> {
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              hintText: 'Input Provinsi',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
@@ -508,19 +542,19 @@ class _CreateArtState extends State<CreateArt> {
                           ),
                         ),
                         image != null? Container(
-                            height:  MediaQuery.of(context).size.height * 0.18,
-                            width: MediaQuery.of(context).size.height * 0.45,
-                            padding: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,
+                          height:  MediaQuery.of(context).size.height * 0.18,
+                          width: MediaQuery.of(context).size.height * 0.45,
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,
+                          ),
+                          child: ClipRRect(
+                            borderRadius: borderRadius,
+                            child: Image.file(
+                              image!,
+                              fit: BoxFit.cover,
                             ),
-                            child: ClipRRect(
-                              borderRadius: borderRadius,
-                              child: Image.file(
-                                image!,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                          ),
                         ) : Container(),
                         const SizedBox(height: 5,),
                         GestureDetector(
