@@ -18,68 +18,70 @@ class _WidgetArtListMoreState extends State<WidgetArtListMore> {
     return InkWell(
       onTap: () {
         Navigator.pushNamed(
-            context, DetailSellerProduct.routeName, arguments: widget.artList
+          context, DetailSellerProduct.routeName, arguments: widget.artList,
         );
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(30),
-
-              child: Card(
-                elevation: 4.0,
-                shadowColor: const Color.fromARGB(255, 234, 132, 0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 120, width: MediaQuery.of(context).size.width/2.5,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(width: 2.8,
-                                color: const Color.fromARGB(196, 249, 216, 117),
-                            ),
-                            image: DecorationImage(
-                              image: NetworkImage(image+widget.artList.image),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
+        child: Card(
+          elevation: 4.0,
+          shadowColor: const Color.fromARGB(255, 234, 132, 0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 120, width: MediaQuery.of(context).size.width/2.5,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(width: 2.8,
+                        color: const Color.fromARGB(196, 249, 216, 117),
+                      ),
+                      image: DecorationImage(
+                        image: NetworkImage(image+widget.artList.image),
+                        fit: BoxFit.cover,
                       ),
                     ),
-                    const SizedBox(height: 5,),
-                    Padding(padding: const EdgeInsets.only(left: 5, top: 2),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Row(
-                              children: [
-                                const Icon(Icons.add_location_rounded,
-                                  size: 15, color: Color.fromARGB(255, 234, 132, 0),
-                                ),
-                                Text(widget.artList.province!,
-                                  style: const TextStyle(
-                                    color: Color.fromARGB(255, 45, 74, 148),
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 2),
-                            Text(widget.artList.name!,  style: const TextStyle(color: Color.fromARGB(255, 45, 74, 148), fontSize: 15, fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
+              const SizedBox(height: 5,),
+              Padding(padding: const EdgeInsets.only(left: 5, top: 2),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(Icons.add_location_rounded,
+                            size: 15, color: Color.fromARGB(255, 234, 132, 0),
+                          ),
+                          Text(widget.artList.province!,
+                            style: const TextStyle(
+                              color: Color.fromARGB(255, 45, 74, 148),
+                              fontSize: 11, fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 2),
+                      Text(widget.artList.name!,
+                        style: const TextStyle(color: Color.fromARGB(255, 45, 74, 148),
+                          fontSize: 15, fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

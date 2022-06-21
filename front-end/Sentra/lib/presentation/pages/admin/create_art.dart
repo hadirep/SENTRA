@@ -4,12 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
 import 'package:sentra/presentation/provider/add_art_provider.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
-
-import '../../../common/style.dart';
 
 class CreateArt extends StatefulWidget {
   static const routeName = '/create-art';
@@ -145,7 +142,7 @@ class _CreateArtState extends State<CreateArt> {
             ? const CircularProgressIndicator(
           color: Colors.white,
         )
-            : Center(
+            : const Center(
           child: Text(
             "Laporkan",
           ),

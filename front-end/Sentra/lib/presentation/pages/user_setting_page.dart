@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:sentra/common/style.dart';
-import 'package:sentra/presentation/pages/home_page.dart';
-import 'package:sentra/presentation/pages/admin/edit_art.dart';
 import 'package:sentra/presentation/provider/preference_provider.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
-
-import '../widgets/platform_widget.dart';
+import 'package:sentra/presentation/widgets/platform_widget.dart';
 
 // class UserSetting extends StatelessWidget {
 //   static const routeName = '/user_setting';
@@ -106,7 +103,6 @@ class UserSetting extends StatelessWidget {
           style: TextStyle(
             color: Color.fromARGB(255, 45, 74, 148),
             fontWeight: FontWeight.bold,
-            fontSize: 24,
           ),
         ),
         centerTitle: true,
@@ -186,7 +182,4 @@ class UserSetting extends StatelessWidget {
       iosBuilder: _buildIos,
     );
   }
-
-
-
 }

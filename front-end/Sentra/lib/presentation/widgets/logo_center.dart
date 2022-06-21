@@ -16,8 +16,7 @@ class LogoCenter extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: Image.asset(
                 "assets/logo/sentra_drawer.png",
-                height: 60,
-                width: 80,
+                height: 60, width: 80,
               ),
             ),
           ),
@@ -25,5 +24,4 @@ class LogoCenter extends StatelessWidget {
       ),
     );
   }
-
 }

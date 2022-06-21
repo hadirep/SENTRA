@@ -18,7 +18,7 @@ class _WidgetProvinceMoreState extends State<WidgetProvinceMore> {
     return InkWell(
       onTap: () {
         Navigator.pushNamed(
-            context, ProvinceQueryPage.routeName, arguments: widget.provinceList
+          context, ProvinceQueryPage.routeName, arguments: widget.provinceList,
         );
       },
       child: ClipRRect(
@@ -29,7 +29,8 @@ class _WidgetProvinceMoreState extends State<WidgetProvinceMore> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.network(
-                  image+widget.provinceList.image, width: 150, height: 150, fit: BoxFit.cover,
+                  image+widget.provinceList.image,
+                  width: 150, height: 150, fit: BoxFit.cover,
                 ),
               ),
               Padding(
@@ -37,7 +38,8 @@ class _WidgetProvinceMoreState extends State<WidgetProvinceMore> {
                 child: Text(
                   widget.provinceList.province, textAlign: TextAlign.center,
                   style: const TextStyle(
-                    fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xff2d4b94),
+                    fontSize: 15, fontWeight: FontWeight.bold,
+                    color: Color(0xff2d4b94),
                   ),
                 ),
               ),

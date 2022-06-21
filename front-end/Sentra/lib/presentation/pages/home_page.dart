@@ -101,7 +101,9 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         title: const Text(
           'Beranda',
-          style: TextStyle(color: textPrimaryColor, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: textPrimaryColor, fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -126,7 +128,8 @@ class _HomePageState extends State<HomePage> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.asset(
-                  "assets/seni/1_bali_tari_kecak.jpg", width: 390, height: 150, fit: BoxFit.cover,
+                  "assets/seni/1_bali_tari_kecak.jpg",
+                  width: 390, height: 150, fit: BoxFit.cover,
                 ),
               ),
               const SizedBox(height: 15),
@@ -145,7 +148,9 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 15),
               moreAction(
                 title: 'Provinsi',
-                onTap: () => Navigator.pushNamed(context, ProvinceMorePage.routeName),
+                onTap: () => Navigator.pushNamed(
+                  context, ProvinceMorePage.routeName,
+                ),
               ),
               Consumer<ProvinceListProvider>(
                 builder: (context, state, _) {
@@ -178,7 +183,9 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 15),
               moreAction(
                 title: 'Rekomendasi',
-                onTap: () => Navigator.pushNamed(context, UpdateMorePage.routeName),
+                onTap: () => Navigator.pushNamed(
+                  context, UpdateMorePage.routeName,
+                ),
               ),
               Consumer<UpdateListProvider>(
                 builder: (context, state, _) {
@@ -211,7 +218,9 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 15),
               moreAction(
                 title: 'Daftar semua seni',
-                onTap: () => Navigator.pushNamed(context, ArtListMorePage.routeName),
+                onTap: () => Navigator.pushNamed(
+                  context, ArtListMorePage.routeName,
+                ),
               ),
               Consumer<ArtListProvider>(
                 builder: (context, state, _) {

@@ -18,7 +18,7 @@ class _ArtListPageState extends State<ArtListPage> {
     return InkWell(
       onTap: () {
         Navigator.pushNamed(
-            context, DetailSellerProduct.routeName, arguments: widget.artList.id,
+          context, DetailSellerProduct.routeName, arguments: widget.artList.id,
         );
       },
       child: Card(
@@ -57,8 +57,16 @@ class _ArtListPageState extends State<ArtListPage> {
                   children: [
                     Row(
                       children: [
-                        const Icon(Icons.add_location_rounded, size: 15, color:   Color.fromARGB(255, 234, 132, 0),),
-                        Text(widget.artList.province!, style: const TextStyle(color: Color.fromARGB(255, 45, 74, 148), fontSize: 11, fontWeight: FontWeight.bold),
+                        const Icon(
+                          Icons.add_location_rounded, size: 15,
+                          color: Color.fromARGB(255, 234, 132, 0),
+                        ),
+                        Text(
+                          widget.artList.province!,
+                          style: const TextStyle(
+                            color: Color.fromARGB(255, 45, 74, 148),
+                            fontSize: 11, fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
@@ -66,8 +74,7 @@ class _ArtListPageState extends State<ArtListPage> {
                     Text(widget.artList.name!,
                       style: const TextStyle(
                         color: Color.fromARGB(255, 45, 74, 148),
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 15, fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],

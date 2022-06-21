@@ -23,7 +23,9 @@ class _UpdateMorePageState extends State<UpdateMorePage> {
           alignment: Alignment.center,
           child: Text(
             'Rekomendasi',
-            style: TextStyle(color: textPrimaryColor, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: textPrimaryColor, fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         centerTitle: true,

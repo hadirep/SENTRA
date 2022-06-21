@@ -23,7 +23,9 @@ class _ProvinceMorePageState extends State<ProvinceMorePage> {
           alignment: Alignment.center,
           child: Text(
             'Provinsi',
-            style: TextStyle(color: textPrimaryColor, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: textPrimaryColor, fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         centerTitle: true,

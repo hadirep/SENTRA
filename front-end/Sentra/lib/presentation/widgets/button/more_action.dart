@@ -25,7 +25,7 @@ Row moreAction({required String title, required Function() onTap}){
               ),
               Icon(
                 Icons.arrow_forward_ios, color: textPrimaryColor, size: 15,
-              )
+              ),
             ],
           ),
         ),

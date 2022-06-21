@@ -72,8 +72,7 @@ class SearchPage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: Image.asset(
                   "assets/logo/sentra_drawer.png",
-                  width: 10,
-                  height: 10,
+                  width: 10, height: 10,
                 ),
               ),
             ),

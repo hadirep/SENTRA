@@ -4,7 +4,6 @@ import 'package:sentra/common/result_state.dart';
 import 'package:sentra/presentation/provider/art_list_provider.dart';
 import 'package:sentra/presentation/widgets/widget_card_bussiness_management.dart';
 
-
 class ItemKeseniansAdmin extends StatelessWidget{
   const ItemKeseniansAdmin({Key? key}) : super(key: key);
 

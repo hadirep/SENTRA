@@ -58,7 +58,8 @@ class BusinessManagement extends StatelessWidget {
                     tooltip: 'Tambah data',
                     onPressed: () {
                       Navigator.pushReplacementNamed(
-                          context, CreateArt.routeName);
+                        context, CreateArt.routeName,
+                      );
                     },
                   ),
                 ),

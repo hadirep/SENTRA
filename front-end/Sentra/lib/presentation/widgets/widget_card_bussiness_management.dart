@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/constants.dart';
 import 'package:sentra/common/style.dart';
@@ -8,9 +9,9 @@ import 'package:sentra/presentation/pages/admin/edit_art.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
 
 class ArtCardBusiness extends StatefulWidget {
-  final ArtList artList;
+  late ArtList artList;
 
-  const ArtCardBusiness({Key? key, required this.artList}) : super(key: key);
+  ArtCardBusiness({Key? key, required this.artList}) : super(key: key);
 
   @override
   State<ArtCardBusiness> createState() => _ArtCardBusinessState();
@@ -19,30 +20,17 @@ class ArtCardBusiness extends StatefulWidget {
 class _ArtCardBusinessState extends State<ArtCardBusiness> {
   ApiService apiService = ApiService();
   String image = 'https://sentra.dokternak.id/public/kesenians/';
-    
-  // _showDialog(BuildContext context) {
-  //   // ignore: prefer_function_declarations_over_variables
-  //   VoidCallback continueCallBack = () async => {
-  //     Navigator.of(context).pop(
-  //         bool response = await apiService.deleteArtList(widget.artList.id);
-  //         if(response) {
-  //           print('Data berhasiil dihapus');
 
-  //         } else {
-  //             print('Seni gagal dihapus');
-  //         }
-  //     ),
-  //   };
-  //   BlurryDialog alert =
-  //   BlurryDialog("Peringatan!","Apakah kamu yakin mau menghapus data ini?", continueCallBack);
+  getData() async{
+    widget.artList = await apiService.getArtList() as ArtList;
+    setState(() {});
+  }
 
-  //   showDialog(
-  //     context: context,re
-  //     builder: (BuildContext context) {
-  //       return alert;
-  //     },
-  //   );
-  // }
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +39,7 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
         InkWell(
           onTap: () {
             Navigator.pushNamed(
-                context, DetailSellerProduct.routeName, arguments: widget.artList.id
+              context, DetailSellerProduct.routeName, arguments: widget.artList.id,
             );
           },
           child: Card(
@@ -170,7 +158,7 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                           widget.artList.province,
                           widget.artList.isFacebook.toString(),
                           widget.artList.isInstagram.toString(),
-                        ]
+                        ],
                     );
                   },
                 ),
@@ -194,22 +182,26 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                     title: const Text('Peringatan'),
                     content: const Text('Apakah kamu yakin akan menghapus seni ini?'),
                     actions: [
-                      FlatButton(
+                      TextButton(
                         onPressed: () {
                           Navigator.pop(context);
                         },
                         child: const Text('Tidak'),
                       ),
-                      FlatButton(
+                      TextButton(
                         onPressed: () async {
                           bool response = await apiService.deleteArtList(widget.artList.id);
                           if(response){
                             if (response) {
-                              print("Seni berhasil dihapus");
+                              if (kDebugMode) {
+                                print("Seni berhasil dihapus");
+                              }
                             }
                           } else{
                             if (response) {
-                              print("Seni gagal dihapus");
+                              if (kDebugMode) {
+                                print("Seni gagal dihapus");
+                              }
                             }
                           }
                           setState(() {
@@ -225,19 +217,6 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                       builder: (context) => dialog,
                     );              
                   },
-                            // onPressed: ()  async {
-                            //  bool response =  await apiService.deleteArtList(widget.artList.id);
-                            //  if(response){
-                            //   print('data berhasil dihapus');
-                            //  } else {
-                            //   print('Data gagal dihapus');
-                            //  }
-                            //  setState(() {
-                            //    widget.artList;
-                            //  });
-                            
-                            //   // _showDialog(context);
-                            // },
                 ),
               ),
             ],

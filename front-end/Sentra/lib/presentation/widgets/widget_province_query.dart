@@ -17,7 +17,9 @@ class _WidgetProvinceQueryState extends State<WidgetProvinceQuery> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, ProvinceDetailPage.routeName, arguments: widget.provinceQuery);
+        Navigator.pushNamed(
+          context, ProvinceDetailPage.routeName, arguments: widget.provinceQuery,
+        );
       },
       child: Card(
         elevation: 4.0,
@@ -67,7 +69,11 @@ class _WidgetProvinceQueryState extends State<WidgetProvinceQuery> {
                       ],
                     ),
                     const SizedBox(height: 2),
-                    Text(widget.provinceQuery.name,  style: const TextStyle(color: Color.fromARGB(255, 45, 74, 148), fontSize: 15, fontWeight: FontWeight.bold)),
+                    Text(widget.provinceQuery.name,
+                      style: const TextStyle(color: Color.fromARGB(255, 45, 74, 148),
+                        fontSize: 15, fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                 ),
               ),

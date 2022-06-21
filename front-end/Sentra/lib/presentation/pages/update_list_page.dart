@@ -24,7 +24,9 @@ class _UpdateListPageState extends State<UpdateListPage> {
           builder: (context, snapshot) {
             return InkWell(
               onTap: () {
-                Navigator.pushNamed(context, DetailSellerProduct.routeName, arguments: widget.updateList.id);
+                Navigator.pushNamed(
+                  context, DetailSellerProduct.routeName, arguments: widget.updateList.id,
+                );
               },
               child: Card(
                 elevation: 4.0,
@@ -67,14 +69,19 @@ class _UpdateListPageState extends State<UpdateListPage> {
                                 Text(widget.updateList.province,
                                   style: const TextStyle(
                                     color: Color.fromARGB(255, 45, 74, 148),
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold,
+                                    fontSize: 11, fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ],
                             ),
                             const SizedBox(height: 2),
-                            Text(widget.updateList.name,  style: const TextStyle(color: Color.fromARGB(255, 45, 74, 148), fontSize: 15, fontWeight: FontWeight.bold)),
+                            Text(
+                              widget.updateList.name,
+                              style: const TextStyle(
+                                color: Color.fromARGB(255, 45, 74, 148),
+                                fontSize: 15, fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ],
                         ),
                       ),

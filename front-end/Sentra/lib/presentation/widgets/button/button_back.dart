@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
 
 class ButtonBack extends StatefulWidget{
-
   const ButtonBack({Key? key}) : super(key: key);
 
   @override

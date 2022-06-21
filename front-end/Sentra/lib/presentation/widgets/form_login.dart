@@ -32,10 +32,10 @@ class _BuildFormLogin extends State<FormLogin> {
   Widget build(BuildContext context) {
     return  Card(
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.0)),
+        borderRadius: BorderRadius.circular(16.0),
+      ),
       margin: const EdgeInsets.all(24.0),
       elevation: 4,
-      // color: Theme.of(context).primaryColor,
       child: Container(
         margin: const EdgeInsets.all(20.0),
         child: Form(
@@ -43,9 +43,7 @@ class _BuildFormLogin extends State<FormLogin> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(
-                height: 16,
-              ),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -61,13 +59,11 @@ class _BuildFormLogin extends State<FormLogin> {
                   ),
                   labelText: 'Email ',
                   border: OutlineInputBorder(
-                      borderRadius:
-                      BorderRadius.all(Radius.circular(8.0))),
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               TextFormField(
                 controller: passwordController,
                 obscureText: _obscureText,
@@ -79,8 +75,8 @@ class _BuildFormLogin extends State<FormLogin> {
                 },
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(
-                      borderRadius:
-                      BorderRadius.all(Radius.circular(8.0))),
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  ),
                   labelText: 'Password',
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -110,7 +106,8 @@ class _BuildFormLogin extends State<FormLogin> {
                   TextButton(
                     onPressed: () {
                       Navigator.pushNamed(
-                          context, RegisterPage.routeName);
+                        context, RegisterPage.routeName,
+                      );
                     },
                     child: const Text(
                       'Daftar disini!',
@@ -140,7 +137,8 @@ class _BuildFormLogin extends State<FormLogin> {
                             email: email, password: password);
                         // ignore: use_build_context_synchronously
                         Navigator.pushReplacementNamed(
-                            context, BusinessManagement.routeName);
+                          context, BusinessManagement.routeName,
+                        );
                       }
                     } catch (e) {
                       final snackbar = SnackBar(content: Text(e.toString()));
@@ -154,9 +152,10 @@ class _BuildFormLogin extends State<FormLogin> {
                   style: ButtonStyle(
                     backgroundColor:  MaterialStateProperty.all(buttonPrimaryColor),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                        )
+                      const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12.0),
+                        ),
+                      ),
                     ),
                   ),
                   child: const Text(

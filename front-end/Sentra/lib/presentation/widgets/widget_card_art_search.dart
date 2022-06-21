@@ -13,8 +13,9 @@ class ArtCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        Navigator.pushNamed(context, DetailSellerProduct.routeName,
-                  arguments: art.id);
+        Navigator.pushNamed(
+          context, DetailSellerProduct.routeName, arguments: art.id,
+        );
       },
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(10),
@@ -30,7 +31,8 @@ class ArtCard extends StatelessWidget {
       title: Text(
         art.name!,
         style: const TextStyle(
-          color: Color(0xff2d4b94), fontSize: 15, fontWeight: FontWeight.bold,
+          color: Color(0xff2d4b94),
+          fontSize: 15, fontWeight: FontWeight.bold,
         ),
       ),
       subtitle: Column(
@@ -41,7 +43,8 @@ class ArtCard extends StatelessWidget {
               const SizedBox(width: 5),
               Text(art.province!,
                 style: const TextStyle(
-                  color: Color(0xff2d4b94), fontSize: 12, fontWeight: FontWeight.bold,
+                  color: Color(0xff2d4b94),
+                  fontSize: 12, fontWeight: FontWeight.bold,
                 ),
               ),
             ],

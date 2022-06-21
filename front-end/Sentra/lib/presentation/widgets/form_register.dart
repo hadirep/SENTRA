@@ -26,10 +26,10 @@ class _BuildFormRegister extends State<FormRegister> {
   Widget build(BuildContext context) {
     return  Card(
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.0)),
+        borderRadius: BorderRadius.circular(16.0),
+      ),
       margin: const EdgeInsets.all(24.0),
       elevation: 4,
-      // color: Theme.of(context).primaryColor,
       child: Container(
         margin: const EdgeInsets.all(20.0),
         child: Form(
@@ -55,8 +55,8 @@ class _BuildFormRegister extends State<FormRegister> {
                     ),
                     labelText: 'Email ',
                     border: OutlineInputBorder(
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(8.0))),
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    ),
                   ),
                 ),
               ),
@@ -74,8 +74,8 @@ class _BuildFormRegister extends State<FormRegister> {
                 },
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(
-                      borderRadius:
-                      BorderRadius.all(Radius.circular(8.0))),
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  ),
                   labelText: 'Password',
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -93,9 +93,7 @@ class _BuildFormRegister extends State<FormRegister> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               TextFormField(
                 controller: confirmPasswordController,
                 obscureText: _obsecureConfirmPassword,
@@ -110,8 +108,8 @@ class _BuildFormRegister extends State<FormRegister> {
                 },
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(
-                      borderRadius:
-                      BorderRadius.all(Radius.circular(8.0))),
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  ),
                   labelText: 'Konfirmasi Password',
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -129,9 +127,7 @@ class _BuildFormRegister extends State<FormRegister> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               Container(
                 margin: const EdgeInsets.all(16.0),
                 height: 50,
@@ -159,9 +155,9 @@ class _BuildFormRegister extends State<FormRegister> {
                   style: ButtonStyle(
                     backgroundColor:  MaterialStateProperty.all(buttonPrimaryColor),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                        )
+                      const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                      ),
                     ),
                   ),
                   child: const Text(
@@ -173,31 +169,29 @@ class _BuildFormRegister extends State<FormRegister> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Sudah memiliki akun?',
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Sudah memiliki akun?',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: textPrimaryColor,
+                    ),
+                  ),
+                  TextButton(
+                    child: const Text(
+                      'Ayo Masuk!',
                       style: TextStyle(
                         fontSize: 12,
+                        fontWeight: FontWeight.bold,
                         color: textPrimaryColor,
                       ),
                     ),
-                    TextButton(
-                      child: const Text(
-                        'Ayo Masuk!',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: textPrimaryColor,
-                        ),
-                      ),
-                      onPressed: () => Navigator.pop(context),
-                    ),
-                  ]
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ],
               ),
             ],
           ),

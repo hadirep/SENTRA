@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/pages/home_page.dart';
 import 'package:sentra/presentation/pages/login_page.dart';
-import 'package:sentra/presentation/widgets/button/button_back.dart';
 
 class AboutPage extends StatelessWidget {
   static const routeName = '/about_page';
@@ -28,7 +27,7 @@ class AboutPage extends StatelessWidget {
                       child: SizedBox(
                         child: ElevatedButton(
                           style: ButtonStyle(
-                            backgroundColor:  MaterialStateProperty.all(secondaryColor),
+                            backgroundColor: MaterialStateProperty.all(secondaryColor),
                           ),
                           onPressed: () {
                             Navigator.pushNamed(context, HomePage.routeName);
