@@ -79,6 +79,7 @@ class FavoriteList extends StatelessWidget{
         return FutureBuilder<bool>(
           future: provider.isFavorited(artList.id),
           builder: (context, snapshot) {
+            var isFavorited = snapshot.data ?? false;
             return Scaffold(
 
               body: Padding(

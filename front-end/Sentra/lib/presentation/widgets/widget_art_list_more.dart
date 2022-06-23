@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/data/models/art_list_model.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
+import 'package:sentra/presentation/pages/favorite_list.dart';
 
 class WidgetArtListMore extends StatefulWidget {
   final ArtList artList;
@@ -52,6 +53,26 @@ class _WidgetArtListMoreState extends State<WidgetArtListMore> {
               Padding(padding: const EdgeInsets.only(left: 5, top: 2),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8.0),
+                  // child: ListTile(
+                  //   contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  //   title: Column(
+                  //     children: [
+                  //       Icon(Icons.add_location_rounded, size: 15, color: Color.fromARGB(255, 234, 132, 0),
+                  //       ),
+                  //     Text(widget.artList.province!,
+                  //       style: const TextStyle(
+                  //         color: Color.fromARGB(255, 45, 74, 148),
+                  //         fontSize: 11, fontWeight: FontWeight.bold,
+                  //       ),
+                  //     ),
+                  //     ],
+                  //   ),
+                  //   subtitle: Text(widget.artList.name!,
+                  //     style: const TextStyle(color: Color.fromARGB(255, 45, 74, 148),
+                  //       fontSize: 15, fontWeight: FontWeight.bold,
+                  //     ),
+                  //   ),
+                  // ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
