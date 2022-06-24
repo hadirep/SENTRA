@@ -16,39 +16,42 @@ class BusinessManagement extends StatelessWidget {
         padding: const EdgeInsets.only(left: 18, right: 18),
         child: Column(
           children: [
-            const SizedBox(height: 7),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Container(
-                  width: 40, height: 40,
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                      color: secondaryColor,
-                      borderRadius: BorderRadius.all(Radius.circular(8))
-                  ),
-                  child: IconButton(
-                    iconSize: 20,
-                    icon: const Icon(Icons.logout, color: Color(0xfff0be41)),
-                    tooltip: 'Keluar',
-                    onPressed: () async {
-                      await auth.signOut();
-                      Navigator.pushReplacementNamed(
-                          context, LoginPage.routeName);
-                      // Navigator.pop(context);
-                    },
+                InkWell(
+                  onTap: () {
+                  },
+                  child: Container(
+                    width: 35, height: 35,
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(
+                        color: secondaryColor,
+                        borderRadius: BorderRadius.all(Radius.circular(8))
+                    ),
+                    child: IconButton(
+                      iconSize: 15,
+                      icon: const Icon(Icons.logout, color: Color(0xfff0be41)),
+                      tooltip: 'Keluar',
+                      onPressed: () async {
+                        await auth.signOut();
+                        Navigator.pushReplacementNamed(
+                            context, LoginPage.routeName);
+                        // Navigator.pop(context);
+                      },
+                    ),
                   ),
                 ),
                 Container(
-                  width: 40,
-                  height: 40,
+                  width: 35, height: 35,
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(
                       color: secondaryColor,
                       borderRadius: BorderRadius.all(Radius.circular(8))
                   ),
                   child: IconButton(
-                    iconSize: 20,
+                    iconSize: 15,
                     icon: const Icon(Icons.add, color: Color(0xfff0be41)),
                     tooltip: 'Tambah data',
                     onPressed: () {
@@ -60,10 +63,11 @@ class BusinessManagement extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 7),
             const Text(
-              'Kesenian Nusantara',
+              'Daftar Kesenian Nusantara',
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 20,
                 fontWeight: FontWeight.w800,
                 color: secondaryColor,
               ),
@@ -100,5 +104,4 @@ class BusinessManagement extends StatelessWidget {
       ),
     );
   }
-
 }

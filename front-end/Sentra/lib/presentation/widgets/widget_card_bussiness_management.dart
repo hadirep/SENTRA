@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:sentra/common/constants.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/data/api/api_service.dart';
-import 'package:sentra/data/models/art_list_model.dart';
+import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:sentra/presentation/pages/admin/edit_art.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
 
 class ArtCardBusiness extends StatefulWidget {
-  late ArtList artList;
+  final ArtList artList;
 
-  ArtCardBusiness({Key? key, required this.artList}) : super(key: key);
+  const ArtCardBusiness({Key? key, required this.artList}) : super(key: key);
 
   @override
   State<ArtCardBusiness> createState() => _ArtCardBusinessState();
@@ -19,27 +19,15 @@ class ArtCardBusiness extends StatefulWidget {
 
 class _ArtCardBusinessState extends State<ArtCardBusiness> {
   ApiService apiService = ApiService();
-  String image = 'https://sentra.dokternak.id/public/kesenians/';
-
-  getData() async{
-    widget.artList = await apiService.getArtList() as ArtList;
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    getData();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
         InkWell(
           onTap: () {
             Navigator.pushNamed(
-              context, DetailSellerProduct.routeName, arguments: widget.artList.id,
+              context, DetailSellerProduct.routeName, arguments: widget.artList,
             );
           },
           child: Card(
@@ -148,17 +136,19 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                   onPressed: () {
                     Navigator.of(context).pushNamed
                       (EditArt.routeName,
-                        arguments: [
-                          widget.artList.id,
-                          widget.artList.name,
-                          widget.artList.price,
-                          widget.artList.community,
-                          widget.artList.phoneNumber,
-                          widget.artList.email,
-                          widget.artList.province,
-                          widget.artList.isFacebook.toString(),
-                          widget.artList.isInstagram.toString(),
-                        ],
+                      arguments: [
+                        widget.artList.id,
+                        widget.artList.name,
+                        widget.artList.price,
+                        widget.artList.community,
+                        widget.artList.category,
+                        widget.artList.phoneNumber,
+                        widget.artList.email,
+                        widget.artList.province,
+                        widget.artList.description,
+                        widget.artList.isFacebook.toString(),
+                        widget.artList.isInstagram.toString(),
+                      ],
                     );
                   },
                 ),
@@ -178,44 +168,40 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                   icon: const Icon(Icons.delete, color: Colors.white),
                   tooltip: 'Delete data',
                   onPressed: () async {
-                  final dialog = AlertDialog(
-                    title: const Text('Peringatan'),
-                    content: const Text('Apakah kamu yakin akan menghapus seni ini?'),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text('Tidak'),
-                      ),
-                      TextButton(
-                        onPressed: () async {
-                          bool response = await apiService.deleteArtList(widget.artList.id);
-                          if(response){
-                            if (response) {
-                              if (kDebugMode) {
+                    final dialog = AlertDialog(
+                      title: const Text('Peringatan'),
+                      content: const Text('Apakah kamu yakin akan menghapus seni ini?'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text('Tidak'),
+                        ),
+                        TextButton(
+                          onPressed: () async {
+                            bool response = await apiService.deleteArtList(widget.artList.id);
+                            if(response){
+                              if (response) {
+                                Navigator.pop(context);
                                 print("Seni berhasil dihapus");
                               }
-                            }
-                          } else{
-                            if (response) {
-                              if (kDebugMode) {
-                                print("Seni gagal dihapus");
+                            } else{
+                              if (response) {
+                                if (kDebugMode) {
+                                  print("Seni gagal dihapus");
+                                }
                               }
                             }
-                          }
-                          setState(() {
-                            widget.artList;
-                          });                          
-                        },
-                        child: const Text('Hapus'),
-                      ),
-                    ],
+                          },
+                          child: const Text('Hapus'),
+                        ),
+                      ],
                     );
                     showDialog(
                       context: context,
                       builder: (context) => dialog,
-                    );              
+                    );
                   },
                 ),
               ),
@@ -227,4 +213,3 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
     );
   }
 }
-
