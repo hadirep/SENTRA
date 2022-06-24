@@ -4,27 +4,29 @@ import 'package:provider/provider.dart';
 import 'package:sentra/common/constants.dart';
 import 'package:sentra/common/result_state.dart';
 import 'package:sentra/data/api/api_service.dart';
-import 'package:sentra/data/db/database_helper.dart';
+import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:sentra/presentation/provider/database_provider.dart';
 import 'package:sentra/presentation/provider/detail_provider.dart';
 import 'package:readmore/readmore.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
-import '../../data/models/art_list_model.dart';
 
-class DetailSellerProduct extends StatelessWidget {
-  static const routeName = '/detail-seller-product';
+class DetailSellerProduct extends StatefulWidget {
   final ArtList artList;
+  static const routeName = '/detail-seller-product';
+
   const DetailSellerProduct({Key? key, required this.artList}) : super(key: key);
 
+  @override
+  State<DetailSellerProduct> createState() => _DetailSellerProductState();
+}
+
+class _DetailSellerProductState extends State<DetailSellerProduct> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<DetailProvider>(
-          create: (_) => DetailProvider(detailApiService: ApiService(), id: artList.id),
-        ),
-        ChangeNotifierProvider<DatabaseProvider>(
-          create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper()),
+          create: (_) => DetailProvider(detailApiService: ApiService(), id: widget.artList.id),
         ),
       ],
       child: Scaffold(
@@ -59,7 +61,7 @@ class DetailSellerProduct extends StatelessWidget {
               body: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const SizedBox(height: 6,),
+                    const SizedBox(height: 6),
                     Stack(
                       children: [
                         Container(
@@ -90,7 +92,7 @@ class DetailSellerProduct extends StatelessWidget {
                             ),
                             const SizedBox(height: 140),
                             Container(
-                              padding: const EdgeInsets.only(left: 20),
+                              padding: const EdgeInsets.only(left: 20 ),
                               child: Text(
                                 state.detail.data.province,
                                 style: const TextStyle(
@@ -101,7 +103,7 @@ class DetailSellerProduct extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Container(
-                              padding: const EdgeInsets.only(left: 20),
+                              padding: const EdgeInsets.only(left: 20 ),
                               child: Text(
                                 state.detail.data.name,
                                 style: const TextStyle(
@@ -112,7 +114,7 @@ class DetailSellerProduct extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Container(
-                              padding: const EdgeInsets.only(left: 20),
+                              padding: const EdgeInsets.only(left: 20 ),
                               child: Text(
                                 state.detail.data.price,
                                 style: const TextStyle(
@@ -121,36 +123,30 @@ class DetailSellerProduct extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Consumer<DatabaseProvider>(
-                                builder: (context, provider, child) {
-                                  return FutureBuilder<bool>(
-                                    future: provider.isFavorited(artList.id),
-                                    builder: (context, snapshot) {
-                                      var isFavorited = snapshot.data ?? false;
-                                      return CircleAvatar(
-                                        backgroundColor: Colors.black12,
-                                        child: isFavorited
-                                            ? IconButton(
-                                          icon: const Icon(Icons.favorite),
-                                          color: Colors.red[400],
-                                          onPressed: () => provider
-                                              .removeFavorite(artList.id),
-                                        ) : IconButton(
-                                          icon: const Icon(Icons.favorite_border),
-                                          color: Colors.red[400],
-                                          onPressed: () => provider
-                                              .addFavorite(artList),
-                                        ),
-                                      );
-                                    },
-                                  );
-                                }
-                            ),
                           ],
                         ),
                       ],
                     ),
-                    const SizedBox(height:10),
+                    Consumer<DatabaseProvider>(
+                      builder: (context, provider, child) {
+                        return FutureBuilder<bool>(
+                          future: provider.isFavorited(widget.artList.id),
+                          builder: (context, snapshot) {
+                            var isFavorited = snapshot.data ?? false;
+                            return isFavorited
+                                ? IconButton(
+                                icon: const Icon(Icons.favorite, color: Colors.red),
+                                onPressed: () => provider
+                                    .removeFavorite(widget.artList.id)
+                            ) : IconButton(
+                              icon: const Icon(Icons.favorite_border, color: Colors.red),
+                              onPressed: () => provider
+                                  .addFavorite(widget.artList),
+                            );
+                          },
+                        );
+                      },
+                    ),
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
@@ -199,7 +195,7 @@ class DetailSellerProduct extends StatelessWidget {
                                       padding: const EdgeInsets.only(left: 8.0, right: 9),
                                       child: ReadMoreText(state.detail.data.description,
                                         style: const TextStyle(
-                                          color:  Color.fromARGB(255, 190, 190, 190),
+                                          color: Colors.black,
                                           fontWeight: FontWeight.w400 , fontSize: 13,
                                         ),
                                         trimLength: 500,
@@ -393,7 +389,7 @@ class DetailSellerProduct extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 12,),
+                                const SizedBox(height: 12),
                                 Container(
                                   width: MediaQuery.of(context).size.width,
                                   padding: const EdgeInsets.all(7),
@@ -442,6 +438,8 @@ class DetailSellerProduct extends StatelessWidget {
               ),
             ),
           );
+        } else if (state.detailState == ResultState.error) {
+          return Center(child: Text(state.message));
         } else if (state.detailState == ResultState.noData){
           return Center(child: Text(state.message));
         } else if (state.detailState == ResultState.error) {

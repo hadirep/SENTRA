@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:sentra/common/result_state.dart';
 import 'package:sentra/data/db/database_helper.dart';
-import 'package:sentra/data/models/art_list_model.dart';
+import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:flutter/material.dart';
 
 class DatabaseProvider extends ChangeNotifier {
@@ -29,7 +29,7 @@ class DatabaseProvider extends ChangeNotifier {
         _state = ResultState.hasData;
       } else {
         _state = ResultState.noData;
-        _message = 'Empty Data';
+        _message = 'Kamu belum punya favorite';
       }
       notifyListeners();
     } catch (e) {

@@ -1,4 +1,4 @@
-import 'package:sentra/data/models/art_list_model.dart';
+import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
@@ -11,27 +11,38 @@ class DatabaseHelper {
 
   factory DatabaseHelper() => _instance ?? DatabaseHelper._internal();
 
-  static const String _tblFavorite = 'favorite';
+  static const String _tblFavorite = 'favorites';
 
   Future<Database> _initializeDb() async {
     var path = await getDatabasesPath();
     var db = openDatabase(
-      '$path/Sentra.db',
+      '$path/sentra.db',
       onCreate: (db, version) async {
         await db.execute('''CREATE TABLE $_tblFavorite (
-          id TEXT PRIMARY KEY,
+          id_kesenian TEXT PRIMARY KEY,
           name TEXT,
+          price TEXT,
+          category TEXT,
+          community TEXT,
+          phone_number TEXT,
+          email TEXT,
           province TEXT,
+          image TEXT,
+          description TEXT,
+          is_facebook TEXT,
+          is_instagram TEXT
           )     
         ''');
       },
       version: 1,
     );
+
     return db;
   }
 
   Future<Database?> get database async {
     _database ??= await _initializeDb();
+
     return _database;
   }
 
@@ -52,7 +63,7 @@ class DatabaseHelper {
 
     List<Map<String, dynamic>> results = await db!.query(
       _tblFavorite,
-      where: 'id = ?',
+      where: 'id_kesenian = ?',
       whereArgs: [id],
     );
 
@@ -68,7 +79,7 @@ class DatabaseHelper {
 
     await db!.delete(
       _tblFavorite,
-      where: 'id = ?',
+      where: 'id_kesenian = ?',
       whereArgs: [id],
     );
   }
