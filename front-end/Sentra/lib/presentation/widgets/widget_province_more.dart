@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sentra/data/models/province_list_model.dart';
+import 'package:sentra/common/constants.dart';
+import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:sentra/presentation/pages/province_query_page.dart';
 
 class WidgetProvinceMore extends StatefulWidget {
-  final ProvinceList provinceList;
+  final ArtList provinceList;
   const WidgetProvinceMore({Key? key, required this.provinceList}) : super(key: key);
 
   @override
@@ -11,8 +12,6 @@ class WidgetProvinceMore extends StatefulWidget {
 }
 
 class _WidgetProvinceMoreState extends State<WidgetProvinceMore> {
-  dynamic image = 'https://sentra.dokternak.id/public/kesenians/';
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -22,27 +21,68 @@ class _WidgetProvinceMoreState extends State<WidgetProvinceMore> {
         );
       },
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(20),
         child: Card(
-          child: Column(
+          child: Stack(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  image+widget.provinceList.image,
-                  width: 150, height: 150, fit: BoxFit.cover,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 5),
-                child: Text(
-                  widget.provinceList.province, textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 15, fontWeight: FontWeight.bold,
-                    color: Color(0xff2d4b94),
+              Container(
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height * 0.30,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .height * 0.30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    width: 3, color: const Color.fromARGB(207, 246, 219, 138),
+                  ),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      baseImageArt + widget.provinceList.image,
+                    ),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
+              const SizedBox(width: 30),
+              Positioned.fill(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Container(
+                          height: 30, width: 90,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(206, 255, 244, 211),
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              width: 1,
+                              color: const Color.fromARGB(255, 234, 132, 0),
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              widget.provinceList.province!,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w800,
+                                color: Color(0xff2d4b94),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 140),
             ],
           ),
         ),

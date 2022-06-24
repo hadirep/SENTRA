@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/constants.dart';
-import 'package:sentra/data/models/art_list_model.dart';
+import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
 
 class ArtCard extends StatelessWidget {
@@ -14,7 +14,7 @@ class ArtCard extends StatelessWidget {
     return ListTile(
       onTap: () {
         Navigator.pushNamed(
-          context, DetailSellerProduct.routeName, arguments: art.id,
+          context, DetailSellerProduct.routeName, arguments: art,
         );
       },
       leading: ClipRRect(
@@ -41,7 +41,8 @@ class ArtCard extends StatelessWidget {
           Row(
             children: [
               const SizedBox(width: 5),
-              Text(art.province!,
+              Text(
+                art.province!,
                 style: const TextStyle(
                   color: Color(0xff2d4b94),
                   fontSize: 12, fontWeight: FontWeight.bold,

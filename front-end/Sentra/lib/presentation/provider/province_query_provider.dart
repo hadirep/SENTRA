@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/data/api/api_service.dart';
-import 'package:sentra/data/models/province_query_model.dart';
+import 'package:sentra/data/models/update_and_query_model.dart';
 import 'package:sentra/common/result_state.dart';
 
 class ProvinceQueryProvider extends ChangeNotifier {
@@ -11,12 +11,12 @@ class ProvinceQueryProvider extends ChangeNotifier {
     _fetchProvinceQuery(query);
   }
 
-  late ProvinceQueryModel _queryDetail;
+  late UpdateAndQueryModel _queryDetail;
   late ResultState _queryState;
   String _message = '';
 
   String get message => _message;
-  ProvinceQueryModel get queryDetail => _queryDetail;
+  UpdateAndQueryModel get queryDetail => _queryDetail;
   ResultState get queryState => _queryState;
 
   Future<dynamic> _fetchProvinceQuery(String query) async {

@@ -3,14 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:sentra/common/result_state.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/data/api/api_service.dart';
-import 'package:sentra/data/models/province_list_model.dart';
+import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:sentra/presentation/provider/province_query_provider.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 import 'package:sentra/presentation/widgets/widget_province_query.dart';
 
 class ProvinceQueryPage extends StatefulWidget {
   static const routeName = '/province-query-page';
-  final ProvinceList queryList;
+  final ArtList queryList;
   const ProvinceQueryPage({Key? key, required this.queryList}) : super(key: key);
 
   @override
@@ -42,7 +42,7 @@ class _ProvinceQueryPageState extends State<ProvinceQueryPage> {
         padding: const EdgeInsets.all(15),
         child: ChangeNotifierProvider<ProvinceQueryProvider>(
           create: (_) => ProvinceQueryProvider(
-              queryApiService: ApiService(), query: widget.queryList.province),
+              queryApiService: ApiService(), query: widget.queryList.province!),
           child: Consumer<ProvinceQueryProvider>(
             builder: (context, state, _) {
               if (state.queryState == ResultState.loading) {
@@ -50,18 +50,21 @@ class _ProvinceQueryPageState extends State<ProvinceQueryPage> {
                   child: CircularProgressIndicator(color: Colors.red),
                 );
               } else if (state.queryState == ResultState.hasData) {
-                return SizedBox(
-                  height: 190,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: state.queryDetail.data.length,
-                    itemBuilder: (context, index) {
-                      var queryData = state.queryDetail.data[index];
-                      return WidgetProvinceQuery(
-                        provinceQuery: queryData,
-                      );
-                    },
+                return GridView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  itemCount: state.queryDetail.data.length,
+                  itemBuilder: (context, index) {
+                    var queryData = state.queryDetail.data[index];
+                    return WidgetProvinceQuery(
+                      provinceQuery: queryData,
+                    );
+                  },
+                  gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio:
+                    MediaQuery.of(context).size.width/(MediaQuery.of(context).size.height/1.9),
                   ),
                 );
               } else if (state.queryState == ResultState.noData) {

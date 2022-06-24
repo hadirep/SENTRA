@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/data/api/api_service.dart';
-import 'package:sentra/data/models/art_list_model.dart';
+import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:sentra/common/result_state.dart';
 
 class ArtListProvider extends ChangeNotifier {
@@ -10,12 +10,12 @@ class ArtListProvider extends ChangeNotifier {
     _fetchListProvince();
   }
 
-  late ArtListModel _list;
+  late ArtAndProvinceModel _list;
   late ResultState _state;
   String _message = '';
 
   String get message => _message;
-  ArtListModel get list => _list;
+  ArtAndProvinceModel get list => _list;
   ResultState get listState => _state;
 
   Future<dynamic> _fetchListProvince() async {

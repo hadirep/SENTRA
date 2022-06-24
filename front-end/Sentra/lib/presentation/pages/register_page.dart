@@ -12,7 +12,6 @@ class RegisterPage extends StatefulWidget{
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;

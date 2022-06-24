@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:provider/provider.dart';
 import 'package:sentra/common/style.dart';
-import 'package:sentra/presentation/pages/home_page.dart';
 import 'package:sentra/presentation/provider/search_art_provider.dart';
+import 'package:sentra/presentation/widgets/button/button_back.dart';
 import 'package:sentra/presentation/widgets/widget_card_art_search.dart';
 import 'package:sentra/presentation/widgets/widget_search.dart';
 
@@ -60,106 +60,20 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
     return Scaffold(
-      drawer: Drawer(
-        backgroundColor: const Color(0xffead5a0),
-        child: Column(
-          children: [
-            DrawerHeader(
-              decoration: const BoxDecoration(
-                color: Colors.transparent,
-              ),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: Image.asset(
-                  "assets/logo/sentra_drawer.png",
-                  width: 10, height: 10,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.home_rounded, color: Colors.orange),
-              title: const Text('Home',
-                style: TextStyle(
-                  color: Color(0xff2d4b94), fontWeight: FontWeight.bold,
-                ),
-              ),
-              onTap: () {
-                Navigator.pushNamed(context, HomePage.routeName);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.stars, color: Colors.yellow),
-              title: const Text(
-                'Favorite',
-                style: TextStyle(
-                  color: Color(0xff2d4b94), fontWeight: FontWeight.bold,
-                ),
-              ),
-              onTap: () {
-                //Navigator.pushNamed(context);
-              },
-            ),
-            ListTile(
-              onTap: () {
-                //Navigator.pushNamed(context);
-              },
-              leading: const Icon(Icons.info, color: Colors.white),
-              title: const Text(
-                'Tentang Kami',
-                style: TextStyle(
-                  color: Color(0xff2d4b94), fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-              onTap: () {
-                //Navigator.pushNamed(context);
-              },
-              leading: const Icon(Icons.settings, color: Colors.grey),
-              title: const Text(
-                'Pengaturan',
-                style: TextStyle(
-                  color: Color(0xff2d4b94), fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Align(
-          alignment: Alignment.center,
-          child: Text(
-            'Pencarian',
-            style: TextStyle(
-              color: Color(0xff2d4b94),
-              fontWeight: FontWeight.bold,
-            ),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: const Text(
+          'Pencarian',
+          style: TextStyle(
+              color: Color.fromARGB(255, 45, 74, 148),
+              fontWeight: FontWeight.bold
           ),
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.close,
-              color: buttonPrimaryColor,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ],
-        backgroundColor: Colors.white,
-        leading : Padding(
-          padding: const EdgeInsets.symmetric(),
-          child: Builder(
-            builder: (context) => IconButton(
-              icon: Image.asset(
-                "assets/logo/sentra.png", height: 40, width: 40,
-              ),
-              onPressed: () => Scaffold.of(context).openDrawer(),
-            ),
-          ),
+        centerTitle: true,
+        leading: const Align(
+          alignment: Alignment.centerLeft,
+          child: ButtonBack(),
         ),
       ),
       body: OfflineBuilder(

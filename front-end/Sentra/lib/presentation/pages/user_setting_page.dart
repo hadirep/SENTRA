@@ -126,7 +126,6 @@ class UserSetting extends StatelessWidget {
     );
   }
 
-  @override
   Widget _buildList(BuildContext context) {
     return Consumer<PreferenceProvider>(
       builder: (context, provider, child) {

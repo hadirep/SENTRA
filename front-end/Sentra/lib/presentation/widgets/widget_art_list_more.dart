@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sentra/data/models/art_list_model.dart';
+import 'package:sentra/common/constants.dart';
+import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
-import 'package:sentra/presentation/pages/favorite_list.dart';
 
 class WidgetArtListMore extends StatefulWidget {
   final ArtList artList;
@@ -12,8 +12,6 @@ class WidgetArtListMore extends StatefulWidget {
 }
 
 class _WidgetArtListMoreState extends State<WidgetArtListMore> {
-  dynamic image = 'https://sentra.dokternak.id/public/kesenians/';
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -42,7 +40,7 @@ class _WidgetArtListMoreState extends State<WidgetArtListMore> {
                         color: const Color.fromARGB(196, 249, 216, 117),
                       ),
                       image: DecorationImage(
-                        image: NetworkImage(image+widget.artList.image),
+                        image: NetworkImage(baseImageArt+widget.artList.image),
                         fit: BoxFit.cover,
                       ),
                     ),

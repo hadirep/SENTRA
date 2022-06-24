@@ -23,8 +23,8 @@ class DetailProvider extends ChangeNotifier {
     try {
       _detailState = ResultState.loading;
       notifyListeners();
-      final detail = await detailApiService.getProvinceDetail(id);
-      if(detail == false){
+      final detail = await detailApiService.getDetail(id);
+      if(detail.data.id.isEmpty){
         _detailState = ResultState.noData;
         notifyListeners();
         return _message = 'Empty Data';

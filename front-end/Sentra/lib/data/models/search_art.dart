@@ -1,4 +1,4 @@
-import 'package:sentra/data/models/art_list_model.dart';
+import 'package:sentra/data/models/art_and_province_model.dart';
 
 class ResultArtSearch {
   ResultArtSearch({

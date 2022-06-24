@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/data/api/api_service.dart';
-import 'package:sentra/data/models/update_list_model.dart';
+import 'package:sentra/data/models/update_and_query_model.dart';
 import 'package:sentra/common/result_state.dart';
 
 class UpdateListProvider extends ChangeNotifier {
@@ -10,12 +10,12 @@ class UpdateListProvider extends ChangeNotifier {
     _fetchUpdateList();
   }
 
-  late UpdateListModel _list;
+  late UpdateAndQueryModel _list;
   late ResultState _state;
   String _message = '';
 
   String get message => _message;
-  UpdateListModel get list => _list;
+  UpdateAndQueryModel get list => _list;
   ResultState get listState => _state;
 
   Future<dynamic> _fetchUpdateList() async {

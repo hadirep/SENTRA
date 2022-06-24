@@ -1,5 +1,5 @@
-class ArtListModel {
-  ArtListModel({
+class ArtAndProvinceModel {
+  ArtAndProvinceModel({
     required this.status,
     required this.data,
   });
@@ -7,7 +7,7 @@ class ArtListModel {
   final String status;
   final List<ArtList> data;
 
-  factory ArtListModel.fromJson(Map<String, dynamic> json) => ArtListModel(
+  factory ArtAndProvinceModel.fromJson(Map<String, dynamic> json) => ArtAndProvinceModel(
     status: json["status"],
     data: List<ArtList>.from(json["data"]
         .map((x) => ArtList.fromJson(x))),
@@ -30,6 +30,7 @@ class ArtList {
     required this.email,
     required this.province,
     required this.image,
+    required this.description,
     required this.isFacebook,
     required this.isInstagram,
   });
@@ -43,6 +44,7 @@ class ArtList {
   String? email;
   String? province;
   String image;
+  String? description;
   dynamic isFacebook;
   dynamic isInstagram;
 
@@ -56,6 +58,7 @@ class ArtList {
     email: json["email"],
     province: json["province"],
     image: json["image"],
+    description: json["description"],
     isFacebook: json["is_facebook"],
     isInstagram: json["is_instagram"],
   );
@@ -70,6 +73,7 @@ class ArtList {
     "email": email,
     "province": province,
     "image": image,
+    "description": description,
     "is_facebook": isFacebook,
     "is_instagram": isInstagram
   };

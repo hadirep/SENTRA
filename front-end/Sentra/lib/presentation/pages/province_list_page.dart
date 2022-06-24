@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sentra/data/models/province_list_model.dart';
+import 'package:sentra/common/constants.dart';
+import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:sentra/presentation/pages/province_query_page.dart';
 
 class ProvinceListPage extends StatefulWidget {
-  final ProvinceList provinceList;
+  final ArtList provinceList;
   const ProvinceListPage({Key? key, required this.provinceList}) : super(key: key);
 
   @override
@@ -11,14 +12,12 @@ class ProvinceListPage extends StatefulWidget {
 }
 
 class _ProvinceListPageState extends State<ProvinceListPage> {
-  dynamic image = 'https://sentra.dokternak.id/public/kesenians/';
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         Navigator.pushNamed(
-           context, ProvinceQueryPage.routeName, arguments: widget.provinceList,
+          context, ProvinceQueryPage.routeName, arguments: widget.provinceList,
         );
       },
       child: ClipRRect(
@@ -28,14 +27,14 @@ class _ProvinceListPageState extends State<ProvinceListPage> {
             children: [
               Container(
                 height: MediaQuery.of(context).size.height * 0.33,
-                width:  MediaQuery.of(context).size.height * 0.15,
+                width: MediaQuery.of(context).size.height * 0.15,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     width: 3, color: const Color.fromARGB(207, 246, 219, 138),
                   ),
                   image: DecorationImage(
-                    image: NetworkImage(image+widget.provinceList.image,),
+                    image: NetworkImage(baseImageArt+widget.provinceList.image,),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -60,7 +59,7 @@ class _ProvinceListPageState extends State<ProvinceListPage> {
                           ),
                           child: Center(
                             child: Text(
-                              widget.provinceList.province,
+                              widget.provinceList.province!,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                 fontSize: 12,

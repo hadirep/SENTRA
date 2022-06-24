@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sentra/data/models/update_list_model.dart';
+import 'package:sentra/common/constants.dart';
+import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
 
 class WidgetUpdateMore extends StatefulWidget {
-  final UpdateList updateList;
+  final ArtList updateList;
   const WidgetUpdateMore({Key? key, required this.updateList}) : super(key: key);
 
   @override
@@ -11,8 +12,6 @@ class WidgetUpdateMore extends StatefulWidget {
 }
 
 class _WidgetUpdateMoreState extends State<WidgetUpdateMore> {
-  dynamic image = 'https://sentra.dokternak.id/public/kesenians/';
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -41,7 +40,7 @@ class _WidgetUpdateMoreState extends State<WidgetUpdateMore> {
                         color: const Color.fromARGB(196, 249, 216, 117),
                       ),
                       image: DecorationImage(
-                        image: NetworkImage(image+widget.updateList.image),
+                        image: NetworkImage(baseImageArt+widget.updateList.image),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -61,7 +60,7 @@ class _WidgetUpdateMoreState extends State<WidgetUpdateMore> {
                           const Icon(Icons.add_location_rounded,
                             size: 15, color: Color.fromARGB(255, 234, 132, 0),
                           ),
-                          Text(widget.updateList.province,
+                          Text(widget.updateList.province!,
                             style: const TextStyle(
                               color: Color.fromARGB(255, 45, 74, 148),
                               fontSize: 11, fontWeight: FontWeight.bold,
@@ -70,7 +69,7 @@ class _WidgetUpdateMoreState extends State<WidgetUpdateMore> {
                         ],
                       ),
                       const SizedBox(height: 2),
-                      Text(widget.updateList.name,
+                      Text(widget.updateList.name!,
                         style: const TextStyle(color: Color.fromARGB(255, 45, 74, 148),
                           fontSize: 15, fontWeight: FontWeight.bold,
                         ),
@@ -86,4 +85,3 @@ class _WidgetUpdateMoreState extends State<WidgetUpdateMore> {
     );
   }
 }
-      
