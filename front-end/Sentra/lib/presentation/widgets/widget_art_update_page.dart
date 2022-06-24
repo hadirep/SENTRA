@@ -18,7 +18,7 @@ class _WidgetUpdateMoreState extends State<WidgetUpdateMore> {
     return InkWell(
       onTap: () {
         Navigator.pushNamed(
-            context, DetailSellerProduct.routeName, arguments: widget.updateList
+          context, DetailSellerProduct.routeName, arguments: widget.updateList,
         );
       },
       child: ClipRRect(

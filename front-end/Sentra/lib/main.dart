@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/navigation.dart';
 import 'package:sentra/data/api/api_service.dart';
-import 'package:sentra/data/db/database_favorite.dart';
+import 'package:sentra/data/db/database_helper.dart';
 import 'package:sentra/data/models/province_list_model.dart';
 import 'package:sentra/data/models/province_query_model.dart';
 import 'package:sentra/data/preferences/preference_helper.dart';
@@ -34,6 +34,8 @@ import 'package:sentra/presentation/provider/search_art_provider.dart';
 import 'package:sentra/presentation/provider/update_list_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'data/models/art_list_model.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -48,9 +50,6 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<ProvinceListProvider>(
           create: (_) => ProvinceListProvider(listApiService: ApiService()),
-        ),
-        ChangeNotifierProvider<DetailProvider>(
-          create: (_) => DetailProvider(detailApiService: ApiService(), id: ''),
         ),
         ChangeNotifierProvider<ProvinceQueryProvider>(
           create: (_) => ProvinceQueryProvider(queryApiService: ApiService(), query: ''),
@@ -97,13 +96,14 @@ class MyApp extends StatelessWidget {
               BusinessManagement.routeName: (context) => const BusinessManagement(),
               HomePage.routeName: (context) => const HomePage(),
               FavoriteList.routeName: (context) => const FavoriteList(),
-              EditArt.routeName: (context) => EditArt(),
+              EditArt.routeName: (context) => const EditArt(),
               ProvinceMorePage.routeName: (context) => const ProvinceMorePage(),
               AboutPage.routeName: (context) => const AboutPage(),
               UserSetting.routeName: (context) => const UserSetting(),
               // PopUpPage.routeName: (context) => const PopUpPage(),
               DetailSellerProduct.routeName: (context) => DetailSellerProduct(
-                  id: ModalRoute.of(context)?.settings.arguments as String),
+                  artList: ModalRoute.of(context)?.settings.arguments as ArtList,
+              ),
               CreateArt.routeName: (context) => const CreateArt(),
               ArtListMorePage.routeName: (context) => const ArtListMorePage(),
               UpdateMorePage.routeName: (context) => const UpdateMorePage(),

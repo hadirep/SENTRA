@@ -18,7 +18,7 @@ class _ArtListPageState extends State<ArtListPage> {
     return InkWell(
       onTap: () {
         Navigator.pushNamed(
-          context, DetailSellerProduct.routeName, arguments: widget.artList.id,
+          context, DetailSellerProduct.routeName, arguments: widget.artList,
         );
       },
       child: Card(

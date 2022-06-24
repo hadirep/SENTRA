@@ -8,7 +8,7 @@ class DetailProvider extends ChangeNotifier {
   final String id;
 
   DetailProvider({required this.detailApiService, required this.id}){
-    _fecthProvinceDetail(id);
+    _fetchDetail(id);
   }
 
   late DetailModel _detail;
@@ -19,7 +19,7 @@ class DetailProvider extends ChangeNotifier {
   DetailModel get detail => _detail;
   ResultState get detailState => _detailState;
 
-  Future<dynamic> _fecthProvinceDetail(String id) async {
+  Future<dynamic> _fetchDetail(String id) async {
     try {
       _detailState = ResultState.loading;
       notifyListeners();

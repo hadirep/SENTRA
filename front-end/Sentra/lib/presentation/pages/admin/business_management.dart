@@ -16,32 +16,27 @@ class BusinessManagement extends StatelessWidget {
         padding: const EdgeInsets.only(left: 18, right: 18),
         child: Column(
           children: [
-            const SizedBox(height: 10),
+            const SizedBox(height: 7),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                InkWell(
-                  onTap: () {
-                  },
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    alignment: Alignment.center,
-                    decoration: const BoxDecoration(
-                        color: secondaryColor,
-                        borderRadius: BorderRadius.all(Radius.circular(8))
-                    ),
-                    child: IconButton(
-                      iconSize: 20,
-                      icon: const Icon(Icons.logout, color: Color(0xfff0be41)),
-                      tooltip: 'Keluar',
-                      onPressed: () async {
-                        await auth.signOut();
-                        Navigator.pushReplacementNamed(
-                            context, LoginPage.routeName);
-                        // Navigator.pop(context);
-                      },
-                    ),
+                Container(
+                  width: 40, height: 40,
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                      color: secondaryColor,
+                      borderRadius: BorderRadius.all(Radius.circular(8))
+                  ),
+                  child: IconButton(
+                    iconSize: 20,
+                    icon: const Icon(Icons.logout, color: Color(0xfff0be41)),
+                    tooltip: 'Keluar',
+                    onPressed: () async {
+                      await auth.signOut();
+                      Navigator.pushReplacementNamed(
+                          context, LoginPage.routeName);
+                      // Navigator.pop(context);
+                    },
                   ),
                 ),
                 Container(
@@ -65,21 +60,12 @@ class BusinessManagement extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              height: 40,
-              alignment: Alignment.bottomCenter,
-              child: const Center(
-                child: Text(
-                  'List Kesenian Nusantara',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w800,
-                    color: secondaryColor,
-                  ),
-                ),
+            const Text(
+              'Kesenian Nusantara',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w800,
+                color: secondaryColor,
               ),
             ),
           ],

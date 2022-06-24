@@ -16,13 +16,12 @@ class DatabaseHelper {
   Future<Database> _initializeDb() async {
     var path = await getDatabasesPath();
     var db = openDatabase(
-      '$path/sentra.db',
+      '$path/Sentra.db',
       onCreate: (db, version) async {
         await db.execute('''CREATE TABLE $_tblFavorite (
           id TEXT PRIMARY KEY,
           name TEXT,
           province TEXT,
-          image TEXT,
           )     
         ''');
       },

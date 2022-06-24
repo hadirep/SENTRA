@@ -25,7 +25,7 @@ class _UpdateListPageState extends State<UpdateListPage> {
             return InkWell(
               onTap: () {
                 Navigator.pushNamed(
-                  context, DetailSellerProduct.routeName, arguments: widget.updateList.id,
+                  context, DetailSellerProduct.routeName, arguments: widget.updateList,
                 );
               },
               child: Card(
