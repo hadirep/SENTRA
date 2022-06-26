@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
@@ -5,6 +7,9 @@ import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/provider/preference_provider.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 import 'package:sentra/presentation/widgets/platform_widget.dart';
+
+import '../provider/schedulling_provider.dart';
+import '../widgets/custom_dialog.dart';
 
 // class UserSetting extends StatelessWidget {
 //   static const routeName = '/user_setting';
@@ -148,6 +153,62 @@ class UserSetting extends StatelessWidget {
                     }),
               ),
             ),
+             Material(
+              child: ListTile(
+                title: const Text('Notifikasi', 
+                     style: TextStyle(
+                    fontSize: 20,
+                    color: buttonPrimaryColor,
+                    fontWeight: FontWeight.bold,
+                  ),),
+                trailing: Consumer<SchedulingProvider>(
+                  builder: (context, scheduled, _) {
+                    return Switch.adaptive(
+                      value: provider.isDailyRestaurantActive,
+                      onChanged: (value) async {
+                        scheduled.scheduledNews(value);
+                        provider.enableDailyRestaurant(value);
+                      }
+                    );
+                  },
+                ),
+              ),
+            ),
+        // Consumer<PreferencesProvider>(
+        //       builder: (context, provider, child) {
+        //         return ListView(
+        //           shrinkWrap: true,
+        //           children: [
+        //             Material(
+        //               child: ListTile(
+        //                 title: const Text(
+        //                   'Schedulling Sentra Information',
+        //                   style:  TextStyle(
+        //                   fontSize: 20,
+        //                   color: buttonPrimaryColor,
+        //                   fontWeight: FontWeight.bold,
+        //                 ),
+        //                ),
+        //                 trailing: Consumer<SchedulingProvider>(
+        //                     builder: (context, scheduled, _) {
+        //                   return Switch.adaptive(
+        //                     value: provider.isDailyNotificationActive,
+        //                     onChanged: (value) async {
+        //                       if (Platform.isIOS) {
+        //                         customDialog(context);
+        //                       } else {
+        //                         scheduled.scheduledNews(value);
+        //                         provider.enableDailyNotification(value);
+        //                       }
+        //                     },
+        //                   );
+        //                 }),
+        //               ),
+        //             ),
+        //           ],
+        //         );
+        //       },
+        //     )
             // Material(
             //   child: ListTile(
             //     title: const Text('Scheduling Restaurant Recommendation'),

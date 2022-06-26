@@ -1,5 +1,9 @@
+import 'dart:io';
+
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:sentra/common/navigation.dart';
 import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/data/models/art_and_province_model.dart';
@@ -23,20 +27,43 @@ import 'package:provider/provider.dart';
 import 'package:sentra/presentation/provider/add_art_provider.dart';
 import 'package:sentra/presentation/provider/database_provider.dart';
 import 'package:sentra/presentation/provider/preference_provider.dart';
+import 'package:sentra/presentation/provider/preferences_helper.dart';
+import 'package:sentra/presentation/provider/preferences_provider.dart';
 import 'package:sentra/presentation/provider/province_list_provider.dart';
 import 'package:sentra/presentation/provider/province_query_provider.dart';
 import 'package:sentra/presentation/provider/art_list_provider.dart';
+import 'package:sentra/presentation/provider/schedulling_provider.dart';
 import 'package:sentra/presentation/provider/search_art_provider.dart';
 import 'package:sentra/presentation/provider/update_list_provider.dart';
+import 'package:sentra/utils/notification_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'data/db/database_helper.dart';
+import 'utils/background_service.dart';
 
-void main() async {
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+   FlutterLocalNotificationsPlugin();
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  final NotificationHelper notificationHelper = NotificationHelper();
+   final BackgroundService service = BackgroundService();
+  service.initializeIsolate();
+  if (Platform.isAndroid) {
+   await AndroidAlarmManager.initialize();
+  }
+  await notificationHelper.initNotifications(flutterLocalNotificationsPlugin);
+ 
   runApp(const MyApp());
 }
+   
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await Firebase.initializeApp();
+//   runApp(const MyApp());
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -59,6 +86,17 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<ArtListProvider>(
           create: (_) => ArtListProvider(listApiService: ApiService()),
         ),
+        ChangeNotifierProvider<SchedulingProvider>(
+          create: (_) => SchedulingProvider(),
+          child: const UserSetting(),
+        ),
+        // ChangeNotifierProvider<PreferencesProvider>(
+        //   create: (_) => PreferencesProvider(
+        //     preferencesHelper: PreferencesHelperNotification(
+        //       sharedPreferences: SharedPreferences.getInstance(),
+        //     ),
+        //   ),
+        // ),
         ChangeNotifierProvider<SearchArtProvider>(
           create: (_) => SearchArtProvider(searchApiService: ApiService()),
         ),
