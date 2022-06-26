@@ -237,65 +237,61 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                         Column(
                                           children: [
                                             Container(padding: const EdgeInsets.only(left: 3)),
-                                            SizedBox(
-                                              height: MediaQuery.of(context).size.height * 0.1,
-                                              width:  MediaQuery.of(context).size.width,
-                                              child:  SingleChildScrollView(
-                                                scrollDirection: Axis.horizontal,
-                                                child: Row(
-                                                  children: state.detail.data.documKesenians
-                                                      .map((category) => Padding(
-                                                    padding: const EdgeInsets.all(4.0),
-                                                    child: InkWell(
-                                                      onTap: () {
-                                                        showDialog(
-                                                            builder: (BuildContext context) => AlertDialog(
+                                            SizedBox( 
+                                                  height: MediaQuery.of(context).size.height * 0.12,
+                                                  width:  MediaQuery.of(context).size.width,
+                                                    child: 
+                                                      SingleChildScrollView(
+                                                        scrollDirection: Axis.horizontal,
+                                                        child: Row(
+                                                        children: state.detail.data.documKesenians
+                                                            .map((category) => Padding(
+                                                            padding: const EdgeInsets.all(4.0),
+                                                            
+                                                            child: InkWell(
+                                                                onTap: () {
+                                                            showDialog(
+                                                              builder: (BuildContext context) => AlertDialog(
                                                               backgroundColor: const Color.fromARGB(0, 93, 93, 93),
-                                                              insetPadding: const EdgeInsets.all(2),
-                                                              title: SizedBox(
-                                                                width: MediaQuery.of(context).size.width,
-                                                                child: Hero(
-                                                                  tag: state.detail.data.documKesenians,
+                                                            insetPadding: const EdgeInsets.all(2),
+                                                            title: SizedBox(
+                                                              width: MediaQuery.of(context).size.width,
+                                                              child: Hero(tag: state.detail.data.documKesenians, child: CachedNetworkImage(imageUrl: '$baseImageDocArt${category.documentation}',)),
+                                                            )), context: context); 
+                                                          },
+                                                              child: Container(
+                                                                width: 140,
+                                                                decoration: BoxDecoration( boxShadow: const [
+                                                                BoxShadow(
+                                                                  color: Color.fromARGB(185, 158, 158, 158),
+                                                                  offset: Offset(2.0, 2.0),
+                                                                  blurRadius: 2.0
+                                                                )
+                                                              ], 
+                                                              border: Border.all(width: 3, color: Colors.white), borderRadius: BorderRadius.circular(12) ), 
+                                                                child: ClipRRect( 
+                                                                  borderRadius: BorderRadius.circular(10), 
+                                                                child:
+                                                                FittedBox( 
+                                                                  fit:
+                                                                  BoxFit.fill,
                                                                   child: CachedNetworkImage(
-                                                                    imageUrl: '$baseImageDocArt${category.documentation}',
+                                                                    imageUrl: '$baseImageDocArt${category.documentation}', 
+                                                                    width: 140,
+                                                                    placeholder: (context, url) => const Center(
+                                                                      child: CircularProgressIndicator(),
+                                                                    ),
+                                                                    errorWidget: (context, url, error) => const Icon(Icons.error),
                                                                   ),
+                                                                ),
                                                                 ),
                                                               ),
                                                             ),
-                                                            context: context);
-                                                      },
-                                                      child: Container(
-                                                        decoration: BoxDecoration(
-                                                          boxShadow: const [
-                                                            BoxShadow(
-                                                              color: Color.fromARGB(185, 158, 158, 158),
-                                                              offset: Offset(2.0, 2.0),
-                                                              blurRadius: 2.0,
-                                                            ),
-                                                          ],
-                                                          border: Border.all(width: 3, color: Colors.white),
-                                                          borderRadius: BorderRadius.circular(12),
-                                                        ),
-                                                        child: ClipRRect(
-                                                          borderRadius: BorderRadius.circular(10),
-                                                          child: FittedBox(
-                                                            fit: BoxFit.fill,
-                                                            child: CachedNetworkImage(
-                                                              imageUrl: '$baseImageDocArt${category.documentation}',
-                                                              width: 140,
-                                                              placeholder: (context, url) => const Center(
-                                                                child: CircularProgressIndicator(),
-                                                              ),
-                                                              errorWidget: (context, url, error) => const Icon(Icons.error),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
+                                                          )).toList(),
                                                     ),
-                                                  )).toList(),
-                                                ),
-                                              ),
-                                            ),
+                                                      )
+                                                      ),
+                                              
                                           ],
                                         ),
                                       ],
