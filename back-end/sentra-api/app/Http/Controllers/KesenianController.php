@@ -98,6 +98,23 @@ class KesenianController extends Controller
 
         $createKesenian = DB::table('kesenians')->insert($requestKesenians);
 
+        $imageurl=[];
+        if($request->hasfile('documentation')) {
+            foreach($request->file('documentation') as $file)
+            {
+                $name = time().rand(1,100).'.'.$file->extension();
+                $file->move(public_path().'/dokumentasiKesenians/', $name);
+                $imageurl[] = $name;
+            }
+
+            foreach($imageurl as $value) {
+                $imageKesenian[] = Images_Kesenian::create([
+                    'id_kesenian_img' => $id_kesenian,
+                    'documentation' => $value
+                ]);
+            }
+        }
+
         if($createKesenian != null){
             return response([
                 'status' => 'success',
