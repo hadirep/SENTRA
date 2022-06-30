@@ -138,6 +138,9 @@ class UserSetting extends StatelessWidget {
           children: [
             Material(
               child: ListTile(
+                leading: const Icon(
+                Icons.dark_mode, color: Color(0xffF0BE41),
+                ),
                 title: const Text(
                   'Mode Gelap',
                   style: TextStyle(
@@ -155,6 +158,8 @@ class UserSetting extends StatelessWidget {
             ),
              Material(
               child: ListTile(
+                leading: const Icon(
+                  Icons.circle_notifications, color: Color(0xffdc7e00)),
                 title: const Text('Notifikasi', 
                      style: TextStyle(
                     fontSize: 20,
