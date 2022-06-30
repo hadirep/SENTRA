@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:sentra/common/style.dart';
+import 'package:sentra/presentation/pages/details_seller_product.dart';
 import 'package:sentra/presentation/provider/preference_provider.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 import 'package:sentra/presentation/widgets/platform_widget.dart';
+import 'package:sentra/utils/notification_helper.dart';
 
 import '../provider/schedulling_provider.dart';
 import '../widgets/custom_dialog.dart';
@@ -93,10 +95,17 @@ import '../widgets/custom_dialog.dart';
 //     );
 //   }
 // }
-class UserSetting extends StatelessWidget {
+class UserSetting extends StatefulWidget {
   static const routeName = '/user_setting';
 
   const UserSetting({Key? key}) : super(key: key);
+
+  @override
+  State<UserSetting> createState() => _UserSettingState();
+}
+
+class _UserSettingState extends State<UserSetting> {
+  final NotificationHelper _notificationHelper = NotificationHelper();
 
   Widget _buildAndroid(BuildContext context){
     return Scaffold(
@@ -138,6 +147,9 @@ class UserSetting extends StatelessWidget {
           children: [
             Material(
               child: ListTile(
+                leading: const Icon(
+                Icons.dark_mode, color: Color(0xffF0BE41),
+                ),
                 title: const Text(
                   'Mode Gelap',
                   style: TextStyle(
@@ -155,6 +167,8 @@ class UserSetting extends StatelessWidget {
             ),
              Material(
               child: ListTile(
+                leading: const Icon(
+                  Icons.circle_notifications, color: Color(0xffdc7e00)),
                 title: const Text('Notifikasi', 
                      style: TextStyle(
                     fontSize: 20,
@@ -241,5 +255,17 @@ class UserSetting extends StatelessWidget {
       androidBuilder: _buildAndroid,
       iosBuilder: _buildIos,
     );
+  }
+    @override
+  void initState() {
+    super.initState();
+    _notificationHelper
+        .configureSelectNotificationSubject(DetailSellerProduct.routeName);
+  }
+
+  @override
+  void dispose() {
+    selectNotificationSubject.close();
+    super.dispose();
   }
 }
