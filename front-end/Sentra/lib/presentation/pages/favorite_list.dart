@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/common/result_state.dart';
 import 'package:sentra/presentation/provider/database_provider.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
@@ -20,9 +21,9 @@ class _FavoriteListState extends State<FavoriteList> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        title: const Text(
-          'Daftar Favorite',
-          style: TextStyle(
+        title: Text(
+          AppLocalizations.of(context)!.favoriteList,
+          style: const TextStyle(
               color: Color.fromARGB(255, 45, 74, 148),
               fontWeight: FontWeight.bold
           ),

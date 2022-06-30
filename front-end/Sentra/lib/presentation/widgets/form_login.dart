@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
 import 'package:sentra/presentation/pages/register_page.dart';
@@ -49,16 +50,16 @@ class _BuildFormLogin extends State<FormLogin> {
                 keyboardType: TextInputType.emailAddress,
                 validator: (value) {
                   return value!.isEmpty
-                      ? "Email harus diisi!"
+                      ? AppLocalizations.of(context)!.validateEmail
                       : null;
                 },
-                decoration: const InputDecoration(
-                  suffix: Icon(
+                decoration: InputDecoration(
+                  suffix: const Icon(
                     Icons.email,
                     color: buttonPrimaryColor,
                   ),
-                  labelText: 'Email ',
-                  border: OutlineInputBorder(
+                  labelText: AppLocalizations.of(context)!.artEmail,
+                  border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
                   ),
                 ),
@@ -70,7 +71,7 @@ class _BuildFormLogin extends State<FormLogin> {
                 keyboardType: TextInputType.text,
                 validator: (value) {
                   return value!.isEmpty
-                      ? "Password harus diisi!"
+                      ? AppLocalizations.of(context)!.validatePassword
                       : null;
                 },
                 decoration: InputDecoration(
@@ -96,9 +97,9 @@ class _BuildFormLogin extends State<FormLogin> {
               ),
               Row(
                 children:[
-                  const Text(
-                    'Belum punya akun?',
-                    style: TextStyle(
+                  Text(
+                    AppLocalizations.of(context)!.noAccount,
+                    style: const TextStyle(
                       fontSize: 12,
                       color: buttonPrimaryColor,
                     ),
@@ -109,9 +110,9 @@ class _BuildFormLogin extends State<FormLogin> {
                         context, RegisterPage.routeName,
                       );
                     },
-                    child: const Text(
-                      'Daftar disini!',
-                      style: TextStyle(
+                    child: Text(
+                      AppLocalizations.of(context)!.registerHere,
+                      style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                         color: buttonPrimaryColor,
@@ -161,9 +162,9 @@ class _BuildFormLogin extends State<FormLogin> {
                       ),
                     ),
                   ),
-                  child: const Text(
-                    'Masuk',
-                    style: TextStyle(
+                  child: Text(
+                    AppLocalizations.of(context)!.login,
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),

@@ -47,8 +47,9 @@ class _WidgetUpdateMoreState extends State<WidgetUpdateMore> {
                   ),
                 ),
               ),
-              const SizedBox(height: 5,),
-              Padding(padding: const EdgeInsets.only(left: 5, top: 2),
+              const SizedBox(height: 5),
+              Padding(
+                padding: const EdgeInsets.only(left: 5, top: 2),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Column(
@@ -57,10 +58,12 @@ class _WidgetUpdateMoreState extends State<WidgetUpdateMore> {
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.add_location_rounded,
+                          const Icon(
+                            Icons.add_location_rounded,
                             size: 15, color: Color.fromARGB(255, 234, 132, 0),
                           ),
-                          Text(widget.updateList.province!,
+                          Text(
+                            widget.updateList.province!,
                             style: const TextStyle(
                               color: Color.fromARGB(255, 45, 74, 148),
                               fontSize: 11, fontWeight: FontWeight.bold,
@@ -69,8 +72,10 @@ class _WidgetUpdateMoreState extends State<WidgetUpdateMore> {
                         ],
                       ),
                       const SizedBox(height: 2),
-                      Text(widget.updateList.name!,
-                        style: const TextStyle(color: Color.fromARGB(255, 45, 74, 148),
+                      Text(
+                        widget.updateList.name!,
+                        style: const TextStyle(
+                          color: Color.fromARGB(255, 45, 74, 148),
                           fontSize: 15, fontWeight: FontWeight.bold,
                         ),
                       ),

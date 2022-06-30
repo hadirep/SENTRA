@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/item/list_kesenians_admin.dart';
 import 'package:sentra/presentation/pages/admin/create_art.dart';
@@ -33,12 +34,12 @@ class BusinessManagement extends StatelessWidget {
                     child: IconButton(
                       iconSize: 15,
                       icon: const Icon(Icons.logout, color: Color(0xfff0be41)),
-                      tooltip: 'Keluar',
+                      tooltip: AppLocalizations.of(context)!.outData,
                       onPressed: () async {
                         await auth.signOut();
                         Navigator.pushReplacementNamed(
-                            context, LoginPage.routeName);
-                        // Navigator.pop(context);
+                          context, LoginPage.routeName,
+                        );
                       },
                     ),
                   ),
@@ -53,7 +54,7 @@ class BusinessManagement extends StatelessWidget {
                   child: IconButton(
                     iconSize: 15,
                     icon: const Icon(Icons.add, color: Color(0xfff0be41)),
-                    tooltip: 'Tambah data',
+                    tooltip: AppLocalizations.of(context)!.addData,
                     onPressed: () {
                       Navigator.pushReplacementNamed(
                         context, CreateArt.routeName,
@@ -64,9 +65,9 @@ class BusinessManagement extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 7),
-            const Text(
-              'Daftar Kesenian Nusantara',
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context)!.titleBusiness,
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w800,
                 color: secondaryColor,

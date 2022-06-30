@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/common/constants.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/data/api/api_service.dart';
@@ -132,7 +133,7 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                 child: IconButton(
                   iconSize: 16,
                   icon: const Icon(Icons.edit, color: Colors.white),
-                  tooltip: 'Edit data',
+                  tooltip: AppLocalizations.of(context)!.editData,
                   onPressed: () {
                     Navigator.of(context).pushNamed
                       (EditArt.routeName,
@@ -166,17 +167,17 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                 child: IconButton(
                   iconSize: 16,
                   icon: const Icon(Icons.delete, color: Colors.white),
-                  tooltip: 'Delete data',
+                  tooltip: AppLocalizations.of(context)!.deleteData,
                   onPressed: () async {
                     final dialog = AlertDialog(
-                      title: const Text('Peringatan'),
-                      content: const Text('Apakah kamu yakin akan menghapus seni ini?'),
+                      title: Text(AppLocalizations.of(context)!.warning),
+                      content: Text(AppLocalizations.of(context)!.confirmDelete),
                       actions: [
                         TextButton(
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: const Text('Tidak'),
+                          child: Text(AppLocalizations.of(context)!.no),
                         ),
                         TextButton(
                           onPressed: () async {
@@ -194,7 +195,7 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                               }
                             }
                           },
-                          child: const Text('Hapus'),
+                          child: Text(AppLocalizations.of(context)!.deleteData),
                         ),
                       ],
                     );

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/common/style.dart';
 
 class FormRegister extends StatefulWidget{
@@ -45,16 +46,16 @@ class _BuildFormRegister extends State<FormRegister> {
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     return value!.isEmpty
-                        ? "Email harus diisi!"
+                        ? AppLocalizations.of(context)!.validateEmail
                         : null;
                   },
-                  decoration: const InputDecoration(
-                    suffix: Icon(
+                  decoration: InputDecoration(
+                    suffix: const Icon(
                       Icons.email,
                       color: buttonPrimaryColor,
                     ),
-                    labelText: 'Email ',
-                    border: OutlineInputBorder(
+                    labelText: AppLocalizations.of(context)!.artEmail,
+                    border: const  OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     ),
                   ),
@@ -69,7 +70,7 @@ class _BuildFormRegister extends State<FormRegister> {
                 keyboardType: TextInputType.text,
                 validator: (value) {
                   return value!.isEmpty
-                      ? "Password harus diisi!"
+                      ? AppLocalizations.of(context)!.validatePassword
                       : null;
                 },
                 decoration: InputDecoration(
@@ -100,9 +101,9 @@ class _BuildFormRegister extends State<FormRegister> {
                 keyboardType: TextInputType.text,
                 validator: (confirmPassword) {
                   if (confirmPassword == null || confirmPassword.isEmpty) {
-                    return "Konfirmasi kata sandi tidak boleh kosong";
+                    return AppLocalizations.of(context)!.confirmPassword1;
                   } else if (confirmPassword != passwordController.text) {
-                    return "Konfirmasi kata sandi harus sesuai dengan kata sandi";
+                    return AppLocalizations.of(context)!.confirmPassword2;
                   }
                   return null;
                 },
@@ -110,7 +111,7 @@ class _BuildFormRegister extends State<FormRegister> {
                   border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
                   ),
-                  labelText: 'Konfirmasi Password',
+                  labelText: AppLocalizations.of(context)!.confirmPassword3,
                   suffixIcon: IconButton(
                     onPressed: () {
                       setState(() {
@@ -160,9 +161,9 @@ class _BuildFormRegister extends State<FormRegister> {
                       ),
                     ),
                   ),
-                  child: const Text(
-                    'Daftar',
-                    style: TextStyle(
+                  child: Text(
+                    AppLocalizations.of(context)!.register,
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -173,17 +174,17 @@ class _BuildFormRegister extends State<FormRegister> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    'Sudah memiliki akun?',
-                    style: TextStyle(
+                  Text(
+                    AppLocalizations.of(context)!.haveAccount,
+                    style: const TextStyle(
                       fontSize: 12,
                       color: textPrimaryColor,
                     ),
                   ),
                   TextButton(
-                    child: const Text(
-                      'Ayo Masuk!',
-                      style: TextStyle(
+                    child: Text(
+                      AppLocalizations.of(context)!.login,
+                      style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                         color: textPrimaryColor,

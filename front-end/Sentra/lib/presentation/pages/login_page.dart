@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 import 'package:sentra/presentation/widgets/form_login.dart';
@@ -28,9 +29,9 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   margin: const EdgeInsets.only(left: 24.0, bottom: 12.0),
                   alignment: Alignment.bottomLeft,
-                  child: const Text(
-                    'Login  ',
-                    style: TextStyle(
+                  child: Text(
+                    AppLocalizations.of(context)!.login,
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w800,
                       color: secondaryColor,
@@ -40,11 +41,11 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   margin: const EdgeInsets.only(left: 24.0),
                   alignment: Alignment.bottomLeft,
-                  child: const Padding(
-                    padding: EdgeInsets.only(right: 50.0),
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 50.0),
                     child: Text(
-                      'Ayo! kita kenalkan lebih banyak tentang seni tradisional nusantara',
-                      style: TextStyle(
+                      AppLocalizations.of(context)!.loginText,
+                      style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                         color: secondaryColor,

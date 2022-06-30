@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/common/result_state.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/provider/update_list_provider.dart';
@@ -19,11 +20,11 @@ class _UpdateMorePageState extends State<UpdateMorePage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
-        title: const Align(
+        title: Align(
           alignment: Alignment.center,
           child: Text(
-            'Rekomendasi',
-            style: TextStyle(
+            AppLocalizations.of(context)!.artRecommendation,
+            style: const TextStyle(
               color: textPrimaryColor, fontWeight: FontWeight.bold,
             ),
           ),

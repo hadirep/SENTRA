@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
@@ -133,9 +134,9 @@ class _EditArtState extends State<EditArt> {
           alignment: Alignment.centerLeft,
           child: ButtonBack(),
         ),
-        title: const Text(
-          'Ubah Data',
-          style: TextStyle(
+        title: Text(
+          AppLocalizations.of(context)!.editData,
+          style: const TextStyle(
             color: textPrimaryColor,
             fontWeight: FontWeight.bold,
           ),
@@ -154,9 +155,9 @@ class _EditArtState extends State<EditArt> {
                     children: [
                       Container(
                         alignment: Alignment.topLeft,
-                        child: const Text(
-                          "Nama Seni",
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.artName,
+                          style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
@@ -187,9 +188,9 @@ class _EditArtState extends State<EditArt> {
                       const SizedBox(height: 10),
                       Container(
                         alignment: Alignment.topLeft,
-                        child: const Text(
-                          "Harga",
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.artPrice,
+                          style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
@@ -219,9 +220,9 @@ class _EditArtState extends State<EditArt> {
                       const SizedBox(height: 10),
                       Container(
                         alignment: Alignment.topLeft,
-                        child: const Text(
-                          "Komunitas",
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.artOrganization,
+                          style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
@@ -250,9 +251,9 @@ class _EditArtState extends State<EditArt> {
                       const SizedBox(height: 10),
                       Container(
                         alignment: Alignment.topLeft,
-                        child: const Text(
-                          "Kategori",
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.artCategory,
+                          style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
@@ -281,9 +282,9 @@ class _EditArtState extends State<EditArt> {
                       const SizedBox(height: 10),
                       Container(
                         alignment: Alignment.topLeft,
-                        child: const Text(
-                          "Nomor Telepon",
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.artPhone,
+                          style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
@@ -314,9 +315,9 @@ class _EditArtState extends State<EditArt> {
                       const SizedBox(height: 10),
                       Container(
                         alignment: Alignment.topLeft,
-                        child: const Text(
-                          "Email",
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.artEmail,
+                          style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
@@ -346,9 +347,9 @@ class _EditArtState extends State<EditArt> {
                       const SizedBox(height: 10),
                       Container(
                         alignment: Alignment.topLeft,
-                        child: const Text(
-                          "Provinsi",
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.artProvince,
+                          style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
@@ -377,9 +378,9 @@ class _EditArtState extends State<EditArt> {
                       const SizedBox(height: 10),
                       Container(
                         alignment: Alignment.topLeft,
-                        child: const Text(
-                          "Deskripsi",
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.artDescription,
+                          style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
@@ -408,9 +409,9 @@ class _EditArtState extends State<EditArt> {
                       const SizedBox(height: 10),
                       Container(
                         alignment: Alignment.topLeft,
-                        child: const Text(
-                          "Akun Facebook",
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.artFacebook,
+                          style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
@@ -441,7 +442,7 @@ class _EditArtState extends State<EditArt> {
                       Container(
                         alignment: Alignment.topLeft,
                         child: const Text(
-                          "Akun Instagram",
+                          "Username Instagram",
                           style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
@@ -471,9 +472,9 @@ class _EditArtState extends State<EditArt> {
                       const SizedBox(height: 10),
                       Container(
                         alignment: Alignment.topLeft,
-                        child: const Text(
-                          "Foto Seni",
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.artImage,
+                          style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
@@ -519,9 +520,9 @@ class _EditArtState extends State<EditArt> {
                       const SizedBox(height: 10),
                       Container(
                         alignment: Alignment.topLeft,
-                        child: const Text(
-                          "Dokumentasi",
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.artDocumentation,
+                          style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
@@ -600,12 +601,12 @@ class _EditArtState extends State<EditArt> {
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Icon(Icons.download_rounded, color: Colors.white),
-                                  SizedBox(width: 5),
+                                children: [
+                                  const Icon(Icons.download_rounded, color: Colors.white),
+                                  const SizedBox(width: 5),
                                   Text(
-                                    'Submit',
-                                    style: TextStyle(
+                                    AppLocalizations.of(context)!.artSave,
+                                    style: const TextStyle(
                                       color: Colors.white, fontWeight: FontWeight.w600, fontSize: 17,
                                     ),
                                   ),

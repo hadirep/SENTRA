@@ -1,17 +1,16 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
 import 'package:sentra/presentation/provider/preference_provider.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
+import 'package:sentra/presentation/widgets/flag_icon_widget.dart';
 import 'package:sentra/presentation/widgets/platform_widget.dart';
 import 'package:sentra/utils/notification_helper.dart';
 
 import '../provider/schedulling_provider.dart';
-import '../widgets/custom_dialog.dart';
 
 // class UserSetting extends StatelessWidget {
 //   static const routeName = '/user_setting';
@@ -112,9 +111,9 @@ class _UserSettingState extends State<UserSetting> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        title: const Text(
-          'Pengaturan',
-          style: TextStyle(
+        title: Text(
+          AppLocalizations.of(context)!.settings,
+          style: const TextStyle(
             color: Color.fromARGB(255, 45, 74, 148),
             fontWeight: FontWeight.bold,
           ),
@@ -150,9 +149,9 @@ class _UserSettingState extends State<UserSetting> {
                 leading: const Icon(
                 Icons.dark_mode, color: Color(0xffF0BE41),
                 ),
-                title: const Text(
-                  'Mode Gelap',
-                  style: TextStyle(
+                title: Text(
+                  AppLocalizations.of(context)!.darkMode,
+                  style: const TextStyle(
                     fontSize: 20,
                     color: buttonPrimaryColor,
                     fontWeight: FontWeight.bold,
@@ -168,13 +167,16 @@ class _UserSettingState extends State<UserSetting> {
              Material(
               child: ListTile(
                 leading: const Icon(
-                  Icons.circle_notifications, color: Color(0xffdc7e00)),
-                title: const Text('Notifikasi', 
-                     style: TextStyle(
+                  Icons.circle_notifications, color: Color(0xffdc7e00),
+                ),
+                title: Text(
+                  AppLocalizations.of(context)!.notification,
+                  style: const TextStyle(
                     fontSize: 20,
                     color: buttonPrimaryColor,
                     fontWeight: FontWeight.bold,
-                  ),),
+                  ),
+                ),
                 trailing: Consumer<SchedulingProvider>(
                   builder: (context, scheduled, _) {
                     return Switch.adaptive(
@@ -186,6 +188,22 @@ class _UserSettingState extends State<UserSetting> {
                     );
                   },
                 ),
+              ),
+            ),
+            Material(
+              child: ListTile(
+                leading: const Icon(
+                  Icons.flag, color: Color(0xfff0be41),
+                ),
+                title: Text(
+                  AppLocalizations.of(context)!.language,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    color: buttonPrimaryColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                trailing: const FlagIconWidget(),
               ),
             ),
         // Consumer<PreferencesProvider>(

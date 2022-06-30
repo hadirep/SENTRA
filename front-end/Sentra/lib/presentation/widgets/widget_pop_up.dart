@@ -19,7 +19,7 @@ class BlurryDialog extends StatelessWidget {
         content:  Text(content, style: textStyle),
         actions: <Widget>[
           ElevatedButton(
-            child:  const Text("Continue"),
+            child: const Text("Continue"),
             onPressed: () {
               continueCallBack();
             },

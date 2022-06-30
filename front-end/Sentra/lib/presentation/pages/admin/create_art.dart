@@ -4,9 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
-
 import 'package:http/http.dart' as http;
 
 class CreateArt extends StatefulWidget {
@@ -146,11 +146,12 @@ class _CreateArtState extends State<CreateArt> {
           alignment: Alignment.centerLeft,
           child: ButtonBack(),
         ),
-        title: const Text(
-          'Tambah Data',
-          style: TextStyle(
-              color: Color(0xff2d4b94),
-              fontWeight: FontWeight.bold),
+        title: Text(
+          AppLocalizations.of(context)!.addData,
+          style: const TextStyle(
+            color: Color(0xff2d4b94),
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
       ),
@@ -168,10 +169,10 @@ class _CreateArtState extends State<CreateArt> {
                       children: [
                         Container(
                           alignment: Alignment.topLeft,
-                          child: const Text(
-                            "Nama Seni",
+                          child: Text(
+                            AppLocalizations.of(context)!.artName,
                             textAlign: TextAlign.left,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
@@ -179,7 +180,7 @@ class _CreateArtState extends State<CreateArt> {
                           ),
                         ),
                         SizedBox(
-                          height:  MediaQuery.of(context).size.height * 0.04,
+                          height: MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _nameController,
                             keyboardType: TextInputType.text,
@@ -197,17 +198,17 @@ class _CreateArtState extends State<CreateArt> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
-                              errorText: _validateName ? 'Nama Harus Di Isi.' : null,
+                              errorText: _validateName ? AppLocalizations.of(context)!.validateName : null,
                             ),
                           ),
                         ),
                         const SizedBox(height: 10),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: const Text(
-                            "Deskripsi",
+                          child: Text(
+                            AppLocalizations.of(context)!.artDescription,
                             textAlign: TextAlign.left,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
@@ -232,16 +233,16 @@ class _CreateArtState extends State<CreateArt> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
-                              errorText: _validateDescription ? 'Deskripsi Harus Di Isi.' : null,
+                              errorText: _validateDescription ? AppLocalizations.of(context)!.validateDescription : null,
                             ),
                           ),
                         ),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: const Text(
-                            "Harga Sewa Seni",
+                          child: Text(
+                            AppLocalizations.of(context)!.artPrice,
                             textAlign: TextAlign.left,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
@@ -269,17 +270,17 @@ class _CreateArtState extends State<CreateArt> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
-                              errorText: _validatePrice ? 'Harga Sewa Harus Di Isi.' : null,
+                              errorText: _validatePrice ? AppLocalizations.of(context)!.validatePrice : null,
                             ),
                           ),
                         ),
                         const SizedBox(height: 10,),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: const Text(
-                            "Organisasi",
+                          child: Text(
+                            AppLocalizations.of(context)!.artOrganization,
                             textAlign: TextAlign.left,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
@@ -304,23 +305,23 @@ class _CreateArtState extends State<CreateArt> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
-                              errorText: _validateCommunity ? 'Organisasi Harus Di Isi.' : null,
+                              errorText: _validateCommunity ? AppLocalizations.of(context)!.validateOrganization : null,
                             ),
                           ),
                         ),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: const Text(
-                            "Email",
+                          child: Text(
+                            AppLocalizations.of(context)!.artEmail,
                             textAlign: TextAlign.left,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height:  MediaQuery.of(context).size.height * 0.04,
+                          height: MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _emailController,
                             keyboardType: TextInputType.emailAddress,
@@ -338,16 +339,16 @@ class _CreateArtState extends State<CreateArt> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
-                              errorText: _validateEmail ? 'Email Harus Di Isi.' : null,
+                              errorText: _validateEmail ? AppLocalizations.of(context)!.validateEmail : null,
                             ),
                           ),
                         ),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: const Text(
-                            "Kategori",
+                          child: Text(
+                            AppLocalizations.of(context)!.artCategory,
                             textAlign: TextAlign.left,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
@@ -378,10 +379,10 @@ class _CreateArtState extends State<CreateArt> {
                         const SizedBox(height: 10,),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: const Text(
-                            "Nomor Telepon",
+                          child: Text(
+                            AppLocalizations.of(context)!.artPhone,
                             textAlign: TextAlign.left,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
@@ -409,7 +410,7 @@ class _CreateArtState extends State<CreateArt> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
-                              errorText: _validateNoHp ? 'Nomer WA Harus Di Isi.' : null,
+                              errorText: _validateNoHp ? AppLocalizations.of(context)!.validatePhone : null,
                             ),
                           ),
                         ),
@@ -450,17 +451,17 @@ class _CreateArtState extends State<CreateArt> {
                         const SizedBox(height: 10,),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: const Text(
-                            "Akun Facebook",
+                          child: Text(
+                            AppLocalizations.of(context)!.artFacebook,
                             textAlign: TextAlign.left,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height:  MediaQuery.of(context).size.height * 0.04,
+                          height: MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _isFacebookController,
                             keyboardType: TextInputType.text,
@@ -484,10 +485,10 @@ class _CreateArtState extends State<CreateArt> {
                         const SizedBox(height: 10,),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: const Text(
-                            "Provinsi",
+                          child: Text(
+                            AppLocalizations.of(context)!.artProvince,
                             textAlign: TextAlign.left,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
@@ -512,17 +513,17 @@ class _CreateArtState extends State<CreateArt> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
-                              errorText: _validateProvince ? 'Provinsi Harus Di Isi.' : null,
+                              errorText: _validateProvince ? AppLocalizations.of(context)!.validateProvince : null,
                             ),
                           ),
                         ),
                         const SizedBox(height: 10,),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: const Text(
-                            "Foto Seni",
+                          child: Text(
+                            AppLocalizations.of(context)!.artImage,
                             textAlign: TextAlign.left,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
@@ -569,9 +570,14 @@ class _CreateArtState extends State<CreateArt> {
                         const SizedBox(height: 10,),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: const Text(
-                            "Dokumentasi",
-                            textAlign: TextAlign.left, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500,  color: Color.fromARGB(255, 234, 132, 0),),),
+                          child: Text(
+                            AppLocalizations.of(context)!.artDocumentation,
+                            textAlign: TextAlign.left,
+                            style: const TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 234, 132, 0),
+                            ),
+                          ),
                         ),
                         //MULTI IMAGE PICKER
                         Column(
@@ -583,7 +589,10 @@ class _CreateArtState extends State<CreateArt> {
                                     height:  MediaQuery.of(context).size.height * 0.1,
                                     width: MediaQuery.of(context).size.height * 0.138,
                                     padding: const EdgeInsets.all(5),
-                                    decoration: BoxDecoration(color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,),
+                                    decoration: BoxDecoration(
+                                      color: const Color.fromARGB(255, 221, 221, 221),
+                                      borderRadius: borderRadius,
+                                    ),
                                     child: ClipRRect(
                                       borderRadius: borderRadius,
                                       child: Image.file(File(imageone.path),
@@ -603,8 +612,11 @@ class _CreateArtState extends State<CreateArt> {
                                 child: Container(
                                   padding: const EdgeInsets.all(5),
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(width: 3, color: const Color.fromARGB(255, 221, 221, 221))),
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      width: 3, color: const Color.fromARGB(255, 221, 221, 221),
+                                    ),
+                                  ),
                                   child: const Icon(
                                     Icons.add,
                                     color: Color.fromARGB(255, 221, 221, 221), size: 15,
@@ -629,12 +641,14 @@ class _CreateArtState extends State<CreateArt> {
                                     ? const CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.white),)
                                     : Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
-                                    Icon(Icons.save, color: Colors.white,),
-                                    SizedBox(width: 5),
+                                  children: [
+                                    const Icon(Icons.save, color: Colors.white),
+                                    const SizedBox(width: 5),
                                     Text(
-                                      'Save',
-                                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 17),
+                                      AppLocalizations.of(context)!.artSave,
+                                      style: const TextStyle(
+                                        color: Colors.white, fontWeight: FontWeight.w600, fontSize: 17,
+                                      ),
                                     ),
                                   ],
                                 ),

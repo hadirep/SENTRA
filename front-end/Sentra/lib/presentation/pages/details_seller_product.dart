@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/common/constants.dart';
 import 'package:sentra/common/result_state.dart';
 import 'package:sentra/data/api/api_service.dart';
@@ -48,9 +49,9 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                 elevation: 0,
                 toolbarHeight: 70,
                 backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-                title: const Text(
-                  'Detail Seni',
-                  style: TextStyle(
+                title: Text(
+                  AppLocalizations.of(context)!.artDetail,
+                  style: const TextStyle(
                     color: Color.fromARGB(255, 45, 74, 148),
                     fontWeight: FontWeight.bold, fontSize: 20,
                   ),
@@ -157,11 +158,11 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                           color: const Color.fromARGB(255, 45, 74, 148),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        tabs: const [
+                        tabs: [
                           Tab(
                             child: Text(
-                              'Deskripsi',
-                              style: TextStyle(
+                              AppLocalizations.of(context)!.artDescription,
+                              style: const TextStyle(
                                 color:  Color.fromARGB(255, 221, 221, 221),
                                 fontWeight: FontWeight.bold, fontSize: 17,
                               ),
@@ -169,8 +170,8 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                           ),
                           Tab(
                             child: Text(
-                              'Kontak',
-                              style: TextStyle(
+                              AppLocalizations.of(context)!.contact,
+                              style: const TextStyle(
                                 color: Color.fromARGB(255, 221, 221, 221),
                                 fontWeight: FontWeight.bold, fontSize: 17,
                               ),
@@ -200,8 +201,8 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                         ),
                                         trimLength: 500,
                                         colorClickableText: const Color.fromARGB(255, 45, 74, 148),
-                                        trimCollapsedText: '\nlihat semua',
-                                        trimExpandedText: 'tutup',
+                                        trimCollapsedText: '\n${AppLocalizations.of(context)!.seeAll}',
+                                        trimExpandedText: AppLocalizations.of(context)!.close,
                                       ),
                                     ),
                                   ),
@@ -211,11 +212,11 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                     alignment: Alignment.bottomLeft,
                                     child: Row(
                                       children: [
-                                        const Padding(
-                                          padding: EdgeInsets.only(left:5.0),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left:5.0),
                                           child: Text(
-                                            "Dokumentasi",
-                                            style: TextStyle(
+                                            AppLocalizations.of(context)!.artDocumentation,
+                                            style: const TextStyle(
                                               fontWeight: FontWeight.w600, fontSize: 15,
                                               color: Color.fromARGB(255, 234, 132, 0),
                                             ),
@@ -237,61 +238,59 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                         Column(
                                           children: [
                                             Container(padding: const EdgeInsets.only(left: 3)),
-                                            SizedBox( 
-                                                  height: MediaQuery.of(context).size.height * 0.12,
-                                                  width:  MediaQuery.of(context).size.width,
-                                                    child: 
-                                                      SingleChildScrollView(
-                                                        scrollDirection: Axis.horizontal,
-                                                        child: Row(
-                                                        children: state.detail.data.documKesenians
-                                                            .map((category) => Padding(
-                                                            padding: const EdgeInsets.all(4.0),
-                                                            
-                                                            child: InkWell(
-                                                                onTap: () {
-                                                            showDialog(
-                                                              builder: (BuildContext context) => AlertDialog(
-                                                              backgroundColor: const Color.fromARGB(0, 93, 93, 93),
-                                                            insetPadding: const EdgeInsets.all(2),
-                                                            title: SizedBox(
-                                                              width: MediaQuery.of(context).size.width,
-                                                              child: Hero(tag: state.detail.data.documKesenians, child: CachedNetworkImage(imageUrl: '$baseImageDocArt${category.documentation}',)),
-                                                            )), context: context); 
-                                                          },
-                                                              child: Container(
-                                                                width: 140,
-                                                                decoration: BoxDecoration( boxShadow: const [
-                                                                BoxShadow(
-                                                                  color: Color.fromARGB(185, 158, 158, 158),
-                                                                  offset: Offset(2.0, 2.0),
-                                                                  blurRadius: 2.0
-                                                                )
-                                                              ], 
-                                                              border: Border.all(width: 3, color: Colors.white), borderRadius: BorderRadius.circular(12) ), 
-                                                                child: ClipRRect( 
-                                                                  borderRadius: BorderRadius.circular(10), 
-                                                                child:
-                                                                FittedBox( 
-                                                                  fit:
-                                                                  BoxFit.fill,
-                                                                  child: CachedNetworkImage(
-                                                                    imageUrl: '$baseImageDocArt${category.documentation}', 
-                                                                    width: 140,
-                                                                    placeholder: (context, url) => const Center(
-                                                                      child: CircularProgressIndicator(),
-                                                                    ),
-                                                                    errorWidget: (context, url, error) => const Icon(Icons.error),
-                                                                  ),
-                                                                ),
-                                                                ),
+                                            SizedBox(
+                                              height: MediaQuery.of(context).size.height * 0.12,
+                                              width: MediaQuery.of(context).size.width,
+                                              child:
+                                              SingleChildScrollView(
+                                                scrollDirection: Axis.horizontal,
+                                                child: Row(
+                                                  children: state.detail.data.documKesenians
+                                                      .map((category) => Padding(
+                                                    padding: const EdgeInsets.all(4.0),
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        showDialog(
+                                                            builder: (BuildContext context) => AlertDialog(
+                                                                backgroundColor: const Color.fromARGB(0, 93, 93, 93),
+                                                                insetPadding: const EdgeInsets.all(2),
+                                                                title: SizedBox(
+                                                                  width: MediaQuery.of(context).size.width,
+                                                                  child: Hero(tag: state.detail.data.documKesenians, child: CachedNetworkImage(imageUrl: '$baseImageDocArt${category.documentation}',)),
+                                                                )), context: context);
+                                                      },
+                                                      child: Container(
+                                                        width: 140,
+                                                        decoration: BoxDecoration( boxShadow: const [
+                                                          BoxShadow(
+                                                              color: Color.fromARGB(185, 158, 158, 158),
+                                                              offset: Offset(2.0, 2.0),
+                                                              blurRadius: 2.0
+                                                          )
+                                                        ],
+                                                            border: Border.all(width: 3, color: Colors.white), borderRadius: BorderRadius.circular(12) ),
+                                                        child: ClipRRect(
+                                                          borderRadius: BorderRadius.circular(10),
+                                                          child:
+                                                          FittedBox(
+                                                            fit:
+                                                            BoxFit.fill,
+                                                            child: CachedNetworkImage(
+                                                              imageUrl: '$baseImageDocArt${category.documentation}',
+                                                              width: 140,
+                                                              placeholder: (context, url) => const Center(
+                                                                child: CircularProgressIndicator(),
                                                               ),
+                                                              errorWidget: (context, url, error) => const Icon(Icons.error),
                                                             ),
-                                                          )).toList(),
-                                                    ),
-                                                      )
+                                                          ),
+                                                        ),
                                                       ),
-                                              
+                                                    ),
+                                                  )).toList(),
+                                                ),
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ],
@@ -346,7 +345,7 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 12,),
+                                const SizedBox(height: 12),
                                 Container(
                                   width: MediaQuery.of(context).size.width,
                                   padding: const EdgeInsets.all(7),

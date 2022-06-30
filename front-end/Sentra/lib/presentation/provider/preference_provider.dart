@@ -37,4 +37,12 @@ class PreferenceProvider extends ChangeNotifier{
     preferencesHelper.setDailyRestaurant(value);
     _getDailyRestaurantPreferences();
   }
+
+  Locale _locale = const Locale("id");
+  Locale get locale => _locale;
+
+  void setLocale(Locale locale){
+    _locale = locale;
+    notifyListeners();
+  }
 }

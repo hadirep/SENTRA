@@ -22,7 +22,7 @@ class _ArtListPageState extends State<ArtListPage> {
       },
       child: Card(
         elevation: 4.0,
-        shadowColor:  const Color.fromARGB(255, 234, 132, 0),
+        shadowColor: const Color.fromARGB(255, 234, 132, 0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,

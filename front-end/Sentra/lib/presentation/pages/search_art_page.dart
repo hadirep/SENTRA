@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:provider/provider.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/provider/search_art_provider.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
@@ -26,7 +27,8 @@ class SearchPage extends StatelessWidget {
                 color: secondaryColor,
               ),
               const SizedBox(height: 10),
-              Text('Memuat Data Kesenian...',
+              Text(
+                AppLocalizations.of(context)!.searchLoad,
                 style: Theme.of(context).textTheme.subtitle1,
               ),
             ],
@@ -63,9 +65,9 @@ class SearchPage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        title: const Text(
-          'Pencarian',
-          style: TextStyle(
+        title: Text(
+          AppLocalizations.of(context)!.search,
+          style: const TextStyle(
               color: Color.fromARGB(255, 45, 74, 148),
               fontWeight: FontWeight.bold
           ),
@@ -121,7 +123,7 @@ class SearchPage extends StatelessWidget {
             color: primaryColor,
             child: Center(
               child: Text(
-                "Koneksi Internet Anda Tidak Aktif :(",
+                AppLocalizations.of(context)!.searchText,
                 style: Theme.of(context)
                     .textTheme
                     .subtitle1!

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/common/result_state.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/data/api/api_service.dart';
@@ -23,11 +24,11 @@ class _ProvinceQueryPageState extends State<ProvinceQueryPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Align(
+        title: Align(
           alignment: Alignment.center,
           child: Text(
-            'Provinsi',
-            style: TextStyle(
+            AppLocalizations.of(context)!.artProvince,
+            style: const TextStyle(
               color: textPrimaryColor,
               fontWeight: FontWeight.bold,
             ),

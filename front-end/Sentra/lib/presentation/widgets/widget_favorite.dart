@@ -27,8 +27,7 @@ class _WidgetFavoriteState extends State<WidgetFavorite> {
                 Navigator.of(context)
                     .push(MaterialPageRoute(
                     builder: (_) => DetailSellerProduct(artList: widget.artList))
-                )
-                    .then((_) {
+                ).then((_) {
                   context.read<DatabaseProvider>().getFavorite();
                 });
               },
@@ -66,8 +65,7 @@ class _WidgetFavoriteState extends State<WidgetFavorite> {
                         Row(
                           children: [
                             const Icon(
-                              Icons.add_location_rounded,
-                              size: 16,
+                              Icons.add_location_rounded, size: 16,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                             const SizedBox(width: 3),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/pages/home_page.dart';
 import 'package:sentra/presentation/pages/login_page.dart';
@@ -19,8 +20,8 @@ class AboutPage extends StatelessWidget {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[const
-                    SizedBox(height: 100),
+                  children: <Widget>[
+                    const SizedBox(height: 100),
                     Container(
                       alignment: Alignment.centerLeft,
                       padding: const EdgeInsets.only(left: 12),
@@ -38,11 +39,11 @@ class AboutPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(),
                       child: Text(
-                        'Tentang Kami',
-                        style: TextStyle(
+                        AppLocalizations.of(context)!.aboutUS,
+                        style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 45, 74, 148),
@@ -64,33 +65,33 @@ class AboutPage extends StatelessWidget {
                         child: Center(
                           child: Column(
                             children:  [
-                              const Padding(
-                                padding: EdgeInsets.only(top: 10, left: 57, right: 57),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10, left: 57, right: 57),
                                 child: Text(
-                                  'Hallo, Sentra!',
-                                  style: TextStyle(
+                                  AppLocalizations.of(context)!.aboutText1,
+                                  style: const TextStyle(
                                     fontSize: 31,
                                     fontWeight: FontWeight.bold,
                                     color: secondaryColor,
                                   ),
                                 ),
                               ),
-                              const Padding(
-                                padding: EdgeInsets.only(top: 10, left: 57, right: 57),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10, left: 57, right: 57),
                                 child: Text(
-                                  'kami adalah penyedia layanan seni tradisional berbasis mobile untuk memudahkan Anda menyewa layanan seni pertunjukan tradisional Indonesia.',
-                                  style: TextStyle(
+                                  AppLocalizations.of(context)!.aboutText2,
+                                  style: const TextStyle(
                                     fontSize: 11,
                                     color: textSecondColor,
                                   ),
                                 ),
                               ),
-                              const Padding(
-                                padding: EdgeInsets.only(top: 50, left: 50, right: 50),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 50, left: 50, right: 50),
                                 child: Center(
                                   child: Text(
-                                    'Kami ingin mendengar tentang lebih banyak seni tradisional',
-                                    style: TextStyle(
+                                    AppLocalizations.of(context)!.aboutText3,
+                                    style: const TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold,
                                       color: secondaryColor,
@@ -98,11 +99,11 @@ class AboutPage extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              const Padding(
-                                padding: EdgeInsets.only(top: 10, left: 50, right: 50, bottom: 30),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10, left: 50, right: 50, bottom: 30),
                                 child: Text(
-                                  'Apakah Anda bersedia membantu orang menemukan seni pertunjukan tradisional dengan mudah?',
-                                  style: TextStyle(
+                                  AppLocalizations.of(context)!.aboutText4,
+                                  style: const TextStyle(
                                     fontSize: 11,
                                     color: textSecondColor,
                                   ),
@@ -118,19 +119,19 @@ class AboutPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(13),
                                   ),
                                 ),
-                                child: const Text(
-                                  'Masuk',
-                                  style: TextStyle(
+                                child: Text(
+                                  AppLocalizations.of(context)!.login,
+                                  style: const TextStyle(
                                     color: primaryColor,
                                     fontSize: 20,
                                   ),
                                 ),
                               ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
                                 child: Text(
-                                  'Hubungi Kami',
-                                  style: TextStyle(
+                                  AppLocalizations.of(context)!.contactUs,
+                                  style: const TextStyle(
                                     fontSize: 22,
                                     color: secondaryColor,
                                     fontWeight: FontWeight.bold,
@@ -142,9 +143,9 @@ class AboutPage extends StatelessWidget {
                                 child: Card(
                                   child: ListTile(
                                     leading: const Icon(Icons.alternate_email, color: secondaryColor),
-                                    title: const Text(
-                                      'Alamat Email',
-                                      style: TextStyle(
+                                    title: Text(
+                                      AppLocalizations.of(context)!.artEmail,
+                                      style: const TextStyle(
                                           color: buttonPrimaryColor,
                                           fontSize: 18
                                       ),
@@ -159,11 +160,10 @@ class AboutPage extends StatelessWidget {
                                 child: Card(
                                   child: ListTile(
                                     leading: const Icon(Icons.whatsapp, color: secondaryColor),
-                                    title: const Text(
-                                      'Nomor WhatsApp',
-                                      style: TextStyle(
-                                          color: buttonPrimaryColor,
-                                          fontSize: 18
+                                    title: Text(
+                                      AppLocalizations.of(context)!.artPhone,
+                                      style: const TextStyle(
+                                        color: buttonPrimaryColor, fontSize: 18,
                                       ),
                                     ),
                                     trailing: const Icon(Icons.navigate_next, color: secondaryColor),

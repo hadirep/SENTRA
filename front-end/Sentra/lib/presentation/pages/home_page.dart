@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/common/result_state.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/pages/about_page.dart';
@@ -43,9 +44,9 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               leading: const Icon(Icons.home_rounded, color: Color(0xffdc7e00)),
-              title: const Text(
-                "Beranda",
-                style: TextStyle(
+              title: Text(
+                AppLocalizations.of(context)!.home,
+                style: const TextStyle(
                   color: textPrimaryColor,
                   fontWeight: FontWeight.bold,
                 ),
@@ -56,9 +57,9 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               leading: const Icon(Icons.stars, color: Color(0xffF0BE41)),
-              title: const Text(
-                'Favorite',
-                style: TextStyle(
+              title: Text(
+                AppLocalizations.of(context)!.favoriteList,
+                style: const TextStyle(
                   color: textPrimaryColor,
                   fontWeight: FontWeight.bold,
                 ),
@@ -72,9 +73,9 @@ class _HomePageState extends State<HomePage> {
                 Navigator.pushNamed(context, AboutPage.routeName);
               },
               leading: const Icon(Icons.info, color: Color(0xff2d4b94)),
-              title: const Text(
-                'Tentang Kami',
-                style: TextStyle(
+              title: Text(
+                AppLocalizations.of(context)!.aboutUS,
+                style: const TextStyle(
                   color: textPrimaryColor,
                   fontWeight: FontWeight.bold,
                 ),
@@ -85,9 +86,9 @@ class _HomePageState extends State<HomePage> {
                 Navigator.pushNamed(context, UserSetting.routeName);
               },
               leading: const Icon(Icons.settings, color: Color(0xff969696)),
-              title: const Text(
-                'Pengaturan',
-                style: TextStyle(
+              title: Text(
+                AppLocalizations.of(context)!.settings,
+                style: const TextStyle(
                   color: textPrimaryColor,
                   fontWeight: FontWeight.bold,
                 ),
@@ -99,9 +100,9 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
-        title: const Text(
-          'Beranda',
-          style: TextStyle(
+        title: Text(
+          AppLocalizations.of(context)!.home,
+          style: const TextStyle(
             color: textPrimaryColor, fontWeight: FontWeight.bold,
           ),
         ),
@@ -133,21 +134,21 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(height: 15),
-              const Text(
-                "Selamat datang,",
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context)!.homeText1,
+                style: const TextStyle(
                   fontSize: 18, fontWeight: FontWeight.bold, color: textPrimaryColor,
                 ),
               ),
-              const Text(
-                "seni apa yang ingin kamu lihat?",
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context)!.homeText2,
+                style: const TextStyle(
                   fontSize: 15, color: textPrimaryColor,
                 ),
               ),
               const SizedBox(height: 15),
               moreAction(
-                title: 'Provinsi',
+                title: AppLocalizations.of(context)!.artProvince,
                 onTap: () => Navigator.pushNamed(
                   context, ProvinceMorePage.routeName,
                 ),
@@ -182,7 +183,7 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 15),
               moreAction(
-                title: 'Rekomendasi',
+                title: AppLocalizations.of(context)!.artRecommendation,
                 onTap: () => Navigator.pushNamed(
                   context, UpdateMorePage.routeName,
                 ),
@@ -217,7 +218,7 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 15),
               moreAction(
-                title: 'Daftar semua seni',
+                title: AppLocalizations.of(context)!.allArt,
                 onTap: () => Navigator.pushNamed(
                   context, ArtListMorePage.routeName,
                 ),

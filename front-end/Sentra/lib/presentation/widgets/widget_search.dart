@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sentra/common/common.dart';
 import 'package:sentra/presentation/provider/search_art_provider.dart';
 
 class SearchWidget extends StatefulWidget {
@@ -52,7 +53,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                         fontSize: 14,
                         color: Colors.grey.shade500,
                       ),
-                      hintText: "cari disini...",
+                      hintText: AppLocalizations.of(context)!.searchHere,
                     ),
                   ),
                 ),
