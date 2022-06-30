@@ -8,6 +8,8 @@ import 'package:sentra/presentation/pages/admin/business_management.dart';
 import 'package:sentra/presentation/provider/add_art_provider.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 
+import 'package:http/http.dart' as http;
+
 class CreateArt extends StatefulWidget {
   static const routeName = '/create-art';
   const CreateArt({ Key? key }) : super(key: key);
@@ -42,14 +44,78 @@ class _CreateArtState extends State<CreateArt> {
   final borderRadius = BorderRadius.circular(10);
   File? image;
   File? imageDocummentation;
+  final _picker = ImagePicker();
+  bool showSpinner = false ;
 
-  Future getImage() async{
-    final ImagePicker picker =ImagePicker();
-    final XFile? imagePicked = await picker.pickImage(source: ImageSource.gallery);
-    image = File(imagePicked!.path);
+  dynamic stream ;
+  dynamic length ;
+
+
+  Future getImage()async{
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery , imageQuality: 80);
+
+    if(pickedFile!= null ){
+      image = File(pickedFile.path);
+      setState(() {
+      });
+    }else {
+      print('no image selected');
+    }
+  }
+
+
+  Future<void> uploadImage ()async{
+    isLoading = true;
     setState(() {
-
+      isLoading = true;
+      showSpinner = true ;
     });
+    var baseUrl = Uri.parse('https://sentra.dokternak.id/api/kesenians');
+
+    stream  = http.ByteStream(image!.openRead());
+    stream.cast();
+
+    length = await image!.length();
+
+    var uri = Uri.parse('https://fakestoreapi.com/products');
+
+    var request = http.MultipartRequest('POST', baseUrl);
+
+    request.fields['name'] = _nameController.text ;
+    request.fields['price'] = _descriptionController.text ;
+    request.fields['category'] = _categoryController.text ;
+    request.fields['community'] = _communityController.text ;
+    request.fields['phone_number'] = _noHpController.text ;
+    request.fields['email'] = _emailController.text ;
+    request.fields['province'] = _provinceController.text ;
+    request.fields['description'] = _descriptionController.text ;
+    request.fields['is_facebook'] = _isFacebookController.text ;
+    request.fields['is_instagram'] = _isInstagramController.text ;
+
+    // var multiport = http.MultipartFile(
+    //     'image',
+    //     stream,
+    //     length);
+    
+    var multiport = await http.MultipartFile.fromPath('image', image!.path);
+    
+    request.files.add(multiport);
+
+    var response = await request.send() ;
+
+    print(response.stream.toString());
+    if(response.statusCode == 201){
+      isLoading = false;
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const BusinessManagement()),
+            (Route<dynamic> route) => false,
+      );
+      print('image uploaded');
+    }else {
+      print('failed');
+      isLoading = true;
+    }
   }
 
   Future getImageDocummentation() async{
@@ -70,6 +136,7 @@ class _CreateArtState extends State<CreateArt> {
       if(pickedfiles != null){
         imagefiles = pickedfiles;
         setState(() {
+          isLoading = false;
         });
       }else{
         if (kDebugMode) {
@@ -96,6 +163,8 @@ class _CreateArtState extends State<CreateArt> {
       _descriptionController.text,
       _isFacebookController.text,
       _isInstagramController.text,
+      stream,
+      length,
     ).then((res) {
       if (res) {
         Navigator.pushAndRemoveUntil(
@@ -180,36 +249,6 @@ class _CreateArtState extends State<CreateArt> {
               const SizedBox(height: 20),
               Column(
                 children: [
-                  // Container(
-                  //   alignment: Alignment.topCenter,
-                  //   child: Container(
-                  //     height: MediaQuery.of(context).size.height * 0.14,
-                  //     width:  MediaQuery.of(context).size.height * 0.14,
-                  //     decoration: BoxDecoration(
-                  //       shape: BoxShape.circle,
-                  //       border: Border.all(width: 4, color: Colors.white),
-                  //       image: const DecorationImage(image: AssetImage('images/pencaksilat_pm_p.jpg'),
-                  //         fit: BoxFit.fill,
-                  //       ),
-                  //       boxShadow: const [
-                  //         BoxShadow(
-                  //           color: Colors.grey,
-                  //           offset: Offset(1.0, 5.0),
-                  //           blurRadius: 6.0,
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
-                  // const SizedBox(height: 10),
-                  // Container(alignment: Alignment.topCenter,
-                  //   child: const Text("rentral",
-                  //     style: TextStyle(
-                  //       fontSize: 22, fontWeight: FontWeight.w800,
-                  //       color: Color.fromARGB(255, 204, 203, 203),
-                  //     ),
-                  //   ),
-                  // ),
                   const SizedBox(height: 10),
                   Padding(padding: const EdgeInsets.all(22),
                     child: Column(
@@ -667,28 +706,31 @@ class _CreateArtState extends State<CreateArt> {
                               height: 70,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  setState(() {
-                                    _nameController.text.isEmpty ? _validateName = true : _validateName = false;
-                                    _descriptionController.text.isEmpty ? _validateDescription = true : _validateDescription = false;
-                                    _communityController.text.isEmpty ? _validateCommunity = true : _validateCommunity = false;
-                                    _noHpController.text.isEmpty ? _validateNoHp = true : _validateNoHp = false;
-                                    _emailController.text.isEmpty ? _validateEmail = true : _validateEmail = false;
-                                    _priceController.text.isEmpty ? _validatePrice = true : _validatePrice = false;
-                                    _provinceController.text.isEmpty ? _validateProvince = true : _validateProvince = false;
-                                  });
-                                  if(
-                                      _nameController.text.isNotEmpty &&
-                                      _descriptionController.text.isNotEmpty &&
-                                      _communityController.text.isNotEmpty &&
-                                      _noHpController.text.isNotEmpty &&
-                                      _emailController.text.isNotEmpty &&
-                                      _priceController.text.isNotEmpty &&
-                                      _provinceController.text.isNotEmpty
-                                  ) {
-                                    submit(context);
-                                  }
-
+                                  uploadImage();
                                 },
+                                // onPressed: () {
+                                //   setState(() {
+                                //     _nameController.text.isEmpty ? _validateName = true : _validateName = false;
+                                //     _descriptionController.text.isEmpty ? _validateDescription = true : _validateDescription = false;
+                                //     _communityController.text.isEmpty ? _validateCommunity = true : _validateCommunity = false;
+                                //     _noHpController.text.isEmpty ? _validateNoHp = true : _validateNoHp = false;
+                                //     _emailController.text.isEmpty ? _validateEmail = true : _validateEmail = false;
+                                //     _priceController.text.isEmpty ? _validatePrice = true : _validatePrice = false;
+                                //     _provinceController.text.isEmpty ? _validateProvince = true : _validateProvince = false;
+                                //   });
+                                //   if(
+                                //       _nameController.text.isNotEmpty &&
+                                //       _descriptionController.text.isNotEmpty &&
+                                //       _communityController.text.isNotEmpty &&
+                                //       _noHpController.text.isNotEmpty &&
+                                //       _emailController.text.isNotEmpty &&
+                                //       _priceController.text.isNotEmpty &&
+                                //       _provinceController.text.isNotEmpty
+                                //   ) {
+                                //     submit(context);
+                                //   }
+                                //
+                                // },
                                 style: ElevatedButton.styleFrom(
                                   primary: const Color.fromARGB(255, 234, 132, 0),
                                   shape: RoundedRectangleBorder(borderRadius: borderRadius),

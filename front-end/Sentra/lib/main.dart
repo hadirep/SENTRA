@@ -116,7 +116,7 @@ class MyApp extends StatelessWidget {
             title: "SENTRA",
             theme: provider.themeData,
             navigatorKey: navigatorKey,
-            initialRoute: HomePage.routeName,
+            initialRoute: CreateArt.routeName,
             routes: {
               ProvinceQueryPage.routeName: (context) => ProvinceQueryPage(
                 queryList: ModalRoute.of(context)?.settings.arguments as ArtList,
