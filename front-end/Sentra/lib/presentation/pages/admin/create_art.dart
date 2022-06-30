@@ -1,11 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:provider/provider.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
-import 'package:sentra/presentation/provider/add_art_provider.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 
 import 'package:http/http.dart' as http;
@@ -33,18 +32,19 @@ class _CreateArtState extends State<CreateArt> {
   final TextEditingController _isFacebookController = TextEditingController(text: '');
   final TextEditingController _provinceController = TextEditingController(text: '');
 
-  late bool _validateName = false;
-  late bool _validateDescription = false;
-  late bool _validateCommunity = false;
-  late bool _validateNoHp = false;
-  late bool _validateEmail = false;
-  late bool _validatePrice = false;
-  late bool _validateProvince = false;
+  late final bool _validateName = false;
+  late final bool _validateDescription = false;
+  late final bool _validateCommunity = false;
+  late final bool _validateNoHp = false;
+  late final bool _validateEmail = false;
+  late final bool _validatePrice = false;
+  late final bool _validateProvince = false;
 
   final borderRadius = BorderRadius.circular(10);
   File? image;
-  File? imageDocummentation;
+  List<XFile>? imageDocumentation;
   final _picker = ImagePicker();
+  final ImagePicker imgPicker = ImagePicker();
   bool showSpinner = false ;
 
   dynamic stream ;
@@ -59,82 +59,16 @@ class _CreateArtState extends State<CreateArt> {
       setState(() {
       });
     }else {
-      print('no image selected');
+      const snackbar = SnackBar(content: Text('no image selected'));
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
     }
   }
-
-
-  Future<void> uploadImage ()async{
-    isLoading = true;
-    setState(() {
-      isLoading = true;
-      showSpinner = true ;
-    });
-    var baseUrl = Uri.parse('https://sentra.dokternak.id/api/kesenians');
-
-    stream  = http.ByteStream(image!.openRead());
-    stream.cast();
-
-    length = await image!.length();
-
-    var uri = Uri.parse('https://fakestoreapi.com/products');
-
-    var request = http.MultipartRequest('POST', baseUrl);
-
-    request.fields['name'] = _nameController.text ;
-    request.fields['price'] = _descriptionController.text ;
-    request.fields['category'] = _categoryController.text ;
-    request.fields['community'] = _communityController.text ;
-    request.fields['phone_number'] = _noHpController.text ;
-    request.fields['email'] = _emailController.text ;
-    request.fields['province'] = _provinceController.text ;
-    request.fields['description'] = _descriptionController.text ;
-    request.fields['is_facebook'] = _isFacebookController.text ;
-    request.fields['is_instagram'] = _isInstagramController.text ;
-
-    // var multiport = http.MultipartFile(
-    //     'image',
-    //     stream,
-    //     length);
-    
-    var multiport = await http.MultipartFile.fromPath('image', image!.path);
-    
-    request.files.add(multiport);
-
-    var response = await request.send() ;
-
-    print(response.stream.toString());
-    if(response.statusCode == 201){
-      isLoading = false;
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => const BusinessManagement()),
-            (Route<dynamic> route) => false,
-      );
-      print('image uploaded');
-    }else {
-      print('failed');
-      isLoading = true;
-    }
-  }
-
-  Future getImageDocummentation() async{
-    final ImagePicker picker =ImagePicker();
-    final XFile? imagePicked = await picker.pickImage(source: ImageSource.gallery);
-    imageDocummentation = File(imagePicked!.path);
-    setState(() {
-
-    });
-  }
-
-  final ImagePicker imgpicker = ImagePicker();
-  List<XFile>? imagefiles;
 
   openImages() async {
     try {
-      var pickedfiles = await imgpicker.pickMultiImage();
-      if(pickedfiles != null){
-        imagefiles = pickedfiles;
+      var pickedFiles = await imgPicker.pickMultiImage();
+      if(pickedFiles != null){
+        imageDocumentation = pickedFiles;
         setState(() {
           isLoading = false;
         });
@@ -150,79 +84,58 @@ class _CreateArtState extends State<CreateArt> {
     }
   }
 
-  void submit(BuildContext context) {
+  Future<void> uploadImage ()async{
     isLoading = true;
-    Provider.of<AddArtProvider>(context, listen: false).storeArt(
-      _nameController.text,
-      _priceController.text,
-      _categoryController.text,
-      _communityController.text,
-      _noHpController.text,
-      _emailController.text,
-      _provinceController.text,
-      _descriptionController.text,
-      _isFacebookController.text,
-      _isInstagramController.text,
-      stream,
-      length,
-    ).then((res) {
-      if (res) {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => const BusinessManagement()),
-              (Route<dynamic> route) => false,
-        );
-        // Navigator.pushReplacementNamed(context, BusinessManagement.routeName);
-        // Navigator.pushReplacement(
-        //   context,
-        //   MaterialPageRoute(
-        //       builder: (BuildContext context) => const BusinessManagement()),).then((value) => setState(() {}));
-      } else {
-        /// ALERT EROR
-        var snackbar = const SnackBar(content: Text('Ops: Error. Hubungi Admin'));
-        snackbarKey.currentState?.showSnackBar(snackbar);
-        setState(() {
-          isLoading = false;
-        });
-      }
+    setState(() {
+      isLoading = true;
+      showSpinner = true ;
     });
-  }
 
+    var baseUrl = Uri.parse('https://sentra.dokternak.id/api/kesenians');
+    var request = http.MultipartRequest('POST', baseUrl);
+
+    request.fields['name'] = _nameController.text ;
+    request.fields['price'] = _descriptionController.text ;
+    request.fields['category'] = _categoryController.text ;
+    request.fields['community'] = _communityController.text ;
+    request.fields['phone_number'] = _noHpController.text ;
+    request.fields['email'] = _emailController.text ;
+    request.fields['province'] = _provinceController.text ;
+    request.fields['description'] = _descriptionController.text ;
+    request.fields['is_facebook'] = _isFacebookController.text ;
+    request.fields['is_instagram'] = _isInstagramController.text ;
+    
+    var multiPort = await http.MultipartFile.fromPath('image', image!.path);
+    request.files.add(multiPort);
+
+    for(int i = 0; i < imageDocumentation!.length; i++){
+      var multiPortDocumentation = await http.MultipartFile.fromPath('documentation[]', imageDocumentation![i].path);
+      request.files.add(multiPortDocumentation);
+    }
+
+    var response = await request.send() ;
+    if(response.statusCode == 201){
+      isLoading = false;
+      const snackbar = SnackBar(content: Text('Tambah Data Berhasil'));
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const BusinessManagement()),
+            (Route<dynamic> route) => false,
+      );
+    }else {
+      isLoading = true;
+      const snackbar = SnackBar(content: Text('Tambah Data Gagal!'));
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+    }
+  }
   @override
   void initState(){
     super.initState();
   }
 
-  Widget _customButton(BuildContext context, Function() handle) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 24),
-      height: 50,
-      width: MediaQuery.of(context).size.width,
-      child: ElevatedButton(
-        onPressed: handle,
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.0),
-            ),
-          ),
-        ),
-        child: isLoading
-            ? const CircularProgressIndicator(
-          color: Colors.white,
-        )
-            : const Center(
-          child: Text(
-            "Laporkan",
-          ),
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       key: snackbarKey,
@@ -663,8 +576,8 @@ class _CreateArtState extends State<CreateArt> {
                         //MULTI IMAGE PICKER
                         Column(
                           children: [
-                            imagefiles != null?Wrap(
-                              children: imagefiles!.map((imageone){
+                            imageDocumentation != null?Wrap(
+                              children: imageDocumentation!.map((imageone){
                                 return Card(
                                   child: Container(
                                     height:  MediaQuery.of(context).size.height * 0.1,
@@ -708,29 +621,6 @@ class _CreateArtState extends State<CreateArt> {
                                 onPressed: () {
                                   uploadImage();
                                 },
-                                // onPressed: () {
-                                //   setState(() {
-                                //     _nameController.text.isEmpty ? _validateName = true : _validateName = false;
-                                //     _descriptionController.text.isEmpty ? _validateDescription = true : _validateDescription = false;
-                                //     _communityController.text.isEmpty ? _validateCommunity = true : _validateCommunity = false;
-                                //     _noHpController.text.isEmpty ? _validateNoHp = true : _validateNoHp = false;
-                                //     _emailController.text.isEmpty ? _validateEmail = true : _validateEmail = false;
-                                //     _priceController.text.isEmpty ? _validatePrice = true : _validatePrice = false;
-                                //     _provinceController.text.isEmpty ? _validateProvince = true : _validateProvince = false;
-                                //   });
-                                //   if(
-                                //       _nameController.text.isNotEmpty &&
-                                //       _descriptionController.text.isNotEmpty &&
-                                //       _communityController.text.isNotEmpty &&
-                                //       _noHpController.text.isNotEmpty &&
-                                //       _emailController.text.isNotEmpty &&
-                                //       _priceController.text.isNotEmpty &&
-                                //       _provinceController.text.isNotEmpty
-                                //   ) {
-                                //     submit(context);
-                                //   }
-                                //
-                                // },
                                 style: ElevatedButton.styleFrom(
                                   primary: const Color.fromARGB(255, 234, 132, 0),
                                   shape: RoundedRectangleBorder(borderRadius: borderRadius),

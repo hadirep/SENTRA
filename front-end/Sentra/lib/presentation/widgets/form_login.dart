@@ -135,13 +135,16 @@ class _BuildFormLogin extends State<FormLogin> {
                         });
                         await _auth.signInWithEmailAndPassword(
                             email: email, password: password);
+                        const snackbar = SnackBar(content: Text('Login Berhasil'));
+                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+
                         // ignore: use_build_context_synchronously
                         Navigator.pushReplacementNamed(
                           context, BusinessManagement.routeName,
                         );
                       }
                     } catch (e) {
-                      final snackbar = SnackBar(content: Text(e.toString()));
+                      const snackbar = SnackBar(content: Text('Login Gagal, Username & Password Salah!'));
                       ScaffoldMessenger.of(context).showSnackBar(snackbar);
                     } finally {
                       setState(() {
