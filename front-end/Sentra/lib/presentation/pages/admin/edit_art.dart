@@ -1,8 +1,10 @@
 import 'dart:io';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sentra/common/common.dart';
+import 'package:sentra/common/constants.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
@@ -30,6 +32,8 @@ class _EditArtState extends State<EditArt> {
   final descriptionController = TextEditingController();
   final isFacebookController = TextEditingController();
   final isInstagramController = TextEditingController();
+
+  late String? imageUri ;
 
   @override
   void dispose() {
@@ -124,6 +128,9 @@ class _EditArtState extends State<EditArt> {
     }
     if (args[10]!.isNotEmpty) {
       isInstagramController.text = args[10]!;
+    }
+    if (args[11]!.isNotEmpty) {
+      imageUri = args[11]!;
     }
 
     return Scaffold(
@@ -480,6 +487,44 @@ class _EditArtState extends State<EditArt> {
                           ),
                         ),
                       ),
+                      Container(
+                       height:  MediaQuery.of(context).size.height * 0.18,
+                       width: MediaQuery.of(context).size.height * 0.45,
+                       padding: const EdgeInsets.all(5),
+                       decoration: BoxDecoration(
+                         color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,
+                       ),
+                       child: ClipRRect(
+                         borderRadius: BorderRadius.circular(12),
+                         child: CachedNetworkImage(
+                           imageUrl: '$baseImageArt${imageUri}',
+                           width: 80,
+                           placeholder: (context, url) => const Center(
+                             child: CircularProgressIndicator(),
+                           ),
+                           errorWidget: (context, url, error) => const Icon(Icons.error),
+                         ),
+                       ),
+                     ),
+                     // imageUri != null? Container(
+                     //    height:  MediaQuery.of(context).size.height * 0.18,
+                     //    width: MediaQuery.of(context).size.height * 0.45,
+                     //    padding: const EdgeInsets.all(5),
+                     //    decoration: BoxDecoration(
+                     //      color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,
+                     //    ),
+                     //    child: ClipRRect(
+                     //      borderRadius: BorderRadius.circular(12),
+                     //      child: CachedNetworkImage(
+                     //        imageUrl: '$baseImageArt${imageUri}',
+                     //        width: 80,
+                     //        placeholder: (context, url) => const Center(
+                     //          child: CircularProgressIndicator(),
+                     //        ),
+                     //        errorWidget: (context, url, error) => const Icon(Icons.error),
+                     //      ),
+                     //    ),
+                     //  ) : Container(),
                       _oneImage != null? Container(
                         height:  MediaQuery.of(context).size.height * 0.18,
                         width: MediaQuery.of(context).size.height * 0.45,

@@ -56,8 +56,10 @@ class BusinessManagement extends StatelessWidget {
                     icon: const Icon(Icons.add, color: Color(0xfff0be41)),
                     tooltip: AppLocalizations.of(context)!.addData,
                     onPressed: () {
-                      Navigator.pushReplacementNamed(
-                        context, CreateArt.routeName,
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => const CreateArt()),
+                            (Route<dynamic> route) => false,
                       );
                     },
                   ),

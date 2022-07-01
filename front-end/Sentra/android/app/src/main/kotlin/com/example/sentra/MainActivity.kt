@@ -1,4 +1,4 @@
-package com.example.sentra
+package com.example.sentraa
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -149,6 +149,7 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                         widget.artList.description,
                         widget.artList.isFacebook.toString(),
                         widget.artList.isInstagram.toString(),
+                        widget.artList.image,
                       ],
                     );
                   },

@@ -15,16 +15,12 @@ class _StateButtonBack extends State<ButtonBack>{
       alignment: Alignment.centerLeft,
       padding: const EdgeInsets.only(left: 12),
       child: SizedBox(
-        child: ElevatedButton(
-          style: ButtonStyle(
-            backgroundColor:  MaterialStateProperty.all(secondaryColor),
-          ),
+        child: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_rounded, color: secondaryColor,),
+          tooltip: 'Increase volume by 10',
           onPressed: () {
             Navigator.pop(context);
           },
-          child: const Icon(
-            Icons.arrow_back_ios_rounded, color: Color(0xfff0be41),
-          ),
         ),
       ),
     );

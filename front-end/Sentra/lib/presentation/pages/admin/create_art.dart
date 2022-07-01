@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sentra/common/common.dart';
+import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 import 'package:http/http.dart' as http;
@@ -95,7 +96,7 @@ class _CreateArtState extends State<CreateArt> {
     var request = http.MultipartRequest('POST', baseUrl);
 
     request.fields['name'] = _nameController.text ;
-    request.fields['price'] = _descriptionController.text ;
+    request.fields['price'] = _priceController.text ;
     request.fields['category'] = _categoryController.text ;
     request.fields['community'] = _communityController.text ;
     request.fields['phone_number'] = _noHpController.text ;
@@ -105,8 +106,7 @@ class _CreateArtState extends State<CreateArt> {
     request.fields['is_facebook'] = _isFacebookController.text ;
     request.fields['is_instagram'] = _isInstagramController.text ;
     
-    var multiPort = await http.MultipartFile.fromPath('image', image!.path);
-    request.files.add(multiPort);
+    
 
     for(int i = 0; i < imageDocumentation!.length; i++){
       var multiPortDocumentation = await http.MultipartFile.fromPath('documentation[]', imageDocumentation![i].path);
@@ -115,9 +115,9 @@ class _CreateArtState extends State<CreateArt> {
 
     var response = await request.send() ;
     if(response.statusCode == 201){
-      isLoading = false;
       const snackbar = SnackBar(content: Text('Tambah Data Berhasil'));
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
+      isLoading = false;
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => const BusinessManagement()),
@@ -142,9 +142,15 @@ class _CreateArtState extends State<CreateArt> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        leading: const Align(
-          alignment: Alignment.centerLeft,
-          child: ButtonBack(),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => const BusinessManagement()),
+                  (Route<dynamic> route) => false,
+            );
+          },
+          icon: Icon(Icons.arrow_back_ios_rounded, color: secondaryColor,),
         ),
         title: Text(
           AppLocalizations.of(context)!.addData,
@@ -160,7 +166,6 @@ class _CreateArtState extends State<CreateArt> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const SizedBox(height: 20),
               Column(
                 children: [
                   const SizedBox(height: 10),
@@ -215,7 +220,7 @@ class _CreateArtState extends State<CreateArt> {
                           ),
                         ),
                         SizedBox(
-                          height:  MediaQuery.of(context).size.height * 0.04,
+                          height:  MediaQuery.of(context).size.height * 0.1,
                           child: TextField(
                             controller: _descriptionController,
                             keyboardType: TextInputType.multiline,
@@ -309,6 +314,7 @@ class _CreateArtState extends State<CreateArt> {
                             ),
                           ),
                         ),
+                        const SizedBox(height: 10),
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
@@ -343,6 +349,7 @@ class _CreateArtState extends State<CreateArt> {
                             ),
                           ),
                         ),
+                        const SizedBox(height: 10),
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
@@ -667,4 +674,19 @@ class _CreateArtState extends State<CreateArt> {
       ),
     );
   }
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _priceController.dispose();
+    _communityController.dispose();
+    _categoryController.dispose();
+    _noHpController.dispose();
+    _emailController.dispose();
+    _provinceController.dispose();
+    _descriptionController.dispose();
+    _isFacebookController.dispose();
+    _isInstagramController.dispose();
+    super.dispose();
+  }
 }
+
