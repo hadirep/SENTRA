@@ -64,7 +64,6 @@ class SearchPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
         title: Text(
           AppLocalizations.of(context)!.search,
           style: const TextStyle(

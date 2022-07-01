@@ -95,32 +95,32 @@ class _BuildFormLogin extends State<FormLogin> {
                   ),
                 ),
               ),
-              Row(
-                children:[
-                  Text(
-                    AppLocalizations.of(context)!.noAccount,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: buttonPrimaryColor,
-                    ),
-                  ),
-                  // TextButton(
-                  //   onPressed: () {
-                  //     Navigator.pushNamed(
-                  //       context, RegisterPage.routeName,
-                  //     );
-                  //   },
-                  //   child: Text(
-                  //     AppLocalizations.of(context)!.registerHere,
-                  //     style: const TextStyle(
-                  //       fontSize: 12,
-                  //       fontWeight: FontWeight.bold,
-                  //       color: buttonPrimaryColor,
-                  //     ),
-                  //   ),
-                  // ),
-                ],
-              ),
+              // Row(
+              //   children:[
+              //     Text(
+              //       AppLocalizations.of(context)!.noAccount,
+              //       style: const TextStyle(
+              //         fontSize: 12,
+              //         color: buttonPrimaryColor,
+              //       ),
+              //     ),
+              //     // TextButton(
+              //     //   onPressed: () {
+              //     //     Navigator.pushNamed(
+              //     //       context, RegisterPage.routeName,
+              //     //     );
+              //     //   },
+              //     //   child: Text(
+              //     //     AppLocalizations.of(context)!.registerHere,
+              //     //     style: const TextStyle(
+              //     //       fontSize: 12,
+              //     //       fontWeight: FontWeight.bold,
+              //     //       color: buttonPrimaryColor,
+              //     //     ),
+              //     //   ),
+              //     // ),
+              //   ],
+              // ),
               Container(
                 margin: const EdgeInsets.all(16.0),
                 height: 50,

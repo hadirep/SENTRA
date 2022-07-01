@@ -20,7 +20,6 @@ class _FavoriteListState extends State<FavoriteList> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
         title: Text(
           AppLocalizations.of(context)!.favoriteList,
           style: const TextStyle(

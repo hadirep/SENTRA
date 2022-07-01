@@ -136,19 +136,18 @@ class _EditArtState extends State<EditArt> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
-        leading: const Align(
-          alignment: Alignment.centerLeft,
-          child: ButtonBack(),
-        ),
         title: Text(
           AppLocalizations.of(context)!.editData,
           style: const TextStyle(
-            color: textPrimaryColor,
+            color: Color.fromARGB(255, 45, 74, 148),
             fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
+        leading: const Align(
+          alignment: Alignment.centerLeft,
+          child: ButtonBack(),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(

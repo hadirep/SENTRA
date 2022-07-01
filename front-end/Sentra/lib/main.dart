@@ -111,7 +111,7 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             theme: provider.themeData,
             navigatorKey: navigatorKey,
-            initialRoute: BusinessManagement.routeName,
+            initialRoute: HomePage.routeName,
             routes: {
               ProvinceQueryPage.routeName: (context) => ProvinceQueryPage(
                 queryList: ModalRoute.of(context)?.settings.arguments as ArtList,

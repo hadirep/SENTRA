@@ -38,7 +38,6 @@ ThemeData lightTheme = ThemeData(
 
 ThemeData darkTheme = ThemeData.dark().copyWith(
   primaryColor: darkPrimaryColor,
-  backgroundColor: darkPrimaryColor,
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     selectedItemColor: darkSecondaryColor,
     unselectedItemColor: Colors.grey,

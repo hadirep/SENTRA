@@ -3,6 +3,7 @@ import 'package:sentra/common/common.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/pages/home_page.dart';
 import 'package:sentra/presentation/pages/login_page.dart';
+import 'package:sentra/presentation/widgets/button/button_back.dart';
 
 class AboutPage extends StatelessWidget {
   static const routeName = '/about_page';
@@ -12,47 +13,26 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        title: Text(
+          AppLocalizations.of(context)!.aboutUS,
+          style: const TextStyle(
+            color: Color.fromARGB(255, 45, 74, 148),
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        leading: const Align(
+          alignment: Alignment.centerLeft,
+          child: ButtonBack(),
+        ),
+      ),
       body: Container(
-        color: primaryColor,
         child:SafeArea(
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    const SizedBox(height: 100),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.only(left: 12),
-                      child: SizedBox(
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(secondaryColor),
-                          ),
-                          onPressed: () {
-                            Navigator.pushNamed(context, HomePage.routeName);
-                          },
-                          child: const Icon(
-                            Icons.arrow_back_ios_rounded, color: Color(0xfff0be41),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(),
-                      child: Text(
-                        AppLocalizations.of(context)!.aboutUS,
-                        style: const TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 45, 74, 148),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 70),
-                  ],
-                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 50, bottom: 50),
                   child: Column(
@@ -82,7 +62,7 @@ class AboutPage extends StatelessWidget {
                                   AppLocalizations.of(context)!.aboutText2,
                                   style: const TextStyle(
                                     fontSize: 11,
-                                    color: textSecondColor,
+                                    color: textPrimaryColor,
                                   ),
                                 ),
                               ),
@@ -105,7 +85,7 @@ class AboutPage extends StatelessWidget {
                                   AppLocalizations.of(context)!.aboutText4,
                                   style: const TextStyle(
                                     fontSize: 11,
-                                    color: textSecondColor,
+                                    color: textPrimaryColor,
                                   ),
                                 ),
                               ),

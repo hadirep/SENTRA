@@ -110,7 +110,6 @@ class _UserSettingState extends State<UserSetting> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: primaryColor,
         title: Text(
           AppLocalizations.of(context)!.settings,
           style: const TextStyle(

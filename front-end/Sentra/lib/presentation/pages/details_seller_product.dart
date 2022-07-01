@@ -47,22 +47,23 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
             child: Scaffold(
               appBar: AppBar(
                 elevation: 0,
-                toolbarHeight: 70,
-                backgroundColor: const Color.fromARGB(255, 255, 255, 255),
                 title: Text(
                   AppLocalizations.of(context)!.artDetail,
                   style: const TextStyle(
-                    color: Color.fromARGB(255, 45, 74, 148),
-                    fontWeight: FontWeight.bold, fontSize: 20,
+                      color: Color.fromARGB(255, 45, 74, 148),
+                      fontWeight: FontWeight.bold
                   ),
                 ),
                 centerTitle: true,
-                leading: const ButtonBack(),
+                leading: const Align(
+                  alignment: Alignment.centerLeft,
+                  child: ButtonBack(),
+                ),
               ),
               body: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 20),
                     Stack(
                       children: [
                         Container(
@@ -85,69 +86,107 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                             ],
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            const Padding(
-                              padding: EdgeInsets.only(top: 29, right: 10),
-                            ),
-                            const SizedBox(height: 140),
-                            Container(
-                              padding: const EdgeInsets.only(left: 20 ),
-                              child: Text(
-                                state.detail.data.province,
-                                style: const TextStyle(
-                                  color: Colors.white, fontSize: 18,
-                                  fontWeight: FontWeight.w600,
+                        Container(
+                          width:  MediaQuery.of(context).size.height * 0.45,
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  width:  MediaQuery.of(context).size.height * 0.45,
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Consumer<DatabaseProvider>(
+                                      builder: (context, provider, child) {
+                                        return FutureBuilder<bool>(
+                                          future: provider.isFavorited(widget.artList.id),
+                                          builder: (context, snapshot) {
+                                            var isFavorited = snapshot.data ?? false;
+                                            return isFavorited
+                                                ? IconButton(
+                                                icon: const Icon(Icons.favorite, color: Colors.red),
+                                                onPressed: () => provider
+                                                    .removeFavorite(widget.artList.id)
+                                            ) : IconButton(
+                                              icon: const Icon(Icons.favorite_border, color: Colors.red),
+                                              onPressed: () => provider
+                                                  .addFavorite(widget.artList),
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                            const SizedBox(height: 4),
-                            Container(
-                              padding: const EdgeInsets.only(left: 20 ),
-                              child: Text(
-                                state.detail.data.name,
-                                style: const TextStyle(
-                                  color: Colors.white, fontSize: 27,
-                                  fontWeight: FontWeight.w800,
+                                const Padding(
+                                  padding: EdgeInsets.only(top: 10, right: 10),
                                 ),
-                              ),
+                                const SizedBox(height: 100),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  // mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      padding: const EdgeInsets.only(left: 20 ),
+                                      child: Text(
+                                        state.detail.data.province,
+                                        style: const TextStyle(
+                                          color: Colors.white, fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Container(
+                                      padding: const EdgeInsets.only(left: 20 ),
+                                      child: Text(
+                                        state.detail.data.name,
+                                        style: const TextStyle(
+                                          color: Colors.white, fontSize: 27,
+                                          fontWeight: FontWeight.w800,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Container(
+                                      padding: const EdgeInsets.only(left: 20 ),
+                                      child: Text(
+                                        state.detail.data.price,
+                                        style: const TextStyle(
+                                          color: Colors.white, fontSize: 12,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
                             ),
-                            const SizedBox(height: 4),
-                            Container(
-                              padding: const EdgeInsets.only(left: 20 ),
-                              child: Text(
-                                state.detail.data.price,
-                                style: const TextStyle(
-                                  color: Colors.white, fontSize: 12,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
+
                       ],
                     ),
-                    Consumer<DatabaseProvider>(
-                      builder: (context, provider, child) {
-                        return FutureBuilder<bool>(
-                          future: provider.isFavorited(widget.artList.id),
-                          builder: (context, snapshot) {
-                            var isFavorited = snapshot.data ?? false;
-                            return isFavorited
-                                ? IconButton(
-                                icon: const Icon(Icons.favorite, color: Colors.red),
-                                onPressed: () => provider
-                                    .removeFavorite(widget.artList.id)
-                            ) : IconButton(
-                              icon: const Icon(Icons.favorite_border, color: Colors.red),
-                              onPressed: () => provider
-                                  .addFavorite(widget.artList),
-                            );
-                          },
-                        );
-                      },
-                    ),
+                    // Consumer<DatabaseProvider>(
+                    //   builder: (context, provider, child) {
+                    //     return FutureBuilder<bool>(
+                    //       future: provider.isFavorited(widget.artList.id),
+                    //       builder: (context, snapshot) {
+                    //         var isFavorited = snapshot.data ?? false;
+                    //         return isFavorited
+                    //             ? IconButton(
+                    //             icon: const Icon(Icons.favorite, color: Colors.red),
+                    //             onPressed: () => provider
+                    //                 .removeFavorite(widget.artList.id)
+                    //         ) : IconButton(
+                    //           icon: const Icon(Icons.favorite_border, color: Colors.red),
+                    //           onPressed: () => provider
+                    //               .addFavorite(widget.artList),
+                    //         );
+                    //       },
+                    //     );
+                    //   },
+                    // ),
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
