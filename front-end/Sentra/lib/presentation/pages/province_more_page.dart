@@ -18,20 +18,19 @@ class _ProvinceMorePageState extends State<ProvinceMorePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         elevation: 0,
-        title: Align(
-          alignment: Alignment.center,
-          child: Text(
-            AppLocalizations.of(context)!.artProvince,
-            style: const TextStyle(
-              color: textPrimaryColor, fontWeight: FontWeight.bold,
-            ),
+        title: Text(
+          AppLocalizations.of(context)!.artProvince,
+          style: const TextStyle(
+            color: Color.fromARGB(255, 45, 74, 148),
+            fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
-        leading : const ButtonBack(),
+        leading: const Align(
+          alignment: Alignment.centerLeft,
+          child: ButtonBack(),
+        ),
       ),
       body: Consumer<ProvinceListProvider>(
         builder: (context, state, _) {
