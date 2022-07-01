@@ -176,6 +176,8 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                       actions: [
                         TextButton(
                           onPressed: () {
+                            const snackbar = SnackBar(content: Text('Hapus Data Berhasil'));
+                            ScaffoldMessenger.of(context).showSnackBar(snackbar);
                             Navigator.pop(context);
                           },
                           child: Text(AppLocalizations.of(context)!.no),

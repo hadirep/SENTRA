@@ -139,21 +139,6 @@ class _CreateArtState extends State<CreateArt> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       key: snackbarKey,
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   title: Text(
-      //     AppLocalizations.of(context)!.addData,
-      //     style: const TextStyle(
-      //       color: Color.fromARGB(255, 45, 74, 148),
-      //       fontWeight: FontWeight.bold,
-      //     ),
-      //   ),
-      //   centerTitle: true,
-      //   leading: const Align(
-      //     alignment: Alignment.centerLeft,
-      //     child: ButtonBack(),
-      //   ),
-      // ),
       appBar: AppBar(
         elevation: 0,
         leading: IconButton(

@@ -122,43 +122,49 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                   padding: EdgeInsets.only(top: 10, right: 10),
                                 ),
                                 const SizedBox(height: 100),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  // mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      padding: const EdgeInsets.only(left: 20 ),
-                                      child: Text(
-                                        state.detail.data.province,
-                                        style: const TextStyle(
-                                          color: Colors.white, fontSize: 18,
-                                          fontWeight: FontWeight.w600,
+                                SizedBox(
+                                  width:  MediaQuery.of(context).size.height * 0.45,
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      // mainAxisAlignment: MainAxisAlignment.start,
+                                      children: <Widget>[
+                                        Container(
+                                          padding: const EdgeInsets.only(left: 20 ),
+                                          child: Text(
+                                            state.detail.data.province,
+                                            style: const TextStyle(
+                                              color: Colors.white, fontSize: 18,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Container(
-                                      padding: const EdgeInsets.only(left: 20 ),
-                                      child: Text(
-                                        state.detail.data.name,
-                                        style: const TextStyle(
-                                          color: Colors.white, fontSize: 27,
-                                          fontWeight: FontWeight.w800,
+                                        const SizedBox(height: 4),
+                                        Container(
+                                          padding: const EdgeInsets.only(left: 20 ),
+                                          child: Text(
+                                            state.detail.data.name,
+                                            style: const TextStyle(
+                                              color: Colors.white, fontSize: 27,
+                                              fontWeight: FontWeight.w800,
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Container(
-                                      padding: const EdgeInsets.only(left: 20 ),
-                                      child: Text(
-                                        state.detail.data.price,
-                                        style: const TextStyle(
-                                          color: Colors.white, fontSize: 12,
-                                          fontWeight: FontWeight.w700,
+                                        const SizedBox(height: 4),
+                                        Container(
+                                          padding: const EdgeInsets.only(left: 20 ),
+                                          child: Text(
+                                            state.detail.data.price,
+                                            style: const TextStyle(
+                                              color: Colors.white, fontSize: 12,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                  ],
+                                  ),
                                 )
                               ],
                             ),

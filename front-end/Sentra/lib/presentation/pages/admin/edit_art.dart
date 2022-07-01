@@ -632,6 +632,8 @@ class _EditArtState extends State<EditArt> {
                                 );
 
                                 if (response){
+                                  const snackbar = SnackBar(content: Text('Edit Data Berhasil'));
+                                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
                                   Navigator.pushNamed(context, BusinessManagement.routeName);
                                 } else {
                                   if (kDebugMode) {
