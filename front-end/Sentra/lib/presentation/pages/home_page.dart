@@ -107,7 +107,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
         leading : Padding(
           padding: const EdgeInsets.symmetric(),
           child: Builder(
