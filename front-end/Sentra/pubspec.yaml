@@ -38,13 +38,13 @@ dependencies:
   android_alarm_manager_plus: ^2.0.6
   intl: ^0.17.0
   flutter_local_notifications: ^9.6.1
-  modal_progress_hud_nsn: ^0.2.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.1
+  splash_screen_view: ^3.0.0
 
 flutter:
   generate: true

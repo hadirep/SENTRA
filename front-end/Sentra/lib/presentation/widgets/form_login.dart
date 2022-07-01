@@ -104,21 +104,21 @@ class _BuildFormLogin extends State<FormLogin> {
               //         color: buttonPrimaryColor,
               //       ),
               //     ),
-              //     // TextButton(
-              //     //   onPressed: () {
-              //     //     Navigator.pushNamed(
-              //     //       context, RegisterPage.routeName,
-              //     //     );
-              //     //   },
-              //     //   child: Text(
-              //     //     AppLocalizations.of(context)!.registerHere,
-              //     //     style: const TextStyle(
-              //     //       fontSize: 12,
-              //     //       fontWeight: FontWeight.bold,
-              //     //       color: buttonPrimaryColor,
-              //     //     ),
-              //     //   ),
-              //     // ),
+              //     TextButton(
+              //       onPressed: () {
+              //         Navigator.pushNamed(
+              //           context, RegisterPage.routeName,
+              //         );
+              //       },
+              //       child: Text(
+              //         AppLocalizations.of(context)!.registerHere,
+              //         style: const TextStyle(
+              //           fontSize: 12,
+              //           fontWeight: FontWeight.bold,
+              //           color: buttonPrimaryColor,
+              //         ),
+              //       ),
+              //     ),
               //   ],
               // ),
               Container(

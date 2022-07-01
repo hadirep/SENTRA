@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/common/common.dart';
 import 'package:sentra/common/style.dart';
+import 'package:sentra/presentation/pages/about_page.dart';
+import 'package:sentra/presentation/pages/home_page.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 import 'package:sentra/presentation/widgets/form_login.dart';
 import 'package:sentra/presentation/widgets/logo_center.dart';
@@ -23,7 +25,18 @@ class _LoginPageState extends State<LoginPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const ButtonBack(),
+              Container(
+              alignment: Alignment.centerLeft,
+              padding: const EdgeInsets.only(left: 12),
+              child: SizedBox(
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios_rounded, color: secondaryColor,),
+                    onPressed: () {
+                      Navigator.pushNamed(context, AboutPage.routeName);
+                    },
+                  ),
+                ),
+              ),
                 const LogoCenter(),
                 const SizedBox(height: 80),
                 Container(

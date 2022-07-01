@@ -19,6 +19,7 @@ import 'package:sentra/presentation/pages/home_page.dart';
 import 'package:sentra/presentation/pages/login_page.dart';
 import 'package:sentra/presentation/pages/admin/edit_art.dart';
 import 'package:sentra/presentation/pages/search_art_page.dart';
+import 'package:sentra/presentation/pages/splash_screen.dart';
 import 'package:sentra/presentation/pages/update_more_page.dart';
 import 'package:sentra/presentation/pages/user_setting_page.dart';
 import 'package:sentra/presentation/pages/register_page.dart';
@@ -111,12 +112,13 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             theme: provider.themeData,
             navigatorKey: navigatorKey,
-            initialRoute: HomePage.routeName,
+            initialRoute: SplashScreenPage.routeName,
             routes: {
               ProvinceQueryPage.routeName: (context) => ProvinceQueryPage(
                 queryList: ModalRoute.of(context)?.settings.arguments as ArtList,
               ),
               LoginPage.routeName: (context) => const LoginPage(),
+              SplashScreenPage.routeName: (context) => const SplashScreenPage(),
               RegisterPage.routeName: (context) => const RegisterPage(),
               SearchPage.routeName: (context) => const SearchPage(),
               BusinessManagement.routeName: (context) => const BusinessManagement(),
