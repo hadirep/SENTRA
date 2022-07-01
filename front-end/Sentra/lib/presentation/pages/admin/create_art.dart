@@ -105,8 +105,9 @@ class _CreateArtState extends State<CreateArt> {
     request.fields['description'] = _descriptionController.text ;
     request.fields['is_facebook'] = _isFacebookController.text ;
     request.fields['is_instagram'] = _isInstagramController.text ;
-    
-    
+
+    var multiport = await http.MultipartFile.fromPath('image', image!.path);
+    request.files.add(multiport);
 
     for(int i = 0; i < imageDocumentation!.length; i++){
       var multiPortDocumentation = await http.MultipartFile.fromPath('documentation[]', imageDocumentation![i].path);
