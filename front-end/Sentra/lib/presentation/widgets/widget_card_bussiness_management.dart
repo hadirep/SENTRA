@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -188,7 +189,9 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                                 const snackbar = SnackBar(content: Text('Hapus Data Berhasil'));
                                 ScaffoldMessenger.of(context).showSnackBar(snackbar);
                                 Navigator.pop(context);
-                                print("Seni berhasil dihapus");
+                                if (kDebugMode) {
+                                  print("Seni berhasil dihapus");
+                                }
                               }
                             } else{
                               if (response) {

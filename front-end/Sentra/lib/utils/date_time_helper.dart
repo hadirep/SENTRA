@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 
 class DateTimeHelper {
@@ -14,8 +15,10 @@ class DateTimeHelper {
     var resultToday = completeFormat.parseStrict(todayDateAndTime);
 
     // Tomorrow Format
-    var formatted = resultToday.add(Duration(days: 1));
-    print('The time is: $formatted');
+    var formatted = resultToday.add(const Duration(days: 1));
+    if (kDebugMode) {
+      print('The time is: $formatted');
+    }
     // print();
     final tomorrowDate = dateFormat.format(formatted);
     final tomorrowDateAndTime = "$tomorrowDate $timeSpecific";

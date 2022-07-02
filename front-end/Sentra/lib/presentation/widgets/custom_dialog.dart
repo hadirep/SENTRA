@@ -22,7 +22,7 @@ customDialog(BuildContext context) {
           ),
           actions: [
             CupertinoDialogAction(
-              child: Text('Ok'),
+              child: const Text('Ok'),
               onPressed: () {
                 Navigation.back();
               },

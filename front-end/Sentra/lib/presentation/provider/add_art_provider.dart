@@ -1,5 +1,4 @@
-import 'dart:convert';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class AddArtProvider extends ChangeNotifier {
@@ -8,8 +7,6 @@ class AddArtProvider extends ChangeNotifier {
   Future<bool> storeArt(String name, String price,String category, String community,
       String phoneNumber, String email, String province, String description,
       dynamic isFacebook, dynamic isInstagram, dynamic stream, dynamic length) async {
-
-    var uri = Uri.parse('https://fakestoreapi.com/products');
 
     var request = http.MultipartRequest('POST', baseUrl);
 
@@ -33,13 +30,19 @@ class AddArtProvider extends ChangeNotifier {
 
     var response = await request.send() ;
 
-    print(response.stream.toString());
+    if (kDebugMode) {
+      print(response.stream.toString());
+    }
     if(response.statusCode == 201){
       notifyListeners();
+      if (kDebugMode) {
+        print('image uploaded');
+      }
       return true;
-      print('image uploaded');
     }else {
-      print('failed');
+      if (kDebugMode) {
+        print('failed');
+      }
       return false;
     }
   }

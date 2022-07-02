@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sentra/common/common.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/pages/about_page.dart';
-import 'package:sentra/presentation/pages/home_page.dart';
-import 'package:sentra/presentation/widgets/button/button_back.dart';
 import 'package:sentra/presentation/widgets/form_login.dart';
 import 'package:sentra/presentation/widgets/logo_center.dart';
 

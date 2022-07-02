@@ -1,7 +1,7 @@
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
-import 'package:flutter/material.dart';
-import '../../utils/background_service.dart';
-import '../../utils/date_time_helper.dart';
+import 'package:flutter/foundation.dart';
+import 'package:sentra/utils/background_service.dart';
+import 'package:sentra/utils/date_time_helper.dart';
 
 
 class SchedulingProvider extends ChangeNotifier {
@@ -12,7 +12,9 @@ class SchedulingProvider extends ChangeNotifier {
   Future<bool> scheduledNews(bool value) async {
     _isScheduled = value;
     if (_isScheduled) {
-      print('Scheduling Sentra Activated');
+      if (kDebugMode) {
+        print('Scheduling Sentra Activated');
+      }
       notifyListeners();
       return await AndroidAlarmManager.periodic(
         const Duration(hours: 24),
@@ -23,7 +25,9 @@ class SchedulingProvider extends ChangeNotifier {
         wakeup: true,
       );
     } else {
-      print('Scheduling Sentra Canceled');
+      if (kDebugMode) {
+        print('Scheduling Sentra Canceled');
+      }
       notifyListeners();
       return await AndroidAlarmManager.cancel(1);
     }

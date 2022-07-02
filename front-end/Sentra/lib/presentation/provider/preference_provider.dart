@@ -25,7 +25,7 @@ class PreferenceProvider extends ChangeNotifier{
   }
 
   void _getDailyRestaurantPreferences() async {
-    _isDailyRestaurantActive = await preferencesHelper.isDailyRestaurantActive;
+    _isDailyRestaurantActive = await preferencesHelper.isDailyArtActive;
     notifyListeners();
   }
 
@@ -34,7 +34,7 @@ class PreferenceProvider extends ChangeNotifier{
     _getTheme();
   }
     void enableDailyRestaurant(bool value) {
-    preferencesHelper.setDailyRestaurant(value);
+    preferencesHelper.setDailyArt(value);
     _getDailyRestaurantPreferences();
   }
 

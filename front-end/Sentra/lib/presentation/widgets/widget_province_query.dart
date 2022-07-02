@@ -47,7 +47,7 @@ class _WidgetProvinceQueryState extends State<WidgetProvinceQuery> {
                   ),
                 ),
               ),
-              const SizedBox(height: 5,),
+              const SizedBox(height: 5),
               Padding(padding: const EdgeInsets.only(left: 5, top: 2),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8.0),
@@ -57,10 +57,12 @@ class _WidgetProvinceQueryState extends State<WidgetProvinceQuery> {
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.add_location_rounded,
+                          const Icon(
+                            Icons.add_location_rounded,
                             size: 15, color: Color.fromARGB(255, 234, 132, 0),
                           ),
-                          Text(widget.provinceQuery.province!,
+                          Text(
+                            widget.provinceQuery.province!,
                             style: const TextStyle(
                               color: Color.fromARGB(255, 45, 74, 148),
                               fontSize: 11, fontWeight: FontWeight.bold,
@@ -69,9 +71,11 @@ class _WidgetProvinceQueryState extends State<WidgetProvinceQuery> {
                         ],
                       ),
                       const SizedBox(height: 2),
-                      Text(widget.provinceQuery.name!,
-                        style: const TextStyle(color: Color.fromARGB(255, 45, 74, 148),
-                          fontSize: 15, fontWeight: FontWeight.bold,
+                      Text(
+                        widget.provinceQuery.name!,
+                        style: const TextStyle(
+                          color: Color.fromARGB(255, 45, 74, 148),
+                          fontSize: 14, fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
