@@ -176,8 +176,6 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                       actions: [
                         TextButton(
                           onPressed: () {
-                            const snackbar = SnackBar(content: Text('Hapus Data Berhasil'));
-                            ScaffoldMessenger.of(context).showSnackBar(snackbar);
                             Navigator.pop(context);
                           },
                           child: Text(AppLocalizations.of(context)!.no),
@@ -187,12 +185,16 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                             bool response = await apiService.deleteArtList(widget.artList.id);
                             if(response){
                               if (response) {
+                                const snackbar = SnackBar(content: Text('Hapus Data Berhasil'));
+                                ScaffoldMessenger.of(context).showSnackBar(snackbar);
                                 Navigator.pop(context);
                                 print("Seni berhasil dihapus");
                               }
                             } else{
                               if (response) {
                                 if (kDebugMode) {
+                                  const snackbar = SnackBar(content: Text('Hapus Data Gagal'));
+                                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
                                   print("Seni gagal dihapus");
                                 }
                               }
