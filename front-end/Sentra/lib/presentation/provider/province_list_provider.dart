@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/data/models/art_and_province_model.dart';
-import 'package:sentra/common/result_state.dart';
+import 'package:common/result_state.dart';
 
 class ProvinceListProvider extends ChangeNotifier {
   final ApiService? listApiService;

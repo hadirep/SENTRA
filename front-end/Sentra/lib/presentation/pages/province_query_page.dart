@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sentra/common/common.dart';
-import 'package:sentra/common/result_state.dart';
-import 'package:sentra/common/style.dart';
+import 'package:sentra/l10n/common_l10n.dart';
+import 'package:common/result_state.dart';
+import 'package:common/style.dart';
 import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:sentra/presentation/provider/province_query_provider.dart';

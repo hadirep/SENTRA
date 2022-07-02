@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sentra/common/style.dart';
+import 'package:common/style.dart';
 import 'package:sentra/presentation/pages/home_page.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
 

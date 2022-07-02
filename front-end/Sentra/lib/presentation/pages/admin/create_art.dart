@@ -4,8 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sentra/common/common.dart';
-import 'package:sentra/common/style.dart';
+import 'package:sentra/l10n/common_l10n.dart';
+import 'package:common/style.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
 import 'package:http/http.dart' as http;
 

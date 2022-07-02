@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sentra/common/constants.dart';
+import 'package:common/constants.dart';
 import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
 import 'package:sentra/presentation/provider/database_provider.dart';

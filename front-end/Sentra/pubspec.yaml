@@ -38,6 +38,8 @@ dependencies:
   android_alarm_manager_plus: ^2.0.6
   intl: ^0.17.0
   flutter_local_notifications: ^9.6.1
+  common:
+    path: common
 
 dev_dependencies:
   flutter_test:

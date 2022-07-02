@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:math';
+import 'package:common/navigation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:rxdart/rxdart.dart';
-import '../common/navigation.dart';
 import '../data/models/art_and_province_model.dart';
 
 final selectNotificationSubject = BehaviorSubject<String>();

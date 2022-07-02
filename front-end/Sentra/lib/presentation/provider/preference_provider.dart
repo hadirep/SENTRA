@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/data/preferences/preference_helper.dart';
-import 'package:sentra/common/style.dart';
+import 'package:common/style.dart';
 
 class PreferenceProvider extends ChangeNotifier{
   PreferencesHelper preferencesHelper;

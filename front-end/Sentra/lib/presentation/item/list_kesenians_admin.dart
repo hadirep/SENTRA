@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sentra/common/result_state.dart';
+import 'package:common/result_state.dart';
 import 'package:sentra/presentation/provider/art_list_provider.dart';
 import 'package:sentra/presentation/widgets/widget_card_bussiness_management.dart';
 

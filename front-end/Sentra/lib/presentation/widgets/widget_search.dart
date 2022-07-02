@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sentra/common/common.dart';
+import 'package:sentra/l10n/common_l10n.dart';
 import 'package:sentra/presentation/provider/search_art_provider.dart';
 
 class SearchWidget extends StatefulWidget {

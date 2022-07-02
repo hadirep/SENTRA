@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:sentra/common/result_state.dart';
+import 'package:common/result_state.dart';
 import 'package:sentra/data/db/database_helper.dart';
 import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:flutter/material.dart';

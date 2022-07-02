@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/data/models/update_and_query_model.dart';
-import 'package:sentra/common/result_state.dart';
+import 'package:common/result_state.dart';
 
 class ProvinceQueryProvider extends ChangeNotifier {
   final ApiService? queryApiService;

@@ -1,4 +1,4 @@
-import 'package:sentra/common/constants.dart';
+import 'package:common/constants.dart';
 import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sentra/common/common.dart';
-import 'package:sentra/common/result_state.dart';
+import 'package:sentra/l10n/common_l10n.dart';
+import 'package:common/result_state.dart';
 import 'package:sentra/presentation/provider/update_list_provider.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 import 'package:sentra/presentation/widgets/widget_art_update_page.dart';

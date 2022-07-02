@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/data/models/detail_model.dart';
-import 'package:sentra/common/result_state.dart';
+import 'package:common/result_state.dart';
 
 class DetailProvider extends ChangeNotifier {
   final ApiService detailApiService;
