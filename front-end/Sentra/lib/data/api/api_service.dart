@@ -8,8 +8,6 @@ import 'package:sentra/data/models/search_art.dart';
 
 class ApiService {
   static const String baseUrl = 'https://sentra.dokternak.id/api/';
-  static const String baseImageArt = 'https://sentra.dokternak.id/public/kesenians/';
-  static const String baseImageDocArt = 'https://sentra.dokternak.id/public/dokumentasiKesenians/';
 
   Future<ArtAndProvinceModel> getProvinceList() async {
     final response = await http.get(Uri.parse('${baseUrl}province'));

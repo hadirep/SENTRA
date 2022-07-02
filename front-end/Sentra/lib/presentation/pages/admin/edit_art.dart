@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
@@ -5,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sentra/common/common.dart';
 import 'package:sentra/common/constants.dart';
-import 'package:sentra/common/style.dart';
 import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
@@ -33,7 +33,7 @@ class _EditArtState extends State<EditArt> {
   final isFacebookController = TextEditingController();
   final isInstagramController = TextEditingController();
 
-  late String? imageUri ;
+  late String? imageUri;
 
   @override
   void dispose() {
@@ -496,7 +496,7 @@ class _EditArtState extends State<EditArt> {
                        child: ClipRRect(
                          borderRadius: BorderRadius.circular(12),
                          child: CachedNetworkImage(
-                           imageUrl: '$baseImageArt${imageUri}',
+                           imageUrl: '$baseImageArt$imageUri',
                            width: 80,
                            placeholder: (context, url) => const Center(
                              child: CircularProgressIndicator(),

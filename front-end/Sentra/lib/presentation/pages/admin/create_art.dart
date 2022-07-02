@@ -7,7 +7,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sentra/common/common.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
-import 'package:sentra/presentation/widgets/button/button_back.dart';
 import 'package:http/http.dart' as http;
 
 class CreateArt extends StatefulWidget {
@@ -150,7 +149,7 @@ class _CreateArtState extends State<CreateArt> {
                   (Route<dynamic> route) => false,
             );
           },
-          icon: Icon(Icons.arrow_back_ios_rounded, color: secondaryColor,),
+          icon: const Icon(Icons.arrow_back_ios_rounded, color: secondaryColor),
         ),
         title: Text(
           AppLocalizations.of(context)!.addData,

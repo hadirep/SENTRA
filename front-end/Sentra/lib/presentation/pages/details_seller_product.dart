@@ -73,7 +73,7 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                             borderRadius: BorderRadius.circular(15),
                             image: DecorationImage(
                               image: NetworkImage(
-                                '${ApiService.baseImageArt}${state.detail.data.image}',
+                                '$baseImageArt${state.detail.data.image}',
                               ),
                               fit: BoxFit.fill,
                             ),
@@ -86,13 +86,13 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                             ],
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width:  MediaQuery.of(context).size.height * 0.45,
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Column(
                               children: <Widget>[
-                                Container(
+                                SizedBox(
                                   width:  MediaQuery.of(context).size.height * 0.45,
                                   child: Align(
                                     alignment: Alignment.centerRight,

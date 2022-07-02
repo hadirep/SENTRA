@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:rxdart/rxdart.dart';
 import '../common/navigation.dart';
@@ -35,7 +36,9 @@ class NotificationHelper {
     await flutterLocalNotificationsPlugin.initialize(initializationSettings,
        onSelectNotification: (String? payload) async {
       if (payload != null) {
-        print('notification payload: $payload');
+        if (kDebugMode) {
+          print('notification payload: $payload');
+        }
       }
       selectNotificationSubject.add(payload ?? 'empty payload');
     });

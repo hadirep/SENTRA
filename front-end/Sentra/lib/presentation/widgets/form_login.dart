@@ -1,9 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sentra/common/common.dart';
 import 'package:sentra/common/style.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
-import 'package:sentra/presentation/pages/register_page.dart';
 
 class FormLogin extends StatefulWidget{
   const FormLogin({Key? key}) : super(key: key);
@@ -139,14 +139,13 @@ class _BuildFormLogin extends State<FormLogin> {
                         const snackbar = SnackBar(content: Text('Login Berhasil'));
                         ScaffoldMessenger.of(context).showSnackBar(snackbar);
 
-                        // ignore: use_build_context_synchronously
                         Navigator.pushReplacementNamed(
                           context, BusinessManagement.routeName,
                         );
                       }
                     } catch (e) {
-                      const snackbar = SnackBar(content: Text('Login Gagal, Username & Password Salah!'));
-                      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                      const snack = SnackBar(content: Text('Login Gagal, Username & Password Salah!'));
+                      ScaffoldMessenger.of(context).showSnackBar(snack);
                     } finally {
                       setState(() {
                         _isLoading = false;
