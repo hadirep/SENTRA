@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/presentation/provider/search_art_provider.dart';
+// ignore: avoid_relative_lib_imports
 import '../lib/presentation/widgets/widget_search.dart';
 
 Widget searchArt() => ChangeNotifierProvider<SearchArtProvider?>(
