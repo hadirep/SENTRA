@@ -53,7 +53,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                         fontSize: 14,
                         color: Colors.grey.shade500,
                       ),
-                      hintText: AppLocalizations.of(context)!.searchHere,
+                      hintText: AppLocalizations.of(context)?.searchHere,
                     ),
                   ),
                 ),
