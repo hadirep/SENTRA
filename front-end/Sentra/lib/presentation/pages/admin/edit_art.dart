@@ -4,10 +4,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 import 'package:sentra/common/common.dart';
 import 'package:sentra/common/constants.dart';
+import 'package:sentra/common/result_state.dart';
 import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
+import 'package:sentra/presentation/provider/detail_provider.dart';
 import 'package:sentra/presentation/widgets/button/button_back.dart';
 
 class EditArt extends StatefulWidget {
@@ -33,7 +36,8 @@ class _EditArtState extends State<EditArt> {
   final isFacebookController = TextEditingController();
   final isInstagramController = TextEditingController();
 
-  late String? imageUri;
+  late String? imageUri ;
+  late String idArt;
 
   @override
   void dispose() {
@@ -99,6 +103,9 @@ class _EditArtState extends State<EditArt> {
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as
     List<String?>;
+    if (args[0]!.isNotEmpty) {
+      idArt = args[0]!;
+    }
     if (args[1]!.isNotEmpty) {
       nameController.text = args[1]!;
     }
@@ -487,43 +494,43 @@ class _EditArtState extends State<EditArt> {
                         ),
                       ),
                       Container(
-                       height:  MediaQuery.of(context).size.height * 0.18,
-                       width: MediaQuery.of(context).size.height * 0.45,
-                       padding: const EdgeInsets.all(5),
-                       decoration: BoxDecoration(
-                         color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,
-                       ),
-                       child: ClipRRect(
-                         borderRadius: BorderRadius.circular(12),
-                         child: CachedNetworkImage(
-                           imageUrl: '$baseImageArt$imageUri',
-                           width: 80,
-                           placeholder: (context, url) => const Center(
-                             child: CircularProgressIndicator(),
-                           ),
-                           errorWidget: (context, url, error) => const Icon(Icons.error),
-                         ),
-                       ),
-                     ),
-                     // imageUri != null? Container(
-                     //    height:  MediaQuery.of(context).size.height * 0.18,
-                     //    width: MediaQuery.of(context).size.height * 0.45,
-                     //    padding: const EdgeInsets.all(5),
-                     //    decoration: BoxDecoration(
-                     //      color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,
-                     //    ),
-                     //    child: ClipRRect(
-                     //      borderRadius: BorderRadius.circular(12),
-                     //      child: CachedNetworkImage(
-                     //        imageUrl: '$baseImageArt${imageUri}',
-                     //        width: 80,
-                     //        placeholder: (context, url) => const Center(
-                     //          child: CircularProgressIndicator(),
-                     //        ),
-                     //        errorWidget: (context, url, error) => const Icon(Icons.error),
-                     //      ),
-                     //    ),
-                     //  ) : Container(),
+                        height:  MediaQuery.of(context).size.height * 0.18,
+                        width: MediaQuery.of(context).size.height * 0.45,
+                        padding: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: CachedNetworkImage(
+                            imageUrl: '$baseImageArt$imageUri',
+                            width: 80,
+                            placeholder: (context, url) => const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                            errorWidget: (context, url, error) => const Icon(Icons.error),
+                          ),
+                        ),
+                      ),
+                      // imageUri != null? Container(
+                      //    height:  MediaQuery.of(context).size.height * 0.18,
+                      //    width: MediaQuery.of(context).size.height * 0.45,
+                      //    padding: const EdgeInsets.all(5),
+                      //    decoration: BoxDecoration(
+                      //      color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,
+                      //    ),
+                      //    child: ClipRRect(
+                      //      borderRadius: BorderRadius.circular(12),
+                      //      child: CachedNetworkImage(
+                      //        imageUrl: '$baseImageArt${imageUri}',
+                      //        width: 80,
+                      //        placeholder: (context, url) => const Center(
+                      //          child: CircularProgressIndicator(),
+                      //        ),
+                      //        errorWidget: (context, url, error) => const Icon(Icons.error),
+                      //      ),
+                      //    ),
+                      //  ) : Container(),
                       _oneImage != null? Container(
                         height:  MediaQuery.of(context).size.height * 0.18,
                         width: MediaQuery.of(context).size.height * 0.45,
@@ -574,6 +581,98 @@ class _EditArtState extends State<EditArt> {
                       ),
                       Column(
                         children: [
+                          Container(padding: const EdgeInsets.only(left: 3)),
+                          MultiProvider(
+                            providers: [
+                              ChangeNotifierProvider<DetailProvider>(
+                                create: (_) => DetailProvider(detailApiService: ApiService(), id: idArt),
+                              ),
+                            ],
+                            child: SizedBox(
+                                height: MediaQuery.of(context).size.height * 0.12,
+                                width: MediaQuery.of(context).size.width,
+                                child: Consumer<DetailProvider>(
+                                  builder: (context, state, _) {
+                                    if (state.detailState == ResultState.loading) {
+                                      return const Center(child: CircularProgressIndicator());
+                                    } else if (state.detailState == ResultState.hasData) {
+                                      return Center(
+                                        child: Column(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                Container(padding: const EdgeInsets.only(left: 3)),
+                                                SizedBox(
+                                                  height: MediaQuery.of(context).size.height * 0.12,
+                                                  width: MediaQuery.of(context).size.width,
+                                                  child:
+                                                  SingleChildScrollView(
+                                                    scrollDirection: Axis.horizontal,
+                                                    child: Row(
+                                                      children: state.detail.data.documKesenians
+                                                          .map((category) => Padding(
+                                                        padding: const EdgeInsets.all(4.0),
+                                                        child: InkWell(
+                                                          onTap: () {
+                                                            showDialog(
+                                                                builder: (BuildContext context) => AlertDialog(
+                                                                    backgroundColor: const Color.fromARGB(0, 93, 93, 93),
+                                                                    insetPadding: const EdgeInsets.all(2),
+                                                                    title: SizedBox(
+                                                                      width: MediaQuery.of(context).size.width,
+                                                                      child: Hero(tag: state.detail.data.documKesenians, child: CachedNetworkImage(imageUrl: '$baseImageDocArt${category.documentation}',)),
+                                                                    )), context: context);
+                                                          },
+                                                          child: Container(
+                                                            width: 140,
+                                                            decoration: BoxDecoration( boxShadow: const [
+                                                              BoxShadow(
+                                                                  color: Color.fromARGB(185, 158, 158, 158),
+                                                                  offset: Offset(2.0, 2.0),
+                                                                  blurRadius: 2.0
+                                                              )
+                                                            ],
+                                                                border: Border.all(width: 3, color: Colors.white), borderRadius: BorderRadius.circular(12) ),
+                                                            child: ClipRRect(
+                                                              borderRadius: BorderRadius.circular(10),
+                                                              child:
+                                                              FittedBox(
+                                                                fit:
+                                                                BoxFit.fill,
+                                                                child: CachedNetworkImage(
+                                                                  imageUrl: '$baseImageDocArt${category.documentation}',
+                                                                  width: 140,
+                                                                  placeholder: (context, url) => const Center(
+                                                                    child: CircularProgressIndicator(),
+                                                                  ),
+                                                                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      )).toList(),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    } else if (state.detailState == ResultState.error) {
+                                      return Center(child: Text(state.message));
+                                    } else if (state.detailState == ResultState.noData){
+                                      return Center(child: Text(state.message));
+                                    } else if (state.detailState == ResultState.error) {
+                                      return const Center(child: Text('error'));
+                                    } else {
+                                      return const Center(child:  Text(''));
+                                    }
+                                  },
+                                )
+                            ),
+                          ),
                           imageFiles != null?Wrap(
                             children: imageFiles!.map((imageOne){
                               return Card(
