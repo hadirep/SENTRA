@@ -211,36 +211,34 @@ class _CreateArtState extends State<CreateArt> {
                           alignment: Alignment.topLeft,
                           child: Text(
                             AppLocalizations.of(context)!.artDescription,
-                            textAlign: TextAlign.left,
                             style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height:  MediaQuery.of(context).size.height * 0.1,
-                          child: TextField(
-                            controller: _descriptionController,
-                            keyboardType: TextInputType.multiline,
-                            decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10),
+                        TextFormField(
+                          minLines: 1,
+                          maxLines: 5,
+                          controller: _descriptionController,
+                          keyboardType: TextInputType.multiline,
+                          decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
                               ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10),
+                              borderRadius: borderRadius,
+                            ),
+                            errorText: _validateDescription ? AppLocalizations.of(context)!.validateDescription : null,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
                               ),
-                              labelStyle: const TextStyle(color: Colors.red),
-                              errorText: _validateDescription ? AppLocalizations.of(context)!.validateDescription : null,
+                              borderRadius: borderRadius,
                             ),
                           ),
                         ),
+                        const SizedBox(height: 10),
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
