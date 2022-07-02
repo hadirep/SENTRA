@@ -7,7 +7,7 @@ class ArtListProvider extends ChangeNotifier {
   final ApiService? listApiService;
 
   ArtListProvider({required this.listApiService}){
-    _fetchListProvince();
+    fetchListProvince();
   }
 
   late ArtAndProvinceModel _list;
@@ -18,7 +18,7 @@ class ArtListProvider extends ChangeNotifier {
   ArtAndProvinceModel get list => _list;
   ResultState get listState => _state;
 
-  Future<dynamic> _fetchListProvince() async {
+    Future<dynamic> fetchListProvince() async {
     try {
       _state = ResultState.loading;
       notifyListeners();

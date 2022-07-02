@@ -14,8 +14,8 @@ class ItemKeseniansAdmin extends StatelessWidget{
         if (state.listState == ResultState.loading) {
           return const Center(child: CircularProgressIndicator(color: Colors.red));
         } else if (state.listState == ResultState.hasData) {
-          return SizedBox(
-            height: 190,
+          return RefreshIndicator(
+            onRefresh: () => Provider.of<ArtListProvider>(context, listen: false).fetchListProvince(),
             child: ListView.builder(
               shrinkWrap: true,
               itemCount: state.list.data.length,
@@ -25,6 +25,7 @@ class ItemKeseniansAdmin extends StatelessWidget{
                   artList: listData,
                 );
               },
+              physics: const AlwaysScrollableScrollPhysics(),
             ),
           );
         } else if (state.listState == ResultState.noData) {

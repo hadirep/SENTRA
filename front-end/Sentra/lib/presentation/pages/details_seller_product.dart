@@ -96,25 +96,32 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                   width:  MediaQuery.of(context).size.height * 0.45,
                                   child: Align(
                                     alignment: Alignment.centerRight,
-                                    child: Consumer<DatabaseProvider>(
-                                      builder: (context, provider, child) {
-                                        return FutureBuilder<bool>(
-                                          future: provider.isFavorited(widget.artList.id),
-                                          builder: (context, snapshot) {
-                                            var isFavorited = snapshot.data ?? false;
-                                            return isFavorited
-                                                ? IconButton(
-                                                icon: const Icon(Icons.favorite, color: Colors.red),
+                                    child: Container(
+                                      margin: const EdgeInsets.only(right: 16.0, top: 16.0),
+                                      decoration: BoxDecoration(
+                                          color: Colors.white.withOpacity(.8),
+                                          borderRadius: const BorderRadius.all( Radius.circular(100))
+                                      ),
+                                      child: Consumer<DatabaseProvider>(
+                                        builder: (context, provider, child) {
+                                          return FutureBuilder<bool>(
+                                            future: provider.isFavorited(widget.artList.id),
+                                            builder: (context, snapshot) {
+                                              var isFavorited = snapshot.data ?? false;
+                                              return isFavorited
+                                                  ? IconButton(
+                                                  icon: const Icon(Icons.favorite, color: Colors.red),
+                                                  onPressed: () => provider
+                                                      .removeFavorite(widget.artList.id)
+                                              ) : IconButton(
+                                                icon: const Icon(Icons.favorite_border, color: Colors.red),
                                                 onPressed: () => provider
-                                                    .removeFavorite(widget.artList.id)
-                                            ) : IconButton(
-                                              icon: const Icon(Icons.favorite_border, color: Colors.red),
-                                              onPressed: () => provider
-                                                  .addFavorite(widget.artList),
-                                            );
-                                          },
-                                        );
-                                      },
+                                                    .addFavorite(widget.artList),
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
                                     ),
                                   ),
                                 ),

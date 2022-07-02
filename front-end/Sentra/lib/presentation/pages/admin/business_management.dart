@@ -6,10 +6,15 @@ import 'package:sentra/presentation/item/list_kesenians_admin.dart';
 import 'package:sentra/presentation/pages/admin/create_art.dart';
 import 'package:sentra/presentation/pages/login_page.dart';
 
-class BusinessManagement extends StatelessWidget {
+class BusinessManagement extends StatefulWidget {
   static const routeName  = '/business-management';
   const BusinessManagement({Key? key}) : super(key: key);
 
+  @override
+  State<BusinessManagement> createState() => _BusinessManagementState();
+}
+
+class _BusinessManagementState extends State<BusinessManagement> {
   Widget customBannerImage(context) {
     final auth = FirebaseAuth.instance;
     return SafeArea(
@@ -56,11 +61,7 @@ class BusinessManagement extends StatelessWidget {
                     icon: const Icon(Icons.add, color: Color(0xfff0be41)),
                     tooltip: AppLocalizations.of(context)!.addData,
                     onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => const CreateArt()),
-                            (Route<dynamic> route) => false,
-                      );
+                      Navigator.pushReplacementNamed(context, CreateArt.routeName);
                     },
                   ),
                 ),

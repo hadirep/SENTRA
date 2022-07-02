@@ -23,9 +23,14 @@ class AboutPage extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        leading: const Align(
+        leading: Align(
           alignment: Alignment.centerLeft,
-          child: ButtonBack(),
+          child: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_rounded, color: secondaryColor,),
+            onPressed: () {
+              Navigator.pushNamed(context, HomePage.routeName);
+            },
+          ),
         ),
       ),
       body: Container(
@@ -33,35 +38,6 @@ class AboutPage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    const SizedBox(height: 100),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      child: SizedBox(
-                        child: IconButton(
-                          icon: const Icon(Icons.arrow_back_ios_rounded, color: secondaryColor,),
-                          onPressed: () {
-                            Navigator.pushNamed(context, HomePage.routeName);
-                          },
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(),
-                      child: Text(
-                        AppLocalizations.of(context)!.aboutUS,
-                        style: const TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 45, 74, 148),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 70),
-                  ],
-                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 50, bottom: 50),
                   child: Column(
