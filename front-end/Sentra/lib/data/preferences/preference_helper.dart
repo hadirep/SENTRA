@@ -6,7 +6,6 @@ class PreferencesHelper {
   static const dark = 'DARK_THEME';
   static const notif = 'DAILY_ART';
 
-
   PreferencesHelper({required this.shared});
 
   Future<bool> get isDarkTheme async {
@@ -19,7 +18,7 @@ class PreferencesHelper {
     prefs.setBool(dark, value);
   }
 
-    Future<bool> get isDailyArtActive async {
+  Future<bool> get isDailyArtActive async {
     final prefs = await shared;
     return prefs.getBool(notif) ?? false;
   }

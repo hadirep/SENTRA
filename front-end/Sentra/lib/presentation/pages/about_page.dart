@@ -25,7 +25,10 @@ class AboutPage extends StatelessWidget {
         leading: Align(
           alignment: Alignment.centerLeft,
           child: IconButton(
-            icon: const Icon(Icons.arrow_back_ios_rounded, color: secondaryColor,),
+            icon: const Icon(
+              Icons.arrow_back_ios_rounded,
+              color: secondaryColor,
+            ),
             onPressed: () {
               Navigator.pushNamed(context, HomePage.routeName);
             },
@@ -47,9 +50,10 @@ class AboutPage extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 50),
                       child: Center(
                         child: Column(
-                          children:  [
+                          children: [
                             Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 57, right: 57),
+                              padding: const EdgeInsets.only(
+                                  top: 10, left: 57, right: 57),
                               child: Text(
                                 AppLocalizations.of(context)!.aboutText1,
                                 style: const TextStyle(
@@ -60,7 +64,8 @@ class AboutPage extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 57, right: 57),
+                              padding: const EdgeInsets.only(
+                                  top: 10, left: 57, right: 57),
                               child: Text(
                                 AppLocalizations.of(context)!.aboutText2,
                                 style: const TextStyle(
@@ -70,7 +75,8 @@ class AboutPage extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 50, left: 50, right: 50),
+                              padding: const EdgeInsets.only(
+                                  top: 50, left: 50, right: 50),
                               child: Center(
                                 child: Text(
                                   AppLocalizations.of(context)!.aboutText3,
@@ -83,7 +89,8 @@ class AboutPage extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 50, right: 50, bottom: 30),
+                              padding: const EdgeInsets.only(
+                                  top: 10, left: 50, right: 50, bottom: 30),
                               child: Text(
                                 AppLocalizations.of(context)!.aboutText4,
                                 style: const TextStyle(
@@ -93,10 +100,14 @@ class AboutPage extends StatelessWidget {
                               ),
                             ),
                             OutlinedButton(
-                              onPressed: () {Navigator.pushNamed(context, LoginPage.routeName);},
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, LoginPage.routeName);
+                              },
                               style: OutlinedButton.styleFrom(
                                 elevation: 6,
-                                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 50, vertical: 10),
                                 backgroundColor: buttonPrimaryColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(13),
@@ -111,7 +122,8 @@ class AboutPage extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 20, horizontal: 50),
                               child: Text(
                                 AppLocalizations.of(context)!.contactUs,
                                 style: const TextStyle(
@@ -122,35 +134,41 @@ class AboutPage extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 50),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 50),
                               child: Card(
                                 child: ListTile(
-                                  leading: const Icon(Icons.alternate_email, color: secondaryColor),
+                                  leading: const Icon(Icons.alternate_email,
+                                      color: secondaryColor),
                                   title: Text(
                                     AppLocalizations.of(context)!.artEmail,
                                     style: const TextStyle(
                                         color: buttonPrimaryColor,
-                                        fontSize: 18
-                                    ),
+                                        fontSize: 18),
                                   ),
-                                  trailing: const Icon(Icons.navigate_next, color: secondaryColor),
-                                  onTap: (){},
+                                  trailing: const Icon(Icons.navigate_next,
+                                      color: secondaryColor),
+                                  onTap: () {},
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 50),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 50),
                               child: Card(
                                 child: ListTile(
-                                  leading: const Icon(Icons.whatsapp, color: secondaryColor),
+                                  leading: const Icon(Icons.whatsapp,
+                                      color: secondaryColor),
                                   title: Text(
                                     AppLocalizations.of(context)!.artPhone,
                                     style: const TextStyle(
-                                      color: buttonPrimaryColor, fontSize: 18,
+                                      color: buttonPrimaryColor,
+                                      fontSize: 18,
                                     ),
                                   ),
-                                  trailing: const Icon(Icons.navigate_next, color: secondaryColor),
-                                  onTap: (){},
+                                  trailing: const Icon(Icons.navigate_next,
+                                      color: secondaryColor),
+                                  onTap: () {},
                                 ),
                               ),
                             ),

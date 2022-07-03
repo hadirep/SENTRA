@@ -29,7 +29,9 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
         InkWell(
           onTap: () {
             Navigator.pushNamed(
-              context, DetailSellerProduct.routeName, arguments: widget.artList,
+              context,
+              DetailSellerProduct.routeName,
+              arguments: widget.artList,
             );
           },
           child: Card(
@@ -41,7 +43,7 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
               height: 100,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                border: Border.all( width: 2, color: secondaryColor),
+                border: Border.all(width: 2, color: secondaryColor),
                 borderRadius: BorderRadius.circular(8),
                 color: bgSecondColor,
               ),
@@ -76,7 +78,8 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                             placeholder: (context, url) => const Center(
                               child: CircularProgressIndicator(),
                             ),
-                            errorWidget: (context, url, error) => const Icon(Icons.error),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
                           ),
                         ),
                       ),
@@ -96,7 +99,8 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                                 color: Colors.teal[800],
                               ),
                             ),
-                            Padding(padding: const EdgeInsets.only(top: 4),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 4),
                               child: Text(
                                 widget.artList.province!,
                                 style: const TextStyle(
@@ -128,7 +132,8 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   color: buttonPrimaryColor,
-                  borderRadius: BorderRadius.all(Radius.circular(8),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8),
                   ),
                 ),
                 child: IconButton(
@@ -136,8 +141,8 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                   icon: const Icon(Icons.edit, color: Colors.white),
                   tooltip: AppLocalizations.of(context)!.editData,
                   onPressed: () {
-                    Navigator.of(context).pushNamed
-                      (EditArt.routeName,
+                    Navigator.of(context).pushNamed(
+                      EditArt.routeName,
                       arguments: [
                         widget.artList.id,
                         widget.artList.name,
@@ -163,7 +168,8 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   color: buttonPrimaryColor,
-                  borderRadius: BorderRadius.all(Radius.circular(8),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8),
                   ),
                 ),
                 child: IconButton(
@@ -173,7 +179,8 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                   onPressed: () async {
                     final dialog = AlertDialog(
                       title: Text(AppLocalizations.of(context)!.warning),
-                      content: Text(AppLocalizations.of(context)!.confirmDelete),
+                      content:
+                          Text(AppLocalizations.of(context)!.confirmDelete),
                       actions: [
                         TextButton(
                           onPressed: () {
@@ -183,21 +190,26 @@ class _ArtCardBusinessState extends State<ArtCardBusiness> {
                         ),
                         TextButton(
                           onPressed: () async {
-                            bool response = await apiService.deleteArtList(widget.artList.id);
-                            if(response){
+                            bool response = await apiService
+                                .deleteArtList(widget.artList.id);
+                            if (response) {
                               if (response) {
-                                const snackbar = SnackBar(content: Text('Hapus Data Berhasil'));
-                                ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                                const snackbar = SnackBar(
+                                    content: Text('Hapus Data Berhasil'));
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackbar);
                                 Navigator.pop(context);
                                 if (kDebugMode) {
                                   print("Seni berhasil dihapus");
                                 }
                               }
-                            } else{
+                            } else {
                               if (response) {
                                 if (kDebugMode) {
-                                  const snackbar = SnackBar(content: Text('Hapus Data Gagal'));
-                                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                                  const snackbar = SnackBar(
+                                      content: Text('Hapus Data Gagal'));
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackbar);
                                   print("Seni gagal dihapus");
                                 }
                               }

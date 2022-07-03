@@ -7,14 +7,16 @@ import 'package:sentra/presentation/pages/details_seller_product.dart';
 class ArtCard extends StatelessWidget {
   final ArtList art;
 
-  const ArtCard({Key? key,  required this.art}) : super(key: key);
+  const ArtCard({Key? key, required this.art}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
         Navigator.pushNamed(
-          context, DetailSellerProduct.routeName, arguments: art,
+          context,
+          DetailSellerProduct.routeName,
+          arguments: art,
         );
       },
       leading: ClipRRect(
@@ -32,7 +34,8 @@ class ArtCard extends StatelessWidget {
         art.name!,
         style: const TextStyle(
           color: Color(0xff2d4b94),
-          fontSize: 15, fontWeight: FontWeight.bold,
+          fontSize: 15,
+          fontWeight: FontWeight.bold,
         ),
       ),
       subtitle: Column(
@@ -45,7 +48,8 @@ class ArtCard extends StatelessWidget {
                 art.province!,
                 style: const TextStyle(
                   color: Color(0xff2d4b94),
-                  fontSize: 12, fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],

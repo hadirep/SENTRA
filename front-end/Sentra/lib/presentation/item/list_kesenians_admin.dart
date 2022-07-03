@@ -4,18 +4,21 @@ import 'package:common/result_state.dart';
 import 'package:sentra/presentation/provider/art_list_provider.dart';
 import 'package:sentra/presentation/widgets/widget_card_bussiness_management.dart';
 
-class ItemKeseniansAdmin extends StatelessWidget{
+class ItemKeseniansAdmin extends StatelessWidget {
   const ItemKeseniansAdmin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Consumer<ArtListProvider>(
+    return Consumer<ArtListProvider>(
       builder: (context, state, _) {
         if (state.listState == ResultState.loading) {
-          return const Center(child: CircularProgressIndicator(color: Colors.red));
+          return const Center(
+              child: CircularProgressIndicator(color: Colors.red));
         } else if (state.listState == ResultState.hasData) {
           return RefreshIndicator(
-            onRefresh: () => Provider.of<ArtListProvider>(context, listen: false).fetchListProvince(),
+            onRefresh: () =>
+                Provider.of<ArtListProvider>(context, listen: false)
+                    .fetchListProvince(),
             child: ListView.builder(
               shrinkWrap: true,
               itemCount: state.list.data.length,
@@ -36,6 +39,6 @@ class ItemKeseniansAdmin extends StatelessWidget{
           return const Center(child: Text(''));
         }
       },
-    );    //
+    ); //
   }
 }

@@ -38,7 +38,9 @@ class _HomePageState extends State<HomePage> {
               child: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Image.asset(
-                  "assets/logo/sentra_drawer.png", width: 10, height: 10,
+                  "assets/logo/sentra_drawer.png",
+                  width: 10,
+                  height: 10,
                 ),
               ),
             ),
@@ -103,16 +105,19 @@ class _HomePageState extends State<HomePage> {
         title: Text(
           AppLocalizations.of(context)!.home,
           style: const TextStyle(
-            color: textPrimaryColor, fontWeight: FontWeight.bold,
+            color: textPrimaryColor,
+            fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
-        leading : Padding(
+        leading: Padding(
           padding: const EdgeInsets.symmetric(),
           child: Builder(
             builder: (context) => IconButton(
               icon: Image.asset(
-                "assets/logo/sentra.png", height: 30, width: 30,
+                "assets/logo/sentra.png",
+                height: 30,
+                width: 30,
               ),
               onPressed: () => Scaffold.of(context).openDrawer(),
             ),
@@ -129,33 +134,40 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(20),
                 child: Image.asset(
                   "assets/seni/1_bali_tari_kecak.jpg",
-                  width: 390, height: 150, fit: BoxFit.cover,
+                  width: 390,
+                  height: 150,
+                  fit: BoxFit.cover,
                 ),
               ),
               const SizedBox(height: 15),
               Text(
                 AppLocalizations.of(context)!.homeText1,
                 style: const TextStyle(
-                  fontSize: 18, fontWeight: FontWeight.bold, color: textPrimaryColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: textPrimaryColor,
                 ),
               ),
               Text(
                 AppLocalizations.of(context)!.homeText2,
                 style: const TextStyle(
-                  fontSize: 15, color: textPrimaryColor,
+                  fontSize: 15,
+                  color: textPrimaryColor,
                 ),
               ),
               const SizedBox(height: 15),
               moreAction(
                 title: AppLocalizations.of(context)!.artProvince,
                 onTap: () => Navigator.pushNamed(
-                  context, ProvinceMorePage.routeName,
+                  context,
+                  ProvinceMorePage.routeName,
                 ),
               ),
               Consumer<ProvinceListProvider>(
                 builder: (context, state, _) {
                   if (state.listState == ResultState.loading) {
-                    return const Center(child: CircularProgressIndicator(color: Colors.red));
+                    return const Center(
+                        child: CircularProgressIndicator(color: Colors.red));
                   } else if (state.listState == ResultState.hasData) {
                     return SizedBox(
                       height: 190,
@@ -184,13 +196,15 @@ class _HomePageState extends State<HomePage> {
               moreAction(
                 title: AppLocalizations.of(context)!.artRecommendation,
                 onTap: () => Navigator.pushNamed(
-                  context, UpdateMorePage.routeName,
+                  context,
+                  UpdateMorePage.routeName,
                 ),
               ),
               Consumer<UpdateListProvider>(
                 builder: (context, state, _) {
                   if (state.listState == ResultState.loading) {
-                    return const Center(child: CircularProgressIndicator(color: Colors.red));
+                    return const Center(
+                        child: CircularProgressIndicator(color: Colors.red));
                   } else if (state.listState == ResultState.hasData) {
                     return SizedBox(
                       height: 190,
@@ -219,13 +233,15 @@ class _HomePageState extends State<HomePage> {
               moreAction(
                 title: AppLocalizations.of(context)!.allArt,
                 onTap: () => Navigator.pushNamed(
-                  context, ArtListMorePage.routeName,
+                  context,
+                  ArtListMorePage.routeName,
                 ),
               ),
               Consumer<ArtListProvider>(
                 builder: (context, state, _) {
                   if (state.listState == ResultState.loading) {
-                    return const Center(child: CircularProgressIndicator(color: Colors.red));
+                    return const Center(
+                        child: CircularProgressIndicator(color: Colors.red));
                   } else if (state.listState == ResultState.hasData) {
                     return SizedBox(
                       height: 190,
@@ -256,7 +272,8 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context,
+          Navigator.push(
+            context,
             MaterialPageRoute(
               builder: (context) => const SearchPage(),
             ),
@@ -264,7 +281,8 @@ class _HomePageState extends State<HomePage> {
         },
         backgroundColor: textPrimaryColor,
         child: const Icon(
-          Icons.search, color: Colors.white,
+          Icons.search,
+          color: Colors.white,
         ),
       ),
     );

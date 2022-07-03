@@ -7,16 +7,16 @@ class ArtAndProvinceModel {
   final String status;
   final List<ArtList> data;
 
-  factory ArtAndProvinceModel.fromJson(Map<String, dynamic> json) => ArtAndProvinceModel(
-    status: json["status"],
-    data: List<ArtList>.from(json["data"]
-        .map((x) => ArtList.fromJson(x))),
-  );
+  factory ArtAndProvinceModel.fromJson(Map<String, dynamic> json) =>
+      ArtAndProvinceModel(
+        status: json["status"],
+        data: List<ArtList>.from(json["data"].map((x) => ArtList.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "status": status,
-    "data": List<dynamic>.from(data.map((x) => x.toJson())),
-  };
+        "status": status,
+        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+      };
 }
 
 class ArtList {
@@ -49,32 +49,32 @@ class ArtList {
   dynamic isInstagram;
 
   factory ArtList.fromJson(Map<String, dynamic> json) => ArtList(
-    id: json["id_kesenian"],
-    name: json["name"],
-    price: json["price"],
-    category: json["category"],
-    community: json["community"],
-    phoneNumber: json["phone_number"],
-    email: json["email"],
-    province: json["province"],
-    image: json["image"],
-    description: json["description"],
-    isFacebook: json["is_facebook"],
-    isInstagram: json["is_instagram"],
-  );
+        id: json["id_kesenian"],
+        name: json["name"],
+        price: json["price"],
+        category: json["category"],
+        community: json["community"],
+        phoneNumber: json["phone_number"],
+        email: json["email"],
+        province: json["province"],
+        image: json["image"],
+        description: json["description"],
+        isFacebook: json["is_facebook"],
+        isInstagram: json["is_instagram"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id_kesenian": id,
-    "name": name,
-    "price": price,
-    "category": category,
-    "community": community,
-    "phone_number": phoneNumber,
-    "email": email,
-    "province": province,
-    "image": image,
-    "description": description,
-    "is_facebook": isFacebook,
-    "is_instagram": isInstagram
-  };
+        "id_kesenian": id,
+        "name": name,
+        "price": price,
+        "category": category,
+        "community": community,
+        "phone_number": phoneNumber,
+        "email": email,
+        "province": province,
+        "image": image,
+        "description": description,
+        "is_facebook": isFacebook,
+        "is_instagram": isInstagram
+      };
 }

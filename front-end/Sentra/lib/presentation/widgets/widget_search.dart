@@ -43,7 +43,8 @@ class _SearchWidgetState extends State<SearchWidget> {
                       fillColor: Colors.white,
                       contentPadding: const EdgeInsets.all(10),
                       prefixIcon: const Icon(
-                        Icons.search, color: Colors.black,
+                        Icons.search,
+                        color: Colors.black,
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),

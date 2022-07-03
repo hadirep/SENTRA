@@ -10,14 +10,14 @@ class DetailModel {
   final Data data;
 
   factory DetailModel.fromJson(Map<String, dynamic> json) => DetailModel(
-    status: json["status"],
-    data: Data.fromJson(json["data"]),
-  );
+        status: json["status"],
+        data: Data.fromJson(json["data"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "status": status,
-    "data": data.toJson(),
-  };
+        "status": status,
+        "data": data.toJson(),
+      };
 }
 
 class Data {
@@ -48,38 +48,40 @@ class Data {
   final String description;
   final String image;
   final String isFacebook;
-  final String isInstagram;    
+  final String isInstagram;
   List<DocumKesenian> documKesenians;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    id: json["id_kesenian"],
-    name: json["name"],
-    price: json["price"],
-    category: json["category"],
-    community: json["community"],
-    phoneNumber: json["phone_number"],
-    email: json["email"],
-    province: json["province"],
-    description: json["description"],
-    image: json["image"],
-    isFacebook: json["is_facebook"],
-    isInstagram: json["is_instagram"],
-    documKesenians: List<DocumKesenian>.from(json["documKesenians"].map((x) => DocumKesenian.fromJson(x))),
-  );
+        id: json["id_kesenian"],
+        name: json["name"],
+        price: json["price"],
+        category: json["category"],
+        community: json["community"],
+        phoneNumber: json["phone_number"],
+        email: json["email"],
+        province: json["province"],
+        description: json["description"],
+        image: json["image"],
+        isFacebook: json["is_facebook"],
+        isInstagram: json["is_instagram"],
+        documKesenians: List<DocumKesenian>.from(
+            json["documKesenians"].map((x) => DocumKesenian.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "id_kesenian": id,
-    "name": name,
-    "price": price,
-    "category": category,
-    "community": community,
-    "phone_number": phoneNumber,
-    "email": email,
-    "province": province,
-    "description": description,
-    "image": image,
-    "is_facebook": isFacebook,
-    "is_instagram": isInstagram,
-    "documKesenians": List<dynamic>.from(documKesenians.map((x) => x.toJson())),
-  };
+        "id_kesenian": id,
+        "name": name,
+        "price": price,
+        "category": category,
+        "community": community,
+        "phone_number": phoneNumber,
+        "email": email,
+        "province": province,
+        "description": description,
+        "image": image,
+        "is_facebook": isFacebook,
+        "is_instagram": isInstagram,
+        "documKesenians":
+            List<dynamic>.from(documKesenians.map((x) => x.toJson())),
+      };
 }

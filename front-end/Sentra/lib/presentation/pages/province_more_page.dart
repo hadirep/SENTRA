@@ -12,6 +12,7 @@ class ProvinceMorePage extends StatefulWidget {
   @override
   State<ProvinceMorePage> createState() => _ProvinceMorePageState();
 }
+
 class _ProvinceMorePageState extends State<ProvinceMorePage> {
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,8 @@ class _ProvinceMorePageState extends State<ProvinceMorePage> {
       body: Consumer<ProvinceListProvider>(
         builder: (context, state, _) {
           if (state.listState == ResultState.loading) {
-            return const Center(child: CircularProgressIndicator(color: Colors.red));
+            return const Center(
+                child: CircularProgressIndicator(color: Colors.red));
           } else if (state.listState == ResultState.hasData) {
             return GridView.builder(
               shrinkWrap: true,
@@ -46,11 +48,10 @@ class _ProvinceMorePageState extends State<ProvinceMorePage> {
                   provinceList: listData,
                 );
               },
-              gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio:
-                MediaQuery.of(context).size.width/(MediaQuery.of(context).size.height/1.9),
+                childAspectRatio: MediaQuery.of(context).size.width /
+                    (MediaQuery.of(context).size.height / 1.9),
               ),
             );
           } else if (state.listState == ResultState.noData) {

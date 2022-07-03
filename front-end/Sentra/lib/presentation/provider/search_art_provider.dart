@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:sentra/data/api/api_service.dart';
 import 'package:sentra/data/models/search_art.dart';
 
-enum ArtState {loading, noData, hasData, error }
+enum ArtState { loading, noData, hasData, error }
+
 class SearchArtProvider extends ChangeNotifier {
   final ApiService searchApiService;
 
-  SearchArtProvider({required this.searchApiService}){
+  SearchArtProvider({required this.searchApiService}) {
     fetchSearchArt(query);
   }
 
@@ -14,7 +15,6 @@ class SearchArtProvider extends ChangeNotifier {
   ArtState? _artState;
   String _message = '';
   String _query = '';
-
 
   String get message => _message;
   ResultArtSearch? get searchArt => _searchArt;
@@ -26,8 +26,7 @@ class SearchArtProvider extends ChangeNotifier {
       if (query.isNotEmpty) {
         _artState = ArtState.loading;
         _query = query;
-        final searchArt =
-        await searchApiService.getSearchArt(query);
+        final searchArt = await searchApiService.getSearchArt(query);
         if (searchArt.data.isEmpty) {
           _artState = ArtState.noData;
           notifyListeners();

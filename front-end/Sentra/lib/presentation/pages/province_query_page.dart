@@ -12,7 +12,8 @@ import 'package:sentra/presentation/widgets/widget_province_query.dart';
 class ProvinceQueryPage extends StatefulWidget {
   static const routeName = '/province-query-page';
   final ArtList queryList;
-  const ProvinceQueryPage({Key? key, required this.queryList}) : super(key: key);
+  const ProvinceQueryPage({Key? key, required this.queryList})
+      : super(key: key);
 
   @override
   State<ProvinceQueryPage> createState() => _ProvinceQueryPageState();
@@ -37,7 +38,7 @@ class _ProvinceQueryPageState extends State<ProvinceQueryPage> {
         elevation: 0,
         centerTitle: true,
         backgroundColor: Colors.white,
-        leading : const ButtonBack(),
+        leading: const ButtonBack(),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),
@@ -61,11 +62,10 @@ class _ProvinceQueryPageState extends State<ProvinceQueryPage> {
                       provinceQuery: queryData,
                     );
                   },
-                  gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio:
-                    MediaQuery.of(context).size.width/(MediaQuery.of(context).size.height/1.9),
+                    childAspectRatio: MediaQuery.of(context).size.width /
+                        (MediaQuery.of(context).size.height / 1.9),
                   ),
                 );
               } else if (state.queryState == ResultState.noData) {

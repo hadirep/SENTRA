@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:sentra/l10n/common_l10n.dart';
 import 'package:common/style.dart';
 import 'package:sentra/presentation/pages/admin/business_management.dart';
+import 'package:sentra/presentation/pages/register_page.dart';
 
-class FormLogin extends StatefulWidget{
+class FormLogin extends StatefulWidget {
   const FormLogin({Key? key}) : super(key: key);
 
   @override
@@ -18,6 +19,7 @@ class _BuildFormLogin extends State<FormLogin> {
   TextEditingController passwordController = TextEditingController();
 
   bool _obscureText = true;
+  // ignore: unused_field
   bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
@@ -31,7 +33,7 @@ class _BuildFormLogin extends State<FormLogin> {
 
   @override
   Widget build(BuildContext context) {
-    return  Card(
+    return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16.0),
       ),
@@ -86,41 +88,38 @@ class _BuildFormLogin extends State<FormLogin> {
                       });
                     },
                     icon: Icon(
-                      _obscureText
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      color:
-                      _obscureText ? buttonPrimaryColor : Colors.grey,
+                      _obscureText ? Icons.visibility : Icons.visibility_off,
+                      color: _obscureText ? buttonPrimaryColor : Colors.grey,
                     ),
                   ),
                 ),
               ),
-              // Row(
-              //   children:[
-              //     Text(
-              //       AppLocalizations.of(context)!.noAccount,
-              //       style: const TextStyle(
-              //         fontSize: 12,
-              //         color: buttonPrimaryColor,
-              //       ),
-              //     ),
-              //     TextButton(
-              //       onPressed: () {
-              //         Navigator.pushNamed(
-              //           context, RegisterPage.routeName,
-              //         );
-              //       },
-              //       child: Text(
-              //         AppLocalizations.of(context)!.registerHere,
-              //         style: const TextStyle(
-              //           fontSize: 12,
-              //           fontWeight: FontWeight.bold,
-              //           color: buttonPrimaryColor,
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
+              Row(
+                children:[
+                  Text(
+                    AppLocalizations.of(context)!.noAccount,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: buttonPrimaryColor,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context, RegisterPage.routeName,
+                      );
+                    },
+                    child: Text(
+                      AppLocalizations.of(context)!.registerHere,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: buttonPrimaryColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
               Container(
                 margin: const EdgeInsets.all(16.0),
                 height: 50,
@@ -130,21 +129,25 @@ class _BuildFormLogin extends State<FormLogin> {
                       final email = emailController.text;
                       final password = passwordController.text;
 
-                      if(_formKey.currentState!.validate()) {
+                      if (_formKey.currentState!.validate()) {
                         setState(() {
                           _isLoading = true;
                         });
                         await _auth.signInWithEmailAndPassword(
                             email: email, password: password);
-                        const snackbar = SnackBar(content: Text('Login Berhasil'));
+                        const snackbar =
+                            SnackBar(content: Text('Login Berhasil'));
                         ScaffoldMessenger.of(context).showSnackBar(snackbar);
 
                         Navigator.pushReplacementNamed(
-                          context, BusinessManagement.routeName,
+                          context,
+                          BusinessManagement.routeName,
                         );
                       }
                     } catch (e) {
-                      const snack = SnackBar(content: Text('Login Gagal, Username & Password Salah!'));
+                      const snack = SnackBar(
+                          content:
+                              Text('Login Gagal, Username & Password Salah!'));
                       ScaffoldMessenger.of(context).showSnackBar(snack);
                     } finally {
                       setState(() {
@@ -153,10 +156,12 @@ class _BuildFormLogin extends State<FormLogin> {
                     }
                   },
                   style: ButtonStyle(
-                    backgroundColor:  MaterialStateProperty.all(buttonPrimaryColor),
+                    backgroundColor:
+                        MaterialStateProperty.all(buttonPrimaryColor),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12.0),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12.0),
                         ),
                       ),
                     ),

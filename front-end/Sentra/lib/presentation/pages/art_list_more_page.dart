@@ -12,6 +12,7 @@ class ArtListMorePage extends StatefulWidget {
   @override
   State<ArtListMorePage> createState() => _ArtListMorePageState();
 }
+
 class _ArtListMorePageState extends State<ArtListMorePage> {
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,8 @@ class _ArtListMorePageState extends State<ArtListMorePage> {
       body: Consumer<ArtListProvider>(
         builder: (context, state, _) {
           if (state.listState == ResultState.loading) {
-            return const Center(child: CircularProgressIndicator(color: Colors.red));
+            return const Center(
+                child: CircularProgressIndicator(color: Colors.red));
           } else if (state.listState == ResultState.hasData) {
             return GridView.builder(
               shrinkWrap: true,
@@ -46,11 +48,10 @@ class _ArtListMorePageState extends State<ArtListMorePage> {
                   artList: listData,
                 );
               },
-              gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio:
-                MediaQuery.of(context).size.width/(MediaQuery.of(context).size.height/1.9),
+                childAspectRatio: MediaQuery.of(context).size.width /
+                    (MediaQuery.of(context).size.height / 1.9),
               ),
             );
           } else if (state.listState == ResultState.noData) {

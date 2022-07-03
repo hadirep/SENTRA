@@ -7,7 +7,7 @@ import 'package:sentra/presentation/pages/admin/create_art.dart';
 import 'package:sentra/presentation/pages/login_page.dart';
 
 class BusinessManagement extends StatefulWidget {
-  static const routeName  = '/business-management';
+  static const routeName = '/business-management';
   const BusinessManagement({Key? key}) : super(key: key);
 
   @override
@@ -27,15 +27,14 @@ class _BusinessManagementState extends State<BusinessManagement> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 InkWell(
-                  onTap: () {
-                  },
+                  onTap: () {},
                   child: Container(
-                    width: 35, height: 35,
+                    width: 35,
+                    height: 35,
                     alignment: Alignment.center,
                     decoration: const BoxDecoration(
                         color: secondaryColor,
-                        borderRadius: BorderRadius.all(Radius.circular(8))
-                    ),
+                        borderRadius: BorderRadius.all(Radius.circular(8))),
                     child: IconButton(
                       iconSize: 15,
                       icon: const Icon(Icons.logout, color: Color(0xfff0be41)),
@@ -43,25 +42,27 @@ class _BusinessManagementState extends State<BusinessManagement> {
                       onPressed: () async {
                         await auth.signOut();
                         Navigator.pushReplacementNamed(
-                          context, LoginPage.routeName,
+                          context,
+                          LoginPage.routeName,
                         );
                       },
                     ),
                   ),
                 ),
                 Container(
-                  width: 35, height: 35,
+                  width: 35,
+                  height: 35,
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(
                       color: secondaryColor,
-                      borderRadius: BorderRadius.all(Radius.circular(8))
-                  ),
+                      borderRadius: BorderRadius.all(Radius.circular(8))),
                   child: IconButton(
                     iconSize: 15,
                     icon: const Icon(Icons.add, color: Color(0xfff0be41)),
                     tooltip: AppLocalizations.of(context)!.addData,
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, CreateArt.routeName);
+                      Navigator.pushReplacementNamed(
+                          context, CreateArt.routeName);
                     },
                   ),
                 ),
@@ -99,7 +100,7 @@ class _BusinessManagementState extends State<BusinessManagement> {
           Expanded(
             flex: 8,
             child: Container(
-              margin: const EdgeInsets.only(left: 16.0,right: 16.0),
+              margin: const EdgeInsets.only(left: 16.0, right: 16.0),
               height: 600,
               child: const ItemKeseniansAdmin(),
             ),

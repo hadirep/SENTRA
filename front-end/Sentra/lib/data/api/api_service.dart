@@ -12,7 +12,7 @@ class ApiService {
   Future<ArtAndProvinceModel> getProvinceList() async {
     final response = await http.get(Uri.parse('${baseUrl}province'));
 
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       return ArtAndProvinceModel.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to Load Province Page');
@@ -20,9 +20,10 @@ class ApiService {
   }
 
   Future<UpdateAndQueryModel> getProvinceQuery(String query) async {
-    final response = await http.get(Uri.parse('${baseUrl}province/kesenians?q=$query'));
+    final response =
+        await http.get(Uri.parse('${baseUrl}province/kesenians?q=$query'));
 
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       return UpdateAndQueryModel.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to Load Detail Page');
@@ -30,10 +31,10 @@ class ApiService {
   }
 
   Future<UpdateAndQueryModel> getUpdateList() async {
-    final response = await http
-        .get(Uri.parse('${baseUrl}recommended/kesenians'));
+    final response =
+        await http.get(Uri.parse('${baseUrl}recommended/kesenians'));
 
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       return UpdateAndQueryModel.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to Load Province List');
@@ -41,10 +42,9 @@ class ApiService {
   }
 
   Future<ArtAndProvinceModel> getArtList() async {
-    final response = await http
-        .get(Uri.parse('${baseUrl}kesenians'));
+    final response = await http.get(Uri.parse('${baseUrl}kesenians'));
 
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       return ArtAndProvinceModel.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to Load Art List');
@@ -52,8 +52,8 @@ class ApiService {
   }
 
   Future<ResultArtSearch> getSearchArt(String query) async {
-    final response = await http
-        .get(Uri.parse('${baseUrl}search/kesenians?q=$query'));
+    final response =
+        await http.get(Uri.parse('${baseUrl}search/kesenians?q=$query'));
     if (response.statusCode == 200) {
       return ResultArtSearch.fromJson(json.decode(response.body));
     } else {
@@ -62,21 +62,28 @@ class ApiService {
   }
 
   Future<DetailModel> getDetail(String id) async {
-    final response = await http
-        .get(Uri.parse('${baseUrl}kesenians/$id'));
+    final response = await http.get(Uri.parse('${baseUrl}kesenians/$id'));
 
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       return DetailModel.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to Load Province Detail');
     }
   }
 
-  Future addArtList(String name, String price, String community,
-      String phoneNumber, String email, String province, String description,
-      dynamic isFacebook, dynamic isInstagram) async {
-    try{
-      final response = await http.post(Uri.parse('${baseUrl}kesenians'),
+  Future addArtList(
+      String name,
+      String price,
+      String community,
+      String phoneNumber,
+      String email,
+      String province,
+      String description,
+      dynamic isFacebook,
+      dynamic isInstagram) async {
+    try {
+      final response = await http.post(
+        Uri.parse('${baseUrl}kesenians'),
         body: {
           'name': name,
           'price': price,
@@ -90,7 +97,7 @@ class ApiService {
         },
       );
 
-      if(response.statusCode == 200) {
+      if (response.statusCode == 200) {
         if (kDebugMode) {
           print("Add data success");
         }
@@ -108,11 +115,21 @@ class ApiService {
     }
   }
 
-  Future putArtList(String id, String name, String price, String community,
-      String category, String phoneNumber, String email, String province,
-      String description, dynamic isFacebook, dynamic isInstagram) async {
-    try{
-      final response = await http.put(Uri.parse('${baseUrl}kesenians/$id'),
+  Future putArtList(
+      String id,
+      String name,
+      String price,
+      String community,
+      String category,
+      String phoneNumber,
+      String email,
+      String province,
+      String description,
+      dynamic isFacebook,
+      dynamic isInstagram) async {
+    try {
+      final response = await http.put(
+        Uri.parse('${baseUrl}kesenians/$id'),
         body: {
           'name': name,
           'price': price,
@@ -121,13 +138,13 @@ class ApiService {
           'phone_number': phoneNumber,
           'email': email,
           'province': province,
-          'description':  description,
+          'description': description,
           'is_facebook': isFacebook,
           'is_instagram': isInstagram
         },
       );
 
-      if(response.statusCode == 200) {
+      if (response.statusCode == 200) {
         return true;
       } else {
         return false;
@@ -141,13 +158,14 @@ class ApiService {
 
   Future deleteArtList(String id) async {
     try {
-    final response = await http.delete(Uri.parse('${baseUrl}kesenians/$id'),
-    );      
-    if(response.statusCode == 200) {
-      return true;
-    } else {
-      return false;
-    }
+      final response = await http.delete(
+        Uri.parse('${baseUrl}kesenians/$id'),
+      );
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());

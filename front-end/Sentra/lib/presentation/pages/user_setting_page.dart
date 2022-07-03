@@ -23,7 +23,7 @@ class UserSetting extends StatefulWidget {
 class _UserSettingState extends State<UserSetting> {
   final NotificationHelper _notificationHelper = NotificationHelper();
 
-  Widget _buildAndroid(BuildContext context){
+  Widget _buildAndroid(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -47,9 +47,7 @@ class _UserSettingState extends State<UserSetting> {
   Widget _buildIos(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(
-        middle: Text(
-          'Settings'
-        ),
+        middle: Text('Settings'),
       ),
       child: _buildList(context),
     );
@@ -63,7 +61,8 @@ class _UserSettingState extends State<UserSetting> {
             Material(
               child: ListTile(
                 leading: const Icon(
-                Icons.dark_mode, color: Color(0xffF0BE41),
+                  Icons.dark_mode,
+                  color: Color(0xffF0BE41),
                 ),
                 title: Text(
                   AppLocalizations.of(context)!.darkMode,
@@ -80,10 +79,11 @@ class _UserSettingState extends State<UserSetting> {
                     }),
               ),
             ),
-             Material(
+            Material(
               child: ListTile(
                 leading: const Icon(
-                  Icons.circle_notifications, color: Color(0xffdc7e00),
+                  Icons.circle_notifications,
+                  color: Color(0xffdc7e00),
                 ),
                 title: Text(
                   AppLocalizations.of(context)!.notification,
@@ -96,12 +96,11 @@ class _UserSettingState extends State<UserSetting> {
                 trailing: Consumer<SchedulingProvider>(
                   builder: (context, scheduled, _) {
                     return Switch.adaptive(
-                      value: provider.isDailyRestaurantActive,
-                      onChanged: (value) async {
-                        scheduled.scheduledNews(value);
-                        provider.enableDailyRestaurant(value);
-                      }
-                    );
+                        value: provider.isDailyRestaurantActive,
+                        onChanged: (value) async {
+                          scheduled.scheduledNews(value);
+                          provider.enableDailyRestaurant(value);
+                        });
                   },
                 ),
               ),
@@ -109,7 +108,8 @@ class _UserSettingState extends State<UserSetting> {
             Material(
               child: ListTile(
                 leading: const Icon(
-                  Icons.flag, color: Color(0xfff0be41),
+                  Icons.flag,
+                  color: Color(0xfff0be41),
                 ),
                 title: Text(
                   AppLocalizations.of(context)!.language,
@@ -135,7 +135,8 @@ class _UserSettingState extends State<UserSetting> {
       iosBuilder: _buildIos,
     );
   }
-    @override
+
+  @override
   void initState() {
     super.initState();
     _notificationHelper

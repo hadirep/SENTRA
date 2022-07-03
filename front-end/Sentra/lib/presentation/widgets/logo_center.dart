@@ -5,7 +5,7 @@ class LogoCenter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       alignment: Alignment.bottomCenter,
       margin: const EdgeInsets.only(top: 20.0),
       child: Column(
@@ -16,7 +16,8 @@ class LogoCenter extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: Image.asset(
                 "assets/logo/sentra_drawer.png",
-                height: 60, width: 80,
+                height: 60,
+                width: 80,
               ),
             ),
           ),

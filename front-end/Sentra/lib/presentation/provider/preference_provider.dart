@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:sentra/data/preferences/preference_helper.dart';
 import 'package:common/style.dart';
 
-class PreferenceProvider extends ChangeNotifier{
+class PreferenceProvider extends ChangeNotifier {
   PreferencesHelper preferencesHelper;
 
-  PreferenceProvider({required this.preferencesHelper}){
+  PreferenceProvider({required this.preferencesHelper}) {
     _getTheme();
     _getDailyRestaurantPreferences();
   }
@@ -13,7 +13,6 @@ class PreferenceProvider extends ChangeNotifier{
   bool _isDarkTheme = false;
   bool get isDarkTheme => _isDarkTheme;
 
-  
   bool _isDailyRestaurantActive = false;
   bool get isDailyRestaurantActive => _isDailyRestaurantActive;
 
@@ -33,7 +32,8 @@ class PreferenceProvider extends ChangeNotifier{
     preferencesHelper.setDarkTheme(value);
     _getTheme();
   }
-    void enableDailyRestaurant(bool value) {
+
+  void enableDailyRestaurant(bool value) {
     preferencesHelper.setDailyArt(value);
     _getDailyRestaurantPreferences();
   }
@@ -41,7 +41,7 @@ class PreferenceProvider extends ChangeNotifier{
   Locale _locale = const Locale("id");
   Locale get locale => _locale;
 
-  void setLocale(Locale locale){
+  void setLocale(Locale locale) {
     _locale = locale;
     notifyListeners();
   }

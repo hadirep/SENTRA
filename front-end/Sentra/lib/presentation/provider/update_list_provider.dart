@@ -6,7 +6,9 @@ import 'package:common/result_state.dart';
 class UpdateListProvider extends ChangeNotifier {
   final ApiService? listApiService;
 
-  UpdateListProvider({required this.listApiService,}){
+  UpdateListProvider({
+    required this.listApiService,
+  }) {
     _fetchUpdateList();
   }
 

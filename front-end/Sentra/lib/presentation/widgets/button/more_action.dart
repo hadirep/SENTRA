@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:common/style.dart';
 
-Row moreAction({required String title, required Function() onTap}){
+Row moreAction({required String title, required Function() onTap}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Text(
         title,
         style: const TextStyle(
-          fontSize: 18, fontWeight: FontWeight.bold, color: textPrimaryColor,
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: textPrimaryColor,
         ),
       ),
       InkWell(
@@ -20,11 +22,14 @@ Row moreAction({required String title, required Function() onTap}){
               Text(
                 'more',
                 style: TextStyle(
-                  fontSize: 15, color: textPrimaryColor,
+                  fontSize: 15,
+                  color: textPrimaryColor,
                 ),
               ),
               Icon(
-                Icons.arrow_forward_ios, color: textPrimaryColor, size: 15,
+                Icons.arrow_forward_ios,
+                color: textPrimaryColor,
+                size: 15,
               ),
             ],
           ),

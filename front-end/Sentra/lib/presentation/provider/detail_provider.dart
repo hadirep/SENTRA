@@ -7,7 +7,7 @@ class DetailProvider extends ChangeNotifier {
   final ApiService detailApiService;
   final String id;
 
-  DetailProvider({required this.detailApiService, required this.id}){
+  DetailProvider({required this.detailApiService, required this.id}) {
     _fetchDetail(id);
   }
 
@@ -24,7 +24,7 @@ class DetailProvider extends ChangeNotifier {
       _detailState = ResultState.loading;
       notifyListeners();
       final detail = await detailApiService.getDetail(id);
-      if(detail.data.id.isEmpty){
+      if (detail.data.id.isEmpty) {
         _detailState = ResultState.noData;
         notifyListeners();
         return _message = 'Empty Data';

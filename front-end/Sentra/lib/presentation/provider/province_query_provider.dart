@@ -7,7 +7,7 @@ class ProvinceQueryProvider extends ChangeNotifier {
   final ApiService? queryApiService;
   final String query;
 
-  ProvinceQueryProvider({required this.queryApiService, required this.query}){
+  ProvinceQueryProvider({required this.queryApiService, required this.query}) {
     _fetchProvinceQuery(query);
   }
 
@@ -24,7 +24,7 @@ class ProvinceQueryProvider extends ChangeNotifier {
       _queryState = ResultState.loading;
       notifyListeners();
       final detailQuery = await queryApiService!.getProvinceQuery(query);
-      if(detailQuery.data.isEmpty){
+      if (detailQuery.data.isEmpty) {
         _queryState = ResultState.noData;
         notifyListeners();
         return _message = 'Empty Data';

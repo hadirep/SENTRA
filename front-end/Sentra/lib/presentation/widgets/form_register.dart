@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sentra/l10n/common_l10n.dart';
 import 'package:common/style.dart';
 
-class FormRegister extends StatefulWidget{
+class FormRegister extends StatefulWidget {
   const FormRegister({Key? key}) : super(key: key);
 
   @override
@@ -20,13 +20,14 @@ class _BuildFormRegister extends State<FormRegister> {
 
   bool _obscureText = true;
   bool _obsecureConfirmPassword = true;
+  // ignore: unused_field
   bool _isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return  Card(
+    return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16.0),
       ),
@@ -56,7 +57,7 @@ class _BuildFormRegister extends State<FormRegister> {
                       color: buttonPrimaryColor,
                     ),
                     labelText: AppLocalizations.of(context)!.artEmail,
-                    border: const  OutlineInputBorder(
+                    border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     ),
                   ),
@@ -86,11 +87,8 @@ class _BuildFormRegister extends State<FormRegister> {
                       });
                     },
                     icon: Icon(
-                      _obscureText
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      color:
-                      _obscureText ? buttonPrimaryColor : Colors.grey,
+                      _obscureText ? Icons.visibility : Icons.visibility_off,
+                      color: _obscureText ? buttonPrimaryColor : Colors.grey,
                     ),
                   ),
                 ),
@@ -123,8 +121,9 @@ class _BuildFormRegister extends State<FormRegister> {
                       _obsecureConfirmPassword
                           ? Icons.visibility
                           : Icons.visibility_off,
-                      color:
-                      _obsecureConfirmPassword ? buttonPrimaryColor : Colors.grey,
+                      color: _obsecureConfirmPassword
+                          ? buttonPrimaryColor
+                          : Colors.grey,
                     ),
                   ),
                 ),
@@ -155,7 +154,8 @@ class _BuildFormRegister extends State<FormRegister> {
                     }
                   },
                   style: ButtonStyle(
-                    backgroundColor:  MaterialStateProperty.all(buttonPrimaryColor),
+                    backgroundColor:
+                        MaterialStateProperty.all(buttonPrimaryColor),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12.0)),

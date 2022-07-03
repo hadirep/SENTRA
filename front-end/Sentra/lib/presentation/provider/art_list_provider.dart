@@ -6,7 +6,7 @@ import 'package:common/result_state.dart';
 class ArtListProvider extends ChangeNotifier {
   final ApiService? listApiService;
 
-  ArtListProvider({required this.listApiService}){
+  ArtListProvider({required this.listApiService}) {
     fetchListProvince();
   }
 
@@ -18,7 +18,7 @@ class ArtListProvider extends ChangeNotifier {
   ArtAndProvinceModel get list => _list;
   ResultState get listState => _state;
 
-    Future<dynamic> fetchListProvince() async {
+  Future<dynamic> fetchListProvince() async {
     try {
       _state = ResultState.loading;
       notifyListeners();

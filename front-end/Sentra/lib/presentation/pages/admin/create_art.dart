@@ -11,7 +11,7 @@ import 'package:http/http.dart' as http;
 
 class CreateArt extends StatefulWidget {
   static const routeName = '/create-art';
-  const CreateArt({ Key? key }) : super(key: key);
+  const CreateArt({Key? key}) : super(key: key);
 
   @override
   State<CreateArt> createState() => _CreateArtState();
@@ -22,15 +22,23 @@ class _CreateArtState extends State<CreateArt> {
   bool isLoading = false;
 
   final TextEditingController _nameController = TextEditingController(text: '');
-  final TextEditingController _descriptionController = TextEditingController(text: '');
-  final TextEditingController _categoryController = TextEditingController(text: '');
-  final TextEditingController _communityController = TextEditingController(text: '');
+  final TextEditingController _descriptionController =
+      TextEditingController(text: '');
+  final TextEditingController _categoryController =
+      TextEditingController(text: '');
+  final TextEditingController _communityController =
+      TextEditingController(text: '');
   final TextEditingController _noHpController = TextEditingController(text: '');
-  final TextEditingController _emailController = TextEditingController(text: '');
-  final TextEditingController _priceController = TextEditingController(text: '');
-  final TextEditingController _isInstagramController = TextEditingController(text: '');
-  final TextEditingController _isFacebookController = TextEditingController(text: '');
-  final TextEditingController _provinceController = TextEditingController(text: '');
+  final TextEditingController _emailController =
+      TextEditingController(text: '');
+  final TextEditingController _priceController =
+      TextEditingController(text: '');
+  final TextEditingController _isInstagramController =
+      TextEditingController(text: '');
+  final TextEditingController _isFacebookController =
+      TextEditingController(text: '');
+  final TextEditingController _provinceController =
+      TextEditingController(text: '');
 
   late final bool _validateName = false;
   late final bool _validateDescription = false;
@@ -45,20 +53,19 @@ class _CreateArtState extends State<CreateArt> {
   List<XFile>? imageDocumentation;
   final _picker = ImagePicker();
   final ImagePicker imgPicker = ImagePicker();
-  bool showSpinner = false ;
+  bool showSpinner = false;
 
-  dynamic stream ;
-  dynamic length ;
+  dynamic stream;
+  dynamic length;
 
+  Future getImage() async {
+    final pickedFile =
+        await _picker.pickImage(source: ImageSource.gallery, imageQuality: 80);
 
-  Future getImage()async{
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery , imageQuality: 80);
-
-    if(pickedFile!= null ){
+    if (pickedFile != null) {
       image = File(pickedFile.path);
-      setState(() {
-      });
-    }else {
+      setState(() {});
+    } else {
       const snackbar = SnackBar(content: Text('no image selected'));
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
     }
@@ -67,12 +74,12 @@ class _CreateArtState extends State<CreateArt> {
   openImages() async {
     try {
       var pickedFiles = await imgPicker.pickMultiImage();
-      if(pickedFiles != null){
+      if (pickedFiles != null) {
         imageDocumentation = pickedFiles;
         setState(() {
           isLoading = false;
         });
-      }else{
+      } else {
         if (kDebugMode) {
           print("No image is selected.");
         }
@@ -84,53 +91,55 @@ class _CreateArtState extends State<CreateArt> {
     }
   }
 
-  Future<void> uploadImage ()async{
+  Future<void> uploadImage() async {
     isLoading = true;
     setState(() {
       isLoading = true;
-      showSpinner = true ;
+      showSpinner = true;
     });
 
     var baseUrl = Uri.parse('https://sentra.dokternak.id/api/kesenians');
     var request = http.MultipartRequest('POST', baseUrl);
 
-    request.fields['name'] = _nameController.text ;
-    request.fields['price'] = _priceController.text ;
-    request.fields['category'] = _categoryController.text ;
-    request.fields['community'] = _communityController.text ;
-    request.fields['phone_number'] = _noHpController.text ;
-    request.fields['email'] = _emailController.text ;
-    request.fields['province'] = _provinceController.text ;
-    request.fields['description'] = _descriptionController.text ;
-    request.fields['is_facebook'] = _isFacebookController.text ;
-    request.fields['is_instagram'] = _isInstagramController.text ;
+    request.fields['name'] = _nameController.text;
+    request.fields['price'] = _priceController.text;
+    request.fields['category'] = _categoryController.text;
+    request.fields['community'] = _communityController.text;
+    request.fields['phone_number'] = _noHpController.text;
+    request.fields['email'] = _emailController.text;
+    request.fields['province'] = _provinceController.text;
+    request.fields['description'] = _descriptionController.text;
+    request.fields['is_facebook'] = _isFacebookController.text;
+    request.fields['is_instagram'] = _isInstagramController.text;
 
     var multiport = await http.MultipartFile.fromPath('image', image!.path);
     request.files.add(multiport);
 
-    for(int i = 0; i < imageDocumentation!.length; i++){
-      var multiPortDocumentation = await http.MultipartFile.fromPath('documentation[]', imageDocumentation![i].path);
+    for (int i = 0; i < imageDocumentation!.length; i++) {
+      var multiPortDocumentation = await http.MultipartFile.fromPath(
+          'documentation[]', imageDocumentation![i].path);
       request.files.add(multiPortDocumentation);
     }
 
-    var response = await request.send() ;
-    if(response.statusCode == 201){
+    var response = await request.send();
+    if (response.statusCode == 201) {
       const snackbar = SnackBar(content: Text('Tambah Data Berhasil'));
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
       isLoading = false;
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => const BusinessManagement()),
-            (Route<dynamic> route) => false,
+        (Route<dynamic> route) => false,
       );
-    }else {
+    } else {
       isLoading = true;
       const snackbar = SnackBar(content: Text('Tambah Data Gagal!'));
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
     }
   }
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
   }
 
@@ -145,8 +154,9 @@ class _CreateArtState extends State<CreateArt> {
           onPressed: () {
             Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) => const BusinessManagement()),
-                  (Route<dynamic> route) => false,
+              MaterialPageRoute(
+                  builder: (context) => const BusinessManagement()),
+              (Route<dynamic> route) => false,
             );
           },
           icon: const Icon(Icons.arrow_back_ios_rounded, color: secondaryColor),
@@ -168,7 +178,8 @@ class _CreateArtState extends State<CreateArt> {
               Column(
                 children: [
                   const SizedBox(height: 10),
-                  Padding(padding: const EdgeInsets.all(22),
+                  Padding(
+                    padding: const EdgeInsets.all(22),
                     child: Column(
                       children: [
                         Container(
@@ -191,18 +202,22 @@ class _CreateArtState extends State<CreateArt> {
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                  color: Color.fromARGB(255, 234, 132, 0),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                  color: Color.fromARGB(255, 221, 221, 221),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
-                              errorText: _validateName ? AppLocalizations.of(context)!.validateName : null,
+                              errorText: _validateName
+                                  ? AppLocalizations.of(context)!.validateName
+                                  : null,
                             ),
                           ),
                         ),
@@ -212,7 +227,8 @@ class _CreateArtState extends State<CreateArt> {
                           child: Text(
                             AppLocalizations.of(context)!.artDescription,
                             style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                           ),
@@ -225,14 +241,19 @@ class _CreateArtState extends State<CreateArt> {
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                color: Color.fromARGB(255, 234, 132, 0),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
-                            errorText: _validateDescription ? AppLocalizations.of(context)!.validateDescription : null,
+                            errorText: _validateDescription
+                                ? AppLocalizations.of(context)!
+                                    .validateDescription
+                                : null,
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                color: Color.fromARGB(255, 221, 221, 221),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
@@ -245,13 +266,14 @@ class _CreateArtState extends State<CreateArt> {
                             AppLocalizations.of(context)!.artPrice,
                             textAlign: TextAlign.left,
                             style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height:  MediaQuery.of(context).size.height * 0.04,
+                          height: MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _priceController,
                             keyboardType: TextInputType.number,
@@ -261,53 +283,65 @@ class _CreateArtState extends State<CreateArt> {
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                  color: Color.fromARGB(255, 234, 132, 0),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                  color: Color.fromARGB(255, 221, 221, 221),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
-                              errorText: _validatePrice ? AppLocalizations.of(context)!.validatePrice : null,
+                              errorText: _validatePrice
+                                  ? AppLocalizations.of(context)!.validatePrice
+                                  : null,
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10,),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
                             AppLocalizations.of(context)!.artOrganization,
                             textAlign: TextAlign.left,
                             style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height:  MediaQuery.of(context).size.height * 0.04,
+                          height: MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _communityController,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                  color: Color.fromARGB(255, 234, 132, 0),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                  color: Color.fromARGB(255, 221, 221, 221),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
-                              errorText: _validateCommunity ? AppLocalizations.of(context)!.validateOrganization : null,
+                              errorText: _validateCommunity
+                                  ? AppLocalizations.of(context)!
+                                      .validateOrganization
+                                  : null,
                             ),
                           ),
                         ),
@@ -318,7 +352,8 @@ class _CreateArtState extends State<CreateArt> {
                             AppLocalizations.of(context)!.artEmail,
                             textAlign: TextAlign.left,
                             style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                           ),
@@ -331,18 +366,22 @@ class _CreateArtState extends State<CreateArt> {
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                  color: Color.fromARGB(255, 234, 132, 0),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                  color: Color.fromARGB(255, 221, 221, 221),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
-                              errorText: _validateEmail ? AppLocalizations.of(context)!.validateEmail : null,
+                              errorText: _validateEmail
+                                  ? AppLocalizations.of(context)!.validateEmail
+                                  : null,
                             ),
                           ),
                         ),
@@ -353,26 +392,29 @@ class _CreateArtState extends State<CreateArt> {
                             AppLocalizations.of(context)!.artCategory,
                             textAlign: TextAlign.left,
                             style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height:  MediaQuery.of(context).size.height * 0.04,
+                          height: MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _categoryController,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                  color: Color.fromARGB(255, 234, 132, 0),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                  color: Color.fromARGB(255, 221, 221, 221),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -380,20 +422,23 @@ class _CreateArtState extends State<CreateArt> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10,),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
                             AppLocalizations.of(context)!.artPhone,
                             textAlign: TextAlign.left,
                             style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height:  MediaQuery.of(context).size.height * 0.04,
+                          height: MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _noHpController,
                             keyboardType: TextInputType.phone,
@@ -403,48 +448,57 @@ class _CreateArtState extends State<CreateArt> {
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                  color: Color.fromARGB(255, 234, 132, 0),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                  color: Color.fromARGB(255, 221, 221, 221),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
-                              errorText: _validateNoHp ? AppLocalizations.of(context)!.validatePhone : null,
+                              errorText: _validateNoHp
+                                  ? AppLocalizations.of(context)!.validatePhone
+                                  : null,
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10,),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         Container(
                           alignment: Alignment.topLeft,
                           child: const Text(
                             "Username Instagram",
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height:  MediaQuery.of(context).size.height * 0.04,
+                          height: MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _isInstagramController,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                  color: Color.fromARGB(255, 234, 132, 0),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                  color: Color.fromARGB(255, 221, 221, 221),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -452,14 +506,17 @@ class _CreateArtState extends State<CreateArt> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10,),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
                             AppLocalizations.of(context)!.artFacebook,
                             textAlign: TextAlign.left,
                             style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                           ),
@@ -472,13 +529,15 @@ class _CreateArtState extends State<CreateArt> {
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                  color: Color.fromARGB(255, 234, 132, 0),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                  color: Color.fromARGB(255, 221, 221, 221),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -486,71 +545,90 @@ class _CreateArtState extends State<CreateArt> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10,),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
                             AppLocalizations.of(context)!.artProvince,
                             textAlign: TextAlign.left,
                             style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height:  MediaQuery.of(context).size.height * 0.04,
+                          height: MediaQuery.of(context).size.height * 0.04,
                           child: TextField(
                             controller: _provinceController,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                  color: Color.fromARGB(255, 234, 132, 0),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
-                                  color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                  color: Color.fromARGB(255, 221, 221, 221),
+                                  width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               labelStyle: const TextStyle(color: Colors.red),
-                              errorText: _validateProvince ? AppLocalizations.of(context)!.validateProvince : null,
+                              errorText: _validateProvince
+                                  ? AppLocalizations.of(context)!
+                                      .validateProvince
+                                  : null,
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10,),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
                             AppLocalizations.of(context)!.artImage,
                             textAlign: TextAlign.left,
                             style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                           ),
                         ),
-                        image != null? Container(
-                          height:  MediaQuery.of(context).size.height * 0.18,
-                          width: MediaQuery.of(context).size.height * 0.45,
-                          padding: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,
-                          ),
-                          child: ClipRRect(
-                            borderRadius: borderRadius,
-                            child: Image.file(
-                              image!,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ) : Container(),
-                        const SizedBox(height: 5,),
+                        image != null
+                            ? Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.18,
+                                width:
+                                    MediaQuery.of(context).size.height * 0.45,
+                                padding: const EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color:
+                                      const Color.fromARGB(255, 221, 221, 221),
+                                  borderRadius: borderRadius,
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: borderRadius,
+                                  child: Image.file(
+                                    image!,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              )
+                            : Container(),
+                        const SizedBox(
+                          height: 5,
+                        ),
                         GestureDetector(
-                          onTap: () async{
+                          onTap: () async {
                             await getImage();
                           },
                           child: Align(
@@ -561,24 +639,30 @@ class _CreateArtState extends State<CreateArt> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 border: Border.all(
-                                  width: 3, color: const Color.fromARGB(255, 221, 221, 221),
+                                  width: 3,
+                                  color:
+                                      const Color.fromARGB(255, 221, 221, 221),
                                 ),
                               ),
                               child: const Icon(
                                 Icons.add_a_photo,
-                                color: Color.fromARGB(255, 221, 221, 221), size: 15,
+                                color: Color.fromARGB(255, 221, 221, 221),
+                                size: 15,
                               ),
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10,),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
                             AppLocalizations.of(context)!.artDocumentation,
                             textAlign: TextAlign.left,
                             style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                           ),
@@ -586,27 +670,39 @@ class _CreateArtState extends State<CreateArt> {
                         //MULTI IMAGE PICKER
                         Column(
                           children: [
-                            imageDocumentation != null?Wrap(
-                              children: imageDocumentation!.map((imageone){
-                                return Card(
-                                  child: Container(
-                                    height:  MediaQuery.of(context).size.height * 0.1,
-                                    width: MediaQuery.of(context).size.height * 0.138,
-                                    padding: const EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                      color: const Color.fromARGB(255, 221, 221, 221),
-                                      borderRadius: borderRadius,
-                                    ),
-                                    child: ClipRRect(
-                                      borderRadius: borderRadius,
-                                      child: Image.file(File(imageone.path),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }, ).toList(),
-                            ) : Container(),
+                            imageDocumentation != null
+                                ? Wrap(
+                                    children: imageDocumentation!.map(
+                                      (imageone) {
+                                        return Card(
+                                          child: Container(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.1,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.138,
+                                            padding: const EdgeInsets.all(5),
+                                            decoration: BoxDecoration(
+                                              color: const Color.fromARGB(
+                                                  255, 221, 221, 221),
+                                              borderRadius: borderRadius,
+                                            ),
+                                            child: ClipRRect(
+                                              borderRadius: borderRadius,
+                                              child: Image.file(
+                                                File(imageone.path),
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ).toList(),
+                                  )
+                                : Container(),
                             GestureDetector(
                               onTap: () {
                                 openImages();
@@ -618,17 +714,22 @@ class _CreateArtState extends State<CreateArt> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     border: Border.all(
-                                      width: 3, color: const Color.fromARGB(255, 221, 221, 221),
+                                      width: 3,
+                                      color: const Color.fromARGB(
+                                          255, 221, 221, 221),
                                     ),
                                   ),
                                   child: const Icon(
                                     Icons.add,
-                                    color: Color.fromARGB(255, 221, 221, 221), size: 15,
+                                    color: Color.fromARGB(255, 221, 221, 221),
+                                    size: 15,
                                   ),
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 20,),
+                            const SizedBox(
+                              height: 20,
+                            ),
                             Container(
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               width: MediaQuery.of(context).size.width,
@@ -638,24 +739,35 @@ class _CreateArtState extends State<CreateArt> {
                                   uploadImage();
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: const Color.fromARGB(255, 234, 132, 0),
-                                  shape: RoundedRectangleBorder(borderRadius: borderRadius),
+                                  primary:
+                                      const Color.fromARGB(255, 234, 132, 0),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: borderRadius),
                                 ),
                                 child: isLoading
-                                    ? const CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.white),)
+                                    ? const CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                                Colors.white),
+                                      )
                                     : Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Icon(Icons.save, color: Colors.white),
-                                    const SizedBox(width: 5),
-                                    Text(
-                                      AppLocalizations.of(context)!.artSave,
-                                      style: const TextStyle(
-                                        color: Colors.white, fontWeight: FontWeight.w600, fontSize: 17,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          const Icon(Icons.save,
+                                              color: Colors.white),
+                                          const SizedBox(width: 5),
+                                          Text(
+                                            AppLocalizations.of(context)!
+                                                .artSave,
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 17,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                  ],
-                                ),
                               ),
                             ),
                           ],
@@ -671,6 +783,7 @@ class _CreateArtState extends State<CreateArt> {
       ),
     );
   }
+
   @override
   void dispose() {
     _nameController.dispose();
@@ -686,4 +799,3 @@ class _CreateArtState extends State<CreateArt> {
     super.dispose();
   }
 }
-

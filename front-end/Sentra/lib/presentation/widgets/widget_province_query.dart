@@ -5,7 +5,8 @@ import 'package:sentra/presentation/pages/details_seller_product.dart';
 
 class WidgetProvinceQuery extends StatefulWidget {
   final ArtList provinceQuery;
-  const WidgetProvinceQuery({Key? key, required this.provinceQuery}) : super(key: key);
+  const WidgetProvinceQuery({Key? key, required this.provinceQuery})
+      : super(key: key);
 
   @override
   State<WidgetProvinceQuery> createState() => _WidgetProvinceQueryState();
@@ -17,7 +18,9 @@ class _WidgetProvinceQueryState extends State<WidgetProvinceQuery> {
     return InkWell(
       onTap: () {
         Navigator.pushNamed(
-          context, DetailSellerProduct.routeName, arguments: widget.provinceQuery,
+          context,
+          DetailSellerProduct.routeName,
+          arguments: widget.provinceQuery,
         );
       },
       child: ClipRRect(
@@ -30,17 +33,20 @@ class _WidgetProvinceQueryState extends State<WidgetProvinceQuery> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 120, width: MediaQuery.of(context).size.width/2.5,
+                height: 120,
+                width: MediaQuery.of(context).size.width / 2.5,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(width: 2.8,
+                      border: Border.all(
+                        width: 2.8,
                         color: const Color.fromARGB(196, 249, 216, 117),
                       ),
                       image: DecorationImage(
-                        image: NetworkImage(baseImageArt+widget.provinceQuery.image),
+                        image: NetworkImage(
+                            baseImageArt + widget.provinceQuery.image),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -48,7 +54,8 @@ class _WidgetProvinceQueryState extends State<WidgetProvinceQuery> {
                 ),
               ),
               const SizedBox(height: 5),
-              Padding(padding: const EdgeInsets.only(left: 5, top: 2),
+              Padding(
+                padding: const EdgeInsets.only(left: 5, top: 2),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Column(
@@ -59,13 +66,15 @@ class _WidgetProvinceQueryState extends State<WidgetProvinceQuery> {
                         children: [
                           const Icon(
                             Icons.add_location_rounded,
-                            size: 15, color: Color.fromARGB(255, 234, 132, 0),
+                            size: 15,
+                            color: Color.fromARGB(255, 234, 132, 0),
                           ),
                           Text(
                             widget.provinceQuery.province!,
                             style: const TextStyle(
                               color: Color.fromARGB(255, 45, 74, 148),
-                              fontSize: 11, fontWeight: FontWeight.bold,
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
@@ -75,7 +84,8 @@ class _WidgetProvinceQueryState extends State<WidgetProvinceQuery> {
                         widget.provinceQuery.name!,
                         style: const TextStyle(
                           color: Color.fromARGB(255, 45, 74, 148),
-                          fontSize: 14, fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
@@ -89,4 +99,3 @@ class _WidgetProvinceQueryState extends State<WidgetProvinceQuery> {
     );
   }
 }
-

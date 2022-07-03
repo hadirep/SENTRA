@@ -6,7 +6,7 @@ import 'package:common/result_state.dart';
 class ProvinceListProvider extends ChangeNotifier {
   final ApiService? listApiService;
 
-  ProvinceListProvider({required this.listApiService}){
+  ProvinceListProvider({required this.listApiService}) {
     _fetchListProvince();
   }
 

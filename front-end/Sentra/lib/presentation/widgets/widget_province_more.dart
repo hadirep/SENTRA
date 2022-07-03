@@ -5,7 +5,8 @@ import 'package:sentra/presentation/pages/province_query_page.dart';
 
 class WidgetProvinceMore extends StatefulWidget {
   final ArtList provinceList;
-  const WidgetProvinceMore({Key? key, required this.provinceList}) : super(key: key);
+  const WidgetProvinceMore({Key? key, required this.provinceList})
+      : super(key: key);
 
   @override
   State<WidgetProvinceMore> createState() => _WidgetProvinceMoreState();
@@ -17,7 +18,9 @@ class _WidgetProvinceMoreState extends State<WidgetProvinceMore> {
     return InkWell(
       onTap: () {
         Navigator.pushNamed(
-          context, ProvinceQueryPage.routeName, arguments: widget.provinceList,
+          context,
+          ProvinceQueryPage.routeName,
+          arguments: widget.provinceList,
         );
       },
       child: ClipRRect(
@@ -26,18 +29,13 @@ class _WidgetProvinceMoreState extends State<WidgetProvinceMore> {
           child: Stack(
             children: [
               Container(
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height * 0.30,
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .height * 0.30,
+                height: MediaQuery.of(context).size.height * 0.30,
+                width: MediaQuery.of(context).size.height * 0.30,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    width: 3, color: const Color.fromARGB(207, 246, 219, 138),
+                    width: 3,
+                    color: const Color.fromARGB(207, 246, 219, 138),
                   ),
                   image: DecorationImage(
                     image: NetworkImage(
@@ -56,7 +54,8 @@ class _WidgetProvinceMoreState extends State<WidgetProvinceMore> {
                       Container(
                         padding: const EdgeInsets.all(10),
                         child: Container(
-                          height: 30, width: 90,
+                          height: 30,
+                          width: 90,
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(206, 255, 244, 211),
                             borderRadius: BorderRadius.circular(10),

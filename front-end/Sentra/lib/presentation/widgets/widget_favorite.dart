@@ -5,7 +5,7 @@ import 'package:sentra/data/models/art_and_province_model.dart';
 import 'package:sentra/presentation/pages/details_seller_product.dart';
 import 'package:sentra/presentation/provider/database_provider.dart';
 
-class WidgetFavorite extends StatefulWidget{
+class WidgetFavorite extends StatefulWidget {
   final ArtList artList;
 
   const WidgetFavorite({Key? key, required this.artList}) : super(key: key);
@@ -26,8 +26,9 @@ class _WidgetFavoriteState extends State<WidgetFavorite> {
               onTap: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(
-                    builder: (_) => DetailSellerProduct(artList: widget.artList))
-                ).then((_) {
+                        builder: (_) =>
+                            DetailSellerProduct(artList: widget.artList)))
+                    .then((_) {
                   context.read<DatabaseProvider>().getFavorite();
                 });
               },
@@ -45,8 +46,10 @@ class _WidgetFavoriteState extends State<WidgetFavorite> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Hero(
-                          tag: baseImageArt+widget.artList.image,
-                          child: Image.network(baseImageArt+widget.artList.image, fit: BoxFit.cover),
+                          tag: baseImageArt + widget.artList.image,
+                          child: Image.network(
+                              baseImageArt + widget.artList.image,
+                              fit: BoxFit.cover),
                         ),
                       ),
                     ),
@@ -59,13 +62,15 @@ class _WidgetFavoriteState extends State<WidgetFavorite> {
                           widget.artList.name!,
                           style: const TextStyle(
                             color: Color.fromARGB(255, 45, 74, 148),
-                            fontSize: 15, fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         Row(
                           children: [
                             const Icon(
-                              Icons.add_location_rounded, size: 16,
+                              Icons.add_location_rounded,
+                              size: 16,
                               color: Color.fromARGB(255, 234, 132, 0),
                             ),
                             const SizedBox(width: 3),
@@ -73,7 +78,8 @@ class _WidgetFavoriteState extends State<WidgetFavorite> {
                               widget.artList.province!,
                               style: const TextStyle(
                                 color: Color.fromARGB(255, 45, 74, 148),
-                                fontSize: 15, fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],

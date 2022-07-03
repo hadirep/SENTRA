@@ -25,7 +25,6 @@ class BackgroundService {
     );
   }
 
-
   static Future<void> callback() async {
     if (kDebugMode) {
       print('Alarm fired!');

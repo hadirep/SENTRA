@@ -15,7 +15,8 @@ class DetailSellerProduct extends StatefulWidget {
   final ArtList artList;
   static const routeName = '/detail-seller-product';
 
-  const DetailSellerProduct({Key? key, required this.artList}) : super(key: key);
+  const DetailSellerProduct({Key? key, required this.artList})
+      : super(key: key);
 
   @override
   State<DetailSellerProduct> createState() => _DetailSellerProductState();
@@ -27,7 +28,8 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<DetailProvider>(
-          create: (_) => DetailProvider(detailApiService: ApiService(), id: widget.artList.id),
+          create: (_) => DetailProvider(
+              detailApiService: ApiService(), id: widget.artList.id),
         ),
       ],
       child: Scaffold(
@@ -51,8 +53,7 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                   AppLocalizations.of(context)!.artDetail,
                   style: const TextStyle(
                       color: Color.fromARGB(255, 45, 74, 148),
-                      fontWeight: FontWeight.bold
-                  ),
+                      fontWeight: FontWeight.bold),
                 ),
                 centerTitle: true,
                 leading: const Align(
@@ -68,7 +69,7 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                       children: [
                         Container(
                           height: MediaQuery.of(context).size.height * 0.33,
-                          width:  MediaQuery.of(context).size.height * 0.45,
+                          width: MediaQuery.of(context).size.height * 0.45,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             image: DecorationImage(
@@ -87,37 +88,47 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                           ),
                         ),
                         SizedBox(
-                          width:  MediaQuery.of(context).size.height * 0.45,
+                          width: MediaQuery.of(context).size.height * 0.45,
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Column(
                               children: <Widget>[
                                 SizedBox(
-                                  width:  MediaQuery.of(context).size.height * 0.45,
+                                  width:
+                                      MediaQuery.of(context).size.height * 0.45,
                                   child: Align(
                                     alignment: Alignment.centerRight,
                                     child: Container(
-                                      margin: const EdgeInsets.only(right: 16.0, top: 16.0),
+                                      margin: const EdgeInsets.only(
+                                          right: 16.0, top: 16.0),
                                       decoration: BoxDecoration(
                                           color: Colors.white.withOpacity(.8),
-                                          borderRadius: const BorderRadius.all( Radius.circular(100))
-                                      ),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(100))),
                                       child: Consumer<DatabaseProvider>(
                                         builder: (context, provider, child) {
                                           return FutureBuilder<bool>(
-                                            future: provider.isFavorited(widget.artList.id),
+                                            future: provider
+                                                .isFavorited(widget.artList.id),
                                             builder: (context, snapshot) {
-                                              var isFavorited = snapshot.data ?? false;
+                                              var isFavorited =
+                                                  snapshot.data ?? false;
                                               return isFavorited
                                                   ? IconButton(
-                                                  icon: const Icon(Icons.favorite, color: Colors.red),
-                                                  onPressed: () => provider
-                                                      .removeFavorite(widget.artList.id)
-                                              ) : IconButton(
-                                                icon: const Icon(Icons.favorite_border, color: Colors.red),
-                                                onPressed: () => provider
-                                                    .addFavorite(widget.artList),
-                                              );
+                                                      icon: const Icon(
+                                                          Icons.favorite,
+                                                          color: Colors.red),
+                                                      onPressed: () => provider
+                                                          .removeFavorite(widget
+                                                              .artList.id))
+                                                  : IconButton(
+                                                      icon: const Icon(
+                                                          Icons.favorite_border,
+                                                          color: Colors.red),
+                                                      onPressed: () =>
+                                                          provider.addFavorite(
+                                                              widget.artList),
+                                                    );
                                             },
                                           );
                                         },
@@ -130,41 +141,49 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                 ),
                                 const SizedBox(height: 100),
                                 SizedBox(
-                                  width:  MediaQuery.of(context).size.height * 0.45,
+                                  width:
+                                      MediaQuery.of(context).size.height * 0.45,
                                   child: Align(
                                     alignment: Alignment.centerLeft,
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       // mainAxisAlignment: MainAxisAlignment.start,
                                       children: <Widget>[
                                         Container(
-                                          padding: const EdgeInsets.only(left: 20 ),
+                                          padding:
+                                              const EdgeInsets.only(left: 20),
                                           child: Text(
                                             state.detail.data.province,
                                             style: const TextStyle(
-                                              color: Colors.white, fontSize: 18,
+                                              color: Colors.white,
+                                              fontSize: 18,
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),
                                         ),
                                         const SizedBox(height: 4),
                                         Container(
-                                          padding: const EdgeInsets.only(left: 20 ),
+                                          padding:
+                                              const EdgeInsets.only(left: 20),
                                           child: Text(
                                             state.detail.data.name,
                                             style: const TextStyle(
-                                              color: Colors.white, fontSize: 27,
+                                              color: Colors.white,
+                                              fontSize: 27,
                                               fontWeight: FontWeight.w800,
                                             ),
                                           ),
                                         ),
                                         const SizedBox(height: 4),
                                         Container(
-                                          padding: const EdgeInsets.only(left: 20 ),
+                                          padding:
+                                              const EdgeInsets.only(left: 20),
                                           child: Text(
                                             state.detail.data.price,
                                             style: const TextStyle(
-                                              color: Colors.white, fontSize: 12,
+                                              color: Colors.white,
+                                              fontSize: 12,
                                               fontWeight: FontWeight.w700,
                                             ),
                                           ),
@@ -177,7 +196,6 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                             ),
                           ),
                         ),
-
                       ],
                     ),
                     // Consumer<DatabaseProvider>(
@@ -215,8 +233,9 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                             child: Text(
                               AppLocalizations.of(context)!.artDescription,
                               style: const TextStyle(
-                                color:  Color.fromARGB(255, 221, 221, 221),
-                                fontWeight: FontWeight.bold, fontSize: 17,
+                                color: Color.fromARGB(255, 221, 221, 221),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
                               ),
                             ),
                           ),
@@ -225,7 +244,8 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                               AppLocalizations.of(context)!.contact,
                               style: const TextStyle(
                                 color: Color.fromARGB(255, 221, 221, 221),
-                                fontWeight: FontWeight.bold, fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
                               ),
                             ),
                           ),
@@ -237,24 +257,31 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                       child: TabBarView(
                         children: [
                           SingleChildScrollView(
-                            child:
-                            Container(
-                              padding: const EdgeInsets.only(left: 15, right: 15),
+                            child: Container(
+                              padding:
+                                  const EdgeInsets.only(left: 15, right: 15),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(
                                     child: Padding(
-                                      padding: const EdgeInsets.only(left: 8.0, right: 9),
-                                      child: ReadMoreText(state.detail.data.description,
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 9),
+                                      child: ReadMoreText(
+                                        state.detail.data.description,
                                         style: const TextStyle(
                                           color: Colors.black,
-                                          fontWeight: FontWeight.w400 , fontSize: 13,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 13,
                                         ),
                                         trimLength: 500,
-                                        colorClickableText: const Color.fromARGB(255, 45, 74, 148),
-                                        trimCollapsedText: '\n${AppLocalizations.of(context)!.seeAll}',
-                                        trimExpandedText: AppLocalizations.of(context)!.close,
+                                        colorClickableText:
+                                            const Color.fromARGB(
+                                                255, 45, 74, 148),
+                                        trimCollapsedText:
+                                            '\n${AppLocalizations.of(context)!.seeAll}',
+                                        trimExpandedText:
+                                            AppLocalizations.of(context)!.close,
                                       ),
                                     ),
                                   ),
@@ -265,20 +292,27 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                     child: Row(
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.only(left:5.0),
+                                          padding:
+                                              const EdgeInsets.only(left: 5.0),
                                           child: Text(
-                                            AppLocalizations.of(context)!.artDocumentation,
+                                            AppLocalizations.of(context)!
+                                                .artDocumentation,
                                             style: const TextStyle(
-                                              fontWeight: FontWeight.w600, fontSize: 15,
-                                              color: Color.fromARGB(255, 234, 132, 0),
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 15,
+                                              color: Color.fromARGB(
+                                                  255, 234, 132, 0),
                                             ),
                                           ),
                                         ),
                                         Container(
-                                          padding: const EdgeInsets.only(left: 1),
+                                          padding:
+                                              const EdgeInsets.only(left: 1),
                                           child: const Icon(
-                                            Icons.arrow_drop_down_rounded, size: 30,
-                                            color: Color.fromARGB(255, 240, 190, 65),
+                                            Icons.arrow_drop_down_rounded,
+                                            size: 30,
+                                            color: Color.fromARGB(
+                                                255, 240, 190, 65),
                                           ),
                                         ),
                                       ],
@@ -289,57 +323,82 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                       children: [
                                         Column(
                                           children: [
-                                            Container(padding: const EdgeInsets.only(left: 3)),
+                                            Container(
+                                                padding: const EdgeInsets.only(
+                                                    left: 3)),
                                             SizedBox(
-                                              height: MediaQuery.of(context).size.height * 0.12,
-                                              width: MediaQuery.of(context).size.width,
-                                              child:
-                                              SingleChildScrollView(
-                                                scrollDirection: Axis.horizontal,
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.12,
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              child: SingleChildScrollView(
+                                                scrollDirection:
+                                                    Axis.horizontal,
                                                 child: Row(
-                                                  children: state.detail.data.documKesenians
-                                                      .map((category) => Padding(
-                                                    padding: const EdgeInsets.all(4.0),
-                                                    child: InkWell(
-                                                      onTap: () {
-                                                        showDialog(
-                                                            builder: (BuildContext context) => AlertDialog(
-                                                                backgroundColor: const Color.fromARGB(0, 93, 93, 93),
-                                                                insetPadding: const EdgeInsets.all(2),
-                                                                title: SizedBox(
-                                                                  width: MediaQuery.of(context).size.width,
-                                                                  child: Hero(tag: state.detail.data.documKesenians, child: CachedNetworkImage(imageUrl: '$baseImageDocArt${category.documentation}',)),
-                                                                )), context: context);
-                                                      },
-                                                      child: Container(
-                                                        width: 140,
-                                                        decoration: BoxDecoration( boxShadow: const [
-                                                          BoxShadow(
-                                                              color: Color.fromARGB(185, 158, 158, 158),
-                                                              offset: Offset(2.0, 2.0),
-                                                              blurRadius: 2.0
-                                                          )
-                                                        ],
-                                                            border: Border.all(width: 3, color: Colors.white), borderRadius: BorderRadius.circular(12) ),
-                                                        child: ClipRRect(
-                                                          borderRadius: BorderRadius.circular(10),
-                                                          child:
-                                                          FittedBox(
-                                                            fit:
-                                                            BoxFit.fill,
-                                                            child: CachedNetworkImage(
-                                                              imageUrl: '$baseImageDocArt${category.documentation}',
-                                                              width: 140,
-                                                              placeholder: (context, url) => const Center(
-                                                                child: CircularProgressIndicator(),
-                                                              ),
-                                                              errorWidget: (context, url, error) => const Icon(Icons.error),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  )).toList(),
+                                                  children:
+                                                      state.detail.data
+                                                          .documKesenians
+                                                          .map(
+                                                              (category) =>
+                                                                  Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            4.0),
+                                                                    child:
+                                                                        InkWell(
+                                                                      onTap:
+                                                                          () {
+                                                                        showDialog(
+                                                                            builder: (BuildContext context) => AlertDialog(
+                                                                                backgroundColor: const Color.fromARGB(0, 93, 93, 93),
+                                                                                insetPadding: const EdgeInsets.all(2),
+                                                                                title: SizedBox(
+                                                                                  width: MediaQuery.of(context).size.width,
+                                                                                  child: Hero(
+                                                                                      tag: state.detail.data.documKesenians,
+                                                                                      child: CachedNetworkImage(
+                                                                                        imageUrl: '$baseImageDocArt${category.documentation}',
+                                                                                      )),
+                                                                                )),
+                                                                            context: context);
+                                                                      },
+                                                                      child:
+                                                                          Container(
+                                                                        width:
+                                                                            140,
+                                                                        decoration: BoxDecoration(
+                                                                            boxShadow: const [
+                                                                              BoxShadow(color: Color.fromARGB(185, 158, 158, 158), offset: Offset(2.0, 2.0), blurRadius: 2.0)
+                                                                            ],
+                                                                            border:
+                                                                                Border.all(width: 3, color: Colors.white),
+                                                                            borderRadius: BorderRadius.circular(12)),
+                                                                        child:
+                                                                            ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(10),
+                                                                          child:
+                                                                              FittedBox(
+                                                                            fit:
+                                                                                BoxFit.fill,
+                                                                            child:
+                                                                                CachedNetworkImage(
+                                                                              imageUrl: '$baseImageDocArt${category.documentation}',
+                                                                              width: 140,
+                                                                              placeholder: (context, url) => const Center(
+                                                                                child: CircularProgressIndicator(),
+                                                                              ),
+                                                                              errorWidget: (context, url, error) => const Icon(Icons.error),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ))
+                                                          .toList(),
                                                 ),
                                               ),
                                             ),
@@ -360,37 +419,49 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                 Container(
                                   width: MediaQuery.of(context).size.width,
                                   padding: const EdgeInsets.all(7),
-                                  height: MediaQuery.of(context).size.height * 0.07,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.07,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(13),
-                                    color: Colors.white, border: Border.all(
-                                      color: const Color.fromARGB(255, 221, 221, 221),
-                                      width: 3.7),
+                                    color: Colors.white,
+                                    border: Border.all(
+                                        color: const Color.fromARGB(
+                                            255, 221, 221, 221),
+                                        width: 3.7),
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 5.0),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        ClipRRect(borderRadius: BorderRadius.circular(50),
-                                          child:  const Image(
-                                            image: AssetImage('images/whatsapp.png'),
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          child: const Image(
+                                            image: AssetImage(
+                                                'images/whatsapp.png'),
                                           ),
                                         ),
                                         // REVISI
-                                        Text(state.detail.data.phoneNumber,
+                                        Text(
+                                          state.detail.data.phoneNumber,
                                           style: const TextStyle(
-                                            color: Color.fromARGB(255, 234, 132, 0),
+                                            color: Color.fromARGB(
+                                                255, 234, 132, 0),
                                             fontWeight: FontWeight.w800,
                                             fontSize: 15,
                                           ),
                                         ),
                                         const CircleAvatar(
                                           radius: 24,
-                                          backgroundColor: Color.fromARGB(255, 234, 132, 0),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 234, 132, 0),
                                           child: Icon(
-                                            Icons.send, size: 20,
-                                            color: Color.fromARGB(255, 255, 255, 255),
+                                            Icons.send,
+                                            size: 20,
+                                            color: Color.fromARGB(
+                                                255, 255, 255, 255),
                                           ),
                                         ),
                                       ],
@@ -401,73 +472,100 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
                                 Container(
                                   width: MediaQuery.of(context).size.width,
                                   padding: const EdgeInsets.all(7),
-                                  height: MediaQuery.of(context).size.height * 0.07,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.07,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(13),
-                                    color: Colors.white, border: Border.all(
-                                      color: const Color.fromARGB(255, 221, 221, 221),
-                                      width: 3.7),
+                                    color: Colors.white,
+                                    border: Border.all(
+                                        color: const Color.fromARGB(
+                                            255, 221, 221, 221),
+                                        width: 3.7),
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 5.0),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        ClipRRect(borderRadius: BorderRadius.circular(50),
-                                          child: const Image(
-                                            image: AssetImage('images/instagram.png'),
-                                          ),
-                                        ),
-                                        Text(state.detail.data.isInstagram,
-                                          style: const TextStyle(
-                                            color: Color.fromARGB(255, 234, 132, 0),
-                                            fontWeight: FontWeight.w800, fontSize: 15,
-                                          ),
-                                        ),
-                                        const CircleAvatar(
-                                          radius: 24,
-                                          backgroundColor: Color.fromARGB(255, 234, 132, 0),
-                                          child: Icon(
-                                            Icons.send, size: 20,
-                                            color: Color.fromARGB(255, 255, 255, 255),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 12),
-                                Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  padding: const EdgeInsets.all(7),
-                                  height: MediaQuery.of(context).size.height * 0.07,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(13),
-                                    color: Colors.white, border: Border.all(
-                                      color: const Color.fromARGB(255, 221, 221, 221), width: 3.7),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 5.0),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         ClipRRect(
-                                          borderRadius: BorderRadius.circular(50),
-                                          child: const Image(image: AssetImage('images/facebook.jpg'),
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          child: const Image(
+                                            image: AssetImage(
+                                                'images/instagram.png'),
                                           ),
                                         ),
-                                        Text(state.detail.data.isFacebook,
+                                        Text(
+                                          state.detail.data.isInstagram,
                                           style: const TextStyle(
-                                            color: Color.fromARGB(255, 234, 132, 0),
-                                            fontWeight: FontWeight.w800, fontSize: 14,
+                                            color: Color.fromARGB(
+                                                255, 234, 132, 0),
+                                            fontWeight: FontWeight.w800,
+                                            fontSize: 15,
                                           ),
                                         ),
                                         const CircleAvatar(
                                           radius: 24,
-                                          backgroundColor: Color.fromARGB(255, 234, 132, 0),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 234, 132, 0),
                                           child: Icon(
-                                            Icons.send, size: 20,
-                                            color: Color.fromARGB(255, 255, 255, 255),
+                                            Icons.send,
+                                            size: 20,
+                                            color: Color.fromARGB(
+                                                255, 255, 255, 255),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 12),
+                                Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  padding: const EdgeInsets.all(7),
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.07,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(13),
+                                    color: Colors.white,
+                                    border: Border.all(
+                                        color: const Color.fromARGB(
+                                            255, 221, 221, 221),
+                                        width: 3.7),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 5.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          child: const Image(
+                                            image: AssetImage(
+                                                'images/facebook.jpg'),
+                                          ),
+                                        ),
+                                        Text(
+                                          state.detail.data.isFacebook,
+                                          style: const TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 234, 132, 0),
+                                            fontWeight: FontWeight.w800,
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                        const CircleAvatar(
+                                          radius: 24,
+                                          backgroundColor:
+                                              Color.fromARGB(255, 234, 132, 0),
+                                          child: Icon(
+                                            Icons.send,
+                                            size: 20,
+                                            color: Color.fromARGB(
+                                                255, 255, 255, 255),
                                           ),
                                         ),
                                       ],
@@ -487,12 +585,12 @@ class _DetailSellerProductState extends State<DetailSellerProduct> {
           );
         } else if (state.detailState == ResultState.error) {
           return Center(child: Text(state.message));
-        } else if (state.detailState == ResultState.noData){
+        } else if (state.detailState == ResultState.noData) {
           return Center(child: Text(state.message));
         } else if (state.detailState == ResultState.error) {
           return const Center(child: Text('error'));
         } else {
-          return const Center(child:  Text(''));
+          return const Center(child: Text(''));
         }
       },
     );

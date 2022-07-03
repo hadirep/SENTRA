@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:sentra/utils/background_service.dart';
 import 'package:sentra/utils/date_time_helper.dart';
 
-
 class SchedulingProvider extends ChangeNotifier {
   bool _isScheduled = false;
 

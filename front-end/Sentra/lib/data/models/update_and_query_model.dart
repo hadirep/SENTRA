@@ -13,15 +13,14 @@ class UpdateAndQueryModel {
 
   factory UpdateAndQueryModel.fromJson(Map<String, dynamic> json) =>
       UpdateAndQueryModel(
-    status: json["status"],
-    message: json["message"],
-    data: List<ArtList>.from(json["data"]
-        .map((x) => ArtList.fromJson(x))),
-  );
+        status: json["status"],
+        message: json["message"],
+        data: List<ArtList>.from(json["data"].map((x) => ArtList.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "status": status,
-    "message": message,
-    "data": List<dynamic>.from(data.map((x) => x.toJson())),
-  };
+        "status": status,
+        "message": message,
+        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+      };
 }

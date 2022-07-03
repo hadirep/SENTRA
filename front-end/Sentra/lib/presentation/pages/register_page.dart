@@ -4,7 +4,7 @@ import 'package:common/style.dart';
 import 'package:sentra/presentation/widgets/form_register.dart';
 import 'package:sentra/presentation/widgets/logo_center.dart';
 
-class RegisterPage extends StatefulWidget{
+class RegisterPage extends StatefulWidget {
   static const routeName = '/register-page';
   const RegisterPage({Key? key}) : super(key: key);
 

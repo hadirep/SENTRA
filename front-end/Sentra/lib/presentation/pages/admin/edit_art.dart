@@ -36,7 +36,7 @@ class _EditArtState extends State<EditArt> {
   final isFacebookController = TextEditingController();
   final isInstagramController = TextEditingController();
 
-  late String? imageUri ;
+  late String? imageUri;
   late String idArt;
 
   @override
@@ -58,8 +58,7 @@ class _EditArtState extends State<EditArt> {
   final ImagePicker _picker = ImagePicker();
   File? multiImage;
 
-
-  Future getImage() async{
+  Future getImage() async {
     var image = await _picker.pickImage(
       source: ImageSource.gallery,
     );
@@ -68,13 +67,12 @@ class _EditArtState extends State<EditArt> {
     });
   }
 
-  Future getImageDocumentation() async{
+  Future getImageDocumentation() async {
     final ImagePicker picker = ImagePicker();
-    final XFile? imagePicked = await picker.pickImage(source: ImageSource.gallery);
+    final XFile? imagePicked =
+        await picker.pickImage(source: ImageSource.gallery);
     multiImage = File(imagePicked!.path);
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   final ImagePicker imgPicker = ImagePicker();
@@ -83,11 +81,10 @@ class _EditArtState extends State<EditArt> {
   openImages() async {
     try {
       var pickedFiles = await imgPicker.pickMultiImage();
-      if(pickedFiles != null){
+      if (pickedFiles != null) {
         imageFiles = pickedFiles;
-        setState(() {
-        });
-      }else{
+        setState(() {});
+      } else {
         if (kDebugMode) {
           print("No image is selected.");
         }
@@ -101,8 +98,7 @@ class _EditArtState extends State<EditArt> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as
-    List<String?>;
+    final args = ModalRoute.of(context)!.settings.arguments as List<String?>;
     if (args[0]!.isNotEmpty) {
       idArt = args[0]!;
     }
@@ -171,7 +167,8 @@ class _EditArtState extends State<EditArt> {
                         child: Text(
                           AppLocalizations.of(context)!.artName,
                           style: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
                         ),
@@ -184,17 +181,18 @@ class _EditArtState extends State<EditArt> {
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                color: Color.fromARGB(255, 234, 132, 0),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                color: Color.fromARGB(255, 221, 221, 221),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
-
                           ),
                         ),
                       ),
@@ -204,7 +202,8 @@ class _EditArtState extends State<EditArt> {
                         child: Text(
                           AppLocalizations.of(context)!.artPrice,
                           style: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
                         ),
@@ -217,13 +216,15 @@ class _EditArtState extends State<EditArt> {
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                color: Color.fromARGB(255, 234, 132, 0),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                color: Color.fromARGB(255, 221, 221, 221),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
@@ -236,7 +237,8 @@ class _EditArtState extends State<EditArt> {
                         child: Text(
                           AppLocalizations.of(context)!.artOrganization,
                           style: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
                         ),
@@ -248,13 +250,15 @@ class _EditArtState extends State<EditArt> {
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                color: Color.fromARGB(255, 234, 132, 0),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                color: Color.fromARGB(255, 221, 221, 221),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
@@ -267,7 +271,8 @@ class _EditArtState extends State<EditArt> {
                         child: Text(
                           AppLocalizations.of(context)!.artCategory,
                           style: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
                         ),
@@ -279,13 +284,15 @@ class _EditArtState extends State<EditArt> {
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                color: Color.fromARGB(255, 234, 132, 0),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                color: Color.fromARGB(255, 221, 221, 221),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
@@ -298,7 +305,8 @@ class _EditArtState extends State<EditArt> {
                         child: Text(
                           AppLocalizations.of(context)!.artPhone,
                           style: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
                         ),
@@ -311,13 +319,15 @@ class _EditArtState extends State<EditArt> {
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                color: Color.fromARGB(255, 234, 132, 0),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                color: Color.fromARGB(255, 221, 221, 221),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
@@ -331,7 +341,8 @@ class _EditArtState extends State<EditArt> {
                         child: Text(
                           AppLocalizations.of(context)!.artEmail,
                           style: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
                         ),
@@ -344,13 +355,15 @@ class _EditArtState extends State<EditArt> {
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                color: Color.fromARGB(255, 234, 132, 0),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                color: Color.fromARGB(255, 221, 221, 221),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
@@ -363,7 +376,8 @@ class _EditArtState extends State<EditArt> {
                         child: Text(
                           AppLocalizations.of(context)!.artProvince,
                           style: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
                         ),
@@ -375,13 +389,15 @@ class _EditArtState extends State<EditArt> {
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                color: Color.fromARGB(255, 234, 132, 0),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                color: Color.fromARGB(255, 221, 221, 221),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
@@ -394,7 +410,8 @@ class _EditArtState extends State<EditArt> {
                         child: Text(
                           AppLocalizations.of(context)!.artDescription,
                           style: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
                         ),
@@ -407,13 +424,15 @@ class _EditArtState extends State<EditArt> {
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                              color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                              color: Color.fromARGB(255, 234, 132, 0),
+                              width: 2.0,
                             ),
                             borderRadius: borderRadius,
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                              color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                              color: Color.fromARGB(255, 221, 221, 221),
+                              width: 2.0,
                             ),
                             borderRadius: borderRadius,
                           ),
@@ -425,7 +444,8 @@ class _EditArtState extends State<EditArt> {
                         child: Text(
                           AppLocalizations.of(context)!.artFacebook,
                           style: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
                         ),
@@ -438,13 +458,15 @@ class _EditArtState extends State<EditArt> {
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                color: Color.fromARGB(255, 234, 132, 0),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                color: Color.fromARGB(255, 221, 221, 221),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
@@ -457,7 +479,8 @@ class _EditArtState extends State<EditArt> {
                         child: const Text(
                           "Username Instagram",
                           style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
                         ),
@@ -469,13 +492,15 @@ class _EditArtState extends State<EditArt> {
                           decoration: InputDecoration(
                             focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 234, 132, 0), width: 2.0,
+                                color: Color.fromARGB(255, 234, 132, 0),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 221, 221, 221), width: 2.0,
+                                color: Color.fromARGB(255, 221, 221, 221),
+                                width: 2.0,
                               ),
                               borderRadius: borderRadius,
                             ),
@@ -488,17 +513,19 @@ class _EditArtState extends State<EditArt> {
                         child: Text(
                           AppLocalizations.of(context)!.artImage,
                           style: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
                         ),
                       ),
                       Container(
-                        height:  MediaQuery.of(context).size.height * 0.18,
+                        height: MediaQuery.of(context).size.height * 0.18,
                         width: MediaQuery.of(context).size.height * 0.45,
                         padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,
+                          color: const Color.fromARGB(255, 221, 221, 221),
+                          borderRadius: borderRadius,
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12),
@@ -508,7 +535,8 @@ class _EditArtState extends State<EditArt> {
                             placeholder: (context, url) => const Center(
                               child: CircularProgressIndicator(),
                             ),
-                            errorWidget: (context, url, error) => const Icon(Icons.error),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
                           ),
                         ),
                       ),
@@ -531,24 +559,29 @@ class _EditArtState extends State<EditArt> {
                       //      ),
                       //    ),
                       //  ) : Container(),
-                      _oneImage != null? Container(
-                        height:  MediaQuery.of(context).size.height * 0.18,
-                        width: MediaQuery.of(context).size.height * 0.45,
-                        padding: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 221, 221, 221), borderRadius: borderRadius,
-                        ),
-                        child: ClipRRect(
-                          borderRadius: borderRadius,
-                          child: Image.file(
-                            _oneImage!,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ) : Container(),
-                      const SizedBox(height: 5,),
+                      _oneImage != null
+                          ? Container(
+                              height: MediaQuery.of(context).size.height * 0.18,
+                              width: MediaQuery.of(context).size.height * 0.45,
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 221, 221, 221),
+                                borderRadius: borderRadius,
+                              ),
+                              child: ClipRRect(
+                                borderRadius: borderRadius,
+                                child: Image.file(
+                                  _oneImage!,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            )
+                          : Container(),
+                      const SizedBox(
+                        height: 5,
+                      ),
                       GestureDetector(
-                        onTap: () async{
+                        onTap: () async {
                           await getImage();
                         },
                         child: Align(
@@ -558,12 +591,14 @@ class _EditArtState extends State<EditArt> {
                             decoration: BoxDecoration(
                               borderRadius: borderRadius,
                               border: Border.all(
-                                width: 3, color: const Color.fromARGB(255, 221, 221, 221),
+                                width: 3,
+                                color: const Color.fromARGB(255, 221, 221, 221),
                               ),
                             ),
                             child: const Icon(
                               Icons.add_a_photo,
-                              color: Color.fromARGB(255, 221, 221, 221), size: 15,
+                              color: Color.fromARGB(255, 221, 221, 221),
+                              size: 15,
                             ),
                           ),
                         ),
@@ -574,7 +609,8 @@ class _EditArtState extends State<EditArt> {
                         child: Text(
                           AppLocalizations.of(context)!.artDocumentation,
                           style: const TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
                             color: Color.fromARGB(255, 234, 132, 0),
                           ),
                         ),
@@ -585,73 +621,96 @@ class _EditArtState extends State<EditArt> {
                           MultiProvider(
                             providers: [
                               ChangeNotifierProvider<DetailProvider>(
-                                create: (_) => DetailProvider(detailApiService: ApiService(), id: idArt),
+                                create: (_) => DetailProvider(
+                                    detailApiService: ApiService(), id: idArt),
                               ),
                             ],
                             child: SizedBox(
-                                height: MediaQuery.of(context).size.height * 0.12,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.12,
                                 width: MediaQuery.of(context).size.width,
                                 child: Consumer<DetailProvider>(
                                   builder: (context, state, _) {
-                                    if (state.detailState == ResultState.loading) {
-                                      return const Center(child: CircularProgressIndicator());
-                                    } else if (state.detailState == ResultState.hasData) {
+                                    if (state.detailState ==
+                                        ResultState.loading) {
+                                      return const Center(
+                                          child: CircularProgressIndicator());
+                                    } else if (state.detailState ==
+                                        ResultState.hasData) {
                                       return Center(
                                         child: Column(
                                           children: [
                                             Column(
                                               children: [
-                                                Container(padding: const EdgeInsets.only(left: 3)),
+                                                Container(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 3)),
                                                 SizedBox(
-                                                  height: MediaQuery.of(context).size.height * 0.12,
-                                                  width: MediaQuery.of(context).size.width,
-                                                  child:
-                                                  SingleChildScrollView(
-                                                    scrollDirection: Axis.horizontal,
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.12,
+                                                  width: MediaQuery.of(context)
+                                                      .size
+                                                      .width,
+                                                  child: SingleChildScrollView(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
                                                     child: Row(
-                                                      children: state.detail.data.documKesenians
-                                                          .map((category) => Padding(
-                                                        padding: const EdgeInsets.all(4.0),
-                                                        child: InkWell(
-                                                          onTap: () {
-                                                            showDialog(
-                                                                builder: (BuildContext context) => AlertDialog(
-                                                                    backgroundColor: const Color.fromARGB(0, 93, 93, 93),
-                                                                    insetPadding: const EdgeInsets.all(2),
-                                                                    title: SizedBox(
-                                                                      width: MediaQuery.of(context).size.width,
-                                                                      child: Hero(tag: state.detail.data.documKesenians, child: CachedNetworkImage(imageUrl: '$baseImageDocArt${category.documentation}',)),
-                                                                    )), context: context);
-                                                          },
-                                                          child: Container(
-                                                            width: 140,
-                                                            decoration: BoxDecoration( boxShadow: const [
-                                                              BoxShadow(
-                                                                  color: Color.fromARGB(185, 158, 158, 158),
-                                                                  offset: Offset(2.0, 2.0),
-                                                                  blurRadius: 2.0
-                                                              )
-                                                            ],
-                                                                border: Border.all(width: 3, color: Colors.white), borderRadius: BorderRadius.circular(12) ),
-                                                            child: ClipRRect(
-                                                              borderRadius: BorderRadius.circular(10),
-                                                              child:
-                                                              FittedBox(
-                                                                fit:
-                                                                BoxFit.fill,
-                                                                child: CachedNetworkImage(
-                                                                  imageUrl: '$baseImageDocArt${category.documentation}',
-                                                                  width: 140,
-                                                                  placeholder: (context, url) => const Center(
-                                                                    child: CircularProgressIndicator(),
-                                                                  ),
-                                                                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      )).toList(),
+                                                      children:
+                                                          state.detail.data
+                                                              .documKesenians
+                                                              .map(
+                                                                  (category) =>
+                                                                      Padding(
+                                                                        padding:
+                                                                            const EdgeInsets.all(4.0),
+                                                                        child:
+                                                                            InkWell(
+                                                                          onTap:
+                                                                              () {
+                                                                            showDialog(
+                                                                                builder: (BuildContext context) => AlertDialog(
+                                                                                    backgroundColor: const Color.fromARGB(0, 93, 93, 93),
+                                                                                    insetPadding: const EdgeInsets.all(2),
+                                                                                    title: SizedBox(
+                                                                                      width: MediaQuery.of(context).size.width,
+                                                                                      child: Hero(
+                                                                                          tag: state.detail.data.documKesenians,
+                                                                                          child: CachedNetworkImage(
+                                                                                            imageUrl: '$baseImageDocArt${category.documentation}',
+                                                                                          )),
+                                                                                    )),
+                                                                                context: context);
+                                                                          },
+                                                                          child:
+                                                                              Container(
+                                                                            width:
+                                                                                140,
+                                                                            decoration:
+                                                                                BoxDecoration(boxShadow: const [
+                                                                              BoxShadow(color: Color.fromARGB(185, 158, 158, 158), offset: Offset(2.0, 2.0), blurRadius: 2.0)
+                                                                            ], border: Border.all(width: 3, color: Colors.white), borderRadius: BorderRadius.circular(12)),
+                                                                            child:
+                                                                                ClipRRect(
+                                                                              borderRadius: BorderRadius.circular(10),
+                                                                              child: FittedBox(
+                                                                                fit: BoxFit.fill,
+                                                                                child: CachedNetworkImage(
+                                                                                  imageUrl: '$baseImageDocArt${category.documentation}',
+                                                                                  width: 140,
+                                                                                  placeholder: (context, url) => const Center(
+                                                                                    child: CircularProgressIndicator(),
+                                                                                  ),
+                                                                                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ))
+                                                              .toList(),
                                                     ),
                                                   ),
                                                 ),
@@ -660,40 +719,54 @@ class _EditArtState extends State<EditArt> {
                                           ],
                                         ),
                                       );
-                                    } else if (state.detailState == ResultState.error) {
+                                    } else if (state.detailState ==
+                                        ResultState.error) {
                                       return Center(child: Text(state.message));
-                                    } else if (state.detailState == ResultState.noData){
+                                    } else if (state.detailState ==
+                                        ResultState.noData) {
                                       return Center(child: Text(state.message));
-                                    } else if (state.detailState == ResultState.error) {
+                                    } else if (state.detailState ==
+                                        ResultState.error) {
                                       return const Center(child: Text('error'));
                                     } else {
-                                      return const Center(child:  Text(''));
+                                      return const Center(child: Text(''));
                                     }
                                   },
-                                )
-                            ),
+                                )),
                           ),
-                          imageFiles != null?Wrap(
-                            children: imageFiles!.map((imageOne){
-                              return Card(
-                                child: Container(
-                                  height:  MediaQuery.of(context).size.height * 0.1,
-                                  width: MediaQuery.of(context).size.height * 0.138,
-                                  padding: const EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                    color: const Color.fromARGB(255, 221, 221, 221),
-                                    borderRadius: borderRadius,
-                                  ),
-                                  child: ClipRRect(
-                                    borderRadius: borderRadius,
-                                    child: Image.file(File(imageOne.path),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }, ).toList(),
-                          ) : Container(),
+                          imageFiles != null
+                              ? Wrap(
+                                  children: imageFiles!.map(
+                                    (imageOne) {
+                                      return Card(
+                                        child: Container(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.1,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.138,
+                                          padding: const EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                            color: const Color.fromARGB(
+                                                255, 221, 221, 221),
+                                            borderRadius: borderRadius,
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius: borderRadius,
+                                            child: Image.file(
+                                              File(imageOne.path),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ).toList(),
+                                )
+                              : Container(),
                           GestureDetector(
                             onTap: () {
                               openImages();
@@ -705,12 +778,15 @@ class _EditArtState extends State<EditArt> {
                                 decoration: BoxDecoration(
                                   borderRadius: borderRadius,
                                   border: Border.all(
-                                    width: 3, color: const Color.fromARGB(255, 221, 221, 221),
+                                    width: 3,
+                                    color: const Color.fromARGB(
+                                        255, 221, 221, 221),
                                   ),
                                 ),
                                 child: const Icon(
                                   Icons.add,
-                                  color: Color.fromARGB(255, 221, 221, 221), size: 15,
+                                  color: Color.fromARGB(255, 221, 221, 221),
+                                  size: 15,
                                 ),
                               ),
                             ),
@@ -722,18 +798,27 @@ class _EditArtState extends State<EditArt> {
                             height: 70,
                             child: ElevatedButton(
                               onPressed: () async {
-                                bool response =
-                                await apiService.putArtList(args[0]!,
-                                  nameController.text, priceController.text, communityController.text,
-                                  categoryController.text, phoneNumberController.text, emailController.text,
-                                  provinceController.text, descriptionController.text,
-                                  isFacebookController.text.toString(), isInstagramController.text.toString(),
+                                bool response = await apiService.putArtList(
+                                  args[0]!,
+                                  nameController.text,
+                                  priceController.text,
+                                  communityController.text,
+                                  categoryController.text,
+                                  phoneNumberController.text,
+                                  emailController.text,
+                                  provinceController.text,
+                                  descriptionController.text,
+                                  isFacebookController.text.toString(),
+                                  isInstagramController.text.toString(),
                                 );
 
-                                if (response){
-                                  const snackbar = SnackBar(content: Text('Edit Data Berhasil'));
-                                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                                  Navigator.pushNamed(context, BusinessManagement.routeName);
+                                if (response) {
+                                  const snackbar = SnackBar(
+                                      content: Text('Edit Data Berhasil'));
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackbar);
+                                  Navigator.pushNamed(
+                                      context, BusinessManagement.routeName);
                                 } else {
                                   if (kDebugMode) {
                                     print('Gagal merubah data');
@@ -742,17 +827,21 @@ class _EditArtState extends State<EditArt> {
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: const Color.fromARGB(255, 234, 132, 0),
-                                shape: RoundedRectangleBorder(borderRadius: borderRadius),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: borderRadius),
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Icon(Icons.download_rounded, color: Colors.white),
+                                  const Icon(Icons.download_rounded,
+                                      color: Colors.white),
                                   const SizedBox(width: 5),
                                   Text(
                                     AppLocalizations.of(context)!.artSave,
                                     style: const TextStyle(
-                                      color: Colors.white, fontWeight: FontWeight.w600, fontSize: 17,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 17,
                                     ),
                                   ),
                                 ],

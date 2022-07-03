@@ -40,24 +40,23 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'data/db/database_helper.dart';
 import 'utils/background_service.dart';
 
-
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-   FlutterLocalNotificationsPlugin();
+    FlutterLocalNotificationsPlugin();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   final NotificationHelper notificationHelper = NotificationHelper();
-   final BackgroundService service = BackgroundService();
+  final BackgroundService service = BackgroundService();
   service.initializeIsolate();
   if (Platform.isAndroid) {
-   await AndroidAlarmManager.initialize();
+    await AndroidAlarmManager.initialize();
   }
   await notificationHelper.initNotifications(flutterLocalNotificationsPlugin);
- 
+
   runApp(const MyApp());
 }
-   
+
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
 //   await Firebase.initializeApp();
@@ -74,7 +73,8 @@ class MyApp extends StatelessWidget {
           create: (_) => ProvinceListProvider(listApiService: ApiService()),
         ),
         ChangeNotifierProvider<ProvinceQueryProvider>(
-          create: (_) => ProvinceQueryProvider(queryApiService: ApiService(), query: ''),
+          create: (_) =>
+              ProvinceQueryProvider(queryApiService: ApiService(), query: ''),
         ),
         ChangeNotifierProvider<AddArtProvider>(
           create: (_) => AddArtProvider(),
@@ -96,7 +96,8 @@ class MyApp extends StatelessWidget {
           create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper()),
         ),
         ChangeNotifierProvider(
-          create: (_) => PreferenceProvider(preferencesHelper: PreferencesHelper(
+          create: (_) => PreferenceProvider(
+              preferencesHelper: PreferencesHelper(
             shared: SharedPreferences.getInstance(),
           )),
         ),
@@ -115,22 +116,24 @@ class MyApp extends StatelessWidget {
             initialRoute: SplashScreenPage.routeName,
             routes: {
               ProvinceQueryPage.routeName: (context) => ProvinceQueryPage(
-                queryList: ModalRoute.of(context)?.settings.arguments as ArtList,
-              ),
+                    queryList:
+                        ModalRoute.of(context)?.settings.arguments as ArtList,
+                  ),
               LoginPage.routeName: (context) => const LoginPage(),
               SplashScreenPage.routeName: (context) => const SplashScreenPage(),
               RegisterPage.routeName: (context) => const RegisterPage(),
               SearchPage.routeName: (context) => const SearchPage(),
-              BusinessManagement.routeName: (context) => const BusinessManagement(),
+              BusinessManagement.routeName: (context) =>
+                  const BusinessManagement(),
               HomePage.routeName: (context) => const HomePage(),
               FavoriteList.routeName: (context) => const FavoriteList(),
               EditArt.routeName: (context) => const EditArt(),
               ProvinceMorePage.routeName: (context) => const ProvinceMorePage(),
               AboutPage.routeName: (context) => const AboutPage(),
               UserSetting.routeName: (context) => const UserSetting(),
-              // PopUpPage.routeName: (context) => const PopUpPage(),
               DetailSellerProduct.routeName: (context) => DetailSellerProduct(
-                  artList: ModalRoute.of(context)?.settings.arguments as ArtList),
+                  artList:
+                      ModalRoute.of(context)?.settings.arguments as ArtList),
               CreateArt.routeName: (context) => const CreateArt(),
               ArtListMorePage.routeName: (context) => const ArtListMorePage(),
               UpdateMorePage.routeName: (context) => const UpdateMorePage(),
